@@ -3,13 +3,11 @@
 //! Provides tools for storing, retrieving, and querying contexts
 //! with temporal reasoning and RAG support.
 
-use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::collections::HashMap;
 use std::sync::Arc;
 
-use crate::context::{Context, ContextDomain, ContextMetadata, ContextQuery, ScreeningStatus};
-use crate::error::ContextResult;
+use crate::context::{Context, ContextDomain, ContextQuery, ScreeningStatus};
 use crate::protocol::{
     CallToolResult, InputSchema, PropertySchema, Tool,
 };

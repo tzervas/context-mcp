@@ -4,8 +4,7 @@
 
 use axum::{
     extract::{Json, State},
-    http::StatusCode,
-    response::{IntoResponse, Response, Sse},
+    response::{IntoResponse, Sse},
     routing::{get, post},
     Router,
 };
@@ -13,12 +12,11 @@ use futures::stream::{self, Stream};
 use serde_json::{json, Value};
 use std::convert::Infallible;
 use std::sync::Arc;
-use tokio::sync::RwLock;
 
 use crate::error::ContextResult;
 use crate::protocol::{
-    CallToolRequest, CallToolResult, InitializeResult, JsonRpcError, JsonRpcRequest,
-    JsonRpcResponse, MCP_VERSION, RequestId, ServerCapabilities, ServerInfo, Tool,
+    CallToolRequest, InitializeResult, JsonRpcError, JsonRpcRequest,
+    JsonRpcResponse, MCP_VERSION, RequestId, ServerCapabilities, ServerInfo,
     ToolsCapability,
 };
 use crate::rag::{RagConfig, RagProcessor};

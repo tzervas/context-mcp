@@ -7,8 +7,8 @@ use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
-use crate::context::{Context, ContextDomain, ContextQuery, ScreeningStatus};
-use crate::error::{ContextError, ContextResult};
+use crate::context::{Context, ContextDomain, ContextQuery};
+use crate::error::ContextResult;
 use crate::storage::ContextStore;
 use crate::temporal::{TemporalQuery, TemporalStats};
 
