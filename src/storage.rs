@@ -182,6 +182,9 @@ impl ContextStore {
     /// Delete a context by ID
     pub async fn delete(&self, id: &ContextId) -> Result<bool> {
         let mut found = false;
+        
+        // First, get the context to extract domain and tags before deletion
+        let context_data = self.get(id).await?;
 
         // Remove from memory cache
         {
@@ -198,7 +201,34 @@ impl ContextStore {
             }
         }
 
-        // TODO: Clean up indices
+        // Clean up indices if context was found
+        if let Some(ctx) = context_data {
+            // Remove from domain index
+            {
+                let mut domain_idx = self.domain_index.write().await;
+                if let Some(ids) = domain_idx.get_mut(&ctx.domain) {
+                    ids.retain(|stored_id| stored_id != id);
+                    // Remove empty domain entries to prevent unbounded growth
+                    if ids.is_empty() {
+                        domain_idx.remove(&ctx.domain);
+                    }
+                }
+            }
+
+            // Remove from tag index
+            {
+                let mut tag_idx = self.tag_index.write().await;
+                for tag in &ctx.metadata.tags {
+                    if let Some(ids) = tag_idx.get_mut(tag) {
+                        ids.retain(|stored_id| stored_id != id);
+                        // Remove empty tag entries to prevent unbounded growth
+                        if ids.is_empty() {
+                            tag_idx.remove(tag);
+                        }
+                    }
+                }
+            }
+        }
 
         Ok(found)
     }

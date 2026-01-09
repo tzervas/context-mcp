@@ -24,6 +24,7 @@
 //! ```
 
 pub mod context;
+pub mod embeddings;
 pub mod error;
 pub mod protocol;
 pub mod rag;
