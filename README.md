@@ -4,17 +4,17 @@
 [![Documentation](https://docs.rs/context-mcp/badge.svg)](https://docs.rs/context-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-MCP server for context management, temporal metadata, and lightweight retrieval/RAG plumbing.
+MCP server for context management, temporal metadata, and lightweight retrieval plumbing.
 
-This crate is intended to be a "memory service" for agents: store/retrieve context items with timestamps and metadata, and support simple query/retrieval patterns.
+This crate provides a "memory service" for agents: store/retrieve context items with timestamps and metadata, supporting basic query/retrieval patterns via text matching and filtering.
 
 ## Features
 
-- **Multi-tier Storage**: In-memory (LRU), cache, and disk persistence
-- **Temporal Reasoning**: Timestamps and age tracking for context relevance
-- **RAG Processing**: CPU-optimized retrieval-augmented generation support
-- **MCP Protocol**: Full compatibility with VS Code, Copilot, and other MCP clients
-- **Safe Input Handling**: Integrates with security-mcp for screened inputs
+- **Multi-tier Storage**: In-memory LRU cache with optional sled-based disk persistence
+- **Temporal Tracking**: Timestamps, age tracking, and time-based filtering for context relevance
+- **CPU-Optimized Retrieval**: Parallel processing with rayon for text-based context queries
+- **MCP Protocol Support**: JSON-RPC server implementation with HTTP/WebSocket and stdio transports
+- **Screening Status Fields**: Built-in fields for tracking security screening state (integration not included)
 
 ## Status
 
@@ -26,7 +26,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-context-mcp = "0.1.0-alpha.1"
+context-mcp = "0.1"
 ```
 
 ## Usage
@@ -71,31 +71,42 @@ Run as stdio transport:
 context-mcp --stdio
 ```
 
-## What It Does Today (Code-Backed)
+## What It Does (Verified by Code/Tests)
 
-- Runs an MCP-compatible JSON-RPC server over HTTP/WebSocket.
-- Stores context with IDs, domains, timestamps, and metadata.
-- Supports tiered storage primitives (in-memory + on-disk via `sled`).
-- Provides MCP tools for context storage, retrieval, and querying.
-- Basic temporal reasoning with time-based filtering.
+- **JSON-RPC MCP Server**: Runs over HTTP/WebSocket or stdio transport
+- **Context Storage**: Store/retrieve contexts with IDs, domains, timestamps, tags, and custom metadata
+- **Tiered Storage**: In-memory LRU cache (always) + optional sled disk persistence
+- **Text-Based Queries**: Query by text content, domain, tags, time ranges with simple text matching
+- **Temporal Filtering**: Filter contexts by creation time, last access, age, and expiration
+- **Parallel Processing**: CPU-optimized retrieval using rayon for performance
+- **MCP Tools**: 10 tools including store_context, get_context, query_contexts, retrieve_contexts, delete_context, update_screening, get_temporal_stats, get_storage_stats, cleanup_expired
 
-## What It Does Not Do Yet
+## What It Does Not Do (Yet)
 
-- Production-grade embedding/vector search.
-- Full RAG pipelines with reliable chunking/citation policies.
-- Strong consistency guarantees across distributed replicas.
-- Advanced query capabilities (semantic search, etc.).
+- **Vector embeddings**: Mock implementation only - no real embedding generation or similarity search
+- **Semantic search**: Text matching is literal, not semantic
+- **External integrations**: No active security-mcp or other service integrations (only status fields)
+- **Chunking/citations**: No automatic document chunking or citation tracking
+- **Distributed storage**: Single-node only, no replication or clustering
 
 ## Architecture
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   MCP Client    │    │  Context Gateway │    │ Storage Layer   │
+│   MCP Client    │    │  JSON-RPC Server │    │ Storage Layer   │
 │                 │    │                  │    │                 │
-│ • VS Code       │◄──►│ • Store/Retrieve │◄──►│ • In-Memory LRU │
-│ • Copilot       │    │ • Temporal Query │    │ • Sled Disk DB  │
-│ • CLI Tools     │    │ • RAG Processing │    │ • Vector Index  │
+│ • HTTP/WS       │◄──►│ • Store/Retrieve │◄──►│ • In-Memory LRU │
+│ • stdio         │    │ • Query/Filter   │    │ • Sled (opt)    │
+│ • curl/tools    │    │ • Temporal Stats │    │ • Domain Index  │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
+                              │
+                              ▼
+                       ┌──────────────┐
+                       │ RAG Processor│
+                       │ • Text Match │
+                       │ • Parallel   │
+                       │ • Scoring    │
+                       └──────────────┘
 ```
 
 ## Contributing

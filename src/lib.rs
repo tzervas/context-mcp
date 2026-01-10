@@ -1,25 +1,25 @@
 //! # Context MCP Server
 //!
-//! A Model Context Protocol (MCP) server for context management, RAG processing,
-//! and temporal reasoning. Inspired by memory-gate patterns for dynamic learning layers.
+//! A Model Context Protocol (MCP) server for context storage, text-based retrieval,
+//! and temporal tracking.
 //!
 //! ## Features
 //!
-//! - **Multi-tier Storage**: In-memory (LRU), cache, and disk persistence
-//! - **Temporal Reasoning**: Timestamps and age tracking for context relevance
-//! - **RAG Processing**: CPU-optimized retrieval-augmented generation support
-//! - **Safe Input Handling**: Integrates with security-mcp for screened inputs
-//! - **MCP Protocol**: Full compatibility with VS Code, Copilot, and other MCP clients
+//! - **Multi-tier Storage**: In-memory LRU cache with optional sled disk persistence
+//! - **Temporal Tracking**: Timestamps, age tracking, and time-based filtering
+//! - **Text-Based Retrieval**: CPU-optimized parallel text matching and scoring
+//! - **Screening Status**: Fields for tracking security screening state (no active integration)
+//! - **MCP Protocol**: JSON-RPC server with HTTP/WebSocket and stdio transports
 //!
 //! ## Architecture
 //!
 //! ```text
 //! ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-//! │   MCP Client    │    │  Context Gateway │    │ Storage Layer   │
+//! │   MCP Client    │    │  JSON-RPC Server │    │ Storage Layer   │
 //! │                 │    │                  │    │                 │
-//! │ • VS Code       │◄──►│ • Store/Retrieve │◄──►│ • In-Memory LRU │
-//! │ • Copilot       │    │ • Temporal Query │    │ • Sled Disk DB  │
-//! │ • CLI Tools     │    │ • RAG Processing │    │ • Vector Index  │
+//! │ • HTTP/WS       │◄──►│ • Store/Retrieve │◄──►│ • In-Memory LRU │
+//! │ • stdio         │    │ • Query/Filter   │    │ • Sled (opt)    │
+//! │ • curl/tools    │    │ • Text Matching  │    │ • Indexes       │
 //! └─────────────────┘    └──────────────────┘    └─────────────────┘
 //! ```
 

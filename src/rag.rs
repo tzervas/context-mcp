@@ -1,7 +1,7 @@
-//! CPU-optimized RAG processing for context retrieval
+//! CPU-optimized text-based context retrieval with scoring
 //!
-//! Provides parallel processing capabilities for efficient
-//! retrieval-augmented generation operations on screened safe inputs.
+//! Provides parallel processing capabilities using rayon for efficient
+//! text matching and relevance scoring of stored contexts.
 
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
