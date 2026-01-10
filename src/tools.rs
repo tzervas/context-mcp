@@ -8,9 +8,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use crate::context::{Context, ContextDomain, ContextQuery, ScreeningStatus};
-use crate::protocol::{
-    CallToolResult, InputSchema, PropertySchema, Tool,
-};
+use crate::protocol::{CallToolResult, InputSchema, PropertySchema, Tool};
 use crate::rag::{RagProcessor, RetrievalQuery};
 use crate::storage::ContextStore;
 use crate::temporal::TemporalQuery;
@@ -68,11 +66,16 @@ impl ToolRegistry {
                 .with_required("content", PropertySchema::string("The context content"))
                 .with_property(
                     "domain",
-                    PropertySchema::string("Context domain")
-                        .with_enum(vec![
-                            "General", "Code", "Documentation", "Conversation",
-                            "Filesystem", "WebSearch", "Dataset", "Research",
-                        ]),
+                    PropertySchema::string("Context domain").with_enum(vec![
+                        "General",
+                        "Code",
+                        "Documentation",
+                        "Conversation",
+                        "Filesystem",
+                        "WebSearch",
+                        "Dataset",
+                        "Research",
+                    ]),
                 )
                 .with_property("source", PropertySchema::string("Source of the context"))
                 .with_property("tags", PropertySchema::array("Tags for categorization"))
@@ -80,10 +83,7 @@ impl ToolRegistry {
                     "importance",
                     PropertySchema::number("Importance 0.0-1.0").with_default(json!(0.5)),
                 )
-                .with_property(
-                    "ttl_hours",
-                    PropertySchema::number("Time to live in hours"),
-                ),
+                .with_property("ttl_hours", PropertySchema::number("Time to live in hours")),
         }
     }
 
@@ -248,7 +248,7 @@ impl ToolRegistry {
         };
 
         let id = crate::context::ContextId::from_string(id_str.to_string());
-        
+
         match self.store.get(&id).await {
             Ok(Some(ctx)) => CallToolResult::json(json!({
                 "id": ctx.id.to_string(),
@@ -277,7 +277,7 @@ impl ToolRegistry {
         };
 
         let id = crate::context::ContextId::from_string(id_str.to_string());
-        
+
         match self.store.delete(&id).await {
             Ok(true) => CallToolResult::json(json!({
                 "success": true,
@@ -427,7 +427,7 @@ impl ToolRegistry {
         };
 
         let id = crate::context::ContextId::from_string(id_str.to_string());
-        
+
         match self.store.get(&id).await {
             Ok(Some(mut ctx)) => {
                 ctx.metadata.screening_status = status.clone();

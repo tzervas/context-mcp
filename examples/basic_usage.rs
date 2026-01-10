@@ -1,5 +1,5 @@
-use context_mcp::{ContextStore, StorageConfig, Context};
 use context_mcp::context::ContextDomain;
+use context_mcp::{Context, ContextStore, StorageConfig};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

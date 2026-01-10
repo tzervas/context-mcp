@@ -1,6 +1,6 @@
 [package]
 name = "context-mcp"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 rust-version = "1.75"
 authors = ["Tyler Zervas <tzervas>"]
@@ -71,6 +71,10 @@ rand = "0.8"
 tokio-test = "0.4"
 tempfile = "3.0"
 criterion = { version = "0.5", features = ["async_tokio"] }
+
+# Development tools
+cargo-audit = "0.20"
+cargo-deny = "0.16"
 
 [features]
 default = ["server", "persistence"]

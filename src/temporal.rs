@@ -74,12 +74,8 @@ impl TemporalQuery {
     /// Query for contexts from today
     pub fn today() -> Self {
         let now = Utc::now();
-        let start_of_day = now
-            .date_naive()
-            .and_hms_opt(0, 0, 0)
-            .unwrap()
-            .and_utc();
-        
+        let start_of_day = now.date_naive().and_hms_opt(0, 0, 0).unwrap().and_utc();
+
         Self {
             reference_time: now,
             window_start: Some(start_of_day),
@@ -135,13 +131,13 @@ impl TemporalQuery {
         }
 
         let age_hours = ctx.age_hours();
-        
+
         // Exponential decay: score = 0.5^(age/half_life)
         let decay_factor = 0.5_f64.powf(age_hours / self.decay_half_life_hours);
-        
+
         // Combine with importance
         let importance = ctx.metadata.importance as f64;
-        
+
         // Weighted combination (70% temporal, 30% importance)
         0.7 * decay_factor + 0.3 * importance
     }
@@ -235,7 +231,7 @@ impl TemporalStats {
 /// Human-readable time formatting for context age
 pub fn format_age(ctx: &Context) -> String {
     let age_secs = ctx.age_seconds();
-    
+
     if age_secs < 60 {
         format!("{}s ago", age_secs)
     } else if age_secs < 3600 {
@@ -262,7 +258,7 @@ mod tests {
     fn test_relevance_decay() {
         let query = TemporalQuery::new();
         let ctx = Context::new("Test", ContextDomain::General);
-        
+
         let score = query.relevance_score(&ctx);
         // Fresh context should have high score
         assert!(score > 0.9);

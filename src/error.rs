@@ -31,7 +31,6 @@ pub enum ContextError {
     #[error("Context has expired: {0}")]
     Expired(String),
 
-
     /// Security screening failed
     #[error("Security screening failed: {0}")]
     ScreeningFailed(String),
@@ -72,7 +71,8 @@ impl ContextError {
         matches!(self, Self::ScreeningFailed(_) | Self::Blocked(_))
     }
 }
-#[cfg(feature = "persistence")]impl From<sled::Error> for ContextError {
+#[cfg(feature = "persistence")]
+impl From<sled::Error> for ContextError {
     fn from(err: sled::Error) -> Self {
         Self::Storage(err.to_string())
     }

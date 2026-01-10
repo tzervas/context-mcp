@@ -110,7 +110,7 @@ impl ContextStore {
         } else {
             None
         };
-        
+
         #[cfg(not(feature = "persistence"))]
         let _disk_store = ();
 
@@ -193,7 +193,7 @@ impl ContextStore {
     /// Delete a context by ID
     pub async fn delete(&self, id: &ContextId) -> Result<bool> {
         let mut found = false;
-        
+
         // First, get the context to extract domain and tags before deletion
         let context_data = self.get(id).await?;
 
@@ -420,12 +420,8 @@ impl ContextStore {
         let memory_count = cache.len();
 
         #[cfg(feature = "persistence")]
-        let disk_count = self
-            .disk_store
-            .as_ref()
-            .map(|db| db.len())
-            .unwrap_or(0);
-        
+        let disk_count = self.disk_store.as_ref().map(|db| db.len()).unwrap_or(0);
+
         #[cfg(not(feature = "persistence"))]
         let disk_count = 0;
 

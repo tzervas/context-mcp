@@ -109,6 +109,66 @@ context-mcp --stdio
                        └──────────────┘
 ```
 
+## Development
+
+### Setup
+
+1. Install development dependencies:
+   ```bash
+   ./setup-dev.sh
+   ```
+
+2. Run all quality checks:
+   ```bash
+   just check
+   ```
+
+### Available Commands
+
+This project uses [just](https://github.com/casey/just) for development tasks:
+
+```bash
+just                    # Show all available tasks
+just check             # Run all quality checks (fmt, clippy, test, security, docs)
+just test              # Run tests
+just bench             # Run benchmarks
+just docs              # Generate documentation
+just security          # Run security checks
+just audit             # Run security audit
+just licenses          # Check licenses
+just build             # Build all targets
+just dev               # Full development cycle
+just pre-commit        # Pre-commit checks
+just ci                # Simulate CI pipeline locally
+```
+
+### Code Quality
+
+- **Formatting**: `cargo fmt` (enforced)
+- **Linting**: `cargo clippy` with warnings as errors
+- **Testing**: 100% test coverage target with `cargo tarpaulin`
+- **Security**: `cargo audit` and `cargo deny` for vulnerabilities and license compliance
+- **Documentation**: `cargo doc` with warning checks
+- **Dependencies**: Unused dependency detection with `cargo udeps`
+
+### Security Scanning
+
+The project includes comprehensive security scanning:
+
+- **Vulnerability scanning**: `cargo audit` checks for known security issues
+- **License compliance**: `cargo deny` ensures only approved licenses
+- **Dependency analysis**: Checks for unused and outdated dependencies
+- **Pre-commit hooks**: Automatic quality checks before commits
+
+### Benchmarking
+
+Performance benchmarks are included for critical paths:
+
+```bash
+just bench             # Run all benchmarks
+just bench-flamegraph  # Generate flamegraphs (requires cargo-flamegraph)
+```
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines.

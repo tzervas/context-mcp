@@ -1,0 +1,18 @@
+# NOTICE
+
+This project includes software developed by third parties.
+
+## Attributions
+
+This software includes contributions from the following open source projects, licensed under their respective licenses:
+
+- [anyhow](https://github.com/dtolnay/anyhow) - MIT
+- [axum](https://github.com/tokio-rs/axum) - MIT
+- [serde](https://github.com/serde-rs/serde) - MIT or Apache-2.0
+- [tokio](https://github.com/tokio-rs/tokio) - MIT
+- [sled](https://github.com/spacejam/sled) - MIT or Apache-2.0
+- And many others listed in Cargo.lock
+
+For a complete list of dependencies and their licenses, see Cargo.lock.
+
+Copyright notices for MIT and Apache-2.0 licensed dependencies are included as required by their licenses.

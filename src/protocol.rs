@@ -324,7 +324,9 @@ impl CallToolResult {
     /// Create a JSON result
     pub fn json(value: Value) -> Self {
         Self {
-            content: vec![Content::text(serde_json::to_string_pretty(&value).unwrap_or_default())],
+            content: vec![Content::text(
+                serde_json::to_string_pretty(&value).unwrap_or_default(),
+            )],
             is_error: false,
         }
     }
@@ -440,7 +442,10 @@ mod tests {
     fn test_input_schema() {
         let schema = InputSchema::object()
             .with_required("content", PropertySchema::string("The content"))
-            .with_property("domain", PropertySchema::string("Domain").with_enum(vec!["Code", "Docs"]));
+            .with_property(
+                "domain",
+                PropertySchema::string("Domain").with_enum(vec!["Code", "Docs"]),
+            );
 
         assert_eq!(schema.schema_type, "object");
         assert!(schema.required.contains(&"content".to_string()));

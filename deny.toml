@@ -1,0 +1,73 @@
+# cargo-deny configuration
+[graph]
+targets = [
+    { triple = "x86_64-unknown-linux-gnu" },
+    { triple = "x86_64-apple-darwin" },
+    { triple = "x86_64-pc-windows-msvc" },
+    { triple = "aarch64-unknown-linux-gnu" },
+]
+
+[advisories]
+# A list of advisory IDs to ignore
+ignore = [
+    "RUSTSEC-2025-0056", # adler crate unmaintained
+    "RUSTSEC-2025-0057", # fxhash unmaintained
+    "RUSTSEC-2025-0140", # gix-date vulnerability
+    "RUSTSEC-2025-0021", # gix-features SHA-1 collision
+    "RUSTSEC-2025-0001", # gix-worktree-state permissions vulnerability
+    "RUSTSEC-2024-0384", # instant unmaintained
+]
+
+[licenses]
+# List of explicitly allowed licenses
+# https://spdx.org/licenses/
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "0BSD",
+    "Zlib",
+    "Unicode-3.0",
+]
+# Blanket approval or denial for OSI-approved or FSF Free/Libre licenses
+# * both - The license will be approved if it is both OSI-approved *AND* FSF approved
+# * either - The license will be approved if it is either OSI-approved *OR* FSF approved
+# * osi - The license will be approved if it is OSI-approved *OR* FSF approved
+# * fsf - The license will be approved if it is FSF approved
+# * neither - The license will be approved if it is *NEITHER* OSI-approved *NOR* FSF approved
+confidence-threshold = 0.8
+
+[bans]
+# Lint level for when multiple versions of the same crate are detected
+multiple-versions = "warn"
+# Lint level for when a crate version requirement is `*`
+wildcards = "allow"
+# The graph highlighting used when creating dotgraphs for crates
+highlight = "all"
+# The default lint level if no other predicates are matched
+allow = [
+    #{ name = "ansi_term", version = "*" },
+]
+deny = [
+    # Each entry the name of a crate and a version range. If version is
+    # not specified, all versions will be matched.
+    #{ name = "ansi_term", version = "*" },
+]
+# Certain crates/versions that will be skipped when doing duplicate detection.
+skip = [
+    #{ name = "ansi_term", version = "*" },
+]
+# Similarly to `skip` allows you to skip certain crates from being checked. Unlike `skip`,
+# `skip-tree` skips the crate and all of its dependencies entirely
+skip-tree = [
+    #{ name = "ansi_term", version = "*" },
+]
+
+[sources]
+# Lint level for what to happen when a crate from a crate registry that is
+# not in the allow list is encountered
+unknown-registry = "warn"
+# Lint level for what to happen when a crate from a git repository that is not
+# in the allow list is encountered
+unknown-git = "warn"

@@ -15,34 +15,103 @@ env:
   RUST_BACKTRACE: 1
 
 jobs:
+  quality-checks:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: context-mcp-quality
+
+      - name: Check formatting
+        run: cargo fmt --check
+
+      - name: Clippy lints
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Check documentation
+        run: RUSTDOCFLAGS="-D warnings" cargo doc --all-features --no-deps
+
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: context-mcp-security
+
+      - name: Install cargo-deny
+        run: cargo install cargo-deny --locked
+
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked
+
+      - name: Security audit
+        run: cargo audit
+
+      - name: License check
+        run: cargo deny check licenses
+
+      - name: Security advisories check
+        run: cargo deny check advisories
+
+      - name: Banned dependencies check
+        run: cargo deny check bans
+
   build-and-test:
     name: Build and Test
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
-      
+
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy, rustfmt
-      
+
       - name: Rust cache
         uses: Swatinem/rust-cache@v2
         with:
-          key: context-mcp
-      
-      - name: Check formatting
-        run: cargo fmt --check
-      
-      - name: Clippy lints
-        run: cargo clippy --all-targets --all-features -- -D warnings
-      
+          key: context-mcp-build
+
       - name: Build
         run: cargo build --all-features
-      
+
       - name: Run tests
         run: cargo test --all-features --verbose
+
+  benchmark:
+    name: Benchmark
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: context-mcp-bench
+
+      - name: Run benchmarks
+        run: cargo bench --all-features
 
   # Optional: runs on self-hosted ARM64 runner if available
   build-arm64:
@@ -53,17 +122,17 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
-      
+
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
-      
+
       - name: Rust cache
         uses: Swatinem/rust-cache@v2
         with:
           key: context-mcp-arm64
-      
+
       - name: Build
         run: cargo build --all-features
-      
+
       - name: Run tests
         run: cargo test --all-features

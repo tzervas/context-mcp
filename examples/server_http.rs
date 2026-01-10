@@ -1,5 +1,5 @@
 //! Example of running context-mcp as an HTTP-based MCP server
-//! 
+//!
 //! This example demonstrates how to run the server in HTTP mode,
 //! which exposes the MCP protocol over HTTP/WebSocket endpoints.
 
@@ -15,10 +15,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Create server
     let server = McpServer::new(server_config)?;
-    
+
     println!("Starting MCP server...");
     println!("Server will listen on: {}", server.address());
-    
+
     // Run server
     server.run().await?;
 

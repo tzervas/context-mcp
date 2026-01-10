@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Running pre-commit checks..."
+
+# Check if just is available
+if ! command -v just &> /dev/null; then
+    echo "just not found. Install with: cargo install just"
+    exit 1
+fi
+
+# Run pre-commit checks
+just pre-commit
+
+echo "All pre-commit checks passed!"

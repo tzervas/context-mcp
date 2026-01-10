@@ -16,9 +16,8 @@ use std::sync::Arc;
 
 use crate::error::ContextResult;
 use crate::protocol::{
-    CallToolRequest, InitializeResult, JsonRpcError, JsonRpcRequest,
-    JsonRpcResponse, MCP_VERSION, RequestId, ServerCapabilities, ServerInfo,
-    ToolsCapability,
+    CallToolRequest, InitializeResult, JsonRpcError, JsonRpcRequest, JsonRpcResponse, RequestId,
+    ServerCapabilities, ServerInfo, ToolsCapability, MCP_VERSION,
 };
 use crate::rag::{RagConfig, RagProcessor};
 use crate::storage::{ContextStore, StorageConfig};
@@ -100,7 +99,7 @@ impl McpServer {
         let addr = format!("{}:{}", self.config.host, self.config.port);
         let listener = tokio::net::TcpListener::bind(&addr)
             .await
-            .map_err(|e| crate::error::ContextError::Io(e))?;
+            .map_err(crate::error::ContextError::Io)?;
 
         tracing::info!("MCP Context Server listening on {}", addr);
 
@@ -143,10 +142,7 @@ async fn process_request(state: &ServerState, request: JsonRpcRequest) -> JsonRp
         "tools/list" => handle_list_tools(request.id, state),
         "tools/call" => handle_call_tool(request.id, state, request.params).await,
         "ping" => handle_ping(request.id),
-        method => JsonRpcResponse::error(
-            request.id,
-            JsonRpcError::method_not_found(method),
-        ),
+        method => JsonRpcResponse::error(request.id, JsonRpcError::method_not_found(method)),
     }
 }
 
@@ -187,9 +183,7 @@ async fn handle_call_tool(
 ) -> JsonRpcResponse {
     let params = match params {
         Some(p) => p,
-        None => {
-            return JsonRpcResponse::error(id, JsonRpcError::invalid_params("Missing params"))
-        }
+        None => return JsonRpcResponse::error(id, JsonRpcError::invalid_params("Missing params")),
     };
 
     let call_request: CallToolRequest = match serde_json::from_value(params) {
@@ -202,7 +196,10 @@ async fn handle_call_tool(
         }
     };
 
-    let result = state.tools.execute(&call_request.name, call_request.arguments).await;
+    let result = state
+        .tools
+        .execute(&call_request.name, call_request.arguments)
+        .await;
     JsonRpcResponse::success(id, serde_json::to_value(result).unwrap())
 }
 
@@ -215,11 +212,9 @@ fn handle_ping(id: RequestId) -> JsonRpcResponse {
 async fn sse_handler(
     State(_state): State<Arc<ServerState>>,
 ) -> Sse<impl Stream<Item = Result<axum::response::sse::Event, Infallible>>> {
-    let stream = stream::iter(vec![
-        Ok(axum::response::sse::Event::default()
-            .event("connected")
-            .data("MCP Context Server connected")),
-    ]);
+    let stream = stream::iter(vec![Ok(axum::response::sse::Event::default()
+        .event("connected")
+        .data("MCP Context Server connected"))]);
 
     Sse::new(stream)
 }

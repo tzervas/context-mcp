@@ -3,11 +3,11 @@
 //! Inspired by memory-gate's LearningContext pattern with enhancements
 //! for temporal reasoning and MCP integration.
 
+use base64::Engine;
 use chrono::{DateTime, Duration, Utc};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use uuid::Uuid;
-use base64::Engine;
 
 /// Unique identifier for a context entry
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize, PartialOrd, Ord)]
@@ -73,6 +73,7 @@ pub enum ContextDomain {
     Custom(String),
 }
 
+#[allow(clippy::derivable_impls)]
 impl Default for ContextDomain {
     fn default() -> Self {
         Self::General
@@ -243,9 +244,7 @@ impl Context {
 
     /// Check if context has expired
     pub fn is_expired(&self) -> bool {
-        self.expires_at
-            .map(|exp| Utc::now() > exp)
-            .unwrap_or(false)
+        self.expires_at.map(|exp| Utc::now() > exp).unwrap_or(false)
     }
 
     /// Get age in seconds

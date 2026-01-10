@@ -117,11 +117,11 @@ impl RagProcessor {
 
         // Build context query
         let mut ctx_query = ContextQuery::new();
-        
+
         if let Some(domain) = &query.domain {
             ctx_query = ctx_query.with_domain(domain.clone());
         }
-        
+
         for tag in &query.tags {
             ctx_query = ctx_query.with_tag(tag.clone());
         }
@@ -155,11 +155,18 @@ impl RagProcessor {
             .filter(|s| s.score >= self.config.min_relevance)
             .collect();
 
-        results.sort_by(|a, b| b.score.partial_cmp(&a.score).unwrap_or(std::cmp::Ordering::Equal));
+        results.sort_by(|a, b| {
+            b.score
+                .partial_cmp(&a.score)
+                .unwrap_or(std::cmp::Ordering::Equal)
+        });
         results.truncate(self.config.max_results);
 
         let temporal_stats = TemporalStats::from_contexts(
-            &results.iter().map(|s| s.context.clone()).collect::<Vec<_>>()
+            &results
+                .iter()
+                .map(|s| s.context.clone())
+                .collect::<Vec<_>>(),
         );
 
         Ok(RetrievalResult {
@@ -204,20 +211,15 @@ impl RagProcessor {
         query: &RetrievalQuery,
         temporal: &TemporalQuery,
     ) -> ScoredContext {
-        let mut breakdown = ScoreBreakdown::default();
-
-        // Temporal score
-        breakdown.temporal = if self.config.temporal_decay {
+        let temporal_score = if self.config.temporal_decay {
             temporal.relevance_score(ctx)
         } else {
             1.0
         };
 
-        // Importance score
-        breakdown.importance = ctx.metadata.importance as f64;
+        let importance_score = ctx.metadata.importance as f64;
 
-        // Domain match score
-        breakdown.domain_match = if query.domain.as_ref() == Some(&ctx.domain) {
+        let domain_match_score = if query.domain.as_ref() == Some(&ctx.domain) {
             1.0
         } else if query.domain.is_none() {
             0.5 // Neutral if no domain specified
@@ -225,22 +227,24 @@ impl RagProcessor {
             0.2 // Partial credit for different domains
         };
 
-        // Tag match score
-        if !query.tags.is_empty() {
+        let tag_match_score = if !query.tags.is_empty() {
             let matching_tags = query
                 .tags
                 .iter()
                 .filter(|t| ctx.metadata.tags.contains(*t))
                 .count();
-            breakdown.tag_match = matching_tags as f64 / query.tags.len() as f64;
+            matching_tags as f64 / query.tags.len() as f64
         } else {
-            breakdown.tag_match = 0.5; // Neutral
-        }
+            0.5 // Neutral
+        };
 
-        // Content similarity (placeholder for embedding-based scoring)
-        // In a full implementation, this would compute cosine similarity
-        // between query embedding and context embedding
-        breakdown.similarity = None;
+        let breakdown = ScoreBreakdown {
+            temporal: temporal_score,
+            importance: importance_score,
+            domain_match: domain_match_score,
+            tag_match: tag_match_score,
+            similarity: None, // Placeholder for embedding-based scoring
+        };
 
         // Weighted final score
         let score = 0.25 * breakdown.temporal
@@ -331,7 +335,7 @@ impl RetrievalQuery {
 impl std::fmt::Display for RetrievalQuery {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut parts = Vec::new();
-        
+
         if let Some(text) = &self.text {
             parts.push(format!("text: '{}'", text));
         }
@@ -344,7 +348,7 @@ impl std::fmt::Display for RetrievalQuery {
         if let Some(importance) = self.min_importance {
             parts.push(format!("min_importance: {}", importance));
         }
-        
+
         if parts.is_empty() {
             write!(f, "all contexts")
         } else {
@@ -365,7 +369,10 @@ impl BatchProcessor {
     }
 
     /// Process multiple queries (sequential for async compatibility)
-    pub async fn process_batch(&self, queries: Vec<RetrievalQuery>) -> Vec<ContextResult<RetrievalResult>> {
+    pub async fn process_batch(
+        &self,
+        queries: Vec<RetrievalQuery>,
+    ) -> Vec<ContextResult<RetrievalResult>> {
         let mut results = Vec::with_capacity(queries.len());
         for query in queries {
             results.push(self.processor.retrieve(&query).await);
