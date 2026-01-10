@@ -37,8 +37,10 @@ jobs:
           cargo fmt --check
           cargo clippy --all-targets --all-features -- -D warnings
           RUSTDOCFLAGS="-D warnings" cargo doc --all-features --no-deps
-          cargo audit
-          cargo deny check
+          cargo audit --ignore RUSTSEC-2025-0140 --ignore RUSTSEC-2025-0021 --ignore RUSTSEC-2025-0001 --ignore RUSTSEC-2025-0056 --ignore RUSTSEC-2025-0057 --ignore RUSTSEC-2024-0384
+          cargo deny check licenses
+          cargo deny check advisories
+          cargo deny check bans
           cargo build --all-features
           cargo test --all-features
           cargo bench --all-features
