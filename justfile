@@ -131,6 +131,23 @@ prepare-release: clean dev
 publish-dry-run:
     cargo publish --dry-run --all-features
 
+# === ARM64 LOCAL BUILDS ===
+
+# Build ARM64 binary locally
+build-arm64:
+    cargo build --release --all-features --target aarch64-unknown-linux-gnu
+
+# Build and test ARM64 locally
+build-test-arm64:
+    cargo build --all-features --target aarch64-unknown-linux-gnu
+    cargo test --all-features --target aarch64-unknown-linux-gnu
+
+# Setup ARM64 cross-compilation (requires cross)
+setup-arm64:
+    @echo "Installing cross for ARM64 builds..."
+    cargo install cross --locked
+    @echo "ARM64 cross-compilation ready. Use 'just build-arm64' to build."
+
 # === UTILITY ===
 
 # Show project info
