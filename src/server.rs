@@ -2,6 +2,7 @@
 //!
 //! Provides HTTP/SSE transport for the context management MCP server.
 
+#[cfg(feature = "server")]
 use axum::{
     extract::{Json, State},
     response::{IntoResponse, Sse},

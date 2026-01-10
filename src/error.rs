@@ -72,8 +72,7 @@ impl ContextError {
         matches!(self, Self::ScreeningFailed(_) | Self::Blocked(_))
     }
 }
-
-impl From<sled::Error> for ContextError {
+#[cfg(feature = "persistence")]impl From<sled::Error> for ContextError {
     fn from(err: sled::Error) -> Self {
         Self::Storage(err.to_string())
     }

@@ -28,6 +28,7 @@ pub mod embeddings;
 pub mod error;
 pub mod protocol;
 pub mod rag;
+#[cfg(feature = "server")]
 pub mod server;
 pub mod storage;
 pub mod temporal;
@@ -35,6 +36,7 @@ pub mod tools;
 
 pub use context::{Context, ContextId, ContextMetadata};
 pub use error::{ContextError, Result};
+#[cfg(feature = "server")]
 pub use server::{McpServer, ServerConfig};
 pub use storage::{ContextStore, StorageConfig};
 pub use temporal::TemporalQuery;

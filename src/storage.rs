@@ -14,6 +14,9 @@ use lru::LruCache;
 use serde::{Deserialize, Serialize};
 use tokio::sync::RwLock;
 
+#[cfg(feature = "persistence")]
+use sled;
+
 use crate::context::{Context, ContextDomain, ContextId, ContextQuery};
 use crate::error::{ContextError, Result};
 
@@ -73,6 +76,7 @@ pub struct ContextStore {
     /// In-memory LRU cache
     memory_cache: Arc<RwLock<LruCache<ContextId, Context>>>,
     /// Persistent storage (sled)
+    #[cfg(feature = "persistence")]
     disk_store: Option<sled::Db>,
     /// Domain index for fast filtering
     domain_index: Arc<RwLock<HashMap<ContextDomain, Vec<ContextId>>>>,
@@ -90,6 +94,7 @@ impl ContextStore {
                 .ok_or_else(|| ContextError::Config("Cache size must be > 0".into()))?,
         )));
 
+        #[cfg(feature = "persistence")]
         let disk_store = if config.enable_persistence {
             let path = config
                 .persist_path
@@ -105,9 +110,13 @@ impl ContextStore {
         } else {
             None
         };
+        
+        #[cfg(not(feature = "persistence"))]
+        let _disk_store = ();
 
         Ok(Self {
             memory_cache,
+            #[cfg(feature = "persistence")]
             disk_store,
             domain_index: Arc::new(RwLock::new(HashMap::new())),
             tag_index: Arc::new(RwLock::new(HashMap::new())),
@@ -142,6 +151,7 @@ impl ContextStore {
         }
 
         // Persist to disk if enabled
+        #[cfg(feature = "persistence")]
         if let Some(ref db) = self.disk_store {
             let serialized = serde_json::to_vec(&context)?;
             db.insert(id.as_str().as_bytes(), serialized)?;
@@ -163,6 +173,7 @@ impl ContextStore {
         }
 
         // Check disk storage
+        #[cfg(feature = "persistence")]
         if let Some(ref db) = self.disk_store {
             if let Some(data) = db.get(id.as_str().as_bytes())? {
                 let mut context: Context = serde_json::from_slice(&data)?;
@@ -195,6 +206,7 @@ impl ContextStore {
         }
 
         // Remove from disk
+        #[cfg(feature = "persistence")]
         if let Some(ref db) = self.disk_store {
             if db.remove(id.as_str().as_bytes())?.is_some() {
                 found = true;
@@ -407,11 +419,15 @@ impl ContextStore {
         let cache = self.memory_cache.read().await;
         let memory_count = cache.len();
 
+        #[cfg(feature = "persistence")]
         let disk_count = self
             .disk_store
             .as_ref()
             .map(|db| db.len())
             .unwrap_or(0);
+        
+        #[cfg(not(feature = "persistence"))]
+        let disk_count = 0;
 
         StorageStats {
             memory_count,

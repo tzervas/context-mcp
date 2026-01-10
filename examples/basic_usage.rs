@@ -1,12 +1,10 @@
-use context_mcp::{ContextStore, StorageConfig, Context, ContextDomain};
+use context_mcp::{ContextStore, StorageConfig, Context};
+use context_mcp::context::ContextDomain;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Create storage configuration
-    let config = StorageConfig {
-        memory_cache_size: 1000,
-        enable_persistence: true,
-    };
+    let config = StorageConfig::default();
 
     // Create context store
     let store = ContextStore::new(config)?;
@@ -17,11 +15,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Stored context with ID: {}", id);
 
     // Retrieve it
-    let retrieved = store.get(&id).await?;
+    let retrieved = store.get(&id).await?.expect("Context should exist");
     println!("Retrieved: {}", retrieved.content);
 
     // Query contexts
-    let results = store.query_text("important", 10, None).await?;
+    let query = context_mcp::context::ContextQuery::new()
+        .with_domain(ContextDomain::Code)
+        .with_limit(10);
+    let results = store.query(&query).await?;
     println!("Found {} matching contexts", results.len());
 
     Ok(())
