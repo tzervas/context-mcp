@@ -1,0 +1,614 @@
+[
+  {
+    "type": "helm-chart",
+    "name": "prometheus",
+    "repo": "prometheus-community",
+    "version": "57.0.0",
+    "values": {
+      "replicas": 2,
+      "image": "prom/prometheus:v2.49.0",
+      "resources": {
+        "requests": {
+          "cpu": "500m",
+          "memory": "2Gi"
+        },
+        "limits": {
+          "cpu": "2",
+          "memory": "4Gi"
+        }
+      },
+      "retention": "15d",
+      "scrapeInterval": "30s",
+      "globalLabels": {
+        "cluster": "production"
+      }
+    },
+    "dependencies": [
+      {
+        "name": "kube-state-metrics",
+        "version": "5.14.0"
+      },
+      {
+        "name": "prometheus-node-exporter",
+        "version": "4.26.0"
+      }
+    ],
+    "templates": [
+      "deployment.yaml - Prometheus server deployment",
+      "service.yaml - Service exposure",
+      "serviceaccount.yaml - RBAC service account",
+      "clusterrole.yaml - Cluster-wide RBAC role",
+      "configmap.yaml - Prometheus configuration",
+      "persistentvolumeclaim.yaml - Data storage",
+      "ingress.yaml - HTTP ingress rules"
+    ],
+    "crds": [
+      {
+        "name": "PrometheusRule",
+        "version": "v1"
+      },
+      {
+        "name": "ServiceMonitor",
+        "version": "v1"
+      }
+    ]
+  },
+  {
+    "type": "helm-chart",
+    "name": "prometheus",
+    "repo": "prometheus-community",
+    "version": "56.0.0",
+    "values": {
+      "replicas": 2,
+      "image": "prom/prometheus:v2.49.0",
+      "resources": {
+        "requests": {
+          "cpu": "500m",
+          "memory": "2Gi"
+        },
+        "limits": {
+          "cpu": "2",
+          "memory": "4Gi"
+        }
+      },
+      "retention": "15d",
+      "scrapeInterval": "30s",
+      "globalLabels": {
+        "cluster": "production"
+      }
+    },
+    "dependencies": [
+      {
+        "name": "kube-state-metrics",
+        "version": "5.14.0"
+      },
+      {
+        "name": "prometheus-node-exporter",
+        "version": "4.26.0"
+      }
+    ],
+    "templates": [
+      "deployment.yaml - Prometheus server deployment",
+      "service.yaml - Service exposure",
+      "serviceaccount.yaml - RBAC service account",
+      "clusterrole.yaml - Cluster-wide RBAC role",
+      "configmap.yaml - Prometheus configuration",
+      "persistentvolumeclaim.yaml - Data storage",
+      "ingress.yaml - HTTP ingress rules"
+    ],
+    "crds": [
+      {
+        "name": "PrometheusRule",
+        "version": "v1"
+      },
+      {
+        "name": "ServiceMonitor",
+        "version": "v1"
+      }
+    ]
+  },
+  {
+    "type": "helm-chart",
+    "name": "prometheus",
+    "repo": "prometheus-community",
+    "version": "55.0.0",
+    "values": {
+      "replicas": 2,
+      "image": "prom/prometheus:v2.49.0",
+      "resources": {
+        "requests": {
+          "cpu": "500m",
+          "memory": "2Gi"
+        },
+        "limits": {
+          "cpu": "2",
+          "memory": "4Gi"
+        }
+      },
+      "retention": "15d",
+      "scrapeInterval": "30s",
+      "globalLabels": {
+        "cluster": "production"
+      }
+    },
+    "dependencies": [
+      {
+        "name": "kube-state-metrics",
+        "version": "5.14.0"
+      },
+      {
+        "name": "prometheus-node-exporter",
+        "version": "4.26.0"
+      }
+    ],
+    "templates": [
+      "deployment.yaml - Prometheus server deployment",
+      "service.yaml - Service exposure",
+      "serviceaccount.yaml - RBAC service account",
+      "clusterrole.yaml - Cluster-wide RBAC role",
+      "configmap.yaml - Prometheus configuration",
+      "persistentvolumeclaim.yaml - Data storage",
+      "ingress.yaml - HTTP ingress rules"
+    ],
+    "crds": [
+      {
+        "name": "PrometheusRule",
+        "version": "v1"
+      },
+      {
+        "name": "ServiceMonitor",
+        "version": "v1"
+      }
+    ]
+  },
+  {
+    "type": "helm-chart",
+    "name": "ingress-nginx",
+    "repo": "ingress-nginx",
+    "version": "4.10.0",
+    "values": {
+      "replicas": 3,
+      "image": "registry.k8s.io/ingress-nginx/controller:v1.9.0",
+      "service": {
+        "type": "LoadBalancer"
+      },
+      "metrics": {
+        "enabled": true
+      },
+      "autoscaling": {
+        "enabled": true,
+        "minReplicas": 2,
+        "maxReplicas": 10
+      }
+    },
+    "dependencies": [
+      {
+        "name": "nginx-resolver",
+        "version": "1.0.0"
+      }
+    ],
+    "templates": [
+      "daemonset.yaml - Node-level ingress controller",
+      "service.yaml - LoadBalancer service",
+      "serviceaccount.yaml - Controller RBAC",
+      "clusterrole.yaml - Cluster permissions",
+      "configmap.yaml - Controller configuration",
+      "hpa.yaml - Horizontal pod autoscaling"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "ingress-nginx",
+    "repo": "ingress-nginx",
+    "version": "4.9.0",
+    "values": {
+      "replicas": 3,
+      "image": "registry.k8s.io/ingress-nginx/controller:v1.9.0",
+      "service": {
+        "type": "LoadBalancer"
+      },
+      "metrics": {
+        "enabled": true
+      },
+      "autoscaling": {
+        "enabled": true,
+        "minReplicas": 2,
+        "maxReplicas": 10
+      }
+    },
+    "dependencies": [
+      {
+        "name": "nginx-resolver",
+        "version": "1.0.0"
+      }
+    ],
+    "templates": [
+      "daemonset.yaml - Node-level ingress controller",
+      "service.yaml - LoadBalancer service",
+      "serviceaccount.yaml - Controller RBAC",
+      "clusterrole.yaml - Cluster permissions",
+      "configmap.yaml - Controller configuration",
+      "hpa.yaml - Horizontal pod autoscaling"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "ingress-nginx",
+    "repo": "ingress-nginx",
+    "version": "4.8.0",
+    "values": {
+      "replicas": 3,
+      "image": "registry.k8s.io/ingress-nginx/controller:v1.9.0",
+      "service": {
+        "type": "LoadBalancer"
+      },
+      "metrics": {
+        "enabled": true
+      },
+      "autoscaling": {
+        "enabled": true,
+        "minReplicas": 2,
+        "maxReplicas": 10
+      }
+    },
+    "dependencies": [
+      {
+        "name": "nginx-resolver",
+        "version": "1.0.0"
+      }
+    ],
+    "templates": [
+      "daemonset.yaml - Node-level ingress controller",
+      "service.yaml - LoadBalancer service",
+      "serviceaccount.yaml - Controller RBAC",
+      "clusterrole.yaml - Cluster permissions",
+      "configmap.yaml - Controller configuration",
+      "hpa.yaml - Horizontal pod autoscaling"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "cert-manager",
+    "repo": "jetstack",
+    "version": "v1.13.0",
+    "values": {
+      "replicas": 1,
+      "image": "quay.io/jetstack/cert-manager-controller:v1.13.0",
+      "acme": {
+        "email": "admin@example.com"
+      },
+      "webhook": {
+        "enabled": true
+      },
+      "cainjector": {
+        "enabled": true
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "deployment.yaml - Cert-manager controller",
+      "webhook.yaml - Webhook server",
+      "cainjector.yaml - CA certificate injector",
+      "crds.yaml - Custom resource definitions",
+      "serviceaccount.yaml - RBAC setup"
+    ],
+    "crds": [
+      {
+        "name": "Certificate",
+        "version": "v1"
+      },
+      {
+        "name": "ClusterIssuer",
+        "version": "v1"
+      },
+      {
+        "name": "Issuer",
+        "version": "v1"
+      },
+      {
+        "name": "CertificateRequest",
+        "version": "v1"
+      }
+    ]
+  },
+  {
+    "type": "helm-chart",
+    "name": "cert-manager",
+    "repo": "jetstack",
+    "version": "v1.12.0",
+    "values": {
+      "replicas": 1,
+      "image": "quay.io/jetstack/cert-manager-controller:v1.13.0",
+      "acme": {
+        "email": "admin@example.com"
+      },
+      "webhook": {
+        "enabled": true
+      },
+      "cainjector": {
+        "enabled": true
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "deployment.yaml - Cert-manager controller",
+      "webhook.yaml - Webhook server",
+      "cainjector.yaml - CA certificate injector",
+      "crds.yaml - Custom resource definitions",
+      "serviceaccount.yaml - RBAC setup"
+    ],
+    "crds": [
+      {
+        "name": "Certificate",
+        "version": "v1"
+      },
+      {
+        "name": "ClusterIssuer",
+        "version": "v1"
+      },
+      {
+        "name": "Issuer",
+        "version": "v1"
+      },
+      {
+        "name": "CertificateRequest",
+        "version": "v1"
+      }
+    ]
+  },
+  {
+    "type": "helm-chart",
+    "name": "cert-manager",
+    "repo": "jetstack",
+    "version": "v1.11.0",
+    "values": {
+      "replicas": 1,
+      "image": "quay.io/jetstack/cert-manager-controller:v1.13.0",
+      "acme": {
+        "email": "admin@example.com"
+      },
+      "webhook": {
+        "enabled": true
+      },
+      "cainjector": {
+        "enabled": true
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "deployment.yaml - Cert-manager controller",
+      "webhook.yaml - Webhook server",
+      "cainjector.yaml - CA certificate injector",
+      "crds.yaml - Custom resource definitions",
+      "serviceaccount.yaml - RBAC setup"
+    ],
+    "crds": [
+      {
+        "name": "Certificate",
+        "version": "v1"
+      },
+      {
+        "name": "ClusterIssuer",
+        "version": "v1"
+      },
+      {
+        "name": "Issuer",
+        "version": "v1"
+      },
+      {
+        "name": "CertificateRequest",
+        "version": "v1"
+      }
+    ]
+  },
+  {
+    "type": "helm-chart",
+    "name": "postgresql",
+    "repo": "bitnami",
+    "version": "13.1.5",
+    "values": {
+      "auth": {
+        "username": "postgres",
+        "database": "postgres"
+      },
+      "primary": {
+        "resources": {
+          "requests": {
+            "cpu": "250m",
+            "memory": "256Mi"
+          }
+        }
+      },
+      "backup": {
+        "enabled": true,
+        "cronjob": "0 2 * * *"
+      },
+      "metrics": {
+        "enabled": true
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "statefulset.yaml - PostgreSQL server",
+      "service.yaml - Headless service",
+      "backup-job.yaml - Backup cronjob",
+      "metrics.yaml - Metrics service",
+      "secret.yaml - Credentials"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "postgresql",
+    "repo": "bitnami",
+    "version": "13.1.4",
+    "values": {
+      "auth": {
+        "username": "postgres",
+        "database": "postgres"
+      },
+      "primary": {
+        "resources": {
+          "requests": {
+            "cpu": "250m",
+            "memory": "256Mi"
+          }
+        }
+      },
+      "backup": {
+        "enabled": true,
+        "cronjob": "0 2 * * *"
+      },
+      "metrics": {
+        "enabled": true
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "statefulset.yaml - PostgreSQL server",
+      "service.yaml - Headless service",
+      "backup-job.yaml - Backup cronjob",
+      "metrics.yaml - Metrics service",
+      "secret.yaml - Credentials"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "postgresql",
+    "repo": "bitnami",
+    "version": "13.1.3",
+    "values": {
+      "auth": {
+        "username": "postgres",
+        "database": "postgres"
+      },
+      "primary": {
+        "resources": {
+          "requests": {
+            "cpu": "250m",
+            "memory": "256Mi"
+          }
+        }
+      },
+      "backup": {
+        "enabled": true,
+        "cronjob": "0 2 * * *"
+      },
+      "metrics": {
+        "enabled": true
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "statefulset.yaml - PostgreSQL server",
+      "service.yaml - Headless service",
+      "backup-job.yaml - Backup cronjob",
+      "metrics.yaml - Metrics service",
+      "secret.yaml - Credentials"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "redis",
+    "repo": "bitnami",
+    "version": "17.11.3",
+    "values": {
+      "architecture": "replication",
+      "auth": {
+        "enabled": true
+      },
+      "replica": {
+        "replicaCount": 2
+      },
+      "resources": {
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "persistence": {
+        "enabled": true,
+        "size": "8Gi"
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "statefulset.yaml - Redis server",
+      "configmap.yaml - Redis configuration",
+      "service.yaml - Service exposure",
+      "hpa.yaml - Cluster autoscaling"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "redis",
+    "repo": "bitnami",
+    "version": "17.11.2",
+    "values": {
+      "architecture": "replication",
+      "auth": {
+        "enabled": true
+      },
+      "replica": {
+        "replicaCount": 2
+      },
+      "resources": {
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "persistence": {
+        "enabled": true,
+        "size": "8Gi"
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "statefulset.yaml - Redis server",
+      "configmap.yaml - Redis configuration",
+      "service.yaml - Service exposure",
+      "hpa.yaml - Cluster autoscaling"
+    ],
+    "crds": []
+  },
+  {
+    "type": "helm-chart",
+    "name": "redis",
+    "repo": "bitnami",
+    "version": "17.11.1",
+    "values": {
+      "architecture": "replication",
+      "auth": {
+        "enabled": true
+      },
+      "replica": {
+        "replicaCount": 2
+      },
+      "resources": {
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "persistence": {
+        "enabled": true,
+        "size": "8Gi"
+      }
+    },
+    "dependencies": [],
+    "templates": [
+      "statefulset.yaml - Redis server",
+      "configmap.yaml - Redis configuration",
+      "service.yaml - Service exposure",
+      "hpa.yaml - Cluster autoscaling"
+    ],
+    "crds": []
+  }
+]

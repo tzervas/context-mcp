@@ -1,0 +1,327 @@
+[
+  {
+    "type": "kubernetes-release",
+    "version": "v1.31.0",
+    "date": "2024-08-15",
+    "components": {
+      "api-server": {
+        "version": "v1.31.0",
+        "image": "registry.k8s.io/kube-apiserver:v1.31.0",
+        "changes": [
+          "Enhanced API priority and fairness metrics",
+          "Improved webhook failure handling",
+          "New audit logging features",
+          "Performance improvements for large clusters"
+        ],
+        "resource_requirements": {
+          "cpu_requests": "250m",
+          "cpu_limits": "1000m",
+          "memory_requests": "512Mi",
+          "memory_limits": "2Gi"
+        }
+      },
+      "etcd": {
+        "version": "v3.5.9",
+        "image": "registry.k8s.io/etcd:v3.5.9",
+        "changes": [
+          "Distributed transaction support",
+          "Leader election improvements",
+          "Memory usage optimization",
+          "Snapshot efficiency enhancements"
+        ],
+        "critical_tuning": {
+          "snapshot_count": 10000,
+          "heartbeat_interval": 100,
+          "election_timeout": 1000,
+          "max_request_bytes": "2147483648"
+        }
+      },
+      "kubelet": {
+        "version": "v1.31.0",
+        "image": "registry.k8s.io/kubelet:v1.31.0",
+        "changes": [
+          "Improved container restart policies",
+          "Better error reporting for pod creation",
+          "Enhanced resource accounting",
+          "Graceful node shutdown support"
+        ],
+        "node_allocatable": {
+          "cpu": "Available after kubelet resource reservation",
+          "memory": "Available after kubelet memory reservation",
+          "ephemeral_storage": "Available after kubelet storage reservation",
+          "pods": "Number of pods the node can run"
+        }
+      },
+      "controller-manager": {
+        "version": "v1.31.0",
+        "image": "registry.k8s.io/kube-controller-manager:v1.31.0",
+        "controllers": [
+          "Deployment Controller - manages deployment replicas",
+          "StatefulSet Controller - manages stateful applications",
+          "DaemonSet Controller - runs pods on all nodes",
+          "Job Controller - manages batch job execution",
+          "Node Controller - manages node status and updates"
+        ]
+      },
+      "kube-scheduler": {
+        "version": "v1.31.0",
+        "image": "registry.k8s.io/kube-scheduler:v1.31.0",
+        "plugins": [
+          "NodeResourceFit - checks node resources",
+          "NodeAffinity - respects node affinity rules",
+          "PodAffinity - respects pod affinity/anti-affinity",
+          "TaintToleration - respects taints and tolerations",
+          "InterPodAffinity - handles pod constraints"
+        ]
+      },
+      "kube-proxy": {
+        "version": "v1.31.0",
+        "image": "registry.k8s.io/kube-proxy:v1.31.0",
+        "modes": [
+          "iptables mode - uses iptables for routing",
+          "ipvs mode - uses IPVS for high-performance routing",
+          "kernelspace mode - kernel-level packet filtering"
+        ]
+      }
+    },
+    "release_notes": [
+      "New: Alpha feature for DynamicResourceAllocation",
+      "New: CEL validation rules support",
+      "Improved: Pod disruption budget calculations",
+      "Changed: Deprecated docker runtime support removed in future",
+      "Fixed: Multiple controller manager race conditions"
+    ],
+    "security_updates": [
+      {
+        "cve": "CVE-2024-11111",
+        "severity": "Medium",
+        "description": "RBAC bypass in specific scenarios"
+      },
+      {
+        "cve": "CVE-2024-22222",
+        "severity": "Low",
+        "description": "Information disclosure in logs"
+      }
+    ],
+    "breaking_changes": [
+      "remove-old-feature-flag: Old feature flag removed",
+      "api-deprecation: v1beta1 APIs deprecated, v1 recommended",
+      "plugin-removal: Legacy scheduler plugins removed"
+    ],
+    "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.31.0"
+  },
+  {
+    "type": "kubernetes-release",
+    "version": "v1.30.5",
+    "date": "2024-09-10",
+    "components": {
+      "api-server": {
+        "version": "v1.30.5",
+        "image": "registry.k8s.io/kube-apiserver:v1.30.5",
+        "changes": [
+          "Enhanced API priority and fairness metrics",
+          "Improved webhook failure handling",
+          "New audit logging features",
+          "Performance improvements for large clusters"
+        ],
+        "resource_requirements": {
+          "cpu_requests": "250m",
+          "cpu_limits": "1000m",
+          "memory_requests": "512Mi",
+          "memory_limits": "2Gi"
+        }
+      },
+      "etcd": {
+        "version": "v3.5.9",
+        "image": "registry.k8s.io/etcd:v3.5.9",
+        "changes": [
+          "Distributed transaction support",
+          "Leader election improvements",
+          "Memory usage optimization",
+          "Snapshot efficiency enhancements"
+        ],
+        "critical_tuning": {
+          "snapshot_count": 10000,
+          "heartbeat_interval": 100,
+          "election_timeout": 1000,
+          "max_request_bytes": "2147483648"
+        }
+      },
+      "kubelet": {
+        "version": "v1.30.5",
+        "image": "registry.k8s.io/kubelet:v1.30.5",
+        "changes": [
+          "Improved container restart policies",
+          "Better error reporting for pod creation",
+          "Enhanced resource accounting",
+          "Graceful node shutdown support"
+        ],
+        "node_allocatable": {
+          "cpu": "Available after kubelet resource reservation",
+          "memory": "Available after kubelet memory reservation",
+          "ephemeral_storage": "Available after kubelet storage reservation",
+          "pods": "Number of pods the node can run"
+        }
+      },
+      "controller-manager": {
+        "version": "v1.30.5",
+        "image": "registry.k8s.io/kube-controller-manager:v1.30.5",
+        "controllers": [
+          "Deployment Controller - manages deployment replicas",
+          "StatefulSet Controller - manages stateful applications",
+          "DaemonSet Controller - runs pods on all nodes",
+          "Job Controller - manages batch job execution",
+          "Node Controller - manages node status and updates"
+        ]
+      },
+      "kube-scheduler": {
+        "version": "v1.30.5",
+        "image": "registry.k8s.io/kube-scheduler:v1.30.5",
+        "plugins": [
+          "NodeResourceFit - checks node resources",
+          "NodeAffinity - respects node affinity rules",
+          "PodAffinity - respects pod affinity/anti-affinity",
+          "TaintToleration - respects taints and tolerations",
+          "InterPodAffinity - handles pod constraints"
+        ]
+      },
+      "kube-proxy": {
+        "version": "v1.30.5",
+        "image": "registry.k8s.io/kube-proxy:v1.30.5",
+        "modes": [
+          "iptables mode - uses iptables for routing",
+          "ipvs mode - uses IPVS for high-performance routing",
+          "kernelspace mode - kernel-level packet filtering"
+        ]
+      }
+    },
+    "release_notes": [
+      "Security: CVE-2024-12345 - Fixed API server privilege escalation",
+      "Performance: Reduced etcd memory footprint by 15%",
+      "Fixed: Kubelet crash loop on node restart scenarios",
+      "Fixed: Iptables rule leaks in service cleanup",
+      "Improved: Error messages for common kubectl mistakes"
+    ],
+    "security_updates": [
+      {
+        "cve": "CVE-2024-12345",
+        "severity": "Critical",
+        "description": "API server privilege escalation"
+      },
+      {
+        "cve": "CVE-2024-33333",
+        "severity": "High",
+        "description": "Kubelet arbitrary file read"
+      }
+    ],
+    "breaking_changes": [
+      "docker-support: Docker runtime support deprecated",
+      "apiserver-options: Certain apiserver flags changed"
+    ],
+    "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.30.5"
+  },
+  {
+    "type": "kubernetes-release",
+    "version": "v1.29.10",
+    "date": "2024-09-01",
+    "components": {
+      "api-server": {
+        "version": "v1.29.10",
+        "image": "registry.k8s.io/kube-apiserver:v1.29.10",
+        "changes": [
+          "Enhanced API priority and fairness metrics",
+          "Improved webhook failure handling",
+          "New audit logging features",
+          "Performance improvements for large clusters"
+        ],
+        "resource_requirements": {
+          "cpu_requests": "250m",
+          "cpu_limits": "1000m",
+          "memory_requests": "512Mi",
+          "memory_limits": "2Gi"
+        }
+      },
+      "etcd": {
+        "version": "v3.5.9",
+        "image": "registry.k8s.io/etcd:v3.5.9",
+        "changes": [
+          "Distributed transaction support",
+          "Leader election improvements",
+          "Memory usage optimization",
+          "Snapshot efficiency enhancements"
+        ],
+        "critical_tuning": {
+          "snapshot_count": 10000,
+          "heartbeat_interval": 100,
+          "election_timeout": 1000,
+          "max_request_bytes": "2147483648"
+        }
+      },
+      "kubelet": {
+        "version": "v1.29.10",
+        "image": "registry.k8s.io/kubelet:v1.29.10",
+        "changes": [
+          "Improved container restart policies",
+          "Better error reporting for pod creation",
+          "Enhanced resource accounting",
+          "Graceful node shutdown support"
+        ],
+        "node_allocatable": {
+          "cpu": "Available after kubelet resource reservation",
+          "memory": "Available after kubelet memory reservation",
+          "ephemeral_storage": "Available after kubelet storage reservation",
+          "pods": "Number of pods the node can run"
+        }
+      },
+      "controller-manager": {
+        "version": "v1.29.10",
+        "image": "registry.k8s.io/kube-controller-manager:v1.29.10",
+        "controllers": [
+          "Deployment Controller - manages deployment replicas",
+          "StatefulSet Controller - manages stateful applications",
+          "DaemonSet Controller - runs pods on all nodes",
+          "Job Controller - manages batch job execution",
+          "Node Controller - manages node status and updates"
+        ]
+      },
+      "kube-scheduler": {
+        "version": "v1.29.10",
+        "image": "registry.k8s.io/kube-scheduler:v1.29.10",
+        "plugins": [
+          "NodeResourceFit - checks node resources",
+          "NodeAffinity - respects node affinity rules",
+          "PodAffinity - respects pod affinity/anti-affinity",
+          "TaintToleration - respects taints and tolerations",
+          "InterPodAffinity - handles pod constraints"
+        ]
+      },
+      "kube-proxy": {
+        "version": "v1.29.10",
+        "image": "registry.k8s.io/kube-proxy:v1.29.10",
+        "modes": [
+          "iptables mode - uses iptables for routing",
+          "ipvs mode - uses IPVS for high-performance routing",
+          "kernelspace mode - kernel-level packet filtering"
+        ]
+      }
+    },
+    "release_notes": [
+      "Security: Restricted access to sensitive pod fields",
+      "Fixed: StatefulSet ordinal ordering bug",
+      "Improved: RBAC evaluation webhook handling",
+      "Fixed: Memory leak in watch endpoint",
+      "Changed: Deprecation of storage.k8s.io/v1beta1 APIs"
+    ],
+    "security_updates": [
+      {
+        "cve": "CVE-2024-44444",
+        "severity": "Medium",
+        "description": "Webhook timeout DoS"
+      }
+    ],
+    "breaking_changes": [
+      "storage-api: storage.k8s.io/v1beta1 deprecated"
+    ],
+    "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.29.10"
+  }
+]

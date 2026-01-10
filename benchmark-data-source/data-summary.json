@@ -1,0 +1,10 @@
+{
+  "fetched_at": "2026-01-10T15:29:29.655730",
+  "k8s_releases": 3,
+  "helm_charts": 15,
+  "total_items": 18,
+  "data_files": {
+    "kubernetes": "benchmark-data-source/k8s-releases.json",
+    "helm": "benchmark-data-source/helm-charts.json"
+  }
+}
