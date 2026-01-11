@@ -1,5 +1,3 @@
-#![allow(clippy::all)]
-
 use context_mcp::{
     context::ContextDomain,
     embeddings::{

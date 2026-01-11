@@ -291,7 +291,7 @@ Hybrid: 10 non-zeros, 80% storage reduction, MSE 0.312
 
 **1. Enable Feature** (in your Cargo.toml):
 ```toml
-context-mcp = { version = "0.1.6", features = ["all-embeddings"] }
+context-mcp = { version = "0.2.0", features = ["all-embeddings"] }
 ```
 
 **2. Create Embeddings**:

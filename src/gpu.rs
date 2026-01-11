@@ -80,12 +80,18 @@ impl WgpuBackend {
                 force_fallback_adapter: false,
             })
             .await
-            .ok_or_else(|| "No GPU adapter found".to_string())?;
+            .ok_or_else(|| {
+                eprintln!("GPU initialization failed: No suitable GPU adapter found. Falling back to CPU.");
+                "No GPU adapter found".to_string()
+            })?;
 
         let (device, queue) = adapter
             .request_device(&DeviceDescriptor::default(), None)
             .await
-            .map_err(|e| format!("Failed to create device: {}", e))?;
+            .map_err(|e| {
+                eprintln!("GPU initialization failed: Failed to create device: {}. Falling back to CPU.", e);
+                format!("Failed to create device: {}", e)
+            })?;
 
         Ok(Self { device, queue })
     }
@@ -123,24 +129,17 @@ pub struct GpuCompute {
     #[cfg(feature = "gpu-acceleration")]
     gpu: Option<WgpuBackend>,
     cpu: CpuBackend,
-    #[allow(dead_code)]
-    prefer_gpu: bool,
 }
 
 impl GpuCompute {
     /// Create GPU compute with auto-detection
     #[cfg(feature = "gpu-acceleration")]
-    pub async fn new(prefer_gpu: bool) -> Self {
-        let gpu = if prefer_gpu {
-            WgpuBackend::new().await.ok()
-        } else {
-            None
-        };
+    pub async fn new(_prefer_gpu: bool) -> Self {
+        let gpu = WgpuBackend::new().await.ok();
 
         Self {
             gpu,
             cpu: CpuBackend,
-            prefer_gpu,
         }
     }
 
@@ -149,7 +148,6 @@ impl GpuCompute {
     pub async fn new(_prefer_gpu: bool) -> Self {
         Self {
             cpu: CpuBackend,
-            prefer_gpu: false,
         }
     }
 

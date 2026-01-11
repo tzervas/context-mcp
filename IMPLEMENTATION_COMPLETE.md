@@ -118,7 +118,7 @@ Results: 85% sparsity, 95% storage reduction, MSE 0.312
 - ✅ Working examples
 
 ### What's Optional (Future)
-- GPU compute shaders (placeholder exists, CPU works)
+- **⚠️ GPU compute shaders**: Placeholder exists, CPU fallback works. WGSL shaders not implemented - GPU acceleration will use CPU.
 - Real embedding model integration (pseudo-embeddings functional)
 - Benchmark against real datasets
 - Performance optimization passes

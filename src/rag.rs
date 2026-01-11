@@ -273,7 +273,7 @@ impl RagProcessor {
         };
 
         // Optional semantic similarity using quantized embeddings
-        let similarity_score: Option<f64> = if let (Some(text_query), Some(ref _embedding_gen)) =
+        let similarity_score: Option<f64> = if let (Some(text_query), Some(_)) =
             (&query.text, &self.embedding_generator)
         {
             // Compute embeddings for query and context
