@@ -116,7 +116,7 @@ impl SparseTernaryEmbedding {
     /// Size in bytes (approximate)
     pub fn size_bytes(&self) -> usize {
         // dimension (usize) + indices Vec overhead + values Vec overhead + sparsity (f32)
-        8 + (24 + self.indices.len() * 4) + (24 + self.values.len() * 1) + 4
+        8 + (24 + self.indices.len() * 4) + (24 + self.values.len()) + 4
     }
 }
 

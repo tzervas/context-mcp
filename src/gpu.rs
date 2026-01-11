@@ -89,7 +89,10 @@ impl WgpuBackend {
             .request_device(&DeviceDescriptor::default(), None)
             .await
             .map_err(|e| {
-                eprintln!("GPU initialization failed: Failed to create device: {}. Falling back to CPU.", e);
+                eprintln!(
+                    "GPU initialization failed: Failed to create device: {}. Falling back to CPU.",
+                    e
+                );
                 format!("Failed to create device: {}", e)
             })?;
 
@@ -146,9 +149,7 @@ impl GpuCompute {
     /// Create CPU-only compute
     #[cfg(not(feature = "gpu-acceleration"))]
     pub async fn new(_prefer_gpu: bool) -> Self {
-        Self {
-            cpu: CpuBackend,
-        }
+        Self { cpu: CpuBackend }
     }
 
     /// Compute cosine similarity with GPU if available, CPU fallback

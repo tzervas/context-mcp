@@ -273,28 +273,27 @@ impl RagProcessor {
         };
 
         // Optional semantic similarity using quantized embeddings
-        let similarity_score: Option<f64> = if let (Some(text_query), Some(_)) =
-            (&query.text, &self.embedding_generator)
-        {
-            // Compute embeddings for query and context
-            // Note: In production, these would be cached during retrieval
-            if let (Ok(query_embedding), Ok(ctx_embedding)) = (
-                // For now, use a simple text hash-based pseudo-embedding
-                // In production, use actual embedding generator
-                self.text_to_pseudo_embedding(text_query),
-                self.text_to_pseudo_embedding(&ctx.content),
-            ) {
-                // Compute cosine similarity (simplified)
-                let sim = self
-                    .compute_similarity(&query_embedding, &ctx_embedding)
-                    .unwrap_or(0.0);
-                Some((sim as f64).clamp(0.0, 1.0)) // Clamp to [0, 1]
+        let similarity_score: Option<f64> =
+            if let (Some(text_query), Some(_)) = (&query.text, &self.embedding_generator) {
+                // Compute embeddings for query and context
+                // Note: In production, these would be cached during retrieval
+                if let (Ok(query_embedding), Ok(ctx_embedding)) = (
+                    // For now, use a simple text hash-based pseudo-embedding
+                    // In production, use actual embedding generator
+                    self.text_to_pseudo_embedding(text_query),
+                    self.text_to_pseudo_embedding(&ctx.content),
+                ) {
+                    // Compute cosine similarity (simplified)
+                    let sim = self
+                        .compute_similarity(&query_embedding, &ctx_embedding)
+                        .unwrap_or(0.0);
+                    Some((sim as f64).clamp(0.0, 1.0)) // Clamp to [0, 1]
+                } else {
+                    None
+                }
             } else {
                 None
-            }
-        } else {
-            None
-        };
+            };
 
         let breakdown = ScoreBreakdown {
             temporal: temporal_score,
