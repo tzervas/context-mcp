@@ -44,7 +44,7 @@ uuid = { version = "=1.19.0", features = ["v4", "serde"] }
 base64 = "=0.22.1"
 
 # Time and temporal reasoning
-chrono = { version = "=0.4.42", features = ["serde"] }
+chrono = { version = "=0.4.43", features = ["serde"] }
 humantime = "=2.3.0"
 
 # Logging and tracing
