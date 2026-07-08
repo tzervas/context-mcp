@@ -2,3 +2,20 @@ target/
 
 # Test results
 test_results*.txt
+
+# Local secrets / environment
+.env
+.env.*
+*.pem
+*.key
+
+# Local data / persistence backends
+*.db
+*.sled
+/data/
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+.idea/
+*.swp
