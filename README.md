@@ -111,12 +111,13 @@ context-mcp --stdio
 - **Text-Based Queries**: Query by text content, domain, tags, time ranges with simple text matching
 - **Temporal Filtering**: Filter contexts by creation time, last access, age, and expiration
 - **Parallel Processing**: CPU-optimized retrieval using rayon for performance
-- **MCP Tools**: 10 tools including store_context, get_context, query_contexts, retrieve_contexts, delete_context, update_screening, get_temporal_stats, get_storage_stats, cleanup_expired
+- **MCP Tools**: 9 tools including store_context, get_context, query_contexts, retrieve_contexts, delete_context, update_screening, get_temporal_stats, get_storage_stats, cleanup_expired
 
 ## What It Does Not Do (Yet)
 
 - **Vector embeddings**: Mock implementation only - no real embedding generation or similarity search
 - **Semantic search**: Text matching is literal, not semantic
+- **GPU acceleration**: `gpu-acceleration` feature flag exists but the compute shader path is a placeholder; similarity computation always falls back to CPU
 - **External integrations**: No active security-mcp or other service integrations (only status fields)
 - **Chunking/citations**: No automatic document chunking or citation tracking
 - **Distributed storage**: Single-node only, no replication or clustering
