@@ -183,6 +183,16 @@
       "summary": "- README.md"
     },
     {
+      "anchor": "agents--latest-updates-w2-facade-integration-2026-07-09",
+      "family": "doc",
+      "kind": "section",
+      "title": "Latest Updates (W2 Facade + Integration, 2026-07-09)",
+      "file": "AGENTS.md",
+      "line": 56,
+      "tag": "Empirical/Declared",
+      "summary": "- C0 honesty gate complete (feature/ctx-c0-honesty): enablesemantic=false default (CLI --enable-semantic to opt-in; gated in RagProcessor + retrieve; pseudo on…"
+    },
+    {
       "anchor": "assessmentreport",
       "family": "doc",
       "kind": "note",
@@ -2333,7 +2343,7 @@
       "file": "README.md",
       "line": 60,
       "tag": "Empirical/Declared",
-      "summary": "Production-ready for context management and lightweight RAG. APIs are stable."
+      "summary": "Production-ready for context management, temporal tracking, and metadata query (session memory MCP)."
     },
     {
       "anchor": "readme--usage",
@@ -2341,7 +2351,7 @@
       "kind": "section",
       "title": "Usage",
       "file": "README.md",
-      "line": 64,
+      "line": 68,
       "tag": "Empirical/Declared",
       "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
     },
@@ -2351,7 +2361,7 @@
       "kind": "section",
       "title": "As a Library",
       "file": "README.md",
-      "line": 66,
+      "line": 70,
       "tag": "Empirical/Declared",
       "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
     },
@@ -2361,7 +2371,7 @@
       "kind": "section",
       "title": "As an MCP Server",
       "file": "README.md",
-      "line": 94,
+      "line": 98,
       "tag": "Empirical/Declared",
       "summary": "Run as HTTP server:"
     },
@@ -2371,7 +2381,7 @@
       "kind": "section",
       "title": "What It Does (Verified by Code/Tests)",
       "file": "README.md",
-      "line": 106,
+      "line": 110,
       "tag": "Empirical/Declared",
       "summary": "- JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport"
     },
@@ -2381,7 +2391,7 @@
       "kind": "section",
       "title": "What It Does Not Do (Yet)",
       "file": "README.md",
-      "line": 116,
+      "line": 120,
       "tag": "Empirical/Declared",
       "summary": "- Vector embeddings: Mock implementation only - no real embedding generation or similarity search"
     },
@@ -2391,7 +2401,7 @@
       "kind": "section",
       "title": "Architecture",
       "file": "README.md",
-      "line": 125,
+      "line": 129,
       "tag": "Empirical/Declared",
       "summary": "┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐"
     },
@@ -2401,7 +2411,7 @@
       "kind": "section",
       "title": "Development",
       "file": "README.md",
-      "line": 145,
+      "line": 149,
       "tag": "Empirical/Declared",
       "summary": "1. Install development dependencies:"
     },
@@ -2411,7 +2421,7 @@
       "kind": "section",
       "title": "Setup",
       "file": "README.md",
-      "line": 147,
+      "line": 151,
       "tag": "Empirical/Declared",
       "summary": "1. Install development dependencies:"
     },
@@ -2421,7 +2431,7 @@
       "kind": "section",
       "title": "Available Commands",
       "file": "README.md",
-      "line": 159,
+      "line": 163,
       "tag": "Empirical/Declared",
       "summary": "This project uses [just](https://github.com/casey/just) for development tasks:"
     },
@@ -2431,7 +2441,7 @@
       "kind": "section",
       "title": "Code Quality",
       "file": "README.md",
-      "line": 178,
+      "line": 182,
       "tag": "Empirical/Declared",
       "summary": "- Formatting: cargo fmt (enforced)"
     },
@@ -2441,7 +2451,7 @@
       "kind": "section",
       "title": "Security Scanning",
       "file": "README.md",
-      "line": 187,
+      "line": 191,
       "tag": "Empirical/Declared",
       "summary": "The project includes comprehensive security scanning:"
     },
@@ -2451,7 +2461,7 @@
       "kind": "section",
       "title": "Benchmarking",
       "file": "README.md",
-      "line": 196,
+      "line": 200,
       "tag": "Empirical/Declared",
       "summary": "Performance benchmarks are included for critical paths:"
     },
@@ -2461,7 +2471,7 @@
       "kind": "section",
       "title": "Contributing",
       "file": "README.md",
-      "line": 205,
+      "line": 209,
       "tag": "Empirical/Declared",
       "summary": "See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines."
     },
@@ -2471,7 +2481,7 @@
       "kind": "section",
       "title": "License",
       "file": "README.md",
-      "line": 209,
+      "line": 213,
       "tag": "Empirical/Declared",
       "summary": "Licensed under the MIT License. See [LICENSE](LICENSE) for details."
     },
@@ -2481,7 +2491,7 @@
       "kind": "section",
       "title": "Status & roadmap",
       "file": "README.md",
-      "line": 213,
+      "line": 217,
       "tag": "Empirical/Declared",
       "summary": "- [Assessment & gaps](docs/ASSESSMENT.md)"
     },
@@ -4144,6 +4154,16 @@
       "summary": "Layer-1 citation index: [docs/tero-index/](tero-index/) (index.json, INDEX.md, MANIFEST.toml)."
     },
     {
+      "anchor": "assessment--c0-honesty-pass-complete-pr-29-feature-ctx-c0-honesty",
+      "family": "doc",
+      "kind": "section",
+      "title": "C0 Honesty Pass (complete, PR #29 / feature/ctx-c0-honesty)",
+      "file": "docs/ASSESSMENT.md",
+      "line": 80,
+      "tag": "Empirical/Declared",
+      "summary": "- Docs claims aligned (README, src docs, Cargo keywords reviewed; \"rag\" now aspirational note)."
+    },
+    {
       "anchor": "localchecks",
       "family": "doc",
       "kind": "section",
@@ -4231,7 +4251,8 @@
       "title": "Waves",
       "file": "docs/ROADMAP.md",
       "line": 24,
-      "tag": "Empirical/Declared"
+      "tag": "Empirical/Declared",
+      "summary": "C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos…"
     },
     {
       "anchor": "roadmap--wave-0-honesty-session-product-ship-now",
@@ -4240,7 +4261,8 @@
       "title": "Wave 0 — Honesty & session product (ship now)",
       "file": "docs/ROADMAP.md",
       "line": 26,
-      "tag": "Empirical/Declared"
+      "tag": "Empirical/Declared",
+      "summary": "C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos…"
     },
     {
       "anchor": "roadmap--wave-1-real-embedder-interface",
@@ -4248,7 +4270,7 @@
       "kind": "section",
       "title": "Wave 1 — Real embedder interface",
       "file": "docs/ROADMAP.md",
-      "line": 36,
+      "line": 38,
       "tag": "Empirical/Declared"
     },
     {
@@ -4257,7 +4279,7 @@
       "kind": "section",
       "title": "Wave 2 — Vector store & retrieve",
       "file": "docs/ROADMAP.md",
-      "line": 46,
+      "line": 48,
       "tag": "Empirical/Declared"
     },
     {
@@ -4266,7 +4288,7 @@
       "kind": "section",
       "title": "Wave 3 — Efficiency & eval",
       "file": "docs/ROADMAP.md",
-      "line": 55,
+      "line": 57,
       "tag": "Empirical/Declared"
     },
     {
@@ -4275,7 +4297,7 @@
       "kind": "section",
       "title": "API plan",
       "file": "docs/ROADMAP.md",
-      "line": 67,
+      "line": 69,
       "tag": "Empirical/Declared"
     },
     {
@@ -4284,7 +4306,7 @@
       "kind": "section",
       "title": "MCP tools — current (session KV; keep)",
       "file": "docs/ROADMAP.md",
-      "line": 69,
+      "line": 71,
       "tag": "Empirical/Declared"
     },
     {
@@ -4293,7 +4315,7 @@
       "kind": "section",
       "title": "MCP tools — planned (RAG)",
       "file": "docs/ROADMAP.md",
-      "line": 80,
+      "line": 82,
       "tag": "Empirical/Declared",
       "summary": "{"
     },
@@ -4303,7 +4325,7 @@
       "kind": "section",
       "title": "Response envelope (target)",
       "file": "docs/ROADMAP.md",
-      "line": 89,
+      "line": 91,
       "tag": "Empirical/Declared",
       "summary": "{"
     },
@@ -4313,7 +4335,7 @@
       "kind": "section",
       "title": "Library API (Rust)",
       "file": "docs/ROADMAP.md",
-      "line": 113,
+      "line": 115,
       "tag": "Empirical/Declared",
       "summary": "// Target shape"
     },
@@ -4323,7 +4345,7 @@
       "kind": "section",
       "title": "Config (CLI / env)",
       "file": "docs/ROADMAP.md",
-      "line": 129,
+      "line": 131,
       "tag": "Empirical/Declared"
     },
     {
@@ -4332,7 +4354,7 @@
       "kind": "section",
       "title": "PR plan",
       "file": "docs/ROADMAP.md",
-      "line": 140,
+      "line": 142,
       "tag": "Empirical/Declared",
       "summary": "1. Docs assessment + roadmap (this)"
     },
@@ -4342,7 +4364,7 @@
       "kind": "section",
       "title": "Relationship to Tero",
       "file": "docs/ROADMAP.md",
-      "line": 152,
+      "line": 154,
       "tag": "Empirical/Declared",
       "summary": "Do not merge responsibilities; agents may call both."
     },
