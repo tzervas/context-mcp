@@ -66,3 +66,11 @@ Leave mycelium isolated; all coordination here targets the other repos + cabal.
 
 **Post-merge W2/C0 + wsfull state (2026-07-09, after PR #29):** Merged (commit cdb7f14). C0 honesty gate complete (enable_semantic=false default, gated pseudo + warning), tero reindex (504 items), docs aligned. W2: common memory facade (refs wsfull-wave-2026-07-09-compact.md + dev-docs/schemas/ for StructuredResponse + common_memory_facade stubs in cabal + memory-gate). Verification review comment posted; checks green; tero-first cites confirm (AGENTS:56, ROADMAP:24/26, ASSESSMENT:80). Part of wsfull wave; propagate next. (Tero-grounded; append-only update.)
 
+## W2: Session as Consumer (chore/w2-rollout-docs-wiring)
+
+Context session noted as W2 consumer: session memory (temporal/context items) consumed via CommonMemoryAdapter (AgentDomain.CONTEXT) -> feeds StructuredResponse + MemoryContext in cabal agent (schemas/agent). Integrates tero + memory-gate domains for W2 rollout.
+
+See: plan.md:44 w2-rollout, dev-docs/schemas/structured_response*.example + common_memory_facade.py.example (Context), cabal core/agent.py:79 (facade.query), context-mcp docs/ROADMAP (Wave 0 W2 refs), dev-mcp/servers/context-mcp.md (new W2 section), memory-gate-rs types.rs M1.
+
+Append-only; tero cites to plan/wsfull; hygiene + update-tero; land --no-ff dev/main + propagate. Verify tero hits new sections.
+
