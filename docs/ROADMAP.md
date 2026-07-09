@@ -35,6 +35,8 @@ All required before any “RAG” marketing or cabal PROD-6 consumption:
 
 C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed post-changes. See compact wsfull-wave-2026-07-09.
 
+**Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 merged to dev (cdb7f14). C0 items done + tero (504 items). W2 facade refs in docs point to wsfull-wave-2026-07-09-compact.md + dev-docs/schemas/common_memory_facade (cabal). Post-merge tero update + verification review posted. Continue per PR plan / Wave 1.
+
 ### Wave 1 — Real embedder interface
 
 | ID | Work |

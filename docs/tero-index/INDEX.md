@@ -248,21 +248,21 @@
 | `readme--performance` | section | — | Performance | `README.md:44` | — | Validated through comprehensive benchmarking: |
 | `readme--documentation` | section | — | Documentation | `README.md:53` | — | - [INSTALL.md](INSTALL.md) - Installation and setup guide |
 | `readme--status` | section | — | Status | `README.md:60` | — | Production-ready for context management, temporal tracking, and metadata query (session memory MCP). |
-| `readme--usage` | section | — | Usage | `README.md:68` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
-| `readme--as-a-library` | section | — | As a Library | `README.md:70` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
-| `readme--as-an-mcp-server` | section | — | As an MCP Server | `README.md:98` | — | Run as HTTP server: |
-| `readme--what-it-does-verified-by-code-tests` | section | — | What It Does (Verified by Code/Tests) | `README.md:110` | — | - JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport |
-| `readme--what-it-does-not-do-yet` | section | — | What It Does Not Do (Yet) | `README.md:120` | — | - Vector embeddings: Mock implementation only - no real embedding generation or similarity search |
-| `readme--architecture` | section | — | Architecture | `README.md:129` | — | ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐ |
-| `readme--development` | section | — | Development | `README.md:149` | — | 1. Install development dependencies: |
-| `readme--setup` | section | — | Setup | `README.md:151` | — | 1. Install development dependencies: |
-| `readme--available-commands` | section | — | Available Commands | `README.md:163` | — | This project uses [just](https://github.com/casey/just) for development tasks: |
-| `readme--code-quality` | section | — | Code Quality | `README.md:182` | — | - Formatting: cargo fmt (enforced) |
-| `readme--security-scanning` | section | — | Security Scanning | `README.md:191` | — | The project includes comprehensive security scanning: |
-| `readme--benchmarking` | section | — | Benchmarking | `README.md:200` | — | Performance benchmarks are included for critical paths: |
-| `readme--contributing` | section | — | Contributing | `README.md:209` | — | See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines. |
-| `readme--license` | section | — | License | `README.md:213` | — | Licensed under the MIT License. See [LICENSE](LICENSE) for details. |
-| `readme--status-roadmap` | section | — | Status & roadmap | `README.md:217` | — | - [Assessment & gaps](docs/ASSESSMENT.md) |
+| `readme--usage` | section | — | Usage | `README.md:70` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
+| `readme--as-a-library` | section | — | As a Library | `README.md:72` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
+| `readme--as-an-mcp-server` | section | — | As an MCP Server | `README.md:100` | — | Run as HTTP server: |
+| `readme--what-it-does-verified-by-code-tests` | section | — | What It Does (Verified by Code/Tests) | `README.md:112` | — | - JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport |
+| `readme--what-it-does-not-do-yet` | section | — | What It Does Not Do (Yet) | `README.md:122` | — | - Vector embeddings: Mock implementation only - no real embedding generation or similarity search |
+| `readme--architecture` | section | — | Architecture | `README.md:131` | — | ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐ |
+| `readme--development` | section | — | Development | `README.md:151` | — | 1. Install development dependencies: |
+| `readme--setup` | section | — | Setup | `README.md:153` | — | 1. Install development dependencies: |
+| `readme--available-commands` | section | — | Available Commands | `README.md:165` | — | This project uses [just](https://github.com/casey/just) for development tasks: |
+| `readme--code-quality` | section | — | Code Quality | `README.md:184` | — | - Formatting: cargo fmt (enforced) |
+| `readme--security-scanning` | section | — | Security Scanning | `README.md:193` | — | The project includes comprehensive security scanning: |
+| `readme--benchmarking` | section | — | Benchmarking | `README.md:202` | — | Performance benchmarks are included for critical paths: |
+| `readme--contributing` | section | — | Contributing | `README.md:211` | — | See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines. |
+| `readme--license` | section | — | License | `README.md:215` | — | Licensed under the MIT License. See [LICENSE](LICENSE) for details. |
+| `readme--status-roadmap` | section | — | Status & roadmap | `README.md:219` | — | - [Assessment & gaps](docs/ASSESSMENT.md) |
 | `rmcpauditplan` | section | — | RMCP (Rust MCP SDK) Security Audit Plan | `RMCP_AUDIT_PLAN.md:1` | — | Date: January 9, 2026 |
 | `rmcpauditplan--1.-clone-repository` | section | — | 1. Clone Repository | `RMCP_AUDIT_PLAN.md:10` | — | cd /home/kang/Documents/projects/2026/mcp |
 | `rmcpauditplan--2.-security-audit-areas` | section | — | 2. Security Audit Areas | `RMCP_AUDIT_PLAN.md:20` | — | grep -rn "unsafe" crates/rmcp/src/ |
@@ -443,17 +443,17 @@
 | `roadmap--definition-of-done-efficient-legitimate-rag` | section | — | Definition of done — efficient legitimate RAG | `docs/ROADMAP.md:10` | — | All required before any “RAG” marketing or cabal PROD-6 consumption: |
 | `roadmap--waves` | section | — | Waves | `docs/ROADMAP.md:24` | — | C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos… |
 | `roadmap--wave-0-honesty-session-product-ship-now` | section | — | Wave 0 — Honesty & session product (ship now) | `docs/ROADMAP.md:26` | — | C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos… |
-| `roadmap--wave-1-real-embedder-interface` | section | — | Wave 1 — Real embedder interface | `docs/ROADMAP.md:38` | — | — |
-| `roadmap--wave-2-vector-store-retrieve` | section | — | Wave 2 — Vector store & retrieve | `docs/ROADMAP.md:48` | — | — |
-| `roadmap--wave-3-efficiency-eval` | section | — | Wave 3 — Efficiency & eval | `docs/ROADMAP.md:57` | — | — |
-| `roadmap--api-plan` | section | — | API plan | `docs/ROADMAP.md:69` | — | — |
-| `roadmap--mcp-tools-current-session-kv-keep` | section | — | MCP tools — current (session KV; keep) | `docs/ROADMAP.md:71` | — | — |
-| `roadmap--mcp-tools-planned-rag` | section | — | MCP tools — planned (RAG) | `docs/ROADMAP.md:82` | — | { |
-| `roadmap--response-envelope-target` | section | — | Response envelope (target) | `docs/ROADMAP.md:91` | — | { |
-| `roadmap--library-api-rust` | section | — | Library API (Rust) | `docs/ROADMAP.md:115` | — | // Target shape |
-| `roadmap--config-cli-env` | section | — | Config (CLI / env) | `docs/ROADMAP.md:131` | — | — |
-| `roadmap--pr-plan` | section | — | PR plan | `docs/ROADMAP.md:142` | — | 1. Docs assessment + roadmap (this) |
-| `roadmap--relationship-to-tero` | section | — | Relationship to Tero | `docs/ROADMAP.md:154` | — | Do not merge responsibilities; agents may call both. |
+| `roadmap--wave-1-real-embedder-interface` | section | — | Wave 1 — Real embedder interface | `docs/ROADMAP.md:40` | — | — |
+| `roadmap--wave-2-vector-store-retrieve` | section | — | Wave 2 — Vector store & retrieve | `docs/ROADMAP.md:50` | — | — |
+| `roadmap--wave-3-efficiency-eval` | section | — | Wave 3 — Efficiency & eval | `docs/ROADMAP.md:59` | — | — |
+| `roadmap--api-plan` | section | — | API plan | `docs/ROADMAP.md:71` | — | — |
+| `roadmap--mcp-tools-current-session-kv-keep` | section | — | MCP tools — current (session KV; keep) | `docs/ROADMAP.md:73` | — | — |
+| `roadmap--mcp-tools-planned-rag` | section | — | MCP tools — planned (RAG) | `docs/ROADMAP.md:84` | — | { |
+| `roadmap--response-envelope-target` | section | — | Response envelope (target) | `docs/ROADMAP.md:93` | — | { |
+| `roadmap--library-api-rust` | section | — | Library API (Rust) | `docs/ROADMAP.md:117` | — | // Target shape |
+| `roadmap--config-cli-env` | section | — | Config (CLI / env) | `docs/ROADMAP.md:133` | — | — |
+| `roadmap--pr-plan` | section | — | PR plan | `docs/ROADMAP.md:144` | — | 1. Docs assessment + roadmap (this) |
+| `roadmap--relationship-to-tero` | section | — | Relationship to Tero | `docs/ROADMAP.md:156` | — | Do not merge responsibilities; agents may call both. |
 | `readme-2` | other | — | Tero index (Layer 1) | `docs/tero-index/README.md:1` | — | Machine + human citation index for this repository. |
 | `readme--regenerate` | section | — | Regenerate | `docs/tero-index/README.md:13` | — | python3 /path/to/tero-mcp/scripts/generateliteindex.py --root $(pwd) |
 | `readme--or-if-tero-mcp-is-a-sibling` | other | — | or if tero-mcp is a sibling: | `docs/tero-index/README.md:17` | — | python3 ../tero-mcp/scripts/generateliteindex.py --root $(pwd) |

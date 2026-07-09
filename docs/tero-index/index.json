@@ -2351,7 +2351,7 @@
       "kind": "section",
       "title": "Usage",
       "file": "README.md",
-      "line": 68,
+      "line": 70,
       "tag": "Empirical/Declared",
       "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
     },
@@ -2361,7 +2361,7 @@
       "kind": "section",
       "title": "As a Library",
       "file": "README.md",
-      "line": 70,
+      "line": 72,
       "tag": "Empirical/Declared",
       "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
     },
@@ -2371,7 +2371,7 @@
       "kind": "section",
       "title": "As an MCP Server",
       "file": "README.md",
-      "line": 98,
+      "line": 100,
       "tag": "Empirical/Declared",
       "summary": "Run as HTTP server:"
     },
@@ -2381,7 +2381,7 @@
       "kind": "section",
       "title": "What It Does (Verified by Code/Tests)",
       "file": "README.md",
-      "line": 110,
+      "line": 112,
       "tag": "Empirical/Declared",
       "summary": "- JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport"
     },
@@ -2391,7 +2391,7 @@
       "kind": "section",
       "title": "What It Does Not Do (Yet)",
       "file": "README.md",
-      "line": 120,
+      "line": 122,
       "tag": "Empirical/Declared",
       "summary": "- Vector embeddings: Mock implementation only - no real embedding generation or similarity search"
     },
@@ -2401,7 +2401,7 @@
       "kind": "section",
       "title": "Architecture",
       "file": "README.md",
-      "line": 129,
+      "line": 131,
       "tag": "Empirical/Declared",
       "summary": "┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐"
     },
@@ -2411,7 +2411,7 @@
       "kind": "section",
       "title": "Development",
       "file": "README.md",
-      "line": 149,
+      "line": 151,
       "tag": "Empirical/Declared",
       "summary": "1. Install development dependencies:"
     },
@@ -2421,7 +2421,7 @@
       "kind": "section",
       "title": "Setup",
       "file": "README.md",
-      "line": 151,
+      "line": 153,
       "tag": "Empirical/Declared",
       "summary": "1. Install development dependencies:"
     },
@@ -2431,7 +2431,7 @@
       "kind": "section",
       "title": "Available Commands",
       "file": "README.md",
-      "line": 163,
+      "line": 165,
       "tag": "Empirical/Declared",
       "summary": "This project uses [just](https://github.com/casey/just) for development tasks:"
     },
@@ -2441,7 +2441,7 @@
       "kind": "section",
       "title": "Code Quality",
       "file": "README.md",
-      "line": 182,
+      "line": 184,
       "tag": "Empirical/Declared",
       "summary": "- Formatting: cargo fmt (enforced)"
     },
@@ -2451,7 +2451,7 @@
       "kind": "section",
       "title": "Security Scanning",
       "file": "README.md",
-      "line": 191,
+      "line": 193,
       "tag": "Empirical/Declared",
       "summary": "The project includes comprehensive security scanning:"
     },
@@ -2461,7 +2461,7 @@
       "kind": "section",
       "title": "Benchmarking",
       "file": "README.md",
-      "line": 200,
+      "line": 202,
       "tag": "Empirical/Declared",
       "summary": "Performance benchmarks are included for critical paths:"
     },
@@ -2471,7 +2471,7 @@
       "kind": "section",
       "title": "Contributing",
       "file": "README.md",
-      "line": 209,
+      "line": 211,
       "tag": "Empirical/Declared",
       "summary": "See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines."
     },
@@ -2481,7 +2481,7 @@
       "kind": "section",
       "title": "License",
       "file": "README.md",
-      "line": 213,
+      "line": 215,
       "tag": "Empirical/Declared",
       "summary": "Licensed under the MIT License. See [LICENSE](LICENSE) for details."
     },
@@ -2491,7 +2491,7 @@
       "kind": "section",
       "title": "Status & roadmap",
       "file": "README.md",
-      "line": 217,
+      "line": 219,
       "tag": "Empirical/Declared",
       "summary": "- [Assessment & gaps](docs/ASSESSMENT.md)"
     },
@@ -4270,7 +4270,7 @@
       "kind": "section",
       "title": "Wave 1 — Real embedder interface",
       "file": "docs/ROADMAP.md",
-      "line": 38,
+      "line": 40,
       "tag": "Empirical/Declared"
     },
     {
@@ -4279,7 +4279,7 @@
       "kind": "section",
       "title": "Wave 2 — Vector store & retrieve",
       "file": "docs/ROADMAP.md",
-      "line": 48,
+      "line": 50,
       "tag": "Empirical/Declared"
     },
     {
@@ -4288,7 +4288,7 @@
       "kind": "section",
       "title": "Wave 3 — Efficiency & eval",
       "file": "docs/ROADMAP.md",
-      "line": 57,
+      "line": 59,
       "tag": "Empirical/Declared"
     },
     {
@@ -4297,7 +4297,7 @@
       "kind": "section",
       "title": "API plan",
       "file": "docs/ROADMAP.md",
-      "line": 69,
+      "line": 71,
       "tag": "Empirical/Declared"
     },
     {
@@ -4306,7 +4306,7 @@
       "kind": "section",
       "title": "MCP tools — current (session KV; keep)",
       "file": "docs/ROADMAP.md",
-      "line": 71,
+      "line": 73,
       "tag": "Empirical/Declared"
     },
     {
@@ -4315,7 +4315,7 @@
       "kind": "section",
       "title": "MCP tools — planned (RAG)",
       "file": "docs/ROADMAP.md",
-      "line": 82,
+      "line": 84,
       "tag": "Empirical/Declared",
       "summary": "{"
     },
@@ -4325,7 +4325,7 @@
       "kind": "section",
       "title": "Response envelope (target)",
       "file": "docs/ROADMAP.md",
-      "line": 91,
+      "line": 93,
       "tag": "Empirical/Declared",
       "summary": "{"
     },
@@ -4335,7 +4335,7 @@
       "kind": "section",
       "title": "Library API (Rust)",
       "file": "docs/ROADMAP.md",
-      "line": 115,
+      "line": 117,
       "tag": "Empirical/Declared",
       "summary": "// Target shape"
     },
@@ -4345,7 +4345,7 @@
       "kind": "section",
       "title": "Config (CLI / env)",
       "file": "docs/ROADMAP.md",
-      "line": 131,
+      "line": 133,
       "tag": "Empirical/Declared"
     },
     {
@@ -4354,7 +4354,7 @@
       "kind": "section",
       "title": "PR plan",
       "file": "docs/ROADMAP.md",
-      "line": 142,
+      "line": 144,
       "tag": "Empirical/Declared",
       "summary": "1. Docs assessment + roadmap (this)"
     },
@@ -4364,7 +4364,7 @@
       "kind": "section",
       "title": "Relationship to Tero",
       "file": "docs/ROADMAP.md",
-      "line": 154,
+      "line": 156,
       "tag": "Empirical/Declared",
       "summary": "Do not merge responsibilities; agents may call both."
     },

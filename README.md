@@ -65,6 +65,8 @@ See docs/ROADMAP.md + docs/ASSESSMENT.md for Wave 0+ gates before any RAG claims
 
 **W2 / Facade**: Part of common memory vision (tero L1 citations + context-mcp session/RAG + memory-gate domains). See dev-docs/schemas/ for W2 StructuredResponse + facade adapters (used in cabal-devmelopner). Context-mcp integrates as session backend today; real RAG post-Wave 1-2. PR #29 + tero reindex capture updates. (wsfull wave 2026-07-09)
 
+**Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 (feature/ctx-c0-honesty) merged. C0 honesty gate landed (semantic=false default), tero reindexed. References wsfull-wave-2026-07-09-compact.md + common memory facade (cabal integration). See docs/ROADMAP.md, AGENTS.md. Verification + hygiene complete.
+
 ## Usage
 
 ### As a Library

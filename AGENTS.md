@@ -64,3 +64,5 @@ Leave mycelium isolated; all coordination here targets the other repos + cabal.
 - Part of wsfull wave: tero-first, hygiene, pr-review (adapted), commit+push, review, merge if clean.
 - Use tero-first + cabal for work. Always: update docs + tero as part of PR process. Honesty: Empirical/Declared tags on claims.
 
+**Post-merge W2/C0 + wsfull state (2026-07-09, after PR #29):** Merged (commit cdb7f14). C0 honesty gate complete (enable_semantic=false default, gated pseudo + warning), tero reindex (504 items), docs aligned. W2: common memory facade (refs wsfull-wave-2026-07-09-compact.md + dev-docs/schemas/ for StructuredResponse + common_memory_facade stubs in cabal + memory-gate). Verification review comment posted; checks green; tero-first cites confirm (AGENTS:56, ROADMAP:24/26, ASSESSMENT:80). Part of wsfull wave; propagate next. (Tero-grounded; append-only update.)
+
