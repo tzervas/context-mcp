@@ -72,3 +72,7 @@
 | Never | Claim RAG while pseudo path is live in semantic mode |
 
 See [ROADMAP.md](ROADMAP.md) for definition of done and API plan.
+
+## Tero index
+
+Layer-1 citation index: [docs/tero-index/](tero-index/) (`index.json`, `INDEX.md`, `MANIFEST.toml`).
