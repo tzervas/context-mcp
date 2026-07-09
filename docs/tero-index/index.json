@@ -138,7 +138,7 @@
       "kind": "section",
       "title": "Tero (Layer-1 corpus index)",
       "file": "AGENTS.md",
-      "line": 6,
+      "line": 8,
       "tag": "Empirical/Declared",
       "summary": "Repo has docs/tero-index/index.json (generated/ refreshed via tero-mcp/scripts/generateliteindex.py)."
     },
@@ -148,7 +148,7 @@
       "kind": "other",
       "title": "agent with context:",
       "file": "AGENTS.md",
-      "line": 18,
+      "line": 20,
       "tag": "Empirical/Declared",
       "summary": "uv run --project ../cabal-devmelopner cabal-devmelopner \"task description here\" --use-tero"
     },
@@ -158,7 +158,7 @@
       "kind": "section",
       "title": "Working with cabal-devmelopner agent tool",
       "file": "AGENTS.md",
-      "line": 24,
+      "line": 26,
       "tag": "Empirical/Declared",
       "summary": "This project is prepared for integration:"
     },
@@ -168,7 +168,7 @@
       "kind": "section",
       "title": "Local checks",
       "file": "AGENTS.md",
-      "line": 36,
+      "line": 38,
       "tag": "Empirical/Declared",
       "summary": "Look for:"
     },
@@ -178,7 +178,7 @@
       "kind": "section",
       "title": "Further reading",
       "file": "AGENTS.md",
-      "line": 44,
+      "line": 46,
       "tag": "Empirical/Declared",
       "summary": "- README.md"
     },
