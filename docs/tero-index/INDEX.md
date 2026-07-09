@@ -3,13 +3,13 @@
 > **Honesty:** Empirical/Declared — lite heading/line heuristic over markdown in context-mcp via tero-mcp/scripts/generate_lite_index.py; source files are ground truth. Generated 2026-07-09.
 > Use this index to find where to Read, not as authoritative ground truth.
 
-- **Items:** 502
+- **Items:** 503
 - **Flagged:** 0
 - **item_tag:** `Empirical/Declared`
 - **Machine index:** [`index.json`](./index.json)
 - **Manifest:** [`MANIFEST.toml`](./MANIFEST.toml)
 
-## doc (443 entries)
+## doc (444 entries)
 
 | Anchor | Kind | Id | Title | File:Line | Status | Summary |
 |---|---|---|---|---|---|---|
@@ -246,22 +246,22 @@
 | `readme--features` | section | — | Features | `README.md:36` | — | - Multi-tier Storage: In-memory LRU cache with optional sled-based disk persistence |
 | `readme--performance` | section | — | Performance | `README.md:44` | — | Validated through comprehensive benchmarking: |
 | `readme--documentation` | section | — | Documentation | `README.md:53` | — | - [INSTALL.md](INSTALL.md) - Installation and setup guide |
-| `readme--status` | section | — | Status | `README.md:60` | — | Production-ready for context management and lightweight RAG. APIs are stable. |
-| `readme--usage` | section | — | Usage | `README.md:64` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
-| `readme--as-a-library` | section | — | As a Library | `README.md:66` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
-| `readme--as-an-mcp-server` | section | — | As an MCP Server | `README.md:94` | — | Run as HTTP server: |
-| `readme--what-it-does-verified-by-code-tests` | section | — | What It Does (Verified by Code/Tests) | `README.md:106` | — | - JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport |
-| `readme--what-it-does-not-do-yet` | section | — | What It Does Not Do (Yet) | `README.md:116` | — | - Vector embeddings: Mock implementation only - no real embedding generation or similarity search |
-| `readme--architecture` | section | — | Architecture | `README.md:125` | — | ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐ |
-| `readme--development` | section | — | Development | `README.md:145` | — | 1. Install development dependencies: |
-| `readme--setup` | section | — | Setup | `README.md:147` | — | 1. Install development dependencies: |
-| `readme--available-commands` | section | — | Available Commands | `README.md:159` | — | This project uses [just](https://github.com/casey/just) for development tasks: |
-| `readme--code-quality` | section | — | Code Quality | `README.md:178` | — | - Formatting: cargo fmt (enforced) |
-| `readme--security-scanning` | section | — | Security Scanning | `README.md:187` | — | The project includes comprehensive security scanning: |
-| `readme--benchmarking` | section | — | Benchmarking | `README.md:196` | — | Performance benchmarks are included for critical paths: |
-| `readme--contributing` | section | — | Contributing | `README.md:205` | — | See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines. |
-| `readme--license` | section | — | License | `README.md:209` | — | Licensed under the MIT License. See [LICENSE](LICENSE) for details. |
-| `readme--status-roadmap` | section | — | Status & roadmap | `README.md:213` | — | - [Assessment & gaps](docs/ASSESSMENT.md) |
+| `readme--status` | section | — | Status | `README.md:60` | — | Production-ready for context management, temporal tracking, and metadata query (session memory MCP). |
+| `readme--usage` | section | — | Usage | `README.md:66` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
+| `readme--as-a-library` | section | — | As a Library | `README.md:68` | — | use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain}; |
+| `readme--as-an-mcp-server` | section | — | As an MCP Server | `README.md:96` | — | Run as HTTP server: |
+| `readme--what-it-does-verified-by-code-tests` | section | — | What It Does (Verified by Code/Tests) | `README.md:108` | — | - JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport |
+| `readme--what-it-does-not-do-yet` | section | — | What It Does Not Do (Yet) | `README.md:118` | — | - Vector embeddings: Mock implementation only - no real embedding generation or similarity search |
+| `readme--architecture` | section | — | Architecture | `README.md:127` | — | ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐ |
+| `readme--development` | section | — | Development | `README.md:147` | — | 1. Install development dependencies: |
+| `readme--setup` | section | — | Setup | `README.md:149` | — | 1. Install development dependencies: |
+| `readme--available-commands` | section | — | Available Commands | `README.md:161` | — | This project uses [just](https://github.com/casey/just) for development tasks: |
+| `readme--code-quality` | section | — | Code Quality | `README.md:180` | — | - Formatting: cargo fmt (enforced) |
+| `readme--security-scanning` | section | — | Security Scanning | `README.md:189` | — | The project includes comprehensive security scanning: |
+| `readme--benchmarking` | section | — | Benchmarking | `README.md:198` | — | Performance benchmarks are included for critical paths: |
+| `readme--contributing` | section | — | Contributing | `README.md:207` | — | See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines. |
+| `readme--license` | section | — | License | `README.md:211` | — | Licensed under the MIT License. See [LICENSE](LICENSE) for details. |
+| `readme--status-roadmap` | section | — | Status & roadmap | `README.md:215` | — | - [Assessment & gaps](docs/ASSESSMENT.md) |
 | `rmcpauditplan` | section | — | RMCP (Rust MCP SDK) Security Audit Plan | `RMCP_AUDIT_PLAN.md:1` | — | Date: January 9, 2026 |
 | `rmcpauditplan--1.-clone-repository` | section | — | 1. Clone Repository | `RMCP_AUDIT_PLAN.md:10` | — | cd /home/kang/Documents/projects/2026/mcp |
 | `rmcpauditplan--2.-security-audit-areas` | section | — | 2. Security Audit Areas | `RMCP_AUDIT_PLAN.md:20` | — | grep -rn "unsafe" crates/rmcp/src/ |
@@ -431,6 +431,7 @@
 | `assessment--4.-branches` | section | — | 4. Branches | `docs/ASSESSMENT.md:56` | — | — |
 | `assessment--5.-integration-cabal-devmelopner` | section | — | 5. Integration (cabal-devmelopner) | `docs/ASSESSMENT.md:66` | — | See [ROADMAP.md](ROADMAP.md) for definition of done and API plan. |
 | `assessment--tero-index` | section | — | Tero index | `docs/ASSESSMENT.md:76` | — | Layer-1 citation index: [docs/tero-index/](tero-index/) (index.json, INDEX.md, MANIFEST.toml). |
+| `assessment--c0-honesty-pass-in-progress-this-wave` | section | — | C0 Honesty Pass (in progress, this wave) | `docs/ASSESSMENT.md:80` | — | - Docs claims aligned (README, src docs, Cargo keywords reviewed). |
 | `localchecks` | section | — | Local checks (CI parity) | `docs/LOCAL_CHECKS.md:1` | — | GitHub Actions workflows in this repo are manual only (workflowdispatch). |
 | `localchecks--run-everything-the-remote-job-would-run` | section | — | Run everything the remote job would run | `docs/LOCAL_CHECKS.md:6` | — | ./scripts/check.sh |
 | `localchecks--tero-index` | section | — | Tero index | `docs/LOCAL_CHECKS.md:19` | — | python3 ../tero-mcp/scripts/generateliteindex.py --root "$(pwd)" |

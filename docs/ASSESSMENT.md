@@ -76,3 +76,11 @@ See [ROADMAP.md](ROADMAP.md) for definition of done and API plan.
 ## Tero index
 
 Layer-1 citation index: [docs/tero-index/](tero-index/) (`index.json`, `INDEX.md`, `MANIFEST.toml`).
+
+## C0 Honesty Pass (in progress, this wave)
+
+- Docs claims aligned (README, src docs, Cargo keywords reviewed).
+- Semantic gated (enable_semantic=false default; retrieve_contexts no pseudo sim unless flag).
+- WS/SSE note added.
+- No "real RAG" claims.
+- Next: C0.3 token auth, C0.4 version, full check.sh + test. (See root ctx.md + docs/ROADMAP.md)

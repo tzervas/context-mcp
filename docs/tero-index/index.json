@@ -2333,7 +2333,7 @@
       "file": "README.md",
       "line": 60,
       "tag": "Empirical/Declared",
-      "summary": "Production-ready for context management and lightweight RAG. APIs are stable."
+      "summary": "Production-ready for context management, temporal tracking, and metadata query (session memory MCP)."
     },
     {
       "anchor": "readme--usage",
@@ -2341,7 +2341,7 @@
       "kind": "section",
       "title": "Usage",
       "file": "README.md",
-      "line": 64,
+      "line": 66,
       "tag": "Empirical/Declared",
       "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
     },
@@ -2351,7 +2351,7 @@
       "kind": "section",
       "title": "As a Library",
       "file": "README.md",
-      "line": 66,
+      "line": 68,
       "tag": "Empirical/Declared",
       "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
     },
@@ -2361,7 +2361,7 @@
       "kind": "section",
       "title": "As an MCP Server",
       "file": "README.md",
-      "line": 94,
+      "line": 96,
       "tag": "Empirical/Declared",
       "summary": "Run as HTTP server:"
     },
@@ -2371,7 +2371,7 @@
       "kind": "section",
       "title": "What It Does (Verified by Code/Tests)",
       "file": "README.md",
-      "line": 106,
+      "line": 108,
       "tag": "Empirical/Declared",
       "summary": "- JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport"
     },
@@ -2381,7 +2381,7 @@
       "kind": "section",
       "title": "What It Does Not Do (Yet)",
       "file": "README.md",
-      "line": 116,
+      "line": 118,
       "tag": "Empirical/Declared",
       "summary": "- Vector embeddings: Mock implementation only - no real embedding generation or similarity search"
     },
@@ -2391,7 +2391,7 @@
       "kind": "section",
       "title": "Architecture",
       "file": "README.md",
-      "line": 125,
+      "line": 127,
       "tag": "Empirical/Declared",
       "summary": "┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐"
     },
@@ -2401,7 +2401,7 @@
       "kind": "section",
       "title": "Development",
       "file": "README.md",
-      "line": 145,
+      "line": 147,
       "tag": "Empirical/Declared",
       "summary": "1. Install development dependencies:"
     },
@@ -2411,7 +2411,7 @@
       "kind": "section",
       "title": "Setup",
       "file": "README.md",
-      "line": 147,
+      "line": 149,
       "tag": "Empirical/Declared",
       "summary": "1. Install development dependencies:"
     },
@@ -2421,7 +2421,7 @@
       "kind": "section",
       "title": "Available Commands",
       "file": "README.md",
-      "line": 159,
+      "line": 161,
       "tag": "Empirical/Declared",
       "summary": "This project uses [just](https://github.com/casey/just) for development tasks:"
     },
@@ -2431,7 +2431,7 @@
       "kind": "section",
       "title": "Code Quality",
       "file": "README.md",
-      "line": 178,
+      "line": 180,
       "tag": "Empirical/Declared",
       "summary": "- Formatting: cargo fmt (enforced)"
     },
@@ -2441,7 +2441,7 @@
       "kind": "section",
       "title": "Security Scanning",
       "file": "README.md",
-      "line": 187,
+      "line": 189,
       "tag": "Empirical/Declared",
       "summary": "The project includes comprehensive security scanning:"
     },
@@ -2451,7 +2451,7 @@
       "kind": "section",
       "title": "Benchmarking",
       "file": "README.md",
-      "line": 196,
+      "line": 198,
       "tag": "Empirical/Declared",
       "summary": "Performance benchmarks are included for critical paths:"
     },
@@ -2461,7 +2461,7 @@
       "kind": "section",
       "title": "Contributing",
       "file": "README.md",
-      "line": 205,
+      "line": 207,
       "tag": "Empirical/Declared",
       "summary": "See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines."
     },
@@ -2471,7 +2471,7 @@
       "kind": "section",
       "title": "License",
       "file": "README.md",
-      "line": 209,
+      "line": 211,
       "tag": "Empirical/Declared",
       "summary": "Licensed under the MIT License. See [LICENSE](LICENSE) for details."
     },
@@ -2481,7 +2481,7 @@
       "kind": "section",
       "title": "Status & roadmap",
       "file": "README.md",
-      "line": 213,
+      "line": 215,
       "tag": "Empirical/Declared",
       "summary": "- [Assessment & gaps](docs/ASSESSMENT.md)"
     },
@@ -4142,6 +4142,16 @@
       "line": 76,
       "tag": "Empirical/Declared",
       "summary": "Layer-1 citation index: [docs/tero-index/](tero-index/) (index.json, INDEX.md, MANIFEST.toml)."
+    },
+    {
+      "anchor": "assessment--c0-honesty-pass-in-progress-this-wave",
+      "family": "doc",
+      "kind": "section",
+      "title": "C0 Honesty Pass (in progress, this wave)",
+      "file": "docs/ASSESSMENT.md",
+      "line": 80,
+      "tag": "Empirical/Declared",
+      "summary": "- Docs claims aligned (README, src docs, Cargo keywords reviewed)."
     },
     {
       "anchor": "localchecks",
