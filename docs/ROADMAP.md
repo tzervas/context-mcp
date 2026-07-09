@@ -37,6 +37,16 @@ C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade in
 
 **Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 merged to dev (cdb7f14). C0 items done + tero (504 items). W2 facade refs in docs point to wsfull-wave-2026-07-09-compact.md + dev-docs/schemas/common_memory_facade (cabal). Post-merge tero update + verification review posted. Continue per PR plan / Wave 1.
 
+## W2 Session Consumer Note (chore/w2-rollout-docs-wiring)
+
+Context-mcp session is W2 consumer in rollout (StructuredResponse/CommonMemoryAdapter + AgentDomain mirrors). 
+
+- Domain CONTEXT in facade for session memory_contexts (cabal agent + memory-gate cross).
+- See plan.md §2 (w2-rollout in_progress), wsfull-wave-2026-07-09-compact.md, dev-docs/schemas/ (examples), dev-mcp/servers/context-mcp.md (W2 usage), AGENTS.md here.
+- Tero-first cites to plan/wsfull. Append-only hygiene/update-tero/land/propagate/verify.
+
+Wave 0 updated with this for W2 wiring.
+
 ### Wave 1 — Real embedder interface
 
 | ID | Work |

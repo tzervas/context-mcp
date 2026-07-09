@@ -3,13 +3,13 @@
 > **Honesty:** Empirical/Declared — lite heading/line heuristic over markdown in context-mcp via tero-mcp/scripts/generate_lite_index.py; source files are ground truth. Generated 2026-07-09.
 > Use this index to find where to Read, not as authoritative ground truth.
 
-- **Items:** 504
+- **Items:** 506
 - **Flagged:** 0
 - **item_tag:** `Empirical/Declared`
 - **Machine index:** [`index.json`](./index.json)
 - **Manifest:** [`MANIFEST.toml`](./MANIFEST.toml)
 
-## doc (445 entries)
+## doc (447 entries)
 
 | Anchor | Kind | Id | Title | File:Line | Status | Summary |
 |---|---|---|---|---|---|---|
@@ -32,6 +32,7 @@
 | `agents--local-checks` | section | — | Local checks | `AGENTS.md:38` | — | Look for: |
 | `agents--further-reading` | section | — | Further reading | `AGENTS.md:46` | — | - README.md |
 | `agents--latest-updates-w2-facade-integration-2026-07-09` | section | — | Latest Updates (W2 Facade + Integration, 2026-07-09) | `AGENTS.md:56` | — | - C0 honesty gate complete (feature/ctx-c0-honesty): enablesemantic=false default (CLI --enable-semantic to opt-in; gated in RagProcessor + retrieve; pseudo on… |
+| `agents--w2-session-as-consumer-chore-w2-rollout-docs-wiring` | section | — | W2: Session as Consumer (chore/w2-rollout-docs-wiring) | `AGENTS.md:69` | — | Context session noted as W2 consumer: session memory (temporal/context items) consumed via CommonMemoryAdapter (AgentDomain.CONTEXT) -> feeds StructuredRespons… |
 | `assessmentreport` | note | — | Context-MCP Server Assessment Report | `ASSESSMENT_REPORT.md:1` | — | Test Date: January 10, 2026 |
 | `assessmentreport--executive-summary` | section | — | Executive Summary | `ASSESSMENT_REPORT.md:10` | — | The context-mcp server has been comprehensively tested across all 9 available tools with 100% test pass rate (23/23 tests passed). Performance benchmarks demon… |
 | `assessmentreport--test-coverage` | section | — | Test Coverage | `ASSESSMENT_REPORT.md:16` | — | 1. storecontext - Store contexts with metadata and TTL |
@@ -443,17 +444,18 @@
 | `roadmap--definition-of-done-efficient-legitimate-rag` | section | — | Definition of done — efficient legitimate RAG | `docs/ROADMAP.md:10` | — | All required before any “RAG” marketing or cabal PROD-6 consumption: |
 | `roadmap--waves` | section | — | Waves | `docs/ROADMAP.md:24` | — | C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos… |
 | `roadmap--wave-0-honesty-session-product-ship-now` | section | — | Wave 0 — Honesty & session product (ship now) | `docs/ROADMAP.md:26` | — | C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos… |
-| `roadmap--wave-1-real-embedder-interface` | section | — | Wave 1 — Real embedder interface | `docs/ROADMAP.md:40` | — | — |
-| `roadmap--wave-2-vector-store-retrieve` | section | — | Wave 2 — Vector store & retrieve | `docs/ROADMAP.md:50` | — | — |
-| `roadmap--wave-3-efficiency-eval` | section | — | Wave 3 — Efficiency & eval | `docs/ROADMAP.md:59` | — | — |
-| `roadmap--api-plan` | section | — | API plan | `docs/ROADMAP.md:71` | — | — |
-| `roadmap--mcp-tools-current-session-kv-keep` | section | — | MCP tools — current (session KV; keep) | `docs/ROADMAP.md:73` | — | — |
-| `roadmap--mcp-tools-planned-rag` | section | — | MCP tools — planned (RAG) | `docs/ROADMAP.md:84` | — | { |
-| `roadmap--response-envelope-target` | section | — | Response envelope (target) | `docs/ROADMAP.md:93` | — | { |
-| `roadmap--library-api-rust` | section | — | Library API (Rust) | `docs/ROADMAP.md:117` | — | // Target shape |
-| `roadmap--config-cli-env` | section | — | Config (CLI / env) | `docs/ROADMAP.md:133` | — | — |
-| `roadmap--pr-plan` | section | — | PR plan | `docs/ROADMAP.md:144` | — | 1. Docs assessment + roadmap (this) |
-| `roadmap--relationship-to-tero` | section | — | Relationship to Tero | `docs/ROADMAP.md:156` | — | Do not merge responsibilities; agents may call both. |
+| `roadmap--w2-session-consumer-note-chore-w2-rollout-docs-wiring` | section | — | W2 Session Consumer Note (chore/w2-rollout-docs-wiring) | `docs/ROADMAP.md:40` | — | Context-mcp session is W2 consumer in rollout (StructuredResponse/CommonMemoryAdapter + AgentDomain mirrors). |
+| `roadmap--wave-1-real-embedder-interface` | section | — | Wave 1 — Real embedder interface | `docs/ROADMAP.md:50` | — | — |
+| `roadmap--wave-2-vector-store-retrieve` | section | — | Wave 2 — Vector store & retrieve | `docs/ROADMAP.md:60` | — | — |
+| `roadmap--wave-3-efficiency-eval` | section | — | Wave 3 — Efficiency & eval | `docs/ROADMAP.md:69` | — | — |
+| `roadmap--api-plan` | section | — | API plan | `docs/ROADMAP.md:81` | — | — |
+| `roadmap--mcp-tools-current-session-kv-keep` | section | — | MCP tools — current (session KV; keep) | `docs/ROADMAP.md:83` | — | — |
+| `roadmap--mcp-tools-planned-rag` | section | — | MCP tools — planned (RAG) | `docs/ROADMAP.md:94` | — | { |
+| `roadmap--response-envelope-target` | section | — | Response envelope (target) | `docs/ROADMAP.md:103` | — | { |
+| `roadmap--library-api-rust` | section | — | Library API (Rust) | `docs/ROADMAP.md:127` | — | // Target shape |
+| `roadmap--config-cli-env` | section | — | Config (CLI / env) | `docs/ROADMAP.md:143` | — | — |
+| `roadmap--pr-plan` | section | — | PR plan | `docs/ROADMAP.md:154` | — | 1. Docs assessment + roadmap (this) |
+| `roadmap--relationship-to-tero` | section | — | Relationship to Tero | `docs/ROADMAP.md:166` | — | Do not merge responsibilities; agents may call both. |
 | `readme-2` | other | — | Tero index (Layer 1) | `docs/tero-index/README.md:1` | — | Machine + human citation index for this repository. |
 | `readme--regenerate` | section | — | Regenerate | `docs/tero-index/README.md:13` | — | python3 /path/to/tero-mcp/scripts/generateliteindex.py --root $(pwd) |
 | `readme--or-if-tero-mcp-is-a-sibling` | other | — | or if tero-mcp is a sibling: | `docs/tero-index/README.md:17` | — | python3 ../tero-mcp/scripts/generateliteindex.py --root $(pwd) |
