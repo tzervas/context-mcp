@@ -87,3 +87,5 @@ Layer-1 citation index: [docs/tero-index/](tero-index/) (`index.json`, `INDEX.md
 - Tero reindex included (503 items).
 - Part of wsfull-2026-07-09 + W2 facade (common memory facade integration; see dev-docs/schemas + cabal). Next per ROADMAP: Wave 1 embedder.
 - Verified via tero text_search ("C0", "honesty", "facade", "wave"), hygiene, checks. (See root ctx.md + docs/ROADMAP.md + compact)
+
+**Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 landed+merged. C0 honesty pass complete. Tero reindex included. W2 common memory facade integration referenced (wsfull-wave-2026-07-09-compact.md + cabal facade in dev-docs/schemas). Post-merge verification review comment + update-tero.sh + dev propagation per swarm task. All tero-grounded, checks clean.
