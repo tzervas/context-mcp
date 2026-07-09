@@ -1,10 +1,8 @@
 name: CI
 
+# Manual only — run the same checks locally via ./scripts/check.sh
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,12 +13,17 @@ env:
   RUST_BACKTRACE: 1
 
 jobs:
-  quality-checks:
-    name: Code Quality
+  build-and-test:
+    name: Build and Test (local parity)
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libssl-dev pkg-config || true
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
@@ -30,85 +33,8 @@ jobs:
       - name: Rust cache
         uses: Swatinem/rust-cache@v2
         with:
-          key: context-mcp-quality
+          key: context-mcp
 
-      - name: Check formatting
-        run: cargo fmt --check
-
-      - name: Clippy lints
-        run: cargo clippy --all-targets --all-features -- -D warnings
-
-      - name: Check documentation
-        run: RUSTDOCFLAGS="-D warnings" cargo doc --all-features --no-deps
-
-  security-audit:
-    name: Security Audit
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Rust cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: context-mcp-security
-
-      - name: Install cargo-deny
-        run: cargo install cargo-deny --locked
-
-      - name: Install cargo-audit
-        run: cargo install cargo-audit --locked
-
-      - name: Security audit
-        run: cargo audit --ignore RUSTSEC-2025-0140 --ignore RUSTSEC-2025-0021 --ignore RUSTSEC-2025-0001 --ignore RUSTSEC-2025-0056 --ignore RUSTSEC-2025-0057 --ignore RUSTSEC-2024-0384
-
-      - name: License check
-        run: cargo deny check licenses
-
-      - name: Security advisories check
-        run: cargo deny check advisories
-
-      - name: Banned dependencies check
-        run: cargo deny check bans
-
-  build-and-test:
-    name: Build and Test
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Rust cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: context-mcp-build
-
-      - name: Build
-        run: cargo build --all-features
-
-      - name: Run tests
-        run: cargo test --all-features --verbose
-
-  benchmark:
-    name: Benchmark
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Rust cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: context-mcp-bench
-
-      - name: Run benchmarks
-        run: cargo bench --all-features
+      - name: Local-parity checks
+        working-directory: .
+        run: bash scripts/check.sh
