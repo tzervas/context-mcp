@@ -209,3 +209,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution gu
 ## License
 
 Licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Status & roadmap
+
+- [Assessment & gaps](docs/ASSESSMENT.md)
+- [Product roadmap & API plans](docs/ROADMAP.md)
