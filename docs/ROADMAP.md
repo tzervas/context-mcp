@@ -27,11 +27,13 @@ All required before any “RAG” marketing or cabal PROD-6 consumption:
 
 | ID | Work |
 |----|------|
-| C0.1 | Docs: remove “production RAG” claims; crates.io keywords review | (done in C0 PR: README, src/*, Cargo, ASSESSMENT) |
-| C0.2 | Semantic mode off by default OR hard-error if no real embedder | (done: RagConfig.enable_semantic=false default; gated in score_context + tool desc) |
+| C0.1 | Docs: remove “production RAG” claims; crates.io keywords review | (done in C0 PR #29: README, src/*, Cargo, ASSESSMENT) |
+| C0.2 | Semantic mode off by default OR hard-error if no real embedder | (done: RagConfig.enable_semantic=false default; gated in score_context + tool desc; CLI --enable-semantic) |
 | C0.3 | Token auth for HTTP | (scoped; stub or defer per orch if shared) |
 | C0.4 | Align version tags with 0.2.0 story | (0.2.0 in Cargo; tags later) |
 | C0.5 | Fix WebSocket/SSE overclaims | (done: README + server.rs comments updated to HTTP/POST+SSE) |
+
+C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed post-changes. See compact wsfull-wave-2026-07-09.
 
 ### Wave 1 — Real embedder interface
 

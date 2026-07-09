@@ -61,7 +61,9 @@ See [ASSESSMENT_REPORT.md](ASSESSMENT_REPORT.md) for detailed performance analys
 
 Production-ready for context management, temporal tracking, and metadata query (session memory MCP).
 **No legitimate RAG yet**: current "semantic" paths use word-hash pseudo-embeddings (demo only).
-See docs/ROADMAP.md + docs/ASSESSMENT.md for Wave 0+ gates before any RAG claims. (C0 honesty pass)
+See docs/ROADMAP.md + docs/ASSESSMENT.md for Wave 0+ gates before any RAG claims. (C0 honesty gate complete in PR #29: enable_semantic=false default.)
+
+**W2 / Facade**: Part of common memory vision (tero L1 citations + context-mcp session/RAG + memory-gate domains). See dev-docs/schemas/ for W2 StructuredResponse + facade adapters (used in cabal-devmelopner). Context-mcp integrates as session backend today; real RAG post-Wave 1-2. PR #29 + tero reindex capture updates. (wsfull wave 2026-07-09)
 
 ## Usage
 

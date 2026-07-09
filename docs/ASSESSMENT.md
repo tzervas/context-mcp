@@ -77,10 +77,13 @@ See [ROADMAP.md](ROADMAP.md) for definition of done and API plan.
 
 Layer-1 citation index: [docs/tero-index/](tero-index/) (`index.json`, `INDEX.md`, `MANIFEST.toml`).
 
-## C0 Honesty Pass (in progress, this wave)
+## C0 Honesty Pass (complete, PR #29 / feature/ctx-c0-honesty)
 
-- Docs claims aligned (README, src docs, Cargo keywords reviewed).
-- Semantic gated (enable_semantic=false default; retrieve_contexts no pseudo sim unless flag).
+- Docs claims aligned (README, src docs, Cargo keywords reviewed; "rag" now aspirational note).
+- Semantic gated (enable_semantic=false default in RagConfig + CLI; retrieve_contexts uses only metadata/temporal/keyword unless --enable-semantic; pseudo + warning when on. See rag.rs, tools.rs, main.rs).
 - WS/SSE note added.
 - No "real RAG" claims.
-- Next: C0.3 token auth, C0.4 version, full check.sh + test. (See root ctx.md + docs/ROADMAP.md)
+- C0 items (C0.1-C0.2, C0.5) done; C0.3/4 scoped/deferred.
+- Tero reindex included (503 items).
+- Part of wsfull-2026-07-09 + W2 facade (common memory facade integration; see dev-docs/schemas + cabal). Next per ROADMAP: Wave 1 embedder.
+- Verified via tero text_search ("C0", "honesty", "facade", "wave"), hygiene, checks. (See root ctx.md + docs/ROADMAP.md + compact)
