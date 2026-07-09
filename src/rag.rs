@@ -35,6 +35,10 @@ pub struct RagConfig {
     pub embedding_strategy: String,
     /// Weight for semantic similarity in final score
     pub semantic_weight: f64,
+    /// Gate for semantic similarity (C0 honesty): false until real embedder + vector + eval gates.
+    /// When false, retrieve_contexts uses only metadata/temporal/keyword scores (no pseudo sim).
+    /// When true, still falls back to text_to_pseudo_embedding (demo) until real impl in Wave 1+.
+    pub enable_semantic: bool,
 }
 
 impl Default for RagConfig {
@@ -49,6 +53,7 @@ impl Default for RagConfig {
             chunk_size: 1000,
             embedding_strategy: "sparse".to_string(),
             semantic_weight: 0.2,
+            enable_semantic: false, // C0: off by default (fail closed for semantic claims)
         }
     }
 }
@@ -98,6 +103,8 @@ pub struct RetrievalResult {
 pub struct RagProcessor {
     config: RagConfig,
     store: Arc<ContextStore>,
+    #[allow(dead_code)]
+    // used in with_embeddings ctor + future real embedder wiring (Wave1); C0 gates semantic off
     embedding_generator: Option<Arc<dyn QuantizedEmbeddingGenerator>>,
 }
 
@@ -272,14 +279,16 @@ impl RagProcessor {
             0.5 // Neutral
         };
 
-        // Optional semantic similarity using quantized embeddings
-        let similarity_score: Option<f64> =
-            if let (Some(text_query), Some(_)) = (&query.text, &self.embedding_generator) {
+        // Optional semantic similarity (C0 gated).
+        // enable_semantic + embedding_generator present -> use (currently always text_to_pseudo_embedding demo).
+        // Until Wave 1 real embedder, this path must not be on by default, and callers/docs must reflect.
+        let similarity_score: Option<f64> = if self.config.enable_semantic {
+            if let Some(text_query) = &query.text {
                 // Compute embeddings for query and context
                 // Note: In production, these would be cached during retrieval
                 if let (Ok(query_embedding), Ok(ctx_embedding)) = (
                     // For now, use a simple text hash-based pseudo-embedding
-                    // In production, use actual embedding generator
+                    // In production, use actual embedding generator (see docs/ROADMAP.md Wave 1)
                     self.text_to_pseudo_embedding(text_query),
                     self.text_to_pseudo_embedding(&ctx.content),
                 ) {
@@ -293,7 +302,10 @@ impl RagProcessor {
                 }
             } else {
                 None
-            };
+            }
+        } else {
+            None
+        };
 
         let breakdown = ScoreBreakdown {
             temporal: temporal_score,
@@ -324,9 +336,9 @@ impl RagProcessor {
 
     /// Convert text to a simple pseudo-embedding for similarity computation
     fn text_to_pseudo_embedding(&self, text: &str) -> Result<Vec<f32>, String> {
-        // Warning: This is a placeholder pseudo-embedding for demonstration only.
-        // In production, use actual embedding models for meaningful semantic similarity.
-        eprintln!("Warning: Using pseudo-embeddings for similarity computation. This is for demonstration only and does not provide real semantic meaning. Use actual embedding models in production.");
+        // C0 honesty: This is word-hash + sin pseudo (no semantics). Only reached if enable_semantic=true.
+        // Never claim real RAG. Real embedder + vector store in Wave 1+ per ROADMAP.
+        eprintln!("Warning: Using pseudo-embeddings (word hash) for similarity. C0-gated; demo only. No real semantic meaning. See docs/ROADMAP.md");
 
         // Simple hash-based pseudo-embedding: split into words and create feature vector
         let words: Vec<&str> = text.split_whitespace().take(100).collect();

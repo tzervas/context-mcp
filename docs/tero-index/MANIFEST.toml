@@ -4,8 +4,8 @@
 [index]
 schema = "tero-layer1-v1"
 repo = "context-mcp"
-generated_at = "2026-07-09T02:45:56Z"
-item_count = 502
+generated_at = "2026-07-09T12:25:53Z"
+item_count = 504
 source_files = 20
 generator = "tero-mcp/scripts/generate_lite_index.py"
 honesty = "Empirical/Declared — markdown heading heuristic; source is ground truth"

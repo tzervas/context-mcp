@@ -53,3 +53,14 @@ Run checks before considering work complete.
 
 Leave mycelium isolated; all coordination here targets the other repos + cabal.
 
+## Latest Updates (W2 Facade + Integration, 2026-07-09)
+
+- C0 honesty gate complete (feature/ctx-c0-honesty): enable_semantic=false default (CLI --enable-semantic to opt-in; gated in RagProcessor + retrieve; pseudo only + warning when enabled). Docs/keywords/claims aligned (no false RAG). See docs/ROADMAP.md Wave 0 (C0 items marked done).
+- PR #29: chore(tero): re-index after W2 facade + wsfull self-improving (on feature/ctx-c0-honesty). Includes C0 gate code+docs, tero reindex (503 items post facade), honesty updates.
+- W2: Common memory facade integration (see dev-docs/schemas/ for StructuredResponse + common_memory_facade stubs; used with tero + context-mcp + memory-gate domains). Context-mcp provides session + future RAG (post gates).
+- Docs (AGENTS.md, .claude/kickoffs/README.md, README.md, docs/ROADMAP.md, docs/ASSESSMENT.md) updated to latest compact: C0 gate, facade, W2, PR #29, tero reindex, wsfull-2026-07-09 state.
+- Tero index updated post-docs + included; run via update-tero.sh.
+- Kickoffs, agent context, claude files refreshed (root + per-repo).
+- Part of wsfull wave: tero-first, hygiene, pr-review (adapted), commit+push, review, merge if clean.
+- Use tero-first + cabal for work. Always: update docs + tero as part of PR process. Honesty: Empirical/Declared tags on claims.
+
