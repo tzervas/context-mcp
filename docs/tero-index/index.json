@@ -193,6 +193,16 @@
       "summary": "- C0 honesty gate complete (feature/ctx-c0-honesty): enablesemantic=false default (CLI --enable-semantic to opt-in; gated in RagProcessor + retrieve; pseudo on…"
     },
     {
+      "anchor": "agents--w2-session-as-consumer-chore-w2-rollout-docs-wiring",
+      "family": "doc",
+      "kind": "section",
+      "title": "W2: Session as Consumer (chore/w2-rollout-docs-wiring)",
+      "file": "AGENTS.md",
+      "line": 69,
+      "tag": "Empirical/Declared",
+      "summary": "Context session noted as W2 consumer: session memory (temporal/context items) consumed via CommonMemoryAdapter (AgentDomain.CONTEXT) -> feeds StructuredRespons…"
+    },
+    {
       "anchor": "assessmentreport",
       "family": "doc",
       "kind": "note",
@@ -4265,12 +4275,22 @@
       "summary": "C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos…"
     },
     {
+      "anchor": "roadmap--w2-session-consumer-note-chore-w2-rollout-docs-wiring",
+      "family": "doc",
+      "kind": "section",
+      "title": "W2 Session Consumer Note (chore/w2-rollout-docs-wiring)",
+      "file": "docs/ROADMAP.md",
+      "line": 40,
+      "tag": "Empirical/Declared",
+      "summary": "Context-mcp session is W2 consumer in rollout (StructuredResponse/CommonMemoryAdapter + AgentDomain mirrors)."
+    },
+    {
       "anchor": "roadmap--wave-1-real-embedder-interface",
       "family": "doc",
       "kind": "section",
       "title": "Wave 1 — Real embedder interface",
       "file": "docs/ROADMAP.md",
-      "line": 40,
+      "line": 50,
       "tag": "Empirical/Declared"
     },
     {
@@ -4279,7 +4299,7 @@
       "kind": "section",
       "title": "Wave 2 — Vector store & retrieve",
       "file": "docs/ROADMAP.md",
-      "line": 50,
+      "line": 60,
       "tag": "Empirical/Declared"
     },
     {
@@ -4288,7 +4308,7 @@
       "kind": "section",
       "title": "Wave 3 — Efficiency & eval",
       "file": "docs/ROADMAP.md",
-      "line": 59,
+      "line": 69,
       "tag": "Empirical/Declared"
     },
     {
@@ -4297,7 +4317,7 @@
       "kind": "section",
       "title": "API plan",
       "file": "docs/ROADMAP.md",
-      "line": 71,
+      "line": 81,
       "tag": "Empirical/Declared"
     },
     {
@@ -4306,7 +4326,7 @@
       "kind": "section",
       "title": "MCP tools — current (session KV; keep)",
       "file": "docs/ROADMAP.md",
-      "line": 73,
+      "line": 83,
       "tag": "Empirical/Declared"
     },
     {
@@ -4315,7 +4335,7 @@
       "kind": "section",
       "title": "MCP tools — planned (RAG)",
       "file": "docs/ROADMAP.md",
-      "line": 84,
+      "line": 94,
       "tag": "Empirical/Declared",
       "summary": "{"
     },
@@ -4325,7 +4345,7 @@
       "kind": "section",
       "title": "Response envelope (target)",
       "file": "docs/ROADMAP.md",
-      "line": 93,
+      "line": 103,
       "tag": "Empirical/Declared",
       "summary": "{"
     },
@@ -4335,7 +4355,7 @@
       "kind": "section",
       "title": "Library API (Rust)",
       "file": "docs/ROADMAP.md",
-      "line": 117,
+      "line": 127,
       "tag": "Empirical/Declared",
       "summary": "// Target shape"
     },
@@ -4345,7 +4365,7 @@
       "kind": "section",
       "title": "Config (CLI / env)",
       "file": "docs/ROADMAP.md",
-      "line": 133,
+      "line": 143,
       "tag": "Empirical/Declared"
     },
     {
@@ -4354,7 +4374,7 @@
       "kind": "section",
       "title": "PR plan",
       "file": "docs/ROADMAP.md",
-      "line": 144,
+      "line": 154,
       "tag": "Empirical/Declared",
       "summary": "1. Docs assessment + roadmap (this)"
     },
@@ -4364,7 +4384,7 @@
       "kind": "section",
       "title": "Relationship to Tero",
       "file": "docs/ROADMAP.md",
-      "line": 156,
+      "line": 166,
       "tag": "Empirical/Declared",
       "summary": "Do not merge responsibilities; agents may call both."
     },
