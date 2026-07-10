@@ -74,3 +74,10 @@ See: plan.md:44 w2-rollout, dev-docs/schemas/structured_response*.example + comm
 
 Append-only; tero cites to plan/wsfull; hygiene + update-tero; land --no-ff dev/main + propagate. Verify tero hits new sections.
 
+## Semver + Releases (2026-07-10 appended)
+Semver baseline for this supportive tooling/helper extracted from mycelium (read-only clone at /root/git/isolated/mycelium, perms 555).
+Easily ported universal implementation.
+Baseline v0.2.0.
+Process: local build, hygiene, tero cites, plan.md, local podman GHCR pref (no Actions).
+No mods to mycelium core.
+Cites: plan.md, user extraction rules (tooling only, read-only clone).
