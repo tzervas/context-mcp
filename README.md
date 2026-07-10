@@ -220,6 +220,4 @@ Licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 - [Assessment & gaps](docs/ASSESSMENT.md)
 - [Product roadmap & API plans](docs/ROADMAP.md)
-## Semver baseline (2026-07-10)
-v0.2.0 for context-mcp (supportive tooling from mycelium read-only).
-See AGENTS.md.
+
