@@ -30,3 +30,7 @@ Artifacts land in `docs/tero-index/` (`index.json`, `INDEX.md`, `MANIFEST.toml`,
 ## Remote (optional)
 
 In GitHub: **Actions → CI → Run workflow**.
+
+## Semver Baseline v0.2.0 (2026-07-09, append-only)
+
+Context for release process in semver baseline: local podman GHCR preference (no Actions) per chore/semver-baseline-v0.2.0. See CHANGELOG.md [0.2.0] Semver Baseline (Tero cites from /root/git/scripts/tero.sh context-mcp text_search, plan.md, dev-workflow). Hygiene: always run `./scripts/check.sh` locally. (Append-only; tero-first; branch/worktree guards.)

@@ -220,3 +220,7 @@ Licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 - [Assessment & gaps](docs/ASSESSMENT.md)
 - [Product roadmap & API plans](docs/ROADMAP.md)
+
+## Semver Baseline v0.2.0 (2026-07-09, append-only)
+
+v0.2.0 baseline tag established (chore/semver-baseline-v0.2.0 branch only; worktree-guard). Cargo manifest already 0.2.0. Tero-first scoped via script searches ("version"/"release"). Cites plan.md (dev-workflow/guards/append-only/C0.4), local podman GHCR no Actions pref. See CHANGELOG.md for full semver section + Tero citation traces. (Append-only; scoped to context-mcp.)

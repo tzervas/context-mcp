@@ -74,3 +74,11 @@ See: plan.md:44 w2-rollout, dev-docs/schemas/structured_response*.example + comm
 
 Append-only; tero cites to plan/wsfull; hygiene + update-tero; land --no-ff dev/main + propagate. Verify tero hits new sections.
 
+## Semver Baseline v0.2.0 (2026-07-09, append-only)
+
+Semver baseline established for context-mcp (see CHANGELOG.md [0.2.0] Semver Baseline section for Tero cites + full details). 
+
+Tero-first: ran `/root/git/scripts/tero.sh context-mcp text_search "version"` + "release" + similar (cites from tero-index include contributing--release-process, changelog entries, context-mcp-plan--version-*, install checks; EXPLAIN + citations always provided). 
+
+Per plan.md + dev-workflow (branch-guard only on chore/semver-baseline-v0.2.0 via worktree-guard /tmp/semver-context-mcp; append-only; signed commits; local podman GHCR pref no Actions). C0.4 alignment done (tags now match manifest 0.2.0). Hygiene ran. (Tero-grounded cites.)
+

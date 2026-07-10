@@ -171,3 +171,11 @@ impl ContextStore {
 | context-mcp | Agent session memory → **plus** legitimate RAG over stored contexts |
 
 Do not merge responsibilities; agents may call both.
+
+## Semver Baseline v0.2.0 (2026-07-09, append-only)
+
+C0.4 ("Align version tags with 0.2.0 story") complete. Cargo 0.2.0 manifest aligned via annotated/signed tag v0.2.0 on `chore/semver-baseline-v0.2.0` (worktree /tmp/semver-context-mcp; branch-guard: no dev/main touch). 
+
+Tero-first: `/root/git/scripts/tero.sh context-mcp text_search "version"|"release"|"changelog"` (cites: context-mcp-plan--version-*, contributing--release-process, changelog entries, install--check-version etc from docs/tero-index; EXPLAIN traces + resolvable citations). 
+
+Per plan.md (core: Tero-first/dev-workflow/branch-guard/worktree-guard/append-only/signed -S; C0.4 ref; w2-rollout). Release: local podman GHCR preference (no Actions). See full semver section in CHANGELOG.md. Hygiene + checks passed. (Tero-grounded; append-only.)

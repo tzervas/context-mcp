@@ -124,6 +124,8 @@ Releases are automated via GitHub Actions:
 4. Release is published to crates.io
 5. GitHub release is created
 
+**Note (semver baseline v0.2.0, append-only):** For this baseline (chore/semver-baseline-v0.2.0), preference is local podman + GHCR (no GitHub Actions). See CHANGELOG.md [0.2.0] Semver Baseline (Tero-first via script text_search "release", cites plan.md, LOCAL_CHECKS.md). Actual baseline used local execution + gh cli for tag/release.
+
 ## Getting Help
 
 - **Issues**: Report bugs or request features on GitHub
