@@ -1,4 +1,19 @@
-target/
 
+# Local data / persistence backends
+# Local secrets / environment
+# OS / editor cruft
 # Test results
+*.db
+*.key
+*.pem
+*.sled
+*.swp
+.DS_Store
+.env
+.env.*
+.idea/
+.venv-check/
+.vscode/
+/data/
+target/
 test_results*.txt
