@@ -8,7 +8,7 @@ license = "MIT"
 description = "MCP server for context storage, text-based retrieval, and temporal tracking with optional persistence"
 repository = "https://github.com/tzervas/context-mcp"
 documentation = "https://docs.rs/context-mcp/latest/context_mcp/"
-keywords = ["mcp", "context", "memory", "temporal", "rag"]  # rag is aspirational (Wave 0+); current is text+metadata only until gates pass
+keywords = ["mcp", "rag", "context", "memory", "temporal"]
 categories = ["development-tools", "memory-management"]
 
 [package.metadata.docs.rs]
@@ -27,12 +27,12 @@ serde_json = "=1.0.149"
 
 # HTTP/WebSocket for MCP
 axum = { version = "=0.8.8", features = ["ws"], optional = true }
-tower = { version = "=0.5.3", optional = true }
+tower = { version = "=0.5.2", optional = true }
 tower-http = { version = "=0.6.8", features = ["cors", "trace"], optional = true }
 
 # Storage backends
 # In-memory with LRU
-lru = "=0.18.0"
+lru = "=0.16.3"
 # Disk persistence
 sled = { version = "=0.34.7", optional = true }
 # Optional: vector similarity (can use embeddenator core)
@@ -44,7 +44,7 @@ uuid = { version = "=1.19.0", features = ["v4", "serde"] }
 base64 = "=0.22.1"
 
 # Time and temporal reasoning
-chrono = { version = "=0.4.43", features = ["serde"] }
+chrono = { version = "=0.4.42", features = ["serde"] }
 humantime = "=2.3.0"
 
 # Logging and tracing
@@ -53,7 +53,7 @@ tracing-subscriber = { version = "=0.3.22", features = ["env-filter", "json"] }
 
 # Error handling
 thiserror = "=2.0.17"
-anyhow = "=1.0.103"
+anyhow = "=1.0.100"
 
 # CPU optimization
 rayon = "=1.11.0"
@@ -62,7 +62,7 @@ rayon = "=1.11.0"
 clap = { version = "=4.5.54", features = ["derive"] }
 
 # Random
-rand = "=0.9.4"
+rand = "=0.9.2"
 
 # Embeddings and quantization
 # Dense embeddings for baseline comparison
@@ -81,12 +81,7 @@ tempfile = "=3.24.0"
 criterion = { version = "=0.8.1", features = ["async_tokio"] }
 
 # Development tools
-# cargo-audit is installed standalone in CI (see .github/workflows/ci.yml,
-# release.yml, setup-dev.sh: `cargo install cargo-audit --locked`) rather
-# than as a project dependency. Listing it here pulled its own heavy
-# transitive tree (rustsec/gix/reqwest/tame-index) into Cargo.lock, which
-# was the source of several unrelated RustSec advisories that never
-# actually ship in this crate's binary or tests.
+cargo-audit = "=0.22.0"
 # cargo-deny = "0.19"
 
 [features]
