@@ -119,7 +119,8 @@ dev: check build test bench docs
 pre-commit: fmt clippy test security docs-check
 
 # CI simulation (what runs in GitHub Actions)
-ci: fmt-check clippy build test bench audit licenses
+ci:
+    bash scripts/check.sh
 
 # === RELEASE PREPARATION ===
 

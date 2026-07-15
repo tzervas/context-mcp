@@ -134,7 +134,7 @@ impl ToolRegistry {
     fn retrieve_contexts_tool(&self) -> Tool {
         Tool {
             name: "retrieve_contexts".to_string(),
-            description: Some("Retrieve contexts using RAG with scoring".to_string()),
+            description: Some("Retrieve contexts using metadata/temporal/keyword scoring (+ optional gated semantic; C0: semantic off by default, uses pseudo only when explicitly enabled)".to_string()),
             input_schema: InputSchema::object()
                 .with_property("text", PropertySchema::string("Text query"))
                 .with_property("domain", PropertySchema::string("Domain filter"))
