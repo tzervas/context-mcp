@@ -1,6 +1,7 @@
 //! MCP server implementation using Axum
 //!
-//! Provides HTTP/SSE transport for the context management MCP server.
+//! Provides HTTP (JSON-RPC POST + SSE) transport for the context management MCP server.
+//! (WebSocket support partial via axum feature; not full MCP WS session yet - C0 honesty)
 
 #[cfg(feature = "server")]
 use axum::{

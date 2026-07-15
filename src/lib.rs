@@ -7,9 +7,12 @@
 //!
 //! - **Multi-tier Storage**: In-memory LRU cache with optional sled disk persistence
 //! - **Temporal Tracking**: Timestamps, age tracking, and time-based filtering
-//! - **Text-Based Retrieval**: CPU-optimized parallel text matching and scoring
+//! - **Text-Based Retrieval**: CPU-optimized parallel text matching and scoring (metadata + keyword)
 //! - **Screening Status**: Fields for tracking security screening state (no active integration)
-//! - **MCP Protocol**: JSON-RPC server with HTTP/WebSocket and stdio transports
+//! - **MCP Protocol**: JSON-RPC server with HTTP (POST + SSE) and stdio transports
+//!
+//! **Honesty note (C0)**: No real embeddings/vector RAG yet. "retrieve_contexts" similarity uses
+//! word-hash pseudo only (gated; off-by-default for semantic). See docs/ROADMAP.md Wave 0.
 //!
 //! ## Architecture
 //!

@@ -4,7 +4,7 @@
 [![Documentation](https://docs.rs/context-mcp/badge.svg)](https://docs.rs/context-mcp/latest/context_mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-MCP server for context management, temporal metadata, and lightweight retrieval plumbing.
+MCP server for context management, temporal metadata, and lightweight (non-semantic) retrieval plumbing.
 
 This crate provides a "memory service" for agents: store/retrieve context items with timestamps and metadata, supporting basic query/retrieval patterns via text matching and filtering.
 
@@ -38,7 +38,7 @@ context-mcp --host 127.0.0.1 --port 3000
 - **Multi-tier Storage**: In-memory LRU cache with optional sled-based disk persistence
 - **Temporal Tracking**: Timestamps, age tracking, and time-based filtering for context relevance
 - **CPU-Optimized Retrieval**: Parallel processing with rayon for text-based context queries
-- **MCP Protocol Support**: JSON-RPC server implementation with HTTP/WebSocket and stdio transports
+- **MCP Protocol Support**: JSON-RPC server implementation with HTTP (POST + SSE) and stdio transports (WebSocket not yet fully wired for MCP)
 - **Screening Status Fields**: Built-in fields for tracking security screening state (integration not included)
 
 ## Performance
@@ -59,7 +59,13 @@ See [ASSESSMENT_REPORT.md](ASSESSMENT_REPORT.md) for detailed performance analys
 
 ## Status
 
-Production-ready for context management and lightweight RAG. APIs are stable.
+Production-ready for context management, temporal tracking, and metadata query (session memory MCP).
+**No legitimate RAG yet**: current "semantic" paths use word-hash pseudo-embeddings (demo only).
+See docs/ROADMAP.md + docs/ASSESSMENT.md for Wave 0+ gates before any RAG claims. (C0 honesty gate complete in PR #29: enable_semantic=false default.)
+
+**W2 / Facade**: Part of common memory vision (tero L1 citations + context-mcp session/RAG + memory-gate domains). See dev-docs/schemas/ for W2 StructuredResponse + facade adapters (used in cabal-devmelopner). Context-mcp integrates as session backend today; real RAG post-Wave 1-2. PR #29 + tero reindex capture updates. (wsfull wave 2026-07-09)
+
+**Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 (feature/ctx-c0-honesty) merged. C0 honesty gate landed (semantic=false default), tero reindexed. References wsfull-wave-2026-07-09-compact.md + common memory facade (cabal integration). See docs/ROADMAP.md, AGENTS.md. Verification + hygiene complete.
 
 ## Usage
 
@@ -111,12 +117,13 @@ context-mcp --stdio
 - **Text-Based Queries**: Query by text content, domain, tags, time ranges with simple text matching
 - **Temporal Filtering**: Filter contexts by creation time, last access, age, and expiration
 - **Parallel Processing**: CPU-optimized retrieval using rayon for performance
-- **MCP Tools**: 10 tools including store_context, get_context, query_contexts, retrieve_contexts, delete_context, update_screening, get_temporal_stats, get_storage_stats, cleanup_expired
+- **MCP Tools**: 9 tools including store_context, get_context, query_contexts, retrieve_contexts, delete_context, update_screening, get_temporal_stats, get_storage_stats, cleanup_expired
 
 ## What It Does Not Do (Yet)
 
 - **Vector embeddings**: Mock implementation only - no real embedding generation or similarity search
 - **Semantic search**: Text matching is literal, not semantic
+- **GPU acceleration**: `gpu-acceleration` feature flag exists but the compute shader path is a placeholder; similarity computation always falls back to CPU
 - **External integrations**: No active security-mcp or other service integrations (only status fields)
 - **Chunking/citations**: No automatic document chunking or citation tracking
 - **Distributed storage**: Single-node only, no replication or clustering
@@ -208,3 +215,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution gu
 ## License
 
 Licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Status & roadmap
+
+- [Assessment & gaps](docs/ASSESSMENT.md)
+- [Product roadmap & API plans](docs/ROADMAP.md)
