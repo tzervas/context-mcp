@@ -1,13 +1,15 @@
 //! context-mcp
 //!
-//! MCP server for context management with temporal reasoning and RAG support.
+//! MCP server for context management with temporal reasoning (no real RAG yet).
 //!
 //! This crate provides a Model Context Protocol (MCP) server for storing,
 //! retrieving, and querying context with:
 //! - Multi-tier storage (LRU memory cache + sled disk persistence)
 //! - Temporal reasoning with time-based filtering and decay scoring
-//! - CPU-optimized RAG processing with parallel execution
+//! - CPU-optimized text/metadata retrieval (RAG processor present but semantic gated to pseudo/demo)
 //! - Security screening status integration
+//!
+//! Real embedder + vector RAG is behind C0+ honesty gates (see docs/ROADMAP.md).
 //!
 //! # Usage
 //!
@@ -67,6 +69,11 @@ struct Args {
     /// Disable temporal decay scoring
     #[arg(long)]
     no_decay: bool,
+
+    /// Enable semantic similarity in retrieve (C0: off-by-default; uses pseudo-embedding demo only until real embedder).
+    /// Per docs/ROADMAP.md honesty gate.
+    #[arg(long)]
+    enable_semantic: bool,
 }
 
 #[tokio::main]
@@ -93,6 +100,7 @@ async fn main() -> anyhow::Result<()> {
     let rag_config = RagConfig {
         num_threads: args.threads,
         temporal_decay: !args.no_decay,
+        enable_semantic: args.enable_semantic,
         ..Default::default()
     };
 
