@@ -208,6 +208,10 @@ just bench             # Run all benchmarks
 just bench-flamegraph  # Generate flamegraphs (requires cargo-flamegraph)
 ```
 
+## Versioning
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) and uses [Commitizen](https://commitizen-tools.github.io/commitizen/) for release versioning. Version is tracked in `.cz.toml` and `Cargo.toml`. Before release, dispatch the **Commitizen** workflow (Actions → Commitizen → Run workflow) to verify commits on the current branch.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines.
