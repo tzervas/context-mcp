@@ -1,0 +1,5002 @@
+{
+  "generated": "Empirical/Declared — lite heading/line heuristic over markdown in context-mcp via tero-mcp/scripts/generate_lite_index.py; source files are ground truth. Generated 2026-07-09.",
+  "item_tag": "Empirical/Declared",
+  "siblings": [],
+  "items": [
+    {
+      "anchor": "advancedbenchmarksummary",
+      "family": "doc",
+      "kind": "section",
+      "title": "Advanced Benchmarking Complete ✅",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Created fetchrealbenchmarkdata.py to generate realistic K8s and Helm data"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--summary-of-work-completed",
+      "family": "doc",
+      "kind": "section",
+      "title": "Summary of Work Completed",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 3,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Created fetchrealbenchmarkdata.py to generate realistic K8s and Helm data"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--phase-1-real-data-acquisition",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 1: Real Data Acquisition",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Created fetchrealbenchmarkdata.py to generate realistic K8s and Helm data"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--phase-2-comprehensive-benchmarking",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 2: Comprehensive Benchmarking",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 14,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Created benchmarkwithrealdata.py - Enterprise-grade benchmark suite"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--phase-3-performance-analysis-reporting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 3: Performance Analysis & Reporting",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 25,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Created BENCHMARKREALDATAREPORT.md - Detailed performance report showing:"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--key-findings",
+      "family": "doc",
+      "kind": "section",
+      "title": "Key Findings",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 41,
+      "tag": "Empirical/Declared",
+      "summary": "Strengths Identified:"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--benchmark-results-real-data",
+      "family": "doc",
+      "kind": "section",
+      "title": "Benchmark Results (Real Data)",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 63,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--deliverables",
+      "family": "doc",
+      "kind": "section",
+      "title": "Deliverables",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 75,
+      "tag": "Empirical/Declared",
+      "summary": "Documentation:"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--integration-points-demonstrated",
+      "family": "doc",
+      "kind": "section",
+      "title": "Integration Points Demonstrated",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 92,
+      "tag": "Empirical/Declared",
+      "summary": "WebPuppet-MCP Integration:"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--performance-comparison",
+      "family": "doc",
+      "kind": "section",
+      "title": "Performance Comparison",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 114,
+      "tag": "Empirical/Declared",
+      "summary": "Synthetic Data (Initial Baseline):"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--recommendations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Recommendations",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 129,
+      "tag": "Empirical/Declared",
+      "summary": "For Immediate Use:"
+    },
+    {
+      "anchor": "advancedbenchmarksummary--next-steps",
+      "family": "doc",
+      "kind": "section",
+      "title": "Next Steps",
+      "file": "ADVANCED_BENCHMARK_SUMMARY.md",
+      "line": 149,
+      "tag": "Empirical/Declared",
+      "summary": "The advanced benchmarking phase is COMPLETE. Context-MCP is ready for:"
+    },
+    {
+      "anchor": "agents",
+      "family": "doc",
+      "kind": "other",
+      "title": "AGENTS.md — context-mcp",
+      "file": "AGENTS.md",
+      "line": 2,
+      "tag": "Empirical/Declared",
+      "summary": "Use Tero + cabal-devmelopner for work here."
+    },
+    {
+      "anchor": "agents--tero-layer-1-corpus-index",
+      "family": "doc",
+      "kind": "section",
+      "title": "Tero (Layer-1 corpus index)",
+      "file": "AGENTS.md",
+      "line": 8,
+      "tag": "Empirical/Declared",
+      "summary": "Repo has docs/tero-index/index.json (generated/ refreshed via tero-mcp/scripts/generateliteindex.py)."
+    },
+    {
+      "anchor": "agents--agent-with-context",
+      "family": "doc",
+      "kind": "other",
+      "title": "agent with context:",
+      "file": "AGENTS.md",
+      "line": 20,
+      "tag": "Empirical/Declared",
+      "summary": "uv run --project ../cabal-devmelopner cabal-devmelopner \"task description here\" --use-tero"
+    },
+    {
+      "anchor": "agents--working-with-cabal-devmelopner-agent-tool",
+      "family": "doc",
+      "kind": "section",
+      "title": "Working with cabal-devmelopner agent tool",
+      "file": "AGENTS.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "This project is prepared for integration:"
+    },
+    {
+      "anchor": "agents--local-checks",
+      "family": "doc",
+      "kind": "section",
+      "title": "Local checks",
+      "file": "AGENTS.md",
+      "line": 38,
+      "tag": "Empirical/Declared",
+      "summary": "Look for:"
+    },
+    {
+      "anchor": "agents--further-reading",
+      "family": "doc",
+      "kind": "section",
+      "title": "Further reading",
+      "file": "AGENTS.md",
+      "line": 46,
+      "tag": "Empirical/Declared",
+      "summary": "- README.md"
+    },
+    {
+      "anchor": "agents--latest-updates-w2-facade-integration-2026-07-09",
+      "family": "doc",
+      "kind": "section",
+      "title": "Latest Updates (W2 Facade + Integration, 2026-07-09)",
+      "file": "AGENTS.md",
+      "line": 56,
+      "tag": "Empirical/Declared",
+      "summary": "- C0 honesty gate complete (feature/ctx-c0-honesty): enablesemantic=false default (CLI --enable-semantic to opt-in; gated in RagProcessor + retrieve; pseudo on…"
+    },
+    {
+      "anchor": "assessmentreport",
+      "family": "doc",
+      "kind": "note",
+      "title": "Context-MCP Server Assessment Report",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Test Date: January 10, 2026"
+    },
+    {
+      "anchor": "assessmentreport--executive-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "Executive Summary",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "The context-mcp server has been comprehensively tested across all 9 available tools with 100% test pass rate (23/23 tests passed). Performance benchmarks demon…"
+    },
+    {
+      "anchor": "assessmentreport--test-coverage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Coverage",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 16,
+      "tag": "Empirical/Declared",
+      "summary": "1. storecontext - Store contexts with metadata and TTL"
+    },
+    {
+      "anchor": "assessmentreport--tools-tested",
+      "family": "doc",
+      "kind": "section",
+      "title": "Tools Tested ✓",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 18,
+      "tag": "Empirical/Declared",
+      "summary": "1. storecontext - Store contexts with metadata and TTL"
+    },
+    {
+      "anchor": "assessmentreport--test-scenarios",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Scenarios",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 30,
+      "tag": "Empirical/Declared",
+      "summary": "- Basic Operations: Store, retrieve, delete with various content types"
+    },
+    {
+      "anchor": "assessmentreport--performance-benchmarks",
+      "family": "doc",
+      "kind": "section",
+      "title": "Performance Benchmarks",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 42,
+      "tag": "Empirical/Declared",
+      "summary": "- Measurement: Python time.time() with microsecond precision"
+    },
+    {
+      "anchor": "assessmentreport--methodology",
+      "family": "doc",
+      "kind": "section",
+      "title": "Methodology",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 44,
+      "tag": "Empirical/Declared",
+      "summary": "- Measurement: Python time.time() with microsecond precision"
+    },
+    {
+      "anchor": "assessmentreport--results-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "Results Summary",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 52,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessmentreport--key-performance-indicators",
+      "family": "doc",
+      "kind": "section",
+      "title": "Key Performance Indicators",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 66,
+      "tag": "Empirical/Declared",
+      "summary": "- Tool Discovery Time: 0.31 ms"
+    },
+    {
+      "anchor": "assessmentreport--detailed-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "Detailed Analysis",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 75,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Excellent"
+    },
+    {
+      "anchor": "assessmentreport--storage-layer",
+      "family": "doc",
+      "kind": "section",
+      "title": "Storage Layer",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 77,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Excellent"
+    },
+    {
+      "anchor": "assessmentreport--retrieval-operations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Retrieval Operations",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 90,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Excellent"
+    },
+    {
+      "anchor": "assessmentreport--query-system",
+      "family": "doc",
+      "kind": "section",
+      "title": "Query System",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 102,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Excellent"
+    },
+    {
+      "anchor": "assessmentreport--rag-retrieval",
+      "family": "doc",
+      "kind": "section",
+      "title": "RAG Retrieval",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 117,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Good"
+    },
+    {
+      "anchor": "assessmentreport--temporal-features",
+      "family": "doc",
+      "kind": "section",
+      "title": "Temporal Features",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 130,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Excellent"
+    },
+    {
+      "anchor": "assessmentreport--screening-system",
+      "family": "doc",
+      "kind": "section",
+      "title": "Screening System",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 142,
+      "tag": "Empirical/Declared",
+      "summary": "Performance: Excellent"
+    },
+    {
+      "anchor": "assessmentreport--resource-utilization",
+      "family": "doc",
+      "kind": "section",
+      "title": "Resource Utilization",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 155,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "assessmentreport--storage-statistics-sample",
+      "family": "doc",
+      "kind": "section",
+      "title": "Storage Statistics (Sample)",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 157,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "assessmentreport--scalability-indicators",
+      "family": "doc",
+      "kind": "section",
+      "title": "Scalability Indicators",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 171,
+      "tag": "Empirical/Declared",
+      "summary": "- Linear throughput: 7,421 ops/sec sustained"
+    },
+    {
+      "anchor": "assessmentreport--functional-validation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Functional Validation",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 179,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessmentreport--all-tools-working",
+      "family": "doc",
+      "kind": "section",
+      "title": "✓ All Tools Working",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 181,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessmentreport--content-types-tested",
+      "family": "doc",
+      "kind": "section",
+      "title": "Content Types Tested",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 195,
+      "tag": "Empirical/Declared",
+      "summary": "- Code: Python/Rust code snippets and documentation"
+    },
+    {
+      "anchor": "assessmentreport--metadata-tested",
+      "family": "doc",
+      "kind": "section",
+      "title": "Metadata Tested",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 202,
+      "tag": "Empirical/Declared",
+      "summary": "- Domains: Code, Documentation, Research, General"
+    },
+    {
+      "anchor": "assessmentreport--known-limitations-as-documented",
+      "family": "doc",
+      "kind": "section",
+      "title": "Known Limitations (As Documented)",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 211,
+      "tag": "Empirical/Declared",
+      "summary": "1. Vector Embeddings: Mock implementation only - no real semantic similarity"
+    },
+    {
+      "anchor": "assessmentreport--recommendations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Recommendations",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 221,
+      "tag": "Empirical/Declared",
+      "summary": "The server is production-ready for:"
+    },
+    {
+      "anchor": "assessmentreport--production-deployment",
+      "family": "doc",
+      "kind": "section",
+      "title": "Production Deployment ✅",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 223,
+      "tag": "Empirical/Declared",
+      "summary": "The server is production-ready for:"
+    },
+    {
+      "anchor": "assessmentreport--configuration-recommendations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Configuration Recommendations",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 232,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --stdio --cache-size 10000 --threads 0"
+    },
+    {
+      "anchor": "assessmentreport--high-throughput-scenario",
+      "family": "doc",
+      "kind": "other",
+      "title": "High-throughput scenario",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 235,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --stdio --cache-size 10000 --threads 0"
+    },
+    {
+      "anchor": "assessmentreport--persistent-storage",
+      "family": "doc",
+      "kind": "other",
+      "title": "Persistent storage",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 238,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --stdio --persist --storage-path /data/context-store"
+    },
+    {
+      "anchor": "assessmentreport--http-mode-for-multiple-clients",
+      "family": "doc",
+      "kind": "other",
+      "title": "HTTP mode for multiple clients",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 241,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --host 0.0.0.0 --port 3000 --persist"
+    },
+    {
+      "anchor": "assessmentreport--future-enhancements",
+      "family": "doc",
+      "kind": "section",
+      "title": "Future Enhancements",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 245,
+      "tag": "Empirical/Declared",
+      "summary": "1. Semantic Search: Integrate real embedding generation (embeddenator)"
+    },
+    {
+      "anchor": "assessmentreport--conclusion",
+      "family": "doc",
+      "kind": "section",
+      "title": "Conclusion",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 255,
+      "tag": "Empirical/Declared",
+      "summary": "The context-mcp server demonstrates excellent performance and complete functional coverage across all advertised tools. With sub-millisecond latencies and >7,0…"
+    },
+    {
+      "anchor": "assessmentreport--test-artifacts",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Artifacts",
+      "file": "ASSESSMENT_REPORT.md",
+      "line": 269,
+      "tag": "Empirical/Declared",
+      "summary": "- Test Script: testmcpserver.py"
+    },
+    {
+      "anchor": "benchmarkrealdatareport",
+      "family": "doc",
+      "kind": "section",
+      "title": "Context-MCP Advanced Benchmark Report",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Real-World Kubernetes & Helm Data Performance Analysis"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--executive-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "Executive Summary",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "Context-mcp has been tested against real-world production data including:"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--key-findings",
+      "family": "doc",
+      "kind": "section",
+      "title": "Key Findings",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 17,
+      "tag": "Empirical/Declared",
+      "summary": "✅ EXCELLENT PERFORMANCE"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--benchmark-results",
+      "family": "doc",
+      "kind": "section",
+      "title": "Benchmark Results",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 34,
+      "tag": "Empirical/Declared",
+      "summary": "Dataset Size:        51 contexts stored"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--1.-data-loading-storage-real-k8s-helm-data",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Data Loading & Storage (Real K8s/Helm Data)",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 36,
+      "tag": "Empirical/Declared",
+      "summary": "Dataset Size:        51 contexts stored"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--2.-scalability-testing-batch-size-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Scalability Testing (Batch Size Analysis)",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 51,
+      "tag": "Empirical/Declared",
+      "summary": "Batch 5 items:    1.48ms average"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--3.-query-performance-complex-queries",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Query Performance (Complex Queries)",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 66,
+      "tag": "Empirical/Declared",
+      "summary": "Domain Queries:       1.92-4.32ms (average 2.87ms)"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--4.-rag-retrieval-semantic-search",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. RAG Retrieval (Semantic Search)",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 80,
+      "tag": "Empirical/Declared",
+      "summary": "Query Count:         8 semantic queries"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--5.-high-load-stress-testing-100-operations",
+      "family": "doc",
+      "kind": "section",
+      "title": "5. High-Load Stress Testing (100 Operations)",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 104,
+      "tag": "Empirical/Declared",
+      "summary": "Total Operations:     100 (50 stores + 50 queries)"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--6.-storage-memory-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "6. Storage & Memory Analysis",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 120,
+      "tag": "Empirical/Declared",
+      "summary": "Cache Capacity:      1000 contexts"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--7.-cleanup-maintenance",
+      "family": "doc",
+      "kind": "section",
+      "title": "7. Cleanup & Maintenance",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 133,
+      "tag": "Empirical/Declared",
+      "summary": "Cleanup Latency:     1.34ms"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--performance-characteristics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Performance Characteristics",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 141,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--latency-distribution",
+      "family": "doc",
+      "kind": "section",
+      "title": "Latency Distribution",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 143,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--throughput-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Throughput Metrics",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 152,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--real-world-applicability",
+      "family": "doc",
+      "kind": "section",
+      "title": "Real-World Applicability",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 162,
+      "tag": "Empirical/Declared",
+      "summary": "1. K8s Ecosystem Integration"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--strengths",
+      "family": "doc",
+      "kind": "section",
+      "title": "✅ Strengths",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 164,
+      "tag": "Empirical/Declared",
+      "summary": "1. K8s Ecosystem Integration"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--improvement-opportunities",
+      "family": "doc",
+      "kind": "section",
+      "title": "Improvement Opportunities",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 187,
+      "tag": "Empirical/Declared",
+      "summary": "1. RAG Result Relevance (Minor)"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--recommendations-for-users",
+      "family": "doc",
+      "kind": "section",
+      "title": "Recommendations for Users",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 211,
+      "tag": "Empirical/Declared",
+      "summary": "- Kubernetes release management and tracking"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--use-context-mcp-for",
+      "family": "doc",
+      "kind": "section",
+      "title": "✅ Use Context-MCP For:",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 213,
+      "tag": "Empirical/Declared",
+      "summary": "- Kubernetes release management and tracking"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--consider-for-larger-scale",
+      "family": "doc",
+      "kind": "section",
+      "title": "⚠️ Consider For Larger Scale:",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 221,
+      "tag": "Empirical/Declared",
+      "summary": "- Datasets >10,000 contexts → Enable sled persistence backend"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--integration-opportunities",
+      "family": "doc",
+      "kind": "section",
+      "title": "🔄 Integration Opportunities:",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 226,
+      "tag": "Empirical/Declared",
+      "summary": "- webpuppet-mcp: Automate fetching latest K8s releases from GitHub"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--comparison-to-baseline",
+      "family": "doc",
+      "kind": "section",
+      "title": "Comparison to Baseline",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 233,
+      "tag": "Empirical/Declared",
+      "summary": "Initial Baseline (Synthetic Data):"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--technical-deep-dive",
+      "family": "doc",
+      "kind": "section",
+      "title": "Technical Deep Dive",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 251,
+      "tag": "Empirical/Declared",
+      "summary": "- Simple text contexts (release notes)"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--data-structures-tested",
+      "family": "doc",
+      "kind": "section",
+      "title": "Data Structures Tested",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 253,
+      "tag": "Empirical/Declared",
+      "summary": "- Simple text contexts (release notes)"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--query-patterns-validated",
+      "family": "doc",
+      "kind": "section",
+      "title": "Query Patterns Validated",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 259,
+      "tag": "Empirical/Declared",
+      "summary": "1. Domain filtering - Works on K8s/DevOps/Testing domains"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--load-patterns-tested",
+      "family": "doc",
+      "kind": "section",
+      "title": "Load Patterns Tested",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 266,
+      "tag": "Empirical/Declared",
+      "summary": "1. Burst loads - 100 rapid operations with no degradation"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--reliability-findings",
+      "family": "doc",
+      "kind": "section",
+      "title": "Reliability Findings",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 272,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ No crashes or panics"
+    },
+    {
+      "anchor": "benchmarkrealdatareport--conclusion",
+      "family": "doc",
+      "kind": "section",
+      "title": "Conclusion",
+      "file": "BENCHMARK_REAL_DATA_REPORT.md",
+      "line": 281,
+      "tag": "Empirical/Declared",
+      "summary": "Context-mcp is production-ready for Kubernetes ecosystem use cases."
+    },
+    {
+      "anchor": "contributing",
+      "family": "doc",
+      "kind": "section",
+      "title": "Contributing to context-mcp",
+      "file": "CONTRIBUTING.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Thank you for your interest in contributing! This document outlines the development process and standards for the context-mcp project."
+    },
+    {
+      "anchor": "contributing--development-setup",
+      "family": "doc",
+      "kind": "section",
+      "title": "Development Setup",
+      "file": "CONTRIBUTING.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "- Rust 1.75+ (MSRV - Minimum Supported Rust Version)"
+    },
+    {
+      "anchor": "contributing--prerequisites",
+      "family": "doc",
+      "kind": "section",
+      "title": "Prerequisites",
+      "file": "CONTRIBUTING.md",
+      "line": 7,
+      "tag": "Empirical/Declared",
+      "summary": "- Rust 1.75+ (MSRV - Minimum Supported Rust Version)"
+    },
+    {
+      "anchor": "contributing--quick-start",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quick Start",
+      "file": "CONTRIBUTING.md",
+      "line": 12,
+      "tag": "Empirical/Declared",
+      "summary": "1. Clone and setup:"
+    },
+    {
+      "anchor": "contributing--development-tools",
+      "family": "doc",
+      "kind": "section",
+      "title": "Development Tools",
+      "file": "CONTRIBUTING.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "This project uses [just](https://github.com/casey/just) for task automation. Key commands:"
+    },
+    {
+      "anchor": "contributing--development-workflow",
+      "family": "doc",
+      "kind": "section",
+      "title": "Development Workflow",
+      "file": "CONTRIBUTING.md",
+      "line": 39,
+      "tag": "Empirical/Declared",
+      "summary": "- Check [GitHub Issues](https://github.com/tzervas/context-mcp/issues) for open tasks"
+    },
+    {
+      "anchor": "contributing--1.-choose-an-issue",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Choose an Issue",
+      "file": "CONTRIBUTING.md",
+      "line": 41,
+      "tag": "Empirical/Declared",
+      "summary": "- Check [GitHub Issues](https://github.com/tzervas/context-mcp/issues) for open tasks"
+    },
+    {
+      "anchor": "contributing--2.-make-changes",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Make Changes",
+      "file": "CONTRIBUTING.md",
+      "line": 47,
+      "tag": "Empirical/Declared",
+      "summary": "- Write code following the established patterns"
+    },
+    {
+      "anchor": "contributing--3.-pre-commit-checks",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Pre-Commit Checks",
+      "file": "CONTRIBUTING.md",
+      "line": 54,
+      "tag": "Empirical/Declared",
+      "summary": "Before committing, ensure all checks pass:"
+    },
+    {
+      "anchor": "contributing--4.-commit-and-push",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Commit and Push",
+      "file": "CONTRIBUTING.md",
+      "line": 69,
+      "tag": "Empirical/Declared",
+      "summary": "- Use descriptive commit messages"
+    },
+    {
+      "anchor": "contributing--code-quality-standards",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Quality Standards",
+      "file": "CONTRIBUTING.md",
+      "line": 75,
+      "tag": "Empirical/Declared",
+      "summary": "- Use cargo fmt for consistent formatting"
+    },
+    {
+      "anchor": "contributing--formatting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Formatting",
+      "file": "CONTRIBUTING.md",
+      "line": 77,
+      "tag": "Empirical/Declared",
+      "summary": "- Use cargo fmt for consistent formatting"
+    },
+    {
+      "anchor": "contributing--linting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Linting",
+      "file": "CONTRIBUTING.md",
+      "line": 81,
+      "tag": "Empirical/Declared",
+      "summary": "- No clippy warnings allowed (cargo clippy -- -D warnings)"
+    },
+    {
+      "anchor": "contributing--testing",
+      "family": "doc",
+      "kind": "section",
+      "title": "Testing",
+      "file": "CONTRIBUTING.md",
+      "line": 85,
+      "tag": "Empirical/Declared",
+      "summary": "- Add unit tests for new functionality"
+    },
+    {
+      "anchor": "contributing--documentation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Documentation",
+      "file": "CONTRIBUTING.md",
+      "line": 90,
+      "tag": "Empirical/Declared",
+      "summary": "- Update doc comments for public APIs"
+    },
+    {
+      "anchor": "contributing--security",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security",
+      "file": "CONTRIBUTING.md",
+      "line": 95,
+      "tag": "Empirical/Declared",
+      "summary": "- Dependencies are scanned for vulnerabilities"
+    },
+    {
+      "anchor": "contributing--pull-request-process",
+      "family": "doc",
+      "kind": "section",
+      "title": "Pull Request Process",
+      "file": "CONTRIBUTING.md",
+      "line": 100,
+      "tag": "Empirical/Declared",
+      "summary": "1. Create PR: Push your branch and create a pull request on GitHub"
+    },
+    {
+      "anchor": "contributing--pr-checklist",
+      "family": "doc",
+      "kind": "section",
+      "title": "PR Checklist",
+      "file": "CONTRIBUTING.md",
+      "line": 108,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] Code compiles without warnings"
+    },
+    {
+      "anchor": "contributing--release-process",
+      "family": "doc",
+      "kind": "section",
+      "title": "Release Process",
+      "file": "CONTRIBUTING.md",
+      "line": 117,
+      "tag": "Empirical/Declared",
+      "summary": "Releases are automated via GitHub Actions:"
+    },
+    {
+      "anchor": "contributing--getting-help",
+      "family": "doc",
+      "kind": "section",
+      "title": "Getting Help",
+      "file": "CONTRIBUTING.md",
+      "line": 127,
+      "tag": "Empirical/Declared",
+      "summary": "- Issues: Report bugs or request features on GitHub"
+    },
+    {
+      "anchor": "contributing--license",
+      "family": "doc",
+      "kind": "section",
+      "title": "License",
+      "file": "CONTRIBUTING.md",
+      "line": 133,
+      "tag": "Empirical/Declared",
+      "summary": "By contributing, you agree that your contributions will be licensed under the MIT License."
+    },
+    {
+      "anchor": "implementationcomplete",
+      "family": "doc",
+      "kind": "section",
+      "title": "Implementation Summary: Sparse Balanced Ternary Embeddings for Context-MCP",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "- src/ternary.rs (850+ lines): Complete sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "implementationcomplete--completed-tasks",
+      "family": "doc",
+      "kind": "section",
+      "title": "✅ Completed Tasks",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 3,
+      "tag": "Empirical/Declared",
+      "summary": "- src/ternary.rs (850+ lines): Complete sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "implementationcomplete--1.-core-implementation",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Core Implementation",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "- src/ternary.rs (850+ lines): Complete sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "implementationcomplete--2.-build-testing",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Build & Testing",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 32,
+      "tag": "Empirical/Declared",
+      "summary": "✅ Dependencies Updated (Cargo.toml)"
+    },
+    {
+      "anchor": "implementationcomplete--3.-integration-examples",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Integration & Examples",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 44,
+      "tag": "Empirical/Declared",
+      "summary": "✅ [examples/ternaryragdemo.rs](examples/ternaryragdemo.rs): Comprehensive demo showing:"
+    },
+    {
+      "anchor": "implementationcomplete--4.-documentation",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Documentation",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 53,
+      "tag": "Empirical/Declared",
+      "summary": "✅ [TERNARYEMBEDDINGSIMPLEMENTATION.md](TERNARYEMBEDDINGSIMPLEMENTATION.md): Complete technical documentation"
+    },
+    {
+      "anchor": "implementationcomplete--key-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "📊 Key Metrics",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 63,
+      "tag": "Empirical/Declared",
+      "summary": "- New Rust Code: ~1,050 lines (ternary.rs + gpu.rs)"
+    },
+    {
+      "anchor": "implementationcomplete--storage-efficiency",
+      "family": "doc",
+      "kind": "section",
+      "title": "Storage Efficiency",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 65,
+      "tag": "Empirical/Declared",
+      "summary": "- New Rust Code: ~1,050 lines (ternary.rs + gpu.rs)"
+    },
+    {
+      "anchor": "implementationcomplete--code-coverage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Coverage",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 72,
+      "tag": "Empirical/Declared",
+      "summary": "- New Rust Code: ~1,050 lines (ternary.rs + gpu.rs)"
+    },
+    {
+      "anchor": "implementationcomplete--quality-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quality Metrics",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 79,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ No compilation errors"
+    },
+    {
+      "anchor": "implementationcomplete--three-quantization-strategies",
+      "family": "doc",
+      "kind": "section",
+      "title": "🎯 Three Quantization Strategies",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 86,
+      "tag": "Empirical/Declared",
+      "summary": "Benefits: Zero codebook overhead, perfect element reconstruction"
+    },
+    {
+      "anchor": "implementationcomplete--option-a-codebook-free-sparse",
+      "family": "doc",
+      "kind": "section",
+      "title": "Option A: Codebook-Free Sparse",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 88,
+      "tag": "Empirical/Declared",
+      "summary": "Benefits: Zero codebook overhead, perfect element reconstruction"
+    },
+    {
+      "anchor": "implementationcomplete--option-b-residual-vector-quantization-rvq",
+      "family": "doc",
+      "kind": "section",
+      "title": "Option B: Residual Vector Quantization (RVQ)",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 95,
+      "tag": "Empirical/Declared",
+      "summary": "Benefits: Better fidelity, smooth approximation, learned codebook"
+    },
+    {
+      "anchor": "implementationcomplete--option-c-hybrid-recommended",
+      "family": "doc",
+      "kind": "section",
+      "title": "Option C: Hybrid (Recommended)",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 102,
+      "tag": "Empirical/Declared",
+      "summary": "Benefits: Best of both worlds - sparsity speed + RVQ fidelity"
+    },
+    {
+      "anchor": "implementationcomplete--production-readiness",
+      "family": "doc",
+      "kind": "section",
+      "title": "🚀 Production Readiness",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 109,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Core algorithm implementation"
+    },
+    {
+      "anchor": "implementationcomplete--whats-complete",
+      "family": "doc",
+      "kind": "section",
+      "title": "What's Complete",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 111,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Core algorithm implementation"
+    },
+    {
+      "anchor": "implementationcomplete--whats-optional-future",
+      "family": "doc",
+      "kind": "section",
+      "title": "What's Optional (Future)",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 120,
+      "tag": "Empirical/Declared",
+      "summary": "- ⚠️ GPU compute shaders: Placeholder exists, CPU fallback works. WGSL shaders not implemented - GPU acceleration will use CPU."
+    },
+    {
+      "anchor": "implementationcomplete--files-modified-created",
+      "family": "doc",
+      "kind": "section",
+      "title": "📝 Files Modified/Created",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 126,
+      "tag": "Empirical/Declared",
+      "summary": "1. src/ternary.rs - Core ternary embedding system (850 lines)"
+    },
+    {
+      "anchor": "implementationcomplete--created",
+      "family": "doc",
+      "kind": "section",
+      "title": "Created",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 128,
+      "tag": "Empirical/Declared",
+      "summary": "1. src/ternary.rs - Core ternary embedding system (850 lines)"
+    },
+    {
+      "anchor": "implementationcomplete--modified",
+      "family": "doc",
+      "kind": "section",
+      "title": "Modified",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 134,
+      "tag": "Empirical/Declared",
+      "summary": "1. Cargo.toml - Added dependencies and feature flags"
+    },
+    {
+      "anchor": "implementationcomplete--integration-flow",
+      "family": "doc",
+      "kind": "section",
+      "title": "🔄 Integration Flow",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 140,
+      "tag": "Empirical/Declared",
+      "summary": "Text Input"
+    },
+    {
+      "anchor": "implementationcomplete--key-features",
+      "family": "doc",
+      "kind": "section",
+      "title": "✨ Key Features",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 165,
+      "tag": "Empirical/Declared",
+      "summary": "1. Reconstructable Embeddings"
+    },
+    {
+      "anchor": "implementationcomplete--learning-resources",
+      "family": "doc",
+      "kind": "section",
+      "title": "🎓 Learning Resources",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 193,
+      "tag": "Empirical/Declared",
+      "summary": "- Algorithm Overview: See TERNARYEMBEDDINGSIMPLEMENTATION.md §Architecture"
+    },
+    {
+      "anchor": "implementationcomplete--performance-expectations",
+      "family": "doc",
+      "kind": "section",
+      "title": "📈 Performance Expectations",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 200,
+      "tag": "Empirical/Declared",
+      "summary": "- 384-dim embedding: 1,536 bytes (dense) → ~150 bytes (sparse, 90% reduction)"
+    },
+    {
+      "anchor": "implementationcomplete--storage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Storage",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 202,
+      "tag": "Empirical/Declared",
+      "summary": "- 384-dim embedding: 1,536 bytes (dense) → ~150 bytes (sparse, 90% reduction)"
+    },
+    {
+      "anchor": "implementationcomplete--speed",
+      "family": "doc",
+      "kind": "section",
+      "title": "Speed",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 206,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparse similarity: O(k) where k ≈ 10-50 (vs O(n) for dense, n=384)"
+    },
+    {
+      "anchor": "implementationcomplete--quality",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quality",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 211,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparsity-based reconstruction error: 0.2-0.3 MSE"
+    },
+    {
+      "anchor": "implementationcomplete--future-roadmap",
+      "family": "doc",
+      "kind": "section",
+      "title": "🔮 Future Roadmap",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 216,
+      "tag": "Empirical/Declared",
+      "summary": "Phase 1 (Short-term)"
+    },
+    {
+      "anchor": "implementationcomplete--verification-checklist",
+      "family": "doc",
+      "kind": "section",
+      "title": "✅ Verification Checklist",
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "line": 233,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] Code compiles without errors"
+    },
+    {
+      "anchor": "install",
+      "family": "doc",
+      "kind": "section",
+      "title": "Installation Guide",
+      "file": "INSTALL.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash"
+    },
+    {
+      "anchor": "install--quick-start",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quick Start",
+      "file": "INSTALL.md",
+      "line": 3,
+      "tag": "Empirical/Declared",
+      "summary": "curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash"
+    },
+    {
+      "anchor": "install--one-line-install-recommended",
+      "family": "doc",
+      "kind": "section",
+      "title": "One-Line Install (Recommended)",
+      "file": "INSTALL.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash"
+    },
+    {
+      "anchor": "install--from-source",
+      "family": "doc",
+      "kind": "section",
+      "title": "From Source",
+      "file": "INSTALL.md",
+      "line": 19,
+      "tag": "Empirical/Declared",
+      "summary": "git clone https://github.com/tzervas/context-mcp.git"
+    },
+    {
+      "anchor": "install--from-crates.io",
+      "family": "doc",
+      "kind": "section",
+      "title": "From Crates.io",
+      "file": "INSTALL.md",
+      "line": 27,
+      "tag": "Empirical/Declared",
+      "summary": "cargo install context-mcp"
+    },
+    {
+      "anchor": "install--vs-code-mcp-configuration",
+      "family": "doc",
+      "kind": "section",
+      "title": "VS Code MCP Configuration",
+      "file": "INSTALL.md",
+      "line": 35,
+      "tag": "Empirical/Declared",
+      "summary": "After installation, configure VS Code to use context-mcp:"
+    },
+    {
+      "anchor": "install--1.-locate-your-mcp-configuration-file",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Locate Your MCP Configuration File",
+      "file": "INSTALL.md",
+      "line": 39,
+      "tag": "Empirical/Declared",
+      "summary": "- Linux: ~/.config/Code/User/profiles/<profile>/mcp.json"
+    },
+    {
+      "anchor": "install--2.-add-context-mcp-server",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Add Context-MCP Server",
+      "file": "INSTALL.md",
+      "line": 45,
+      "tag": "Empirical/Declared",
+      "summary": "Edit your mcp.json file to include:"
+    },
+    {
+      "anchor": "install--3.-reload-vs-code",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Reload VS Code",
+      "file": "INSTALL.md",
+      "line": 63,
+      "tag": "Empirical/Declared",
+      "summary": "- Press Ctrl+Shift+P (or Cmd+Shift+P on macOS)"
+    },
+    {
+      "anchor": "install--configuration-options",
+      "family": "doc",
+      "kind": "section",
+      "title": "Configuration Options",
+      "file": "INSTALL.md",
+      "line": 71,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "install--basic-configuration-default",
+      "family": "doc",
+      "kind": "section",
+      "title": "Basic Configuration (Default)",
+      "file": "INSTALL.md",
+      "line": 73,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "install--with-persistent-storage",
+      "family": "doc",
+      "kind": "section",
+      "title": "With Persistent Storage",
+      "file": "INSTALL.md",
+      "line": 87,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "install--high-capacity-configuration",
+      "family": "doc",
+      "kind": "section",
+      "title": "High Capacity Configuration",
+      "file": "INSTALL.md",
+      "line": 105,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "install--available-options",
+      "family": "doc",
+      "kind": "section",
+      "title": "Available Options",
+      "file": "INSTALL.md",
+      "line": 124,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "install--verification",
+      "family": "doc",
+      "kind": "section",
+      "title": "Verification",
+      "file": "INSTALL.md",
+      "line": 139,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --version"
+    },
+    {
+      "anchor": "install--test-installation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Installation",
+      "file": "INSTALL.md",
+      "line": 141,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --version"
+    },
+    {
+      "anchor": "install--check-version",
+      "family": "doc",
+      "kind": "other",
+      "title": "Check version",
+      "file": "INSTALL.md",
+      "line": 144,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --version"
+    },
+    {
+      "anchor": "install--show-help",
+      "family": "doc",
+      "kind": "other",
+      "title": "Show help",
+      "file": "INSTALL.md",
+      "line": 147,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --help"
+    },
+    {
+      "anchor": "install--run-test-server-ctrlc-to-stop",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run test server (Ctrl+C to stop)",
+      "file": "INSTALL.md",
+      "line": 150,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --stdio"
+    },
+    {
+      "anchor": "install--verify-vs-code-integration",
+      "family": "doc",
+      "kind": "section",
+      "title": "Verify VS Code Integration",
+      "file": "INSTALL.md",
+      "line": 154,
+      "tag": "Empirical/Declared",
+      "summary": "1. Open VS Code"
+    },
+    {
+      "anchor": "install--run-comprehensive-tests",
+      "family": "doc",
+      "kind": "section",
+      "title": "Run Comprehensive Tests",
+      "file": "INSTALL.md",
+      "line": 161,
+      "tag": "Empirical/Declared",
+      "summary": "cd context-mcp"
+    },
+    {
+      "anchor": "install--troubleshooting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Troubleshooting",
+      "file": "INSTALL.md",
+      "line": 172,
+      "tag": "Empirical/Declared",
+      "summary": "ls -lh ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--binary-not-found",
+      "family": "doc",
+      "kind": "section",
+      "title": "Binary Not Found",
+      "file": "INSTALL.md",
+      "line": 174,
+      "tag": "Empirical/Declared",
+      "summary": "ls -lh ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--check-if-installed",
+      "family": "doc",
+      "kind": "other",
+      "title": "Check if installed",
+      "file": "INSTALL.md",
+      "line": 177,
+      "tag": "Empirical/Declared",
+      "summary": "ls -lh ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--check-path",
+      "family": "doc",
+      "kind": "other",
+      "title": "Check PATH",
+      "file": "INSTALL.md",
+      "line": 180,
+      "tag": "Empirical/Declared",
+      "summary": "echo $PATH | grep \".local/bin\""
+    },
+    {
+      "anchor": "install--add-to-path-manually",
+      "family": "doc",
+      "kind": "other",
+      "title": "Add to PATH manually",
+      "file": "INSTALL.md",
+      "line": 183,
+      "tag": "Empirical/Declared",
+      "summary": "export PATH=\"$HOME/.local/bin:$PATH\""
+    },
+    {
+      "anchor": "install--make-permanent",
+      "family": "doc",
+      "kind": "other",
+      "title": "Make permanent",
+      "file": "INSTALL.md",
+      "line": 186,
+      "tag": "Empirical/Declared",
+      "summary": "echo 'export PATH=\"$HOME/.local/bin:$PATH\"' >> ~/.bashrc"
+    },
+    {
+      "anchor": "install--vs-code-not-detecting-server",
+      "family": "doc",
+      "kind": "section",
+      "title": "VS Code Not Detecting Server",
+      "file": "INSTALL.md",
+      "line": 191,
+      "tag": "Empirical/Declared",
+      "summary": "1. Verify binary path: which context-mcp"
+    },
+    {
+      "anchor": "install--permission-denied",
+      "family": "doc",
+      "kind": "section",
+      "title": "Permission Denied",
+      "file": "INSTALL.md",
+      "line": 198,
+      "tag": "Empirical/Declared",
+      "summary": "chmod +x ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--make-binary-executable",
+      "family": "doc",
+      "kind": "other",
+      "title": "Make binary executable",
+      "file": "INSTALL.md",
+      "line": 201,
+      "tag": "Empirical/Declared",
+      "summary": "chmod +x ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--server-not-starting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Server Not Starting",
+      "file": "INSTALL.md",
+      "line": 205,
+      "tag": "Empirical/Declared",
+      "summary": "Check for errors:"
+    },
+    {
+      "anchor": "install--run-manually-to-see-error-messages",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run manually to see error messages",
+      "file": "INSTALL.md",
+      "line": 209,
+      "tag": "Empirical/Declared",
+      "summary": "~/.local/bin/context-mcp --stdio"
+    },
+    {
+      "anchor": "install--uninstallation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Uninstallation",
+      "file": "INSTALL.md",
+      "line": 220,
+      "tag": "Empirical/Declared",
+      "summary": "rm ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--remove-binary",
+      "family": "doc",
+      "kind": "other",
+      "title": "Remove binary",
+      "file": "INSTALL.md",
+      "line": 223,
+      "tag": "Empirical/Declared",
+      "summary": "rm ~/.local/bin/context-mcp"
+    },
+    {
+      "anchor": "install--remove-from-shell-rc-file-if-added",
+      "family": "doc",
+      "kind": "other",
+      "title": "Remove from shell RC file (if added)",
+      "file": "INSTALL.md",
+      "line": 226,
+      "tag": "Empirical/Declared",
+      "summary": "rm -rf ~/.context-mcp"
+    },
+    {
+      "anchor": "install--edit-.bashrc-or-.zshrc-and-remove-context-mcp-path-export",
+      "family": "doc",
+      "kind": "other",
+      "title": "Edit ~/.bashrc or ~/.zshrc and remove context-mcp PATH export",
+      "file": "INSTALL.md",
+      "line": 227,
+      "tag": "Empirical/Declared",
+      "summary": "rm -rf ~/.context-mcp"
+    },
+    {
+      "anchor": "install--remove-vs-code-configuration",
+      "family": "doc",
+      "kind": "other",
+      "title": "Remove VS Code configuration",
+      "file": "INSTALL.md",
+      "line": 229,
+      "tag": "Empirical/Declared",
+      "summary": "rm -rf ~/.context-mcp"
+    },
+    {
+      "anchor": "install--edit-mcp.json-and-remove-context-mcp-server-entry",
+      "family": "doc",
+      "kind": "other",
+      "title": "Edit mcp.json and remove context-mcp server entry",
+      "file": "INSTALL.md",
+      "line": 230,
+      "tag": "Empirical/Declared",
+      "summary": "rm -rf ~/.context-mcp"
+    },
+    {
+      "anchor": "install--remove-persistent-data-if-enabled",
+      "family": "doc",
+      "kind": "other",
+      "title": "Remove persistent data (if enabled)",
+      "file": "INSTALL.md",
+      "line": 232,
+      "tag": "Empirical/Declared",
+      "summary": "rm -rf ~/.context-mcp"
+    },
+    {
+      "anchor": "install--platform-specific-notes",
+      "family": "doc",
+      "kind": "section",
+      "title": "Platform-Specific Notes",
+      "file": "INSTALL.md",
+      "line": 238,
+      "tag": "Empirical/Declared",
+      "summary": "- Default install location: ~/.local/bin"
+    },
+    {
+      "anchor": "install--linux",
+      "family": "doc",
+      "kind": "section",
+      "title": "Linux",
+      "file": "INSTALL.md",
+      "line": 240,
+      "tag": "Empirical/Declared",
+      "summary": "- Default install location: ~/.local/bin"
+    },
+    {
+      "anchor": "install--macos",
+      "family": "doc",
+      "kind": "section",
+      "title": "macOS",
+      "file": "INSTALL.md",
+      "line": 246,
+      "tag": "Empirical/Declared",
+      "summary": "- Default install location: ~/.local/bin"
+    },
+    {
+      "anchor": "install--windows",
+      "family": "doc",
+      "kind": "section",
+      "title": "Windows",
+      "file": "INSTALL.md",
+      "line": 252,
+      "tag": "Empirical/Declared",
+      "summary": "- Use WSL2 (recommended) or native Windows build"
+    },
+    {
+      "anchor": "install--next-steps",
+      "family": "doc",
+      "kind": "section",
+      "title": "Next Steps",
+      "file": "INSTALL.md",
+      "line": 260,
+      "tag": "Empirical/Declared",
+      "summary": "After installation:"
+    },
+    {
+      "anchor": "install--support",
+      "family": "doc",
+      "kind": "section",
+      "title": "Support",
+      "file": "INSTALL.md",
+      "line": 271,
+      "tag": "Empirical/Declared",
+      "summary": "- Issues: https://github.com/tzervas/context-mcp/issues"
+    },
+    {
+      "anchor": "integrationdeploymentguide",
+      "family": "doc",
+      "kind": "other",
+      "title": "Store Kubernetes release",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 259,
+      "tag": "Empirical/Declared",
+      "summary": "k8srelease = {"
+    },
+    {
+      "anchor": "integrationdeploymentguide--find-critical-security-related-contexts",
+      "family": "doc",
+      "kind": "other",
+      "title": "Find critical security-related contexts",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 282,
+      "tag": "Empirical/Declared",
+      "summary": "results = client.querycontexts({"
+    },
+    {
+      "anchor": "integrationdeploymentguide--ask-natural-language-questions",
+      "family": "doc",
+      "kind": "other",
+      "title": "Ask natural language questions",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 297,
+      "tag": "Empirical/Declared",
+      "summary": "query = \"How do I configure etcd for production clusters?\""
+    },
+    {
+      "anchor": "integrationdeploymentguide--store-helm-chart-values",
+      "family": "doc",
+      "kind": "other",
+      "title": "Store Helm chart values",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 341,
+      "tag": "Empirical/Declared",
+      "summary": "helmchart = {"
+    },
+    {
+      "anchor": "integrationdeploymentguide--later-query-for-helm-charts-with-specific-dependencies",
+      "family": "doc",
+      "kind": "other",
+      "title": "Later: Query for Helm charts with specific dependencies",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 365,
+      "tag": "Empirical/Declared",
+      "summary": "monitoringcharts = client.querycontexts({"
+    },
+    {
+      "anchor": "integrationdeploymentguide--store-security-scan-results",
+      "family": "doc",
+      "kind": "other",
+      "title": "Store security scan results",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 375,
+      "tag": "Empirical/Declared",
+      "summary": "compliance = {"
+    },
+    {
+      "anchor": "integrationdeploymentguide--track-all-cves-across-versions",
+      "family": "doc",
+      "kind": "other",
+      "title": "Track all CVEs across versions",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 392,
+      "tag": "Empirical/Declared",
+      "summary": "allcves = client.querycontexts({"
+    },
+    {
+      "anchor": "integrationdeploymentguide--get-statistics-on-stored-contexts",
+      "family": "doc",
+      "kind": "other",
+      "title": "Get statistics on stored contexts",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 404,
+      "tag": "Empirical/Declared",
+      "summary": "stats = client.gettemporalstats()"
+    },
+    {
+      "anchor": "integrationdeploymentguide--identify-when-to-expand-storage",
+      "family": "doc",
+      "kind": "other",
+      "title": "Identify when to expand storage",
+      "file": "INTEGRATION_DEPLOYMENT_GUIDE.md",
+      "line": 411,
+      "tag": "Empirical/Declared",
+      "summary": "if stats['memorycount'] > stats['cachecapacity']  0.8:"
+    },
+    {
+      "anchor": "prdeploymentsummary",
+      "family": "doc",
+      "kind": "section",
+      "title": "PR Deployment Summary",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "PR URL: [github.com/tzervas/context-mcp/pull/8](https://github.com/tzervas/context-mcp/pull/8)"
+    },
+    {
+      "anchor": "prdeploymentsummary--pull-request-details",
+      "family": "doc",
+      "kind": "section",
+      "title": "Pull Request Details",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 3,
+      "tag": "Empirical/Declared",
+      "summary": "PR URL: [github.com/tzervas/context-mcp/pull/8](https://github.com/tzervas/context-mcp/pull/8)"
+    },
+    {
+      "anchor": "prdeploymentsummary--whats-included",
+      "family": "doc",
+      "kind": "section",
+      "title": "What's Included",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 17,
+      "tag": "Empirical/Declared",
+      "summary": "- TernaryValue: {-1, 0, 1} representation"
+    },
+    {
+      "anchor": "prdeploymentsummary--1.-core-implementation-1050-lines",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Core Implementation (1,050+ lines)",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 19,
+      "tag": "Empirical/Declared",
+      "summary": "- TernaryValue: {-1, 0, 1} representation"
+    },
+    {
+      "anchor": "prdeploymentsummary--src-ternary.rs-850-lines",
+      "family": "doc",
+      "kind": "section",
+      "title": "`src/ternary.rs` (850 lines)",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 21,
+      "tag": "Empirical/Declared",
+      "summary": "- TernaryValue: {-1, 0, 1} representation"
+    },
+    {
+      "anchor": "prdeploymentsummary--src-gpu.rs-200-lines",
+      "family": "doc",
+      "kind": "section",
+      "title": "`src/gpu.rs` (200 lines)",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 32,
+      "tag": "Empirical/Declared",
+      "summary": "- GpuBackend trait: Abstract interface"
+    },
+    {
+      "anchor": "prdeploymentsummary--2.-integration-enhancements",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Integration Enhancements",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 39,
+      "tag": "Empirical/Declared",
+      "summary": "- New QuantizedEmbeddingGenerator trait"
+    },
+    {
+      "anchor": "prdeploymentsummary--src-embeddings.rs",
+      "family": "doc",
+      "kind": "section",
+      "title": "`src/embeddings.rs`",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 41,
+      "tag": "Empirical/Declared",
+      "summary": "- New QuantizedEmbeddingGenerator trait"
+    },
+    {
+      "anchor": "prdeploymentsummary--src-rag.rs",
+      "family": "doc",
+      "kind": "section",
+      "title": "`src/rag.rs`",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 47,
+      "tag": "Empirical/Declared",
+      "summary": "- Extended RagConfig with embedding strategy options"
+    },
+    {
+      "anchor": "prdeploymentsummary--src-lib.rs",
+      "family": "doc",
+      "kind": "section",
+      "title": "`src/lib.rs`",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 54,
+      "tag": "Empirical/Declared",
+      "summary": "- Module declarations for ternary and gpu"
+    },
+    {
+      "anchor": "prdeploymentsummary--cargo.toml",
+      "family": "doc",
+      "kind": "section",
+      "title": "`Cargo.toml`",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 57,
+      "tag": "Empirical/Declared",
+      "summary": "- Added: ndarray, sprs"
+    },
+    {
+      "anchor": "prdeploymentsummary--3.-documentation",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Documentation",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 63,
+      "tag": "Empirical/Declared",
+      "summary": "Running: cargo run --example ternaryragdemo"
+    },
+    {
+      "anchor": "prdeploymentsummary--4.-working-examples",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Working Examples",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 71,
+      "tag": "Empirical/Declared",
+      "summary": "Running: cargo run --example ternaryragdemo"
+    },
+    {
+      "anchor": "prdeploymentsummary--examples-ternaryragdemo.rs-166-lines",
+      "family": "doc",
+      "kind": "section",
+      "title": "`examples/ternary_rag_demo.rs` (166 lines)",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 73,
+      "tag": "Empirical/Declared",
+      "summary": "Running: cargo run --example ternaryragdemo"
+    },
+    {
+      "anchor": "prdeploymentsummary--key-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Key Metrics",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 88,
+      "tag": "Empirical/Declared",
+      "summary": "✅ 27 unit tests - All passing"
+    },
+    {
+      "anchor": "prdeploymentsummary--storage-reduction",
+      "family": "doc",
+      "kind": "section",
+      "title": "Storage Reduction",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 90,
+      "tag": "Empirical/Declared",
+      "summary": "✅ 27 unit tests - All passing"
+    },
+    {
+      "anchor": "prdeploymentsummary--test-coverage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Coverage",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 97,
+      "tag": "Empirical/Declared",
+      "summary": "✅ 27 unit tests - All passing"
+    },
+    {
+      "anchor": "prdeploymentsummary--build-status",
+      "family": "doc",
+      "kind": "section",
+      "title": "Build Status",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 103,
+      "tag": "Empirical/Declared",
+      "summary": "✅ cargo test --lib: PASS (0.55s)"
+    },
+    {
+      "anchor": "prdeploymentsummary--code-quality",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Quality",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 110,
+      "tag": "Empirical/Declared",
+      "summary": "✅ No compilation errors"
+    },
+    {
+      "anchor": "prdeploymentsummary--how-to-review",
+      "family": "doc",
+      "kind": "section",
+      "title": "How to Review",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 119,
+      "tag": "Empirical/Declared",
+      "summary": "gh pr view 8 --web"
+    },
+    {
+      "anchor": "prdeploymentsummary--1.-view-pr-details",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. View PR Details",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 121,
+      "tag": "Empirical/Declared",
+      "summary": "gh pr view 8 --web"
+    },
+    {
+      "anchor": "prdeploymentsummary--2.-run-tests-locally",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Run Tests Locally",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 126,
+      "tag": "Empirical/Declared",
+      "summary": "git fetch origin feat/sparse-ternary-embeddings"
+    },
+    {
+      "anchor": "prdeploymentsummary--3.-review-key-files",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Review Key Files",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 134,
+      "tag": "Empirical/Declared",
+      "summary": "- src/ternary.rs - Core algorithm"
+    },
+    {
+      "anchor": "prdeploymentsummary--4.-check-backward-compatibility",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Check Backward Compatibility",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 140,
+      "tag": "Empirical/Declared",
+      "summary": "cargo test --lib"
+    },
+    {
+      "anchor": "prdeploymentsummary--all-existing-functionality-should-work",
+      "family": "doc",
+      "kind": "other",
+      "title": "All existing functionality should work",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 142,
+      "tag": "Empirical/Declared",
+      "summary": "cargo test --lib"
+    },
+    {
+      "anchor": "prdeploymentsummary--commit-details",
+      "family": "doc",
+      "kind": "section",
+      "title": "Commit Details",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 149,
+      "tag": "Empirical/Declared",
+      "summary": "feat: implement sparse balanced ternary embeddings system"
+    },
+    {
+      "anchor": "prdeploymentsummary--main-commit",
+      "family": "doc",
+      "kind": "section",
+      "title": "Main Commit",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 151,
+      "tag": "Empirical/Declared",
+      "summary": "feat: implement sparse balanced ternary embeddings system"
+    },
+    {
+      "anchor": "prdeploymentsummary--feature-breakdown",
+      "family": "doc",
+      "kind": "section",
+      "title": "Feature Breakdown",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 190,
+      "tag": "Empirical/Declared",
+      "summary": "// Usage"
+    },
+    {
+      "anchor": "prdeploymentsummary--three-quantization-strategies",
+      "family": "doc",
+      "kind": "section",
+      "title": "Three Quantization Strategies",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 192,
+      "tag": "Empirical/Declared",
+      "summary": "// Usage"
+    },
+    {
+      "anchor": "prdeploymentsummary--1.-sparse-codebook-free-option-a",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Sparse (Codebook-Free) - Option A",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 194,
+      "tag": "Empirical/Declared",
+      "summary": "// Usage"
+    },
+    {
+      "anchor": "prdeploymentsummary--2.-rvq-residual-vector-quantization-option-b",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. RVQ (Residual Vector Quantization) - Option B",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 212,
+      "tag": "Empirical/Declared",
+      "summary": "// Usage"
+    },
+    {
+      "anchor": "prdeploymentsummary--3.-hybrid-combines-both",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Hybrid - Combines Both",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 226,
+      "tag": "Empirical/Declared",
+      "summary": "// Usage"
+    },
+    {
+      "anchor": "prdeploymentsummary--rag-integration",
+      "family": "doc",
+      "kind": "section",
+      "title": "RAG Integration",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 239,
+      "tag": "Empirical/Declared",
+      "summary": "let config = RagConfig {"
+    },
+    {
+      "anchor": "prdeploymentsummary--breaking-changes",
+      "family": "doc",
+      "kind": "section",
+      "title": "Breaking Changes",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 257,
+      "tag": "Empirical/Declared",
+      "summary": "✅ NONE"
+    },
+    {
+      "anchor": "prdeploymentsummary--next-steps",
+      "family": "doc",
+      "kind": "section",
+      "title": "Next Steps",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 268,
+      "tag": "Empirical/Declared",
+      "summary": "1. ✅ Check code quality (done - all tests pass)"
+    },
+    {
+      "anchor": "prdeploymentsummary--for-reviewers",
+      "family": "doc",
+      "kind": "section",
+      "title": "For Reviewers",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 270,
+      "tag": "Empirical/Declared",
+      "summary": "1. ✅ Check code quality (done - all tests pass)"
+    },
+    {
+      "anchor": "prdeploymentsummary--for-deployment",
+      "family": "doc",
+      "kind": "section",
+      "title": "For Deployment",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 277,
+      "tag": "Empirical/Declared",
+      "summary": "1. Get PR approval"
+    },
+    {
+      "anchor": "prdeploymentsummary--future-work",
+      "family": "doc",
+      "kind": "section",
+      "title": "Future Work",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 284,
+      "tag": "Empirical/Declared",
+      "summary": "- Implement GPU compute shaders (WGSL)"
+    },
+    {
+      "anchor": "prdeploymentsummary--files-changed",
+      "family": "doc",
+      "kind": "section",
+      "title": "Files Changed",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 292,
+      "tag": "Empirical/Declared",
+      "summary": "11 files changed, 2651 insertions(+), 79 deletions(-)"
+    },
+    {
+      "anchor": "prdeploymentsummary--quick-links",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quick Links",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 315,
+      "tag": "Empirical/Declared",
+      "summary": "- PR: https://github.com/tzervas/context-mcp/pull/8"
+    },
+    {
+      "anchor": "prdeploymentsummary--questions",
+      "family": "doc",
+      "kind": "section",
+      "title": "Questions?",
+      "file": "PR_DEPLOYMENT_SUMMARY.md",
+      "line": 325,
+      "tag": "Empirical/Declared",
+      "summary": "See the comprehensive documentation files:"
+    },
+    {
+      "anchor": "readme",
+      "family": "doc",
+      "kind": "other",
+      "title": "context-mcp",
+      "file": "README.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "[![Crates.io](https://img.shields.io/crates/v/context-mcp.svg)](https://crates.io/crates/context-mcp)"
+    },
+    {
+      "anchor": "readme--quick-start",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quick Start",
+      "file": "README.md",
+      "line": 11,
+      "tag": "Empirical/Declared",
+      "summary": "curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash"
+    },
+    {
+      "anchor": "readme--install",
+      "family": "doc",
+      "kind": "section",
+      "title": "Install",
+      "file": "README.md",
+      "line": 13,
+      "tag": "Empirical/Declared",
+      "summary": "curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash"
+    },
+    {
+      "anchor": "readme--run",
+      "family": "doc",
+      "kind": "section",
+      "title": "Run",
+      "file": "README.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --stdio"
+    },
+    {
+      "anchor": "readme--stdio-transport-for-mcp-clients-like-vs-code",
+      "family": "doc",
+      "kind": "other",
+      "title": "Stdio transport (for MCP clients like VS Code)",
+      "file": "README.md",
+      "line": 29,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --stdio"
+    },
+    {
+      "anchor": "readme--http-server",
+      "family": "doc",
+      "kind": "other",
+      "title": "HTTP server",
+      "file": "README.md",
+      "line": 32,
+      "tag": "Empirical/Declared",
+      "summary": "context-mcp --host 127.0.0.1 --port 3000"
+    },
+    {
+      "anchor": "readme--features",
+      "family": "doc",
+      "kind": "section",
+      "title": "Features",
+      "file": "README.md",
+      "line": 36,
+      "tag": "Empirical/Declared",
+      "summary": "- Multi-tier Storage: In-memory LRU cache with optional sled-based disk persistence"
+    },
+    {
+      "anchor": "readme--performance",
+      "family": "doc",
+      "kind": "section",
+      "title": "Performance",
+      "file": "README.md",
+      "line": 44,
+      "tag": "Empirical/Declared",
+      "summary": "Validated through comprehensive benchmarking:"
+    },
+    {
+      "anchor": "readme--documentation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Documentation",
+      "file": "README.md",
+      "line": 53,
+      "tag": "Empirical/Declared",
+      "summary": "- [INSTALL.md](INSTALL.md) - Installation and setup guide"
+    },
+    {
+      "anchor": "readme--status",
+      "family": "doc",
+      "kind": "section",
+      "title": "Status",
+      "file": "README.md",
+      "line": 60,
+      "tag": "Empirical/Declared",
+      "summary": "Production-ready for context management, temporal tracking, and metadata query (session memory MCP)."
+    },
+    {
+      "anchor": "readme--usage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Usage",
+      "file": "README.md",
+      "line": 70,
+      "tag": "Empirical/Declared",
+      "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
+    },
+    {
+      "anchor": "readme--as-a-library",
+      "family": "doc",
+      "kind": "section",
+      "title": "As a Library",
+      "file": "README.md",
+      "line": 72,
+      "tag": "Empirical/Declared",
+      "summary": "use contextmcp::{ContextStore, StorageConfig, Context, ContextDomain};"
+    },
+    {
+      "anchor": "readme--as-an-mcp-server",
+      "family": "doc",
+      "kind": "section",
+      "title": "As an MCP Server",
+      "file": "README.md",
+      "line": 100,
+      "tag": "Empirical/Declared",
+      "summary": "Run as HTTP server:"
+    },
+    {
+      "anchor": "readme--what-it-does-verified-by-code-tests",
+      "family": "doc",
+      "kind": "section",
+      "title": "What It Does (Verified by Code/Tests)",
+      "file": "README.md",
+      "line": 112,
+      "tag": "Empirical/Declared",
+      "summary": "- JSON-RPC MCP Server: Runs over HTTP/WebSocket or stdio transport"
+    },
+    {
+      "anchor": "readme--what-it-does-not-do-yet",
+      "family": "doc",
+      "kind": "section",
+      "title": "What It Does Not Do (Yet)",
+      "file": "README.md",
+      "line": 122,
+      "tag": "Empirical/Declared",
+      "summary": "- Vector embeddings: Mock implementation only - no real embedding generation or similarity search"
+    },
+    {
+      "anchor": "readme--architecture",
+      "family": "doc",
+      "kind": "section",
+      "title": "Architecture",
+      "file": "README.md",
+      "line": 131,
+      "tag": "Empirical/Declared",
+      "summary": "┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐"
+    },
+    {
+      "anchor": "readme--development",
+      "family": "doc",
+      "kind": "section",
+      "title": "Development",
+      "file": "README.md",
+      "line": 151,
+      "tag": "Empirical/Declared",
+      "summary": "1. Install development dependencies:"
+    },
+    {
+      "anchor": "readme--setup",
+      "family": "doc",
+      "kind": "section",
+      "title": "Setup",
+      "file": "README.md",
+      "line": 153,
+      "tag": "Empirical/Declared",
+      "summary": "1. Install development dependencies:"
+    },
+    {
+      "anchor": "readme--available-commands",
+      "family": "doc",
+      "kind": "section",
+      "title": "Available Commands",
+      "file": "README.md",
+      "line": 165,
+      "tag": "Empirical/Declared",
+      "summary": "This project uses [just](https://github.com/casey/just) for development tasks:"
+    },
+    {
+      "anchor": "readme--code-quality",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Quality",
+      "file": "README.md",
+      "line": 184,
+      "tag": "Empirical/Declared",
+      "summary": "- Formatting: cargo fmt (enforced)"
+    },
+    {
+      "anchor": "readme--security-scanning",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Scanning",
+      "file": "README.md",
+      "line": 193,
+      "tag": "Empirical/Declared",
+      "summary": "The project includes comprehensive security scanning:"
+    },
+    {
+      "anchor": "readme--benchmarking",
+      "family": "doc",
+      "kind": "section",
+      "title": "Benchmarking",
+      "file": "README.md",
+      "line": 202,
+      "tag": "Empirical/Declared",
+      "summary": "Performance benchmarks are included for critical paths:"
+    },
+    {
+      "anchor": "readme--contributing",
+      "family": "doc",
+      "kind": "section",
+      "title": "Contributing",
+      "file": "README.md",
+      "line": 211,
+      "tag": "Empirical/Declared",
+      "summary": "See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines."
+    },
+    {
+      "anchor": "readme--license",
+      "family": "doc",
+      "kind": "section",
+      "title": "License",
+      "file": "README.md",
+      "line": 215,
+      "tag": "Empirical/Declared",
+      "summary": "Licensed under the MIT License. See [LICENSE](LICENSE) for details."
+    },
+    {
+      "anchor": "readme--status-roadmap",
+      "family": "doc",
+      "kind": "section",
+      "title": "Status & roadmap",
+      "file": "README.md",
+      "line": 219,
+      "tag": "Empirical/Declared",
+      "summary": "- [Assessment & gaps](docs/ASSESSMENT.md)"
+    },
+    {
+      "anchor": "rmcpauditplan",
+      "family": "doc",
+      "kind": "section",
+      "title": "RMCP (Rust MCP SDK) Security Audit Plan",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Date: January 9, 2026"
+    },
+    {
+      "anchor": "rmcpauditplan--1.-clone-repository",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Clone Repository",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "cd /home/kang/Documents/projects/2026/mcp"
+    },
+    {
+      "anchor": "rmcpauditplan--2.-security-audit-areas",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Security Audit Areas",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 20,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"unsafe\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--2.1-unsafe-code-audit",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.1 Unsafe Code Audit",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 22,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"unsafe\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--find-all-unsafe-blocks",
+      "family": "doc",
+      "kind": "other",
+      "title": "Find all unsafe blocks",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 24,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"unsafe\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--check-for-unsafe-in-dependencies",
+      "family": "doc",
+      "kind": "other",
+      "title": "Check for unsafe in dependencies",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 28,
+      "tag": "Empirical/Declared",
+      "summary": "cargo geiger  # Install: cargo install cargo-geiger"
+    },
+    {
+      "anchor": "rmcpauditplan--2.2-deserialization-attack-surface",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.2 Deserialization Attack Surface",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 38,
+      "tag": "Empirical/Declared",
+      "summary": "Files to audit:"
+    },
+    {
+      "anchor": "rmcpauditplan--2.3-network-transport-security",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.3 Network/Transport Security",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 56,
+      "tag": "Empirical/Declared",
+      "summary": "Files to audit:"
+    },
+    {
+      "anchor": "rmcpauditplan--2.4-oauth-authentication-audit",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.4 OAuth/Authentication Audit",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 72,
+      "tag": "Empirical/Declared",
+      "summary": "File: crates/rmcp/src/transport/auth.rs"
+    },
+    {
+      "anchor": "rmcpauditplan--2.5-credential-secret-handling",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.5 Credential/Secret Handling",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 84,
+      "tag": "Empirical/Declared",
+      "summary": "Search for:"
+    },
+    {
+      "anchor": "rmcpauditplan--2.6-dependency-audit",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.6 Dependency Audit",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 95,
+      "tag": "Empirical/Declared",
+      "summary": "cargo audit  # Install: cargo install cargo-audit"
+    },
+    {
+      "anchor": "rmcpauditplan--security-vulnerabilities",
+      "family": "doc",
+      "kind": "other",
+      "title": "Security vulnerabilities",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 97,
+      "tag": "Empirical/Declared",
+      "summary": "cargo audit  # Install: cargo install cargo-audit"
+    },
+    {
+      "anchor": "rmcpauditplan--dependency-tree-analysis",
+      "family": "doc",
+      "kind": "other",
+      "title": "Dependency tree analysis",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 100,
+      "tag": "Empirical/Declared",
+      "summary": "cargo tree --duplicates"
+    },
+    {
+      "anchor": "rmcpauditplan--check-for-concerning-dependencies",
+      "family": "doc",
+      "kind": "other",
+      "title": "Check for concerning dependencies",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 104,
+      "tag": "Empirical/Declared",
+      "summary": "cargo tree | grep -E \"openssl|native-tls|ring|rustls\""
+    },
+    {
+      "anchor": "rmcpauditplan--3.-protocol-compliance-verification",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Protocol Compliance Verification",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 118,
+      "tag": "Empirical/Declared",
+      "summary": "Reference: https://modelcontextprotocol.io/specification/2025-11-25"
+    },
+    {
+      "anchor": "rmcpauditplan--3.1-mcp-specification-alignment",
+      "family": "doc",
+      "kind": "section",
+      "title": "3.1 MCP Specification Alignment",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 120,
+      "tag": "Empirical/Declared",
+      "summary": "Reference: https://modelcontextprotocol.io/specification/2025-11-25"
+    },
+    {
+      "anchor": "rmcpauditplan--3.2-required-trait-verification",
+      "family": "doc",
+      "kind": "section",
+      "title": "3.2 Required Trait Verification",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 136,
+      "tag": "Empirical/Declared",
+      "summary": "Core traits to verify:"
+    },
+    {
+      "anchor": "rmcpauditplan--3.3-transport-implementations",
+      "family": "doc",
+      "kind": "section",
+      "title": "3.3 Transport Implementations",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 155,
+      "tag": "Empirical/Declared",
+      "summary": "Additional transports in examples (not core):"
+    },
+    {
+      "anchor": "rmcpauditplan--4.-red-flags-checklist",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Red Flags Checklist",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 170,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] No obfuscated code"
+    },
+    {
+      "anchor": "rmcpauditplan--4.1-code-quality",
+      "family": "doc",
+      "kind": "section",
+      "title": "4.1 Code Quality",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 172,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] No obfuscated code"
+    },
+    {
+      "anchor": "rmcpauditplan--4.2-suspicious-patterns",
+      "family": "doc",
+      "kind": "section",
+      "title": "4.2 Suspicious Patterns",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 178,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"http://\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--external-network-calls-outside-documented-transports",
+      "family": "doc",
+      "kind": "other",
+      "title": "External network calls outside documented transports",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 180,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"http://\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--file-system-access",
+      "family": "doc",
+      "kind": "other",
+      "title": "File system access",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 184,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"std::fs\\|tokio::fs\\|File::\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--process-execution",
+      "family": "doc",
+      "kind": "other",
+      "title": "Process execution",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 187,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"Command::\\|std::process\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--environment-variable-access",
+      "family": "doc",
+      "kind": "other",
+      "title": "Environment variable access",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 190,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"std::env\\|env!\" crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--4.3-macro-safety",
+      "family": "doc",
+      "kind": "section",
+      "title": "4.3 Macro Safety",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 194,
+      "tag": "Empirical/Declared",
+      "summary": "File: crates/rmcp-macros/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--5.-integration-testing-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "5. Integration Testing Plan",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 203,
+      "tag": "Empirical/Declared",
+      "summary": "cargo run --example clientsgitstdio"
+    },
+    {
+      "anchor": "rmcpauditplan--5.1-test-against-reference-servers",
+      "family": "doc",
+      "kind": "section",
+      "title": "5.1 Test Against Reference Servers",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 205,
+      "tag": "Empirical/Declared",
+      "summary": "cargo run --example clientsgitstdio"
+    },
+    {
+      "anchor": "rmcpauditplan--run-against-official-mcp-servers",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run against official MCP servers",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 207,
+      "tag": "Empirical/Declared",
+      "summary": "cargo run --example clientsgitstdio"
+    },
+    {
+      "anchor": "rmcpauditplan--5.2-fuzz-testing-optional",
+      "family": "doc",
+      "kind": "section",
+      "title": "5.2 Fuzz Testing (Optional)",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 212,
+      "tag": "Empirical/Declared",
+      "summary": "cargo +nightly fuzz run <target>  # If fuzz targets exist"
+    },
+    {
+      "anchor": "rmcpauditplan--for-deserialization-paths",
+      "family": "doc",
+      "kind": "other",
+      "title": "For deserialization paths",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 214,
+      "tag": "Empirical/Declared",
+      "summary": "cargo +nightly fuzz run <target>  # If fuzz targets exist"
+    },
+    {
+      "anchor": "rmcpauditplan--5.3-protocol-conformance",
+      "family": "doc",
+      "kind": "section",
+      "title": "5.3 Protocol Conformance",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 218,
+      "tag": "Empirical/Declared",
+      "summary": "cd crates/rmcp"
+    },
+    {
+      "anchor": "rmcpauditplan--run-sdk-test-suite",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run SDK test suite",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 220,
+      "tag": "Empirical/Declared",
+      "summary": "cd crates/rmcp"
+    },
+    {
+      "anchor": "rmcpauditplan--6.-key-files-for-deep-review",
+      "family": "doc",
+      "kind": "section",
+      "title": "6. Key Files for Deep Review",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 227,
+      "tag": "Empirical/Declared",
+      "summary": "Priority 1 (Security Critical):"
+    },
+    {
+      "anchor": "rmcpauditplan--7.-audit-execution-commands",
+      "family": "doc",
+      "kind": "section",
+      "title": "7. Audit Execution Commands",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 245,
+      "tag": "Empirical/Declared",
+      "summary": "cd /home/kang/Documents/projects/2026/mcp/rmcp-audit"
+    },
+    {
+      "anchor": "rmcpauditplan--full-audit-workflow",
+      "family": "doc",
+      "kind": "other",
+      "title": "Full audit workflow",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 248,
+      "tag": "Empirical/Declared",
+      "summary": "cd /home/kang/Documents/projects/2026/mcp/rmcp-audit"
+    },
+    {
+      "anchor": "rmcpauditplan--1.-dependency-security",
+      "family": "doc",
+      "kind": "other",
+      "title": "1. Dependency security",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 251,
+      "tag": "Empirical/Declared",
+      "summary": "cargo audit"
+    },
+    {
+      "anchor": "rmcpauditplan--2.-unsafe-code-scan",
+      "family": "doc",
+      "kind": "other",
+      "title": "2. Unsafe code scan",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 255,
+      "tag": "Empirical/Declared",
+      "summary": "cargo geiger --all-features 2>/dev/null || grep -rn \"unsafe\" crates/"
+    },
+    {
+      "anchor": "rmcpauditplan--3.-build-and-test",
+      "family": "doc",
+      "kind": "other",
+      "title": "3. Build and test",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 258,
+      "tag": "Empirical/Declared",
+      "summary": "cargo build --all-features"
+    },
+    {
+      "anchor": "rmcpauditplan--4.-code-stats",
+      "family": "doc",
+      "kind": "other",
+      "title": "4. Code stats",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 262,
+      "tag": "Empirical/Declared",
+      "summary": "tokei crates/rmcp/src/"
+    },
+    {
+      "anchor": "rmcpauditplan--5.-security-patterns",
+      "family": "doc",
+      "kind": "other",
+      "title": "5. Security patterns",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 266,
+      "tag": "Empirical/Declared",
+      "summary": "grep -rn \"panic!\\|unwrap()\\|expect(\" crates/rmcp/src/ | wc -l"
+    },
+    {
+      "anchor": "rmcpauditplan--8.-expected-findings-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "8. Expected Findings Summary",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 272,
+      "tag": "Empirical/Declared",
+      "summary": "Positive indicators from initial review:"
+    },
+    {
+      "anchor": "rmcpauditplan--9.-integration-decision-matrix",
+      "family": "doc",
+      "kind": "section",
+      "title": "9. Integration Decision Matrix",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 291,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "rmcpauditplan--next-steps-after-audit",
+      "family": "doc",
+      "kind": "section",
+      "title": "Next Steps After Audit",
+      "file": "RMCP_AUDIT_PLAN.md",
+      "line": 304,
+      "tag": "Empirical/Declared",
+      "summary": "1. If PASS: Create rmcp integration branch"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Sparse Balanced Ternary Embeddings Implementation",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Successfully implemented a comprehensive sparse balanced ternary embedding system for context-mcp, providing multiple quantization strategies with reconstructa…"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--overview",
+      "family": "doc",
+      "kind": "section",
+      "title": "Overview",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 3,
+      "tag": "Empirical/Declared",
+      "summary": "Successfully implemented a comprehensive sparse balanced ternary embedding system for context-mcp, providing multiple quantization strategies with reconstructa…"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--architecture",
+      "family": "doc",
+      "kind": "section",
+      "title": "Architecture",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 7,
+      "tag": "Empirical/Declared",
+      "summary": "Implements sparse balanced ternary encoding with three quantization strategies:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--core-components",
+      "family": "doc",
+      "kind": "section",
+      "title": "Core Components",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 9,
+      "tag": "Empirical/Declared",
+      "summary": "Implements sparse balanced ternary encoding with three quantization strategies:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--1.-ternary-embedding-module-src-ternary.rs-638-lines",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. **Ternary Embedding Module** (`src/ternary.rs` - 638 lines)",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 11,
+      "tag": "Empirical/Declared",
+      "summary": "Implements sparse balanced ternary encoding with three quantization strategies:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--2.-gpu-acceleration-module-src-gpu.rs-220-lines",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. **GPU Acceleration Module** (`src/gpu.rs` - 220 lines)",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 64,
+      "tag": "Empirical/Declared",
+      "summary": "Optional GPU compute for similarity operations with automatic fallback:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--3.-enhanced-embeddings-module-src-embeddings.rs-modified",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. **Enhanced Embeddings Module** (`src/embeddings.rs` - modified)",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 79,
+      "tag": "Empirical/Declared",
+      "summary": "Extended existing embeddings module with quantization support:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--4.-rag-integration-src-rag.rs-modified",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. **RAG Integration** (`src/rag.rs` - modified)",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 98,
+      "tag": "Empirical/Declared",
+      "summary": "Integrated sparse ternary embeddings into semantic search pipeline:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--implementation-statistics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Implementation Statistics",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 115,
+      "tag": "Empirical/Declared",
+      "summary": "- Total Lines Added: ~850 (ternary) + 200 (gpu) + 100+ (enhancements)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--code-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Metrics",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 117,
+      "tag": "Empirical/Declared",
+      "summary": "- Total Lines Added: ~850 (ternary) + 200 (gpu) + 100+ (enhancements)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--feature-flags",
+      "family": "doc",
+      "kind": "section",
+      "title": "Feature Flags",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 123,
+      "tag": "Empirical/Declared",
+      "summary": "[features]"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--supported-build-configurations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Supported Build Configurations",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 134,
+      "tag": "Empirical/Declared",
+      "summary": "- cargo check --lib: ✓ Passes"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--performance-characteristics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Performance Characteristics",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 140,
+      "tag": "Empirical/Declared",
+      "summary": "Based on demo output (66-dim test embedding):"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--memory-efficiency",
+      "family": "doc",
+      "kind": "section",
+      "title": "Memory Efficiency",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 142,
+      "tag": "Empirical/Declared",
+      "summary": "Based on demo output (66-dim test embedding):"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--similarity-computation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Similarity Computation",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 151,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparse cosine: O(k) where k = non-zero elements (~10-50)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--reconstruction-fidelity",
+      "family": "doc",
+      "kind": "section",
+      "title": "Reconstruction Fidelity",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 156,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparse: Perfect reconstruction of stored elements, zeros for pruned"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--demo-results",
+      "family": "doc",
+      "kind": "section",
+      "title": "Demo Results",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 161,
+      "tag": "Empirical/Declared",
+      "summary": "Running cargo run --example ternaryragdemo:"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--design-decisions",
+      "family": "doc",
+      "kind": "section",
+      "title": "Design Decisions",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 190,
+      "tag": "Empirical/Declared",
+      "summary": "Decision: Use indices (Vec<u32>) + values (Vec<i8>)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--1.-sparse-storage-format",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Sparse Storage Format",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 192,
+      "tag": "Empirical/Declared",
+      "summary": "Decision: Use indices (Vec<u32>) + values (Vec<i8>)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--2.-top-k-sparsity",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Top-K Sparsity",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 199,
+      "tag": "Empirical/Declared",
+      "summary": "Decision: Configurable top-k rather than threshold-only"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--3.-rvq-over-pq",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. RVQ Over PQ",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 206,
+      "tag": "Empirical/Declared",
+      "summary": "Decision: Residual quantization with progressive refinement"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--4.-feature-gated-gpu",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Feature-Gated GPU",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 213,
+      "tag": "Empirical/Declared",
+      "summary": "Decision: GPU acceleration behind optional feature flag"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--5.-hybrid-as-default",
+      "family": "doc",
+      "kind": "section",
+      "title": "5. Hybrid as Default",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 221,
+      "tag": "Empirical/Declared",
+      "summary": "Decision: Recommend hybrid strategy for production"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--integration-with-rag",
+      "family": "doc",
+      "kind": "section",
+      "title": "Integration with RAG",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 228,
+      "tag": "Empirical/Declared",
+      "summary": "// Before: Only metadata-based scoring"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--semantic-search-enhancement",
+      "family": "doc",
+      "kind": "section",
+      "title": "Semantic Search Enhancement",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 230,
+      "tag": "Empirical/Declared",
+      "summary": "// Before: Only metadata-based scoring"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--quantization-in-retrieval-pipeline",
+      "family": "doc",
+      "kind": "section",
+      "title": "Quantization in Retrieval Pipeline",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 239,
+      "tag": "Empirical/Declared",
+      "summary": "1. Query text → pseudo-embedding (simplified, no model dependency)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--configuration-example",
+      "family": "doc",
+      "kind": "section",
+      "title": "Configuration Example",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 246,
+      "tag": "Empirical/Declared",
+      "summary": "let config = RagConfig {"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--testing-strategy",
+      "family": "doc",
+      "kind": "section",
+      "title": "Testing Strategy",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 259,
+      "tag": "Empirical/Declared",
+      "summary": "- Ternary quantization (sparse, RVQ, hybrid)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--unit-tests-27-passing",
+      "family": "doc",
+      "kind": "section",
+      "title": "Unit Tests (27 passing)",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 261,
+      "tag": "Empirical/Declared",
+      "summary": "- Ternary quantization (sparse, RVQ, hybrid)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--integration-example",
+      "family": "doc",
+      "kind": "section",
+      "title": "Integration Example",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 269,
+      "tag": "Empirical/Declared",
+      "summary": "- [ternaryragdemo.rs](examples/ternaryragdemo.rs)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--benchmarking-framework",
+      "family": "doc",
+      "kind": "section",
+      "title": "Benchmarking Framework",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 275,
+      "tag": "Empirical/Declared",
+      "summary": "- [benches/ragbenchmark.rs](benches/ragbenchmark.rs)"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--next-steps-future-work",
+      "family": "doc",
+      "kind": "section",
+      "title": "Next Steps (Future Work)",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 283,
+      "tag": "Empirical/Declared",
+      "summary": "1. Implement GPU Compute Shaders"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--high-priority",
+      "family": "doc",
+      "kind": "section",
+      "title": "High Priority",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 285,
+      "tag": "Empirical/Declared",
+      "summary": "1. Implement GPU Compute Shaders"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--medium-priority",
+      "family": "doc",
+      "kind": "section",
+      "title": "Medium Priority",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 301,
+      "tag": "Empirical/Declared",
+      "summary": "4. Optimization"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--low-priority",
+      "family": "doc",
+      "kind": "section",
+      "title": "Low Priority",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 312,
+      "tag": "Empirical/Declared",
+      "summary": "6. Visualization"
+    },
+    {
+      "anchor": "ternaryembeddingsimplementation--conclusion",
+      "family": "doc",
+      "kind": "section",
+      "title": "Conclusion",
+      "file": "TERNARY_EMBEDDINGS_IMPLEMENTATION.md",
+      "line": 318,
+      "tag": "Empirical/Declared",
+      "summary": "The sparse balanced ternary embedding system is fully implemented and integrated with context-mcp's RAG pipeline. The system provides:"
+    },
+    {
+      "anchor": "usageexamples",
+      "family": "doc",
+      "kind": "section",
+      "title": "Context-MCP Usage Examples",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "This document shows how to use the context-mcp tools that are now available in VS Code."
+    },
+    {
+      "anchor": "usageexamples--available-tools",
+      "family": "doc",
+      "kind": "section",
+      "title": "Available Tools",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "The following tools are accessible through VS Code's MCP integration:"
+    },
+    {
+      "anchor": "usageexamples--example-usage-scenarios",
+      "family": "doc",
+      "kind": "section",
+      "title": "Example Usage Scenarios",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 19,
+      "tag": "Empirical/Declared",
+      "summary": "You can store code examples or patterns for later reference:"
+    },
+    {
+      "anchor": "usageexamples--scenario-1-store-code-snippets",
+      "family": "doc",
+      "kind": "section",
+      "title": "Scenario 1: Store Code Snippets",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 21,
+      "tag": "Empirical/Declared",
+      "summary": "You can store code examples or patterns for later reference:"
+    },
+    {
+      "anchor": "usageexamples--scenario-2-query-stored-contexts",
+      "family": "doc",
+      "kind": "section",
+      "title": "Scenario 2: Query Stored Contexts",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 33,
+      "tag": "Empirical/Declared",
+      "summary": "Search for stored information by domain or tags:"
+    },
+    {
+      "anchor": "usageexamples--scenario-3-rag-retrieval",
+      "family": "doc",
+      "kind": "section",
+      "title": "Scenario 3: RAG Retrieval",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 44,
+      "tag": "Empirical/Declared",
+      "summary": "Use natural language to find relevant contexts:"
+    },
+    {
+      "anchor": "usageexamples--scenario-4-temporal-tracking",
+      "family": "doc",
+      "kind": "section",
+      "title": "Scenario 4: Temporal Tracking",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 54,
+      "tag": "Empirical/Declared",
+      "summary": "Get statistics about your stored contexts:"
+    },
+    {
+      "anchor": "usageexamples--testing-the-setup",
+      "family": "doc",
+      "kind": "section",
+      "title": "Testing the Setup",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 66,
+      "tag": "Empirical/Declared",
+      "summary": "To verify everything is working, you can:"
+    },
+    {
+      "anchor": "usageexamples--performance-characteristics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Performance Characteristics",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 75,
+      "tag": "Empirical/Declared",
+      "summary": "Based on benchmarking:"
+    },
+    {
+      "anchor": "usageexamples--configuration",
+      "family": "doc",
+      "kind": "section",
+      "title": "Configuration",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 84,
+      "tag": "Empirical/Declared",
+      "summary": "The server is configured in your VS Code MCP settings:"
+    },
+    {
+      "anchor": "usageexamples--advanced-options",
+      "family": "doc",
+      "kind": "section",
+      "title": "Advanced Options",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 100,
+      "tag": "Empirical/Declared",
+      "summary": "You can modify the configuration to enable additional features:"
+    },
+    {
+      "anchor": "usageexamples--best-practices",
+      "family": "doc",
+      "kind": "section",
+      "title": "Best Practices",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 116,
+      "tag": "Empirical/Declared",
+      "summary": "1. Use meaningful tags: Tag contexts with searchable keywords"
+    },
+    {
+      "anchor": "usageexamples--troubleshooting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Troubleshooting",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 124,
+      "tag": "Empirical/Declared",
+      "summary": "If the tools aren't appearing:"
+    },
+    {
+      "anchor": "usageexamples--full-test-results",
+      "family": "doc",
+      "kind": "section",
+      "title": "Full Test Results",
+      "file": "USAGE_EXAMPLES.md",
+      "line": 133,
+      "tag": "Empirical/Declared",
+      "summary": "See ASSESSMENTREPORT.md for comprehensive benchmark results and validation."
+    },
+    {
+      "anchor": "context-mcp-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "Consolidated MCP Agent Context Management Server Specification",
+      "file": "context-mcp-plan.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "After systematic analysis of the three research responses, the optimal path forward for your context-mcp project is a modular Rust MCP server built on the offi…"
+    },
+    {
+      "anchor": "context-mcp-plan--version-2026-01-09-post-multi-response-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "Version: 2026-01-09 - Post-Multi-Response Analysis",
+      "file": "context-mcp-plan.md",
+      "line": 2,
+      "tag": "Empirical/Declared",
+      "summary": "After systematic analysis of the three research responses, the optimal path forward for your context-mcp project is a modular Rust MCP server built on the offi…"
+    },
+    {
+      "anchor": "context-mcp-plan--executive-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "EXECUTIVE SUMMARY",
+      "file": "context-mcp-plan.md",
+      "line": 6,
+      "tag": "Empirical/Declared",
+      "summary": "After systematic analysis of the three research responses, the optimal path forward for your context-mcp project is a modular Rust MCP server built on the offi…"
+    },
+    {
+      "anchor": "context-mcp-plan--verification-report",
+      "family": "doc",
+      "kind": "section",
+      "title": "VERIFICATION REPORT",
+      "file": "context-mcp-plan.md",
+      "line": 27,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--technical-accuracy-assessment",
+      "family": "doc",
+      "kind": "section",
+      "title": "Technical Accuracy Assessment",
+      "file": "context-mcp-plan.md",
+      "line": 29,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--mcp-protocol-sdk-claims",
+      "family": "doc",
+      "kind": "section",
+      "title": "MCP Protocol & SDK Claims",
+      "file": "context-mcp-plan.md",
+      "line": 31,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--rust-crate-availability",
+      "family": "doc",
+      "kind": "section",
+      "title": "Rust Crate Availability",
+      "file": "context-mcp-plan.md",
+      "line": 43,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--user-project-status-embeddenator-suite",
+      "family": "doc",
+      "kind": "section",
+      "title": "User Project Status (embeddenator suite)",
+      "file": "context-mcp-plan.md",
+      "line": 58,
+      "tag": "Empirical/Declared",
+      "summary": "Recommendation: Before implementation, verify these repositories exist and assess their API stability."
+    },
+    {
+      "anchor": "context-mcp-plan--research-citation-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "Research Citation Analysis",
+      "file": "context-mcp-plan.md",
+      "line": 68,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--papers-correctly-cited-and-applicable",
+      "family": "doc",
+      "kind": "section",
+      "title": "Papers Correctly Cited and Applicable",
+      "file": "context-mcp-plan.md",
+      "line": 70,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--papers-with-questionable-interpretation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Papers with Questionable Interpretation",
+      "file": "context-mcp-plan.md",
+      "line": 79,
+      "tag": "Empirical/Declared",
+      "summary": "Several papers cited have arXiv IDs that appear to be from 2025-2026, which I cannot verify:"
+    },
+    {
+      "anchor": "context-mcp-plan--papers-needing-external-verification",
+      "family": "doc",
+      "kind": "section",
+      "title": "Papers Needing External Verification",
+      "file": "context-mcp-plan.md",
+      "line": 88,
+      "tag": "Empirical/Declared",
+      "summary": "Several papers cited have arXiv IDs that appear to be from 2025-2026, which I cannot verify:"
+    },
+    {
+      "anchor": "context-mcp-plan--missing-relevant-research",
+      "family": "doc",
+      "kind": "section",
+      "title": "Missing Relevant Research",
+      "file": "context-mcp-plan.md",
+      "line": 98,
+      "tag": "Empirical/Declared",
+      "summary": "The responses don't mention:"
+    },
+    {
+      "anchor": "context-mcp-plan--technology-stack-validation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Technology Stack Validation",
+      "file": "context-mcp-plan.md",
+      "line": 105,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--confirmed-available-and-mature",
+      "family": "doc",
+      "kind": "section",
+      "title": "Confirmed Available and Mature",
+      "file": "context-mcp-plan.md",
+      "line": 107,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--experimental-or-risky",
+      "family": "doc",
+      "kind": "section",
+      "title": "Experimental or Risky",
+      "file": "context-mcp-plan.md",
+      "line": 117,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--not-recommended",
+      "family": "doc",
+      "kind": "section",
+      "title": "Not Recommended",
+      "file": "context-mcp-plan.md",
+      "line": 125,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--conflict-resolution-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "CONFLICT RESOLUTION SUMMARY",
+      "file": "context-mcp-plan.md",
+      "line": 134,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--consolidated-optimal-architecture",
+      "family": "doc",
+      "kind": "section",
+      "title": "CONSOLIDATED OPTIMAL ARCHITECTURE",
+      "file": "context-mcp-plan.md",
+      "line": 150,
+      "tag": "Empirical/Declared",
+      "summary": "┌─────────────────────────────────────────────────────────────────────────┐"
+    },
+    {
+      "anchor": "context-mcp-plan--system-overview",
+      "family": "doc",
+      "kind": "section",
+      "title": "System Overview",
+      "file": "context-mcp-plan.md",
+      "line": 152,
+      "tag": "Empirical/Declared",
+      "summary": "┌─────────────────────────────────────────────────────────────────────────┐"
+    },
+    {
+      "anchor": "context-mcp-plan--technology-stack-verified-justified",
+      "family": "doc",
+      "kind": "section",
+      "title": "Technology Stack (Verified & Justified)",
+      "file": "context-mcp-plan.md",
+      "line": 203,
+      "tag": "Empirical/Declared",
+      "summary": "[dependencies]"
+    },
+    {
+      "anchor": "context-mcp-plan--core-framework",
+      "family": "doc",
+      "kind": "section",
+      "title": "Core Framework",
+      "file": "context-mcp-plan.md",
+      "line": 205,
+      "tag": "Empirical/Declared",
+      "summary": "[dependencies]"
+    },
+    {
+      "anchor": "context-mcp-plan--mcp-protocol-official-sdk",
+      "family": "doc",
+      "kind": "other",
+      "title": "MCP Protocol - Official SDK",
+      "file": "context-mcp-plan.md",
+      "line": 208,
+      "tag": "Empirical/Declared",
+      "summary": "rmcp = { git = \"https://github.com/modelcontextprotocol/rust-sdk\" }"
+    },
+    {
+      "anchor": "context-mcp-plan--async-runtime",
+      "family": "doc",
+      "kind": "other",
+      "title": "Async Runtime",
+      "file": "context-mcp-plan.md",
+      "line": 211,
+      "tag": "Empirical/Declared",
+      "summary": "tokio = { version = \"1\", features = [\"full\"] }"
+    },
+    {
+      "anchor": "context-mcp-plan--serialization",
+      "family": "doc",
+      "kind": "other",
+      "title": "Serialization",
+      "file": "context-mcp-plan.md",
+      "line": 214,
+      "tag": "Empirical/Declared",
+      "summary": "serde = { version = \"1\", features = [\"derive\"] }"
+    },
+    {
+      "anchor": "context-mcp-plan--web-framework-for-sse-transport",
+      "family": "doc",
+      "kind": "other",
+      "title": "Web Framework (for SSE transport)",
+      "file": "context-mcp-plan.md",
+      "line": 218,
+      "tag": "Empirical/Declared",
+      "summary": "axum = \"0.7\""
+    },
+    {
+      "anchor": "context-mcp-plan--storage-layer",
+      "family": "doc",
+      "kind": "section",
+      "title": "Storage Layer",
+      "file": "context-mcp-plan.md",
+      "line": 225,
+      "tag": "Empirical/Declared",
+      "summary": "[dependencies]"
+    },
+    {
+      "anchor": "context-mcp-plan--key-value-storage-alternative-to-sled",
+      "family": "doc",
+      "kind": "other",
+      "title": "Key-Value Storage (alternative to sled)",
+      "file": "context-mcp-plan.md",
+      "line": 228,
+      "tag": "Empirical/Declared",
+      "summary": "redb = \"2\"  # Pure Rust, actively maintained"
+    },
+    {
+      "anchor": "context-mcp-plan--vector-storage",
+      "family": "doc",
+      "kind": "other",
+      "title": "Vector Storage",
+      "file": "context-mcp-plan.md",
+      "line": 231,
+      "tag": "Empirical/Declared",
+      "summary": "lancedb = \"0.4\"  # Or latest"
+    },
+    {
+      "anchor": "context-mcp-plan--optional-for-task-durability-if-needed",
+      "family": "doc",
+      "kind": "other",
+      "title": "Optional: For Task durability if needed",
+      "file": "context-mcp-plan.md",
+      "line": 234,
+      "tag": "Empirical/Declared",
+      "summary": "rusqlite = { version = \"0.31\", optional = true }"
+    },
+    {
+      "anchor": "context-mcp-plan--embedding-engine",
+      "family": "doc",
+      "kind": "section",
+      "title": "Embedding Engine",
+      "file": "context-mcp-plan.md",
+      "line": 240,
+      "tag": "Empirical/Declared",
+      "summary": "[dependencies]"
+    },
+    {
+      "anchor": "context-mcp-plan--cpu-inference",
+      "family": "doc",
+      "kind": "other",
+      "title": "CPU Inference",
+      "file": "context-mcp-plan.md",
+      "line": 243,
+      "tag": "Empirical/Declared",
+      "summary": "candle-core = \"0.4\""
+    },
+    {
+      "anchor": "context-mcp-plan--tokenization",
+      "family": "doc",
+      "kind": "other",
+      "title": "Tokenization",
+      "file": "context-mcp-plan.md",
+      "line": 248,
+      "tag": "Empirical/Declared",
+      "summary": "tokenizers = \"0.15\""
+    },
+    {
+      "anchor": "context-mcp-plan--vsa-integration-your-projects",
+      "family": "doc",
+      "kind": "section",
+      "title": "VSA Integration (Your Projects)",
+      "file": "context-mcp-plan.md",
+      "line": 254,
+      "tag": "Empirical/Declared",
+      "summary": "[dependencies]"
+    },
+    {
+      "anchor": "context-mcp-plan--pending-verification-of-your-crate-structure",
+      "family": "doc",
+      "kind": "other",
+      "title": "Pending verification of your crate structure",
+      "file": "context-mcp-plan.md",
+      "line": 257,
+      "tag": "Empirical/Declared",
+      "summary": "embeddenator-vsa = { path = \"../embeddenator-vsa\" }  # Or git"
+    },
+    {
+      "anchor": "context-mcp-plan--security-isolation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security & Isolation",
+      "file": "context-mcp-plan.md",
+      "line": 264,
+      "tag": "Empirical/Declared",
+      "summary": "[dependencies]"
+    },
+    {
+      "anchor": "context-mcp-plan--key-design-decisions",
+      "family": "doc",
+      "kind": "section",
+      "title": "Key Design Decisions",
+      "file": "context-mcp-plan.md",
+      "line": 272,
+      "tag": "Empirical/Declared",
+      "summary": "Choice: Support both dense embeddings (via candle/lancedb) AND sparse VSA (via embeddenator)"
+    },
+    {
+      "anchor": "context-mcp-plan--decision-1-dual-mode-memory-backend",
+      "family": "doc",
+      "kind": "section",
+      "title": "Decision 1: Dual-Mode Memory Backend",
+      "file": "context-mcp-plan.md",
+      "line": 274,
+      "tag": "Empirical/Declared",
+      "summary": "Choice: Support both dense embeddings (via candle/lancedb) AND sparse VSA (via embeddenator)"
+    },
+    {
+      "anchor": "context-mcp-plan--decision-2-optional-rag-via-feature-flag",
+      "family": "doc",
+      "kind": "section",
+      "title": "Decision 2: Optional RAG via Feature Flag",
+      "file": "context-mcp-plan.md",
+      "line": 286,
+      "tag": "Empirical/Declared",
+      "summary": "Choice: RAG as a Cargo feature, not compiled by default"
+    },
+    {
+      "anchor": "context-mcp-plan--decision-3-temporal-tagging-in-memory-store",
+      "family": "doc",
+      "kind": "section",
+      "title": "Decision 3: Temporal Tagging in Memory Store",
+      "file": "context-mcp-plan.md",
+      "line": 303,
+      "tag": "Empirical/Declared",
+      "summary": "Choice: Every memory entry carries temporal metadata as first-class fields"
+    },
+    {
+      "anchor": "context-mcp-plan--decision-4-trait-based-tool-registration",
+      "family": "doc",
+      "kind": "section",
+      "title": "Decision 4: Trait-Based Tool Registration",
+      "file": "context-mcp-plan.md",
+      "line": 330,
+      "tag": "Empirical/Declared",
+      "summary": "Choice: Tools implement a common trait and register dynamically"
+    },
+    {
+      "anchor": "context-mcp-plan--decision-5-hierarchical-memory-consolidation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Decision 5: Hierarchical Memory Consolidation",
+      "file": "context-mcp-plan.md",
+      "line": 354,
+      "tag": "Empirical/Declared",
+      "summary": "Choice: Three-tier hierarchy with configurable consolidation"
+    },
+    {
+      "anchor": "context-mcp-plan--optimized-requirements",
+      "family": "doc",
+      "kind": "section",
+      "title": "OPTIMIZED REQUIREMENTS",
+      "file": "context-mcp-plan.md",
+      "line": 376,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--functional-requirements-prioritized",
+      "family": "doc",
+      "kind": "section",
+      "title": "Functional Requirements (Prioritized)",
+      "file": "context-mcp-plan.md",
+      "line": 378,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--p0-must-have-mvp-blocking",
+      "family": "doc",
+      "kind": "section",
+      "title": "P0 - Must Have (MVP Blocking)",
+      "file": "context-mcp-plan.md",
+      "line": 380,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--p1-should-have-high-value",
+      "family": "doc",
+      "kind": "section",
+      "title": "P1 - Should Have (High Value)",
+      "file": "context-mcp-plan.md",
+      "line": 391,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--p2-nice-to-have",
+      "family": "doc",
+      "kind": "section",
+      "title": "P2 - Nice to Have",
+      "file": "context-mcp-plan.md",
+      "line": 401,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--p3-future-experimental",
+      "family": "doc",
+      "kind": "section",
+      "title": "P3 - Future/Experimental",
+      "file": "context-mcp-plan.md",
+      "line": 411,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--non-functional-requirements-realistic",
+      "family": "doc",
+      "kind": "section",
+      "title": "Non-Functional Requirements (Realistic)",
+      "file": "context-mcp-plan.md",
+      "line": 419,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--optimized-roadmap",
+      "family": "doc",
+      "kind": "section",
+      "title": "OPTIMIZED ROADMAP",
+      "file": "context-mcp-plan.md",
+      "line": 434,
+      "tag": "Empirical/Declared",
+      "summary": "Phase 1: Foundation (Weeks 1-2)"
+    },
+    {
+      "anchor": "context-mcp-plan--phase-structure",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase Structure",
+      "file": "context-mcp-plan.md",
+      "line": 436,
+      "tag": "Empirical/Declared",
+      "summary": "Phase 1: Foundation (Weeks 1-2)"
+    },
+    {
+      "anchor": "context-mcp-plan--task-breakdown",
+      "family": "doc",
+      "kind": "section",
+      "title": "Task Breakdown",
+      "file": "context-mcp-plan.md",
+      "line": 463,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--critical-path-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "Critical Path Analysis",
+      "file": "context-mcp-plan.md",
+      "line": 493,
+      "tag": "Empirical/Declared",
+      "summary": "MVP Critical Path:"
+    },
+    {
+      "anchor": "context-mcp-plan--gap-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "GAP ANALYSIS",
+      "file": "context-mcp-plan.md",
+      "line": 517,
+      "tag": "Empirical/Declared",
+      "summary": "1. Observability/Monitoring"
+    },
+    {
+      "anchor": "context-mcp-plan--missing-considerations-in-responses",
+      "family": "doc",
+      "kind": "section",
+      "title": "Missing Considerations in Responses",
+      "file": "context-mcp-plan.md",
+      "line": 519,
+      "tag": "Empirical/Declared",
+      "summary": "1. Observability/Monitoring"
+    },
+    {
+      "anchor": "context-mcp-plan--additional-research-needed",
+      "family": "doc",
+      "kind": "section",
+      "title": "Additional Research Needed",
+      "file": "context-mcp-plan.md",
+      "line": 545,
+      "tag": "Empirical/Declared",
+      "summary": "1. Use SQLite Instead of redb+lancedb"
+    },
+    {
+      "anchor": "context-mcp-plan--alternative-approaches-worth-considering",
+      "family": "doc",
+      "kind": "section",
+      "title": "Alternative Approaches Worth Considering",
+      "file": "context-mcp-plan.md",
+      "line": 555,
+      "tag": "Empirical/Declared",
+      "summary": "1. Use SQLite Instead of redb+lancedb"
+    },
+    {
+      "anchor": "context-mcp-plan--risk-register",
+      "family": "doc",
+      "kind": "section",
+      "title": "RISK REGISTER",
+      "file": "context-mcp-plan.md",
+      "line": 574,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--success-metrics-research-backed",
+      "family": "doc",
+      "kind": "section",
+      "title": "SUCCESS METRICS (Research-Backed)",
+      "file": "context-mcp-plan.md",
+      "line": 589,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--curated-citation-index",
+      "family": "doc",
+      "kind": "section",
+      "title": "CURATED CITATION INDEX",
+      "file": "context-mcp-plan.md",
+      "line": 604,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--verified-core-references",
+      "family": "doc",
+      "kind": "section",
+      "title": "Verified Core References",
+      "file": "context-mcp-plan.md",
+      "line": 606,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--references-requiring-verification",
+      "family": "doc",
+      "kind": "section",
+      "title": "References Requiring Verification",
+      "file": "context-mcp-plan.md",
+      "line": 618,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--removed-duplicates-or-low-value",
+      "family": "doc",
+      "kind": "section",
+      "title": "Removed (Duplicates or Low Value)",
+      "file": "context-mcp-plan.md",
+      "line": 629,
+      "tag": "Empirical/Declared",
+      "summary": "- Multiple blog posts about MCP basics (covered by official docs)"
+    },
+    {
+      "anchor": "context-mcp-plan--appendices",
+      "family": "doc",
+      "kind": "section",
+      "title": "APPENDICES",
+      "file": "context-mcp-plan.md",
+      "line": 638,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--appendix-a-deduplication-log",
+      "family": "doc",
+      "kind": "section",
+      "title": "Appendix A: Deduplication Log",
+      "file": "context-mcp-plan.md",
+      "line": 640,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--appendix-b-discrepancy-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "Appendix B: Discrepancy Analysis",
+      "file": "context-mcp-plan.md",
+      "line": 652,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--appendix-c-confidence-ratings",
+      "family": "doc",
+      "kind": "section",
+      "title": "Appendix C: Confidence Ratings",
+      "file": "context-mcp-plan.md",
+      "line": 662,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "context-mcp-plan--next-steps",
+      "family": "doc",
+      "kind": "section",
+      "title": "NEXT STEPS",
+      "file": "context-mcp-plan.md",
+      "line": 678,
+      "tag": "Empirical/Declared",
+      "summary": "1. Verify embeddenator crates - Clone and test your VSA repositories before committing to integration"
+    },
+    {
+      "anchor": "assessment",
+      "family": "doc",
+      "kind": "note",
+      "title": "context-mcp — Assessment & Gap Analysis",
+      "file": "docs/ASSESSMENT.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Date: 2026-07-08"
+    },
+    {
+      "anchor": "assessment--1.-what-works-today",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. What works today",
+      "file": "docs/ASSESSMENT.md",
+      "line": 11,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessment--2.-critical-gap-not-legitimate-rag",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Critical gap: not legitimate RAG",
+      "file": "docs/ASSESSMENT.md",
+      "line": 24,
+      "tag": "Empirical/Declared",
+      "summary": "Code path (src/rag.rs): texttopseudoembedding — word hash + sin → 64-d → cosine. Explicitly demo-only; no real semantic meaning."
+    },
+    {
+      "anchor": "assessment--3.-maturity",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Maturity",
+      "file": "docs/ASSESSMENT.md",
+      "line": 43,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessment--4.-branches",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Branches",
+      "file": "docs/ASSESSMENT.md",
+      "line": 56,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessment--5.-integration-cabal-devmelopner",
+      "family": "doc",
+      "kind": "section",
+      "title": "5. Integration (cabal-devmelopner)",
+      "file": "docs/ASSESSMENT.md",
+      "line": 66,
+      "tag": "Empirical/Declared",
+      "summary": "See [ROADMAP.md](ROADMAP.md) for definition of done and API plan."
+    },
+    {
+      "anchor": "assessment--tero-index",
+      "family": "doc",
+      "kind": "section",
+      "title": "Tero index",
+      "file": "docs/ASSESSMENT.md",
+      "line": 76,
+      "tag": "Empirical/Declared",
+      "summary": "Layer-1 citation index: [docs/tero-index/](tero-index/) (index.json, INDEX.md, MANIFEST.toml)."
+    },
+    {
+      "anchor": "assessment--c0-honesty-pass-complete-pr-29-feature-ctx-c0-honesty",
+      "family": "doc",
+      "kind": "section",
+      "title": "C0 Honesty Pass (complete, PR #29 / feature/ctx-c0-honesty)",
+      "file": "docs/ASSESSMENT.md",
+      "line": 80,
+      "tag": "Empirical/Declared",
+      "summary": "- Docs claims aligned (README, src docs, Cargo keywords reviewed; \"rag\" now aspirational note)."
+    },
+    {
+      "anchor": "localchecks",
+      "family": "doc",
+      "kind": "section",
+      "title": "Local checks (CI parity)",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "GitHub Actions workflows in this repo are manual only (workflowdispatch)."
+    },
+    {
+      "anchor": "localchecks--run-everything-the-remote-job-would-run",
+      "family": "doc",
+      "kind": "section",
+      "title": "Run everything the remote job would run",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 6,
+      "tag": "Empirical/Declared",
+      "summary": "./scripts/check.sh"
+    },
+    {
+      "anchor": "localchecks--tero-index",
+      "family": "doc",
+      "kind": "section",
+      "title": "Tero index",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 19,
+      "tag": "Empirical/Declared",
+      "summary": "python3 ../tero-mcp/scripts/generateliteindex.py --root \"$(pwd)\""
+    },
+    {
+      "anchor": "localchecks--from-a-checkout-that-can-see-the-generator-sibling-tero-mcp-recommended",
+      "family": "doc",
+      "kind": "other",
+      "title": "from a checkout that can see the generator (sibling tero-mcp recommended):",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 22,
+      "tag": "Empirical/Declared",
+      "summary": "python3 ../tero-mcp/scripts/generateliteindex.py --root \"$(pwd)\""
+    },
+    {
+      "anchor": "localchecks--or",
+      "family": "doc",
+      "kind": "other",
+      "title": "or:",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 24,
+      "tag": "Empirical/Declared",
+      "summary": "python3 scripts/generateteroindex.sh   # if present as a thin wrapper"
+    },
+    {
+      "anchor": "localchecks--remote-optional",
+      "family": "doc",
+      "kind": "section",
+      "title": "Remote (optional)",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 30,
+      "tag": "Empirical/Declared",
+      "summary": "In GitHub: Actions → CI → Run workflow."
+    },
+    {
+      "anchor": "roadmap",
+      "family": "doc",
+      "kind": "note",
+      "title": "context-mcp — Product Roadmap",
+      "file": "docs/ROADMAP.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "status": "Living (2026-07-08)",
+      "summary": "Status: Living (2026-07-08)"
+    },
+    {
+      "anchor": "roadmap--definition-of-done-efficient-legitimate-rag",
+      "family": "doc",
+      "kind": "section",
+      "title": "Definition of done — efficient legitimate RAG",
+      "file": "docs/ROADMAP.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "All required before any “RAG” marketing or cabal PROD-6 consumption:"
+    },
+    {
+      "anchor": "roadmap--waves",
+      "family": "doc",
+      "kind": "section",
+      "title": "Waves",
+      "file": "docs/ROADMAP.md",
+      "line": 24,
+      "tag": "Empirical/Declared",
+      "summary": "C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos…"
+    },
+    {
+      "anchor": "roadmap--wave-0-honesty-session-product-ship-now",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave 0 — Honesty & session product (ship now)",
+      "file": "docs/ROADMAP.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed pos…"
+    },
+    {
+      "anchor": "roadmap--wave-1-real-embedder-interface",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave 1 — Real embedder interface",
+      "file": "docs/ROADMAP.md",
+      "line": 40,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--wave-2-vector-store-retrieve",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave 2 — Vector store & retrieve",
+      "file": "docs/ROADMAP.md",
+      "line": 50,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--wave-3-efficiency-eval",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave 3 — Efficiency & eval",
+      "file": "docs/ROADMAP.md",
+      "line": 59,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--api-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "API plan",
+      "file": "docs/ROADMAP.md",
+      "line": 71,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--mcp-tools-current-session-kv-keep",
+      "family": "doc",
+      "kind": "section",
+      "title": "MCP tools — current (session KV; keep)",
+      "file": "docs/ROADMAP.md",
+      "line": 73,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--mcp-tools-planned-rag",
+      "family": "doc",
+      "kind": "section",
+      "title": "MCP tools — planned (RAG)",
+      "file": "docs/ROADMAP.md",
+      "line": 84,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "roadmap--response-envelope-target",
+      "family": "doc",
+      "kind": "section",
+      "title": "Response envelope (target)",
+      "file": "docs/ROADMAP.md",
+      "line": 93,
+      "tag": "Empirical/Declared",
+      "summary": "{"
+    },
+    {
+      "anchor": "roadmap--library-api-rust",
+      "family": "doc",
+      "kind": "section",
+      "title": "Library API (Rust)",
+      "file": "docs/ROADMAP.md",
+      "line": 117,
+      "tag": "Empirical/Declared",
+      "summary": "// Target shape"
+    },
+    {
+      "anchor": "roadmap--config-cli-env",
+      "family": "doc",
+      "kind": "section",
+      "title": "Config (CLI / env)",
+      "file": "docs/ROADMAP.md",
+      "line": 133,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--pr-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "PR plan",
+      "file": "docs/ROADMAP.md",
+      "line": 144,
+      "tag": "Empirical/Declared",
+      "summary": "1. Docs assessment + roadmap (this)"
+    },
+    {
+      "anchor": "roadmap--relationship-to-tero",
+      "family": "doc",
+      "kind": "section",
+      "title": "Relationship to Tero",
+      "file": "docs/ROADMAP.md",
+      "line": 156,
+      "tag": "Empirical/Declared",
+      "summary": "Do not merge responsibilities; agents may call both."
+    },
+    {
+      "anchor": "readme-2",
+      "family": "doc",
+      "kind": "other",
+      "title": "Tero index (Layer 1)",
+      "file": "docs/tero-index/README.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Machine + human citation index for this repository."
+    },
+    {
+      "anchor": "readme--regenerate",
+      "family": "doc",
+      "kind": "section",
+      "title": "Regenerate",
+      "file": "docs/tero-index/README.md",
+      "line": 13,
+      "tag": "Empirical/Declared",
+      "summary": "python3 /path/to/tero-mcp/scripts/generateliteindex.py --root $(pwd)"
+    },
+    {
+      "anchor": "readme--or-if-tero-mcp-is-a-sibling",
+      "family": "doc",
+      "kind": "other",
+      "title": "or if tero-mcp is a sibling:",
+      "file": "docs/tero-index/README.md",
+      "line": 17,
+      "tag": "Empirical/Declared",
+      "summary": "python3 ../tero-mcp/scripts/generateliteindex.py --root $(pwd)"
+    },
+    {
+      "anchor": "readme--serve-locally",
+      "family": "doc",
+      "kind": "section",
+      "title": "Serve locally",
+      "file": "docs/tero-index/README.md",
+      "line": 21,
+      "tag": "Empirical/Declared",
+      "summary": "export TEROTOKENS=local-dev:refresh"
+    },
+    {
+      "anchor": "changelog",
+      "family": "changelog",
+      "kind": "entry",
+      "title": "Changelog",
+      "file": "CHANGELOG.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "All notable changes to this project will be documented in this file."
+    },
+    {
+      "anchor": "changelog--0.1.6-2026-01-10",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.6] - 2026-01-10",
+      "file": "CHANGELOG.md",
+      "line": 8,
+      "tag": "Empirical/Declared",
+      "summary": "- Comprehensive installation script (install.sh) for streamlined setup"
+    },
+    {
+      "anchor": "changelog--added",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "- Comprehensive installation script (install.sh) for streamlined setup"
+    },
+    {
+      "anchor": "changelog--changed",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Changed",
+      "file": "CHANGELOG.md",
+      "line": 18,
+      "tag": "Empirical/Declared",
+      "summary": "- Updated README.md with quick start guide and performance metrics"
+    },
+    {
+      "anchor": "changelog--performance",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Performance",
+      "file": "CHANGELOG.md",
+      "line": 23,
+      "tag": "Empirical/Declared",
+      "summary": "- Validated: 7,421 contexts/second sustained throughput"
+    },
+    {
+      "anchor": "changelog--documentation",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Documentation",
+      "file": "CHANGELOG.md",
+      "line": 28,
+      "tag": "Empirical/Declared",
+      "summary": "- Added comprehensive installation guides for Linux, macOS, and Windows"
+    },
+    {
+      "anchor": "changelog--0.1.5-2026-01-09",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.5] - 2026-01-09",
+      "file": "CHANGELOG.md",
+      "line": 34,
+      "tag": "Empirical/Declared",
+      "summary": "- Various bug fixes and stability improvements"
+    },
+    {
+      "anchor": "changelog--fixed",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Fixed",
+      "file": "CHANGELOG.md",
+      "line": 36,
+      "tag": "Empirical/Declared",
+      "summary": "- Various bug fixes and stability improvements"
+    },
+    {
+      "anchor": "changelog--0.1.4-2026-01-08",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.4] - 2026-01-08",
+      "file": "CHANGELOG.md",
+      "line": 39,
+      "tag": "Empirical/Declared",
+      "summary": "- Performance optimizations"
+    },
+    {
+      "anchor": "changelog--changed-2",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Changed",
+      "file": "CHANGELOG.md",
+      "line": 41,
+      "tag": "Empirical/Declared",
+      "summary": "- Performance optimizations"
+    },
+    {
+      "anchor": "changelog--0.1.3-2026-01-07",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.3] - 2026-01-07",
+      "file": "CHANGELOG.md",
+      "line": 45,
+      "tag": "Empirical/Declared",
+      "summary": "- Additional MCP tool implementations"
+    },
+    {
+      "anchor": "changelog--added-2",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 47,
+      "tag": "Empirical/Declared",
+      "summary": "- Additional MCP tool implementations"
+    },
+    {
+      "anchor": "changelog--0.1.2-2026-01-06",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.2] - 2026-01-06",
+      "file": "CHANGELOG.md",
+      "line": 50,
+      "tag": "Empirical/Declared",
+      "summary": "- Bug fixes and improvements"
+    },
+    {
+      "anchor": "changelog--fixed-2",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Fixed",
+      "file": "CHANGELOG.md",
+      "line": 52,
+      "tag": "Empirical/Declared",
+      "summary": "- Bug fixes and improvements"
+    },
+    {
+      "anchor": "changelog--0.1.1-2026-01-05",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.1] - 2026-01-05",
+      "file": "CHANGELOG.md",
+      "line": 55,
+      "tag": "Empirical/Declared",
+      "summary": "- Initial MCP server implementation"
+    },
+    {
+      "anchor": "changelog--added-3",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 57,
+      "tag": "Empirical/Declared",
+      "summary": "- Initial MCP server implementation"
+    },
+    {
+      "anchor": "changelog--0.1.0-alpha.1-2026-01-04",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.0-alpha.1] - 2026-01-04",
+      "file": "CHANGELOG.md",
+      "line": 60,
+      "tag": "Empirical/Declared",
+      "summary": "- Initial alpha release"
+    },
+    {
+      "anchor": "changelog--added-4",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 62,
+      "tag": "Empirical/Declared",
+      "summary": "- Initial alpha release"
+    },
+    {
+      "anchor": "changelogternaryembeddings",
+      "family": "changelog",
+      "kind": "entry",
+      "title": "Implementation Changelog",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Core sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "changelogternaryembeddings--sparse-balanced-ternary-embeddings-for-context-mcp",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Sparse Balanced Ternary Embeddings for Context-MCP",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 3,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Core sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "changelogternaryembeddings--date-2024",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Date: 2024",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Core sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "changelogternaryembeddings--status-complete",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Status: ✅ COMPLETE",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 6,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Core sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "changelogternaryembeddings--files-created",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Files Created",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Core sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "changelogternaryembeddings--1.-src-ternary.rs-850-lines",
+      "family": "changelog",
+      "kind": "section",
+      "title": "1. `src/ternary.rs` (850 lines)",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 12,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Core sparse balanced ternary embedding system"
+    },
+    {
+      "anchor": "changelogternaryembeddings--2.-src-gpu.rs-200-lines",
+      "family": "changelog",
+      "kind": "section",
+      "title": "2. `src/gpu.rs` (200 lines)",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 44,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Optional GPU acceleration with automatic CPU fallback"
+    },
+    {
+      "anchor": "changelogternaryembeddings--3.-examples-ternaryragdemo.rs-166-lines",
+      "family": "changelog",
+      "kind": "section",
+      "title": "3. `examples/ternary_rag_demo.rs` (166 lines)",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 64,
+      "tag": "Empirical/Declared",
+      "summary": "Purpose: Comprehensive integration demo showing all three strategies"
+    },
+    {
+      "anchor": "changelogternaryembeddings--4.-documentation-files",
+      "family": "changelog",
+      "kind": "section",
+      "title": "4. Documentation Files",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 89,
+      "tag": "Empirical/Declared",
+      "summary": "TERNARYEMBEDDINGSIMPLEMENTATION.md (400+ lines)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--files-modified",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Files Modified",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 109,
+      "tag": "Empirical/Declared",
+      "summary": "Changes:"
+    },
+    {
+      "anchor": "changelogternaryembeddings--1.-cargo.toml",
+      "family": "changelog",
+      "kind": "section",
+      "title": "1. `Cargo.toml`",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 111,
+      "tag": "Empirical/Declared",
+      "summary": "Changes:"
+    },
+    {
+      "anchor": "changelogternaryembeddings--2.-src-lib.rs",
+      "family": "changelog",
+      "kind": "section",
+      "title": "2. `src/lib.rs`",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 136,
+      "tag": "Empirical/Declared",
+      "summary": "Changes:"
+    },
+    {
+      "anchor": "changelogternaryembeddings--3.-src-embeddings.rs",
+      "family": "changelog",
+      "kind": "section",
+      "title": "3. `src/embeddings.rs`",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 149,
+      "tag": "Empirical/Declared",
+      "summary": "Changes Added:"
+    },
+    {
+      "anchor": "changelogternaryembeddings--4.-src-rag.rs",
+      "family": "changelog",
+      "kind": "section",
+      "title": "4. `src/rag.rs`",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 184,
+      "tag": "Empirical/Declared",
+      "summary": "Changes Added:"
+    },
+    {
+      "anchor": "changelogternaryembeddings--5.-benches-ragbenchmark.rs",
+      "family": "changelog",
+      "kind": "section",
+      "title": "5. `benches/rag_benchmark.rs`",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 220,
+      "tag": "Empirical/Declared",
+      "summary": "Original: File existed with basic RAG benchmarks"
+    },
+    {
+      "anchor": "changelogternaryembeddings--test-results",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Test Results",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 231,
+      "tag": "Empirical/Declared",
+      "summary": "Ternary Module (6 tests):"
+    },
+    {
+      "anchor": "changelogternaryembeddings--unit-tests-27-total-all-passing",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Unit Tests (27 Total - All Passing ✅)",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 233,
+      "tag": "Empirical/Declared",
+      "summary": "Ternary Module (6 tests):"
+    },
+    {
+      "anchor": "changelogternaryembeddings--build-results",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Build Results",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 255,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "changelogternaryembeddings--compilation-statistics",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Compilation Statistics",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 268,
+      "tag": "Empirical/Declared",
+      "summary": "- Lines of code: ~1,500 (excluding tests)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--before-implementation",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Before Implementation",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 270,
+      "tag": "Empirical/Declared",
+      "summary": "- Lines of code: ~1,500 (excluding tests)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--after-implementation",
+      "family": "changelog",
+      "kind": "section",
+      "title": "After Implementation",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 275,
+      "tag": "Empirical/Declared",
+      "summary": "- Lines of code: ~2,300 (+800)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--size-impact",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Size Impact",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 281,
+      "tag": "Empirical/Declared",
+      "summary": "- Binary size (release, without embeddings): 8.5 MB"
+    },
+    {
+      "anchor": "changelogternaryembeddings--integration-summary",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Integration Summary",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 288,
+      "tag": "Empirical/Declared",
+      "summary": "1. Enable Feature (in your Cargo.toml):"
+    },
+    {
+      "anchor": "changelogternaryembeddings--how-to-use",
+      "family": "changelog",
+      "kind": "section",
+      "title": "How to Use",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 290,
+      "tag": "Empirical/Declared",
+      "summary": "1. Enable Feature (in your Cargo.toml):"
+    },
+    {
+      "anchor": "changelogternaryembeddings--performance-characteristics",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Performance Characteristics",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 328,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparse Strategy: 70% (85% sparsity)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--storage-reduction",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Storage Reduction",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 330,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparse Strategy: 70% (85% sparsity)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--computational-complexity",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Computational Complexity",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 335,
+      "tag": "Empirical/Declared",
+      "summary": "- Sparse Similarity: O(k) where k ≈ 10-50"
+    },
+    {
+      "anchor": "changelogternaryembeddings--memory-usage-384-dim-embedding",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Memory Usage (384-dim embedding)",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 340,
+      "tag": "Empirical/Declared",
+      "summary": "- Dense: 1,536 bytes"
+    },
+    {
+      "anchor": "changelogternaryembeddings--breaking-changes",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Breaking Changes",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 348,
+      "tag": "Empirical/Declared",
+      "summary": "✅ None - All changes are backward compatible"
+    },
+    {
+      "anchor": "changelogternaryembeddings--future-enhancements",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Future Enhancements",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 358,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] Implement GPU compute shaders (WGSL)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--short-term-recommended",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Short-term (Recommended)",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 360,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] Implement GPU compute shaders (WGSL)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--medium-term",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Medium-term",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 365,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] SIMD optimization for similarity"
+    },
+    {
+      "anchor": "changelogternaryembeddings--long-term",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Long-term",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 370,
+      "tag": "Empirical/Declared",
+      "summary": "- [ ] Binary embeddings (1-bit)"
+    },
+    {
+      "anchor": "changelogternaryembeddings--known-limitations",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Known Limitations",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 377,
+      "tag": "Empirical/Declared",
+      "summary": "1. Pseudo-Embeddings: Demo uses text hashing, not real embeddings"
+    },
+    {
+      "anchor": "changelogternaryembeddings--verification-checklist",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Verification Checklist",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 393,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] No compilation errors"
+    },
+    {
+      "anchor": "changelogternaryembeddings--code-quality",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Code Quality",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 395,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] No compilation errors"
+    },
+    {
+      "anchor": "changelogternaryembeddings--testing",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Testing",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 402,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] 27 unit tests, all passing"
+    },
+    {
+      "anchor": "changelogternaryembeddings--documentation",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Documentation",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 408,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] Technical documentation complete"
+    },
+    {
+      "anchor": "changelogternaryembeddings--performance",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Performance",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 414,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] 70-95% storage reduction verified"
+    },
+    {
+      "anchor": "changelogternaryembeddings--integration",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Integration",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 420,
+      "tag": "Empirical/Declared",
+      "summary": "- [x] RAG pipeline updated"
+    },
+    {
+      "anchor": "changelogternaryembeddings--conclusion",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Conclusion",
+      "file": "CHANGELOG_TERNARY_EMBEDDINGS.md",
+      "line": 428,
+      "tag": "Empirical/Declared",
+      "summary": "The sparse balanced ternary embedding system is complete, tested, documented, and production-ready. All three quantization strategies (sparse, RVQ, hybrid) are…"
+    }
+  ],
+  "flagged": []
+}
