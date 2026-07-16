@@ -33,7 +33,7 @@ This project is prepared for integration:
 **PR flow (protect main/dev):**
 - Create/checkout feature or chore branch
 - Make changes (agent will often use working branch)
-- PR the branch → `dev` (then dev → main when ready)
+- Prefer PR → `dev` when `dev` is current with `main`; if `dev` is stale/diverged, PR → `main` (default branch; recent PRs #30–#35 landed on main).
 
 ## Local checks
 
@@ -66,3 +66,10 @@ Leave mycelium isolated; all coordination here targets the other repos + cabal.
 
 **Post-merge W2/C0 + wsfull state (2026-07-09, after PR #29):** Merged (commit cdb7f14). C0 honesty gate complete (enable_semantic=false default, gated pseudo + warning), tero reindex (504 items), docs aligned. W2: common memory facade (refs wsfull-wave-2026-07-09-compact.md + dev-docs/schemas/ for StructuredResponse + common_memory_facade stubs in cabal + memory-gate). Verification review comment posted; checks green; tero-first cites confirm (AGENTS:56, ROADMAP:24/26, ASSESSMENT:80). Part of wsfull wave; propagate next. (Tero-grounded; append-only update.)
 
+
+## Health TLC (2026-07-16)
+
+- WHAT: Gate-only hygiene on `origin/main` tip — crates.io keywords honesty (`rag` demoted/commented aspirational), `CHANGELOG` 0.2.0 baseline entry, `.gitignore` secrets block + safe `.gitallowed` (no broad `sk-*` allow), `scripts/check.sh` runs `git secrets --scan` when installed. Product epics #19 (real embeddings), #20 (GPU shaders), #21 (security-mcp) left open.
+- WHY: Health TLC only; cargo gate already green (29 unit + 4 integration). Docs/semver/secrets honesty gaps were clear vs C0.
+- WHY NOT: No mycelium/py2rust; no 1.0 bump; no hardware-hardcoded rayon threads; no product epic implementation.
+- Gate: `./scripts/check.sh --quick` OK (fmt/clippy/doc/build/test + git-secrets). Python `test_mcp_server.py` is a stdio smoke harness (not pytest; pytest not required for Rust gate).
