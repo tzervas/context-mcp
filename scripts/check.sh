@@ -29,6 +29,13 @@ RUSTDOCFLAGS="-D warnings" "${CARGO[@]}" doc --all-features --no-deps
 "${CARGO[@]}" build --all-features
 "${CARGO[@]}" test --all-features --verbose
 
+# Secrets scan (optional tool; fail closed when installed)
+if command -v git-secrets >/dev/null 2>&1; then
+  git secrets --scan
+else
+  echo "WARN: git-secrets not installed; skip secrets scan"
+fi
+
 if [[ "$MODE" != "--quick" ]]; then
   if cargo audit -V >/dev/null 2>&1; then
     cargo audit "${AUDIT_IGNORES[@]}"

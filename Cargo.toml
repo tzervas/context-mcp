@@ -8,7 +8,8 @@ license = "MIT"
 description = "MCP server for context storage, text-based retrieval, and temporal tracking with optional persistence"
 repository = "https://github.com/tzervas/context-mcp"
 documentation = "https://docs.rs/context-mcp/latest/context_mcp/"
-keywords = ["mcp", "rag", "context", "memory", "temporal"]
+# "rag" is aspirational (Wave 0+); runtime is text+metadata session memory until eval gates pass (see docs/ROADMAP.md C0).
+keywords = ["mcp", "context", "memory", "temporal", "rag"]
 categories = ["development-tools", "memory-management"]
 
 [package.metadata.docs.rs]

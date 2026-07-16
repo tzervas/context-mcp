@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-07-10
+
+### Changed
+- Semver baseline for supportive tooling/helper crate (`Cargo.toml` version `0.2.0`)
+- C0 honesty: `RagConfig.enable_semantic` defaults to `false`; pseudo-embeddings warn when forced on
+- crates.io keywords ordered with session-memory terms first; `rag` remains aspirational until Wave gates
+
+### Notes
+- Not legitimate RAG yet (see `docs/ROADMAP.md`, issues #19–#21 for product epics)
+- wgpu optional feature tracked separately (GPU compute still CPU-fallback; issue #20)
+
 ## [0.1.6] - 2026-01-10
 
 ### Added
