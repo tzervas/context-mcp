@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-21
+
 ### Added
 - Wave 1 `Embedder` trait (`embed_batch`, `model_id`, `dims`, `is_semantic`) in `src/embeddings.rs`
 - `NullEmbedder` fail-closed stub; `HashingEmbedder` deterministic local (non-semantic, tests)
