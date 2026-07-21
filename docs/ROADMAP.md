@@ -41,11 +41,13 @@ C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade in
 
 | ID | Work |
 |----|------|
-| C1.1 | Trait `Embedder: embed(&[str]) -> Vec<Vector>` |
-| C1.2 | At least one local backend (e.g. fastembed / candle / external CLI) |
-| C1.3 | Optional OpenAI-compatible HTTP embedder |
-| C1.4 | Store `embedding_model`, `dims`, `content_hash` on each item |
-| C1.5 | Delete or quarantine `text_to_pseudo_embedding` from production paths |
+| C1.1 | Trait `Embedder: embed(&[str]) -> Vec<Vector>` | **done** — `src/embeddings.rs` (`embed_batch`, `model_id`, `dims`, `is_semantic`) |
+| C1.2 | At least one local backend (e.g. fastembed / candle / external CLI) | **partial** — `HashingEmbedder` local deterministic (non-semantic, tests); `NullEmbedder` fail-closed stub. Local GGUF/ONNX/candle model still open (issue #19). |
+| C1.3 | Optional OpenAI-compatible HTTP embedder | **done (feature)** — `HttpEmbedder` behind `http-embedder` (reqwest); `is_semantic=true` |
+| C1.4 | Store `embedding_model`, `dims`, `content_hash` on each item | **done** — fields on `Context` + `apply_embedding` / `with_embedding_info` |
+| C1.5 | Delete or quarantine `text_to_pseudo_embedding` from production paths | **done** — removed from retrieve; quarantined under `cfg(test)` as `text_to_pseudo_embedding_quarantined`; semantic mode fail-closed without real embedder |
+
+**Wave 1 note (honesty):** Trait + fail-closed + HTTP path land here. **Not legitimate RAG** — no vector ANN store, no hybrid rank eval, no MTEB claims. Default `enable_semantic=false`. Cabal may consume via facade later; MCP tool surface unchanged.
 
 ### Wave 2 — Vector store & retrieve
 

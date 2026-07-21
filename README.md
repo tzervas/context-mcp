@@ -65,8 +65,10 @@ See [ASSESSMENT_REPORT.md](ASSESSMENT_REPORT.md) for detailed performance analys
 ## Status
 
 Production-ready for context management, temporal tracking, and metadata query (session memory MCP).
-**No legitimate RAG yet**: current "semantic" paths use word-hash pseudo-embeddings (demo only).
-See docs/ROADMAP.md + docs/ASSESSMENT.md for Wave 0+ gates before any RAG claims. (C0 honesty gate complete in PR #29: enable_semantic=false default.)
+**No legitimate RAG yet** (no ANN vector store / eval). Wave 1 adds a pluggable `Embedder` trait
+(`NullEmbedder` fail-closed, `HashingEmbedder` test-only non-semantic, optional `http-embedder`).
+Semantic mode stays **off by default** and **fails closed** without a real (`is_semantic`) embedder —
+hash pseudo is quarantined from production paths. See docs/ROADMAP.md (C0 + Wave 1).
 
 **W2 / Facade**: Part of common memory vision (tero L1 citations + context-mcp session/RAG + memory-gate domains). See dev-docs/schemas/ for W2 StructuredResponse + facade adapters (used in cabal-devmelopner). Context-mcp integrates as session backend today; real RAG post-Wave 1-2. PR #29 + tero reindex capture updates. (wsfull wave 2026-07-09)
 

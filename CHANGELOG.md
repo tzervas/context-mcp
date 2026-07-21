@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Wave 1 `Embedder` trait (`embed_batch`, `model_id`, `dims`, `is_semantic`) in `src/embeddings.rs`
+- `NullEmbedder` fail-closed stub; `HashingEmbedder` deterministic local (non-semantic, tests)
+- Optional `HttpEmbedder` (`--features http-embedder`) OpenAI-compatible HTTP backend
+- `Context` fields: `embedding_model`, `embedding_dims`, `content_hash`; `apply_embedding` helper
+- Errors: `EmbedderUnavailable`, `SemanticUnavailable`
+- `RagProcessor::with_embedder` — semantic retrieve uses real embedder only
+
+### Changed
+- Semantic mode fail closed: `enable_semantic=true` without `is_semantic` embedder returns typed error (no hash pseudo fallback)
+- Production path no longer calls `text_to_pseudo_embedding` (quarantined under tests)
+
+### Notes
+- Still **not** legitimate RAG (Wave 2 vector store + Wave 3 eval remaining). MCP tools stable for cabal facade.
+
 ## [0.2.0] - 2026-07-10
 
 ### Changed

@@ -6,10 +6,10 @@
 //! retrieving, and querying context with:
 //! - Multi-tier storage (LRU memory cache + sled disk persistence)
 //! - Temporal reasoning with time-based filtering and decay scoring
-//! - CPU-optimized text/metadata retrieval (RAG processor present but semantic gated to pseudo/demo)
+//! - CPU-optimized text/metadata retrieval (semantic off by default; fail closed without real Embedder)
 //! - Security screening status integration
 //!
-//! Real embedder + vector RAG is behind C0+ honesty gates (see docs/ROADMAP.md).
+//! Wave 1 Embedder interface landed; vector store + eval still open (see docs/ROADMAP.md).
 //!
 //! # Usage
 //!
@@ -70,8 +70,9 @@ struct Args {
     #[arg(long)]
     no_decay: bool,
 
-    /// Enable semantic similarity in retrieve (C0: off-by-default; uses pseudo-embedding demo only until real embedder).
-    /// Per docs/ROADMAP.md honesty gate.
+    /// Enable semantic similarity in retrieve (C0/C1: off-by-default; fail closed without a real
+    /// Embedder — default server has none, so this flag errors until an embedder is wired).
+    /// Per docs/ROADMAP.md honesty gate. Not legitimate RAG (no vector store/eval yet).
     #[arg(long)]
     enable_semantic: bool,
 }
