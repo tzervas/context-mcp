@@ -89,3 +89,8 @@ Layer-1 citation index: [docs/tero-index/](tero-index/) (`index.json`, `INDEX.md
 - Verified via tero text_search ("C0", "honesty", "facade", "wave"), hygiene, checks. (See root ctx.md + docs/ROADMAP.md + compact)
 
 **Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 landed+merged. C0 honesty pass complete. Tero reindex included. W2 common memory facade integration referenced (wsfull-wave-2026-07-09-compact.md + cabal facade in dev-docs/schemas). Post-merge verification review comment + update-tero.sh + dev propagation per swarm task. All tero-grounded, checks clean.
+
+## Wave 1 Embedder (library surface; not RAG-complete)
+
+- **Declared:** `Embedder` trait + `NullEmbedder` / `HashingEmbedder` / optional `HttpEmbedder`; `Context` stores `embedding_model`, `embedding_dims`, `content_hash`; semantic retrieve fail-closed without `is_semantic` embedder.
+- **Not claimed:** Legitimate RAG, MTEB quality, local ONNX/candle model (still issue #19), vector ANN store (Wave 2), eval harness (Wave 3).

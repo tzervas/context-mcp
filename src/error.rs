@@ -58,6 +58,14 @@ pub enum ContextError {
     /// Internal error
     #[error("Internal error: {0}")]
     Internal(String),
+
+    /// Embedder backend unavailable or failed (fail closed — no silent pseudo)
+    #[error("Embedder unavailable: {0}")]
+    EmbedderUnavailable(String),
+
+    /// Semantic mode requested without a real (`is_semantic`) embedder
+    #[error("Semantic mode unavailable: {0}")]
+    SemanticUnavailable(String),
 }
 
 impl ContextError {
