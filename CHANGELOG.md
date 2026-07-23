@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **stdio transport was unusable — two independent defects, either fatal on its own.**
+  1. Logs went to **stdout**: `tracing_subscriber::fmt()` defaults its writer to stdout, but under
+     `--stdio` stdout *is* the JSON-RPC transport, so the first thing a client read was
+     `INFO context_mcp: Starting MCP Context Server in stdio mode` where a frame belonged. The
+     subscriber now writes to stderr — unconditionally, since stderr is also correct for the HTTP
+     transport.
+  2. The wire format was **snake_case** (`protocol_version`, `server_info`, `list_changed`) where
+     MCP requires camelCase, so even with clean stdout the handshake was unparseable. Added
+     `#[serde(rename_all = "camelCase")]` to `ToolsCapability`, `ResourcesCapability`,
+     `PromptsCapability`, `InitializeResult`, `Tool` and `CallToolResult`. The `snake_case`
+     `rename_all` in `src/context.rs` is an unrelated internal domain format and is unchanged.
+
+### Added
+- Regression test pinning the MCP wire names (camelCase present, snake_case absent).
+
 ## [0.3.0] - 2026-07-21
 
 ### Added

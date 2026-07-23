@@ -79,8 +79,15 @@ struct Args {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    // Initialize tracing
+    // Initialize tracing.
+    //
+    // Logs MUST go to stderr, never stdout: in `--stdio` mode stdout is the JSON-RPC
+    // transport, and a single log line interleaved into it makes the stream unparseable —
+    // an MCP client sees `Starting MCP Context Server in stdio mode` where a JSON-RPC frame
+    // should be and drops the connection. (The default `fmt()` writer is stdout.) stderr is
+    // also correct for the HTTP transport, so this is unconditional rather than mode-gated.
     tracing_subscriber::fmt()
+        .with_writer(std::io::stderr)
         .with_env_filter(
             tracing_subscriber::EnvFilter::from_default_env()
                 .add_directive(tracing::Level::INFO.into()),

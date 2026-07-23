@@ -38,6 +38,18 @@ context-mcp --stdio
 context-mcp --host 127.0.0.1 --port 3000
 ```
 
+Under `--stdio`, **stdout carries the JSON-RPC stream and nothing else** — all logs go to
+stderr. Redirect stderr (`2>/tmp/context-mcp.log`) to inspect them without disturbing the
+transport; anything written to stdout by a future change will break every MCP client.
+
+Registering with Claude Code:
+
+```bash
+# -s user makes it available in every project; use -s project for one repo
+claude mcp add context-mcp -s user -- /absolute/path/to/context-mcp --stdio
+claude mcp list   # expect: context-mcp: … - ✔ Connected
+```
+
 ## Features
 
 - **Multi-tier Storage**: In-memory LRU cache with optional sled-based disk persistence
