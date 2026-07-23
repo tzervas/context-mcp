@@ -21,6 +21,14 @@ permissions:
 env:
   CARGO_TERM_COLOR: always
   RUST_BACKTRACE: 1
+  # Fleet runners are cgroup-capped at 8 GiB with MemorySwap == Memory — ZERO swap
+  # headroom — so a build peaking over the cap is SIGKILLed outright (signal: 9) rather
+  # than degrading. This repo set no cargo memory bounds at all: cargo defaulted to one
+  # rustc per core, and debug info made each of those as expensive as possible. Bound
+  # both the concurrency and the per-process peak.
+  CARGO_BUILD_JOBS: "2"
+  CARGO_PROFILE_DEV_DEBUG: "0"
+  CARGO_PROFILE_TEST_DEBUG: "0"
 
 jobs:
   build-and-test:
@@ -32,8 +40,19 @@ jobs:
 
       - name: Install system deps
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libssl-dev pkg-config || true
+          set -euo pipefail
+          # Fleet work containers run with `no-new-privileges`, so sudo cannot escalate and
+          # a bare `sudo apt-get update` exits 1 and fails the whole job before a single
+          # line of Rust is compiled. security-mcp already guards this; the guard was never
+          # propagated here. Probe for usable sudo first and otherwise rely on the image's
+          # own packages, which already carry libssl-dev/pkg-config.
+          if command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
+            sudo apt-get update -qq || true
+            sudo apt-get install -y libssl-dev pkg-config || true
+          else
+            echo "no passwordless sudo (expected on the hardened self-hosted image) — using image packages"
+            command -v pkg-config >/dev/null 2>&1 || echo "warn: pkg-config missing"
+          fi
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
