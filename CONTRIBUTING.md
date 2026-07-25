@@ -114,15 +114,64 @@ This runs:
 - [ ] Benchmarks still perform well
 - [ ] Commit messages are clear
 
-## Release Process
+## Versioning and releases
 
-Releases are automated via GitHub Actions:
+### The policy
 
-1. Version is bumped in `Cargo.toml`
-2. Tag is created: `git tag v0.x.y`
-3. CI runs comprehensive checks
-4. Release is published to crates.io
-5. GitHub release is created
+`context-mcp` is versioned **0.x.y** and stays there. Commitizen enforces this with
+`major_version_zero = true` in [`.cz.toml`](.cz.toml). Moving to **1.x.x requires an explicit
+human authorization** — full production readiness, hardening, and a maintainer decision. No
+agent, and no automation, may cut or propose a 1.x.x release.
+
+### Under `major_version_zero`, MINOR is the breaking position
+
+This is the detail most often got wrong. While the major is pinned at 0:
+
+| Change                        | Bump      | Example           |
+| ----------------------------- | --------- | ----------------- |
+| `fix:`                        | PATCH     | 0.3.0 → 0.3.1     |
+| `feat:`                       | PATCH     | 0.3.0 → 0.3.1     |
+| `feat!:` / `BREAKING CHANGE:` | **MINOR** | 0.3.0 → **0.4.0** |
+
+So a consumer who wants "latest compatible" pins the **minor**: `context-mcp = "0.3"` — never
+`"1"`, and never a bare `v1` tag. `0.3` and `0.4` are *incompatible* releases under this scheme,
+exactly as `1.x` and `2.x` would be after a 1.0 cut.
+
+### Version files
+
+The version appears in more than one place. `.cz.toml` lists each one under `version_files`, so
+`cz bump` moves them together and they cannot drift:
+
+- `Cargo.toml` (`[package] version`)
+- `.cz.toml` (`version`)
+
+`Cargo.lock` records this package's own version too; refresh it with `cargo build` after a bump.
+Do not hand-edit any of these — run the tool:
+
+```bash
+cz bump --yes --dry-run     # show what would happen, change nothing
+cz bump                     # bump every version file + tag, per conventional commits
+```
+
+### A GitHub Release is not a registry publication
+
+These are two different things, and conflating them is how this repo drifted:
+
+- **A git tag / GitHub Release** is a marker plus notes. It publishes nothing consumable.
+- **A crates.io publication** is the artifact dependents actually resolve.
+
+Tags `v0.2.0` and `v0.3.0` exist in this repository, but **crates.io has never received anything
+above `0.1.6`**. Anyone reading the tag list would reasonably conclude 0.3.0 shipped; it did not.
+When you claim a version is released, say *where*.
+
+### Release steps
+
+1. Land work on `dev` via a work branch (see the branch contract — never straight to `main`).
+2. `cz bump` on the release branch: this moves every version file and creates the tag locally.
+3. Open the release PR `dev` → `main`. Merge with a **merge commit**, never a squash.
+4. Push the tag; the `release` workflow (`workflow_dispatch`) builds the GitHub Release.
+5. **Publishing to crates.io is a separate, deliberate step.** It is not automatic, and until it
+   runs, the version is not released to consumers.
 
 ## Getting Help
 
