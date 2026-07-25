@@ -9,129 +9,100 @@
 [![Documentation](https://docs.rs/context-mcp/badge.svg)](https://docs.rs/context-mcp/latest/context_mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-MCP server for context management, temporal metadata, and lightweight (non-semantic) retrieval plumbing.
+**Session memory for agents.** An MCP server (and Rust library) that stores, queries, and scores context items with temporal metadata. Local-first: stdio for MCP clients, or loopback HTTP.
 
-This crate provides a "memory service" for agents: store/retrieve context items with timestamps and metadata, supporting basic query/retrieval patterns via text matching and filtering.
+**Not legitimate vector RAG yet.** Semantic mode is off by default and fails closed without a real embedder. See [docs/CURRENT-STATE.md](docs/CURRENT-STATE.md).
 
-## Quick Start
+| | |
+|--|--|
+| **Who it's for** | Agent runtimes, IDE MCP clients, tools that need short-lived session context with TTL/tags |
+| **Version** | 0.3.0 (0.x until a human authorizes otherwise) |
+| **Status (measured)** | [docs/CURRENT-STATE.md](docs/CURRENT-STATE.md) |
+| **History / roadmap** | [docs/DEVELOPMENT-PATH.md](docs/DEVELOPMENT-PATH.md) · [docs/ROADMAP.md](docs/ROADMAP.md) |
 
-### Install
+---
+
+## Quick start (< 1 minute)
+
+### Build from this repo
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash
+export CARGO_BUILD_JOBS=3   # polite on shared builders
+cargo build --features server
+./target/debug/context-mcp --version   # context-mcp 0.3.0
 ```
-
-Or via cargo:
-```bash
-cargo install context-mcp
-```
-
-**See [INSTALL.md](INSTALL.md) for detailed installation instructions and VS Code configuration.**
 
 ### Run
 
 ```bash
-# Stdio transport (for MCP clients like VS Code)
+# Stdio (MCP clients). Logs go to stderr only — stdout is pure JSON-RPC.
 # Disk persistence is ON by default (./data/context_store); pass --no-persist for memory-only.
-context-mcp --stdio
+./target/debug/context-mcp --stdio
 
 # Explicit storage path (recommended for long-lived agents)
-context-mcp --stdio --storage-path ~/.context-mcp/data
+./target/debug/context-mcp --stdio --storage-path ~/.context-mcp/data
 
-# HTTP server
-context-mcp --host 127.0.0.1 --port 3000
+# HTTP (loopback)
+./target/debug/context-mcp --host 127.0.0.1 --port 3000
+curl -s http://127.0.0.1:3000/health
+# {"server":"context-mcp","status":"ok","version":"0.3.0"}
 ```
 
-Under `--stdio`, **stdout carries the JSON-RPC stream and nothing else** — all logs go to
-stderr. Redirect stderr (`2>/tmp/context-mcp.log`) to inspect them without disturbing the
-transport; anything written to stdout by a future change will break every MCP client.
-
-Registering with Claude Code:
+### Install (optional)
 
 ```bash
-# -s user makes it available in every project; use -s project for one repo
-claude mcp add context-mcp -s user -- /absolute/path/to/context-mcp --stdio
-claude mcp list   # expect: context-mcp: … - ✔ Connected
+cargo install context-mcp
+# or: curl -fsSL https://raw.githubusercontent.com/tzervas/context-mcp/main/install.sh | bash
 ```
 
-## Features
+Platform detail and VS Code wiring: [INSTALL.md](INSTALL.md).
 
-- **Multi-tier Storage**: In-memory LRU cache + sled disk persistence (**on by default**; `--no-persist` for memory-only)
-- **Durable by default**: On open, domain/tag indices **rehydrate from disk** so persisted contexts stay findable after restart
-- **Temporal Tracking**: Timestamps, age tracking, and time-based filtering for context relevance
-- **CPU-Optimized Retrieval**: Parallel processing with rayon for text-based context queries
-- **MCP Protocol Support**: JSON-RPC server implementation with HTTP (POST + SSE) and stdio transports (WebSocket not yet fully wired for MCP)
-- **Screening Status Fields**: Built-in fields for tracking security screening state (integration not included)
+Claude Code example:
 
-## Performance
+```bash
+claude mcp add context-mcp -s user -- /absolute/path/to/context-mcp --stdio
+claude mcp list
+```
 
-Validated through comprehensive benchmarking:
-- **7,421 contexts/second** sustained throughput
-- **Sub-millisecond latency** (0.13-0.23ms average)
-- **100% test pass rate** across all 9 MCP tools
+---
 
-See [ASSESSMENT_REPORT.md](ASSESSMENT_REPORT.md) for detailed performance analysis.
+## What works
 
-## Documentation
+- **9 MCP tools:** `store_context`, `get_context`, `delete_context`, `query_contexts`, `retrieve_contexts`, `update_screening`, `get_temporal_stats`, `get_storage_stats`, `cleanup_expired`
+- **Storage:** in-memory LRU + sled disk **on by default** (`--no-persist` for memory-only); domain/tag indices **rehydrate from disk** on open so persisted contexts stay findable after restart
+- **Retrieval:** metadata, temporal decay, keyword-style scoring; semantic **off by default**
+- **Wave 1 embedder surface:** `Embedder` trait, fail-closed semantic path, optional `http-embedder`; CLI `--embedder none|local|http` (see below)
+- **Transports:** stdio + HTTP (POST JSON-RPC + health). WebSocket MCP is not fully wired.
 
-- **[INSTALL.md](INSTALL.md)** - Installation and setup guide
-- **[USAGE_EXAMPLES.md](USAGE_EXAMPLES.md)** - Usage examples and scenarios
-- **[ASSESSMENT_REPORT.md](ASSESSMENT_REPORT.md)** - Performance benchmarks and validation
-- **[API Documentation](https://docs.rs/context-mcp)** - Rust API reference
+## What does not work (yet)
 
-## Status
+- Legitimate ANN / vector RAG and hybrid eval (Wave 2–3)
+- Default local embedding model (issue #19)
+- Real GPU similarity path (CPU fallback; issue #20)
+- Live security-mcp screening (fields only; issue #21)
+- HTTP token auth (roadmap C0.3)
 
-Production-ready for context management, temporal tracking, and metadata query (session memory MCP).
-**No legitimate RAG yet** (no ANN vector store / eval). Wave 1 adds a pluggable `Embedder` trait
-(`NullEmbedder` fail-closed, `HashingEmbedder` test-only non-semantic, optional `http-embedder`).
-Semantic mode stays **off by default** and **fails closed** without a real (`is_semantic`) embedder —
-hash pseudo is quarantined from production paths. See docs/ROADMAP.md (C0 + Wave 1).
+---
 
-**W2 / Facade**: Part of common memory vision (tero L1 citations + context-mcp session/RAG + memory-gate domains). See dev-docs/schemas/ for W2 StructuredResponse + facade adapters (used in cabal-devmelopner). Context-mcp integrates as session backend today; real RAG post-Wave 1-2. PR #29 + tero reindex capture updates. (wsfull wave 2026-07-09)
-
-**Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 (feature/ctx-c0-honesty) merged. C0 honesty gate landed (semantic=false default), tero reindexed. References wsfull-wave-2026-07-09-compact.md + common memory facade (cabal integration). See docs/ROADMAP.md, AGENTS.md. Verification + hygiene complete.
-
-## Usage
-
-### As a Library
+## Library (minimal)
 
 ```rust
-use context_mcp::{ContextStore, StorageConfig, Context, ContextDomain};
+use context_mcp::context::ContextDomain;
+use context_mcp::{Context, ContextStore, StorageConfig};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Create storage configuration
-    let config = StorageConfig {
-        memory_cache_size: 1000,
-        enable_persistence: true,
-    };
-
-    // Create context store
-    let store = ContextStore::new(config)?;
-
-    // Store some context
-    let ctx = Context::new("This is some important information", ContextDomain::Code);
-    let id = store.store(ctx).await?;
-
-    // Retrieve it
-    let retrieved = store.get(&id).await?;
-    println!("Retrieved: {}", retrieved.content);
-
+    let store = ContextStore::new(StorageConfig::default())?;
+    let id = store
+        .store(Context::new("important note", ContextDomain::Code))
+        .await?;
+    let got = store.get(&id).await?.expect("stored");
+    println!("{}", got.content);
     Ok(())
 }
 ```
 
-### As an MCP Server
-
-Run as HTTP server:
-```bash
-context-mcp --host 127.0.0.1 --port 3000
-```
-
-Run as stdio transport:
-```bash
-context-mcp --stdio
-```
+Runnable in-tree: `cargo run --example basic_usage --features server,persistence`.
 
 ### Selecting an embedder
 
@@ -172,119 +143,36 @@ Vectors are still **not persisted or indexed**, and retrieval scoring does not y
 that is Wave 2 (`docs/ROADMAP.md` C2.1–C2.2). Selecting an embedder makes the backend
 reachable; it does not by itself make this legitimate RAG.
 
-## What It Does (Verified by Code/Tests)
-
-- **JSON-RPC MCP Server**: Runs over HTTP/WebSocket or stdio transport
-- **Context Storage**: Store/retrieve contexts with IDs, domains, timestamps, tags, and custom metadata
-- **Tiered Storage**: In-memory LRU cache (always) + sled disk persistence (default on; path `./data/context_store` or `--storage-path`)
-- **Index rehydrate**: Domain/tag indices rebuilt from sled on `ContextStore::new` so query/retrieve work after process restart
-- **Text-Based Queries**: Query by text content, domain, tags, time ranges with simple text matching
-- **Temporal Filtering**: Filter contexts by creation time, last access, age, and expiration
-- **Parallel Processing**: CPU-optimized retrieval using rayon for performance
-- **MCP Tools**: 9 tools including store_context, get_context, query_contexts, retrieve_contexts, delete_context, update_screening, get_temporal_stats, get_storage_stats, cleanup_expired
-
-## What It Does Not Do (Yet)
-
-- **Vector embeddings**: Mock implementation only - no real embedding generation or similarity search
-- **Semantic search**: Text matching is literal, not semantic
-- **GPU acceleration**: `gpu-acceleration` feature flag exists but the compute shader path is a placeholder; similarity computation always falls back to CPU
-- **External integrations**: No active security-mcp or other service integrations (only status fields)
-- **Chunking/citations**: No automatic document chunking or citation tracking
-- **Distributed storage**: Single-node only, no replication or clustering
-
-## Architecture
-
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   MCP Client    │    │  JSON-RPC Server │    │ Storage Layer   │
-│                 │    │                  │    │                 │
-│ • HTTP/WS       │◄──►│ • Store/Retrieve │◄──►│ • In-Memory LRU │
-│ • stdio         │    │ • Query/Filter   │    │ • Sled (opt)    │
-│ • curl/tools    │    │ • Temporal Stats │    │ • Domain Index  │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                              │
-                              ▼
-                       ┌──────────────┐
-                       │ RAG Processor│
-                       │ • Text Match │
-                       │ • Parallel   │
-                       │ • Scoring    │
-                       └──────────────┘
-```
+---
 
 ## Development
 
-### Setup
-
-1. Install development dependencies:
-   ```bash
-   ./setup-dev.sh
-   ```
-
-2. Run all quality checks:
-   ```bash
-   just check
-   ```
-
-### Available Commands
-
-This project uses [just](https://github.com/casey/just) for development tasks:
-
 ```bash
-just                    # Show all available tasks
-just check             # Run all quality checks (fmt, clippy, test, security, docs)
-just test              # Run tests
-just bench             # Run benchmarks
-just docs              # Generate documentation
-just security          # Run security checks
-just audit             # Run security audit
-just licenses          # Check licenses
-just build             # Build all targets
-just dev               # Full development cycle
-just pre-commit        # Pre-commit checks
-just ci                # Simulate CI pipeline locally
+./scripts/check.sh --quick   # fmt, clippy -D warnings, doc, build, test
+# or: just check
 ```
 
-### Code Quality
+Details: [docs/LOCAL_CHECKS.md](docs/LOCAL_CHECKS.md), [CONTRIBUTING.md](CONTRIBUTING.md).
 
-- **Formatting**: `cargo fmt` (enforced)
-- **Linting**: `cargo clippy` with warnings as errors
-- **Testing**: 100% test coverage target with `cargo tarpaulin`
-- **Security**: `cargo audit` and `cargo deny` for vulnerabilities and license compliance
-- **Documentation**: `cargo doc` with warning checks
-- **Dependencies**: Unused dependency detection with `cargo udeps`
+---
 
-### Security Scanning
+## Documentation map
 
-The project includes comprehensive security scanning:
+| Doc | Contents |
+|-----|----------|
+| [docs/README.md](docs/README.md) | Index of all docs |
+| [docs/CURRENT-STATE.md](docs/CURRENT-STATE.md) | Measured capabilities (VERIFIED / UNVERIFIED) |
+| [docs/DEVELOPMENT-PATH.md](docs/DEVELOPMENT-PATH.md) | How the project evolved |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | Waves, unblocks, open issues |
+| [INSTALL.md](INSTALL.md) · [USAGE_EXAMPLES.md](USAGE_EXAMPLES.md) | Install & scenarios |
+| [docs.rs](https://docs.rs/context-mcp) | Rust API |
 
-- **Vulnerability scanning**: `cargo audit` checks for known security issues
-- **License compliance**: `cargo deny` ensures only approved licenses
-- **Dependency analysis**: Checks for unused and outdated dependencies
-- **Pre-commit hooks**: Automatic quality checks before commits
+Historical benchmark writeups under the repo root (`ASSESSMENT_REPORT.md`, etc.) are **not** current measurements; do not treat their throughput numbers as live.
 
-### Benchmarking
+---
 
-Performance benchmarks are included for critical paths:
+## Versioning & license
 
-```bash
-just bench             # Run all benchmarks
-just bench-flamegraph  # Generate flamegraphs (requires cargo-flamegraph)
-```
+Conventional Commits + [Commitizen](https://commitizen-tools.github.io/commitizen/); version in `.cz.toml` / `Cargo.toml`. **0.x.x** until a human authorizes otherwise.
 
-## Versioning
-
-This project follows [Conventional Commits](https://www.conventionalcommits.org/) and uses [Commitizen](https://commitizen-tools.github.io/commitizen/) for release versioning. Version is tracked in `.cz.toml` and `Cargo.toml`. Before release, dispatch the **Commitizen** workflow (Actions → Commitizen → Run workflow) to verify commits on the current branch.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and contribution guidelines.
-
-## License
-
-Licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
-## Status & roadmap
-
-- [Assessment & gaps](docs/ASSESSMENT.md)
-- [Product roadmap & API plans](docs/ROADMAP.md)
+MIT — see [LICENSE](LICENSE).
