@@ -49,6 +49,13 @@ if [[ "$MODE" != "--quick" ]]; then
   else
     echo "WARN: cargo-deny not installed; skip"
   fi
-  "${CARGO[@]}" bench --all-features
+  # Criterion warmup + release rebuild peaks past self-hosted cgroup/host memory when
+  # other agents share the box; GHA sets CI=true. Skip benches in CI (still available
+  # locally via plain `./scripts/check.sh`). Use --quick to skip audit/deny/bench entirely.
+  if [[ "${CI:-}" == "true" ]]; then
+    echo "CI=true: skip cargo bench (avoid OOM/SIGTERM under fleet memory pressure)"
+  else
+    "${CARGO[@]}" bench --all-features
+  fi
 fi
 echo "OK: context-mcp checks passed"
