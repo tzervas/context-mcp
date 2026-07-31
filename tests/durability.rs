@@ -9,7 +9,7 @@
 
 use context_mcp::context::{Context, ContextDomain, ContextQuery};
 use context_mcp::storage::{ContextStore, StorageConfig};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 fn tmp_path(tag: &str) -> PathBuf {
     std::env::temp_dir().join(format!(
@@ -23,10 +23,10 @@ fn tmp_path(tag: &str) -> PathBuf {
     ))
 }
 
-fn cfg(path: &PathBuf) -> StorageConfig {
+fn cfg(path: &Path) -> StorageConfig {
     StorageConfig {
         enable_persistence: true,
-        persist_path: Some(path.clone()),
+        persist_path: Some(path.to_path_buf()),
         ..Default::default()
     }
 }
