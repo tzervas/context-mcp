@@ -54,7 +54,7 @@ humantime = "=2.3.0"
 
 # Logging and tracing
 tracing = "=0.1.44"
-tracing-subscriber = { version = "=0.3.22", features = ["env-filter", "json"] }
+tracing-subscriber = { version = "=0.3.23", features = ["env-filter", "json"] }
 
 # Error handling
 thiserror = "=2.0.18"
