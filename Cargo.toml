@@ -87,9 +87,10 @@ tokio-test = "=0.4.5"
 tempfile = "=3.24.0"
 criterion = { version = "=0.8.1", features = ["async_tokio"] }
 
-# Development tools
-cargo-audit = "=0.22.0"
-# cargo-deny = "0.19"
+# cargo-audit / cargo-deny are CLI tools (cargo install …), NOT package
+# dependencies. Listing them under [dev-dependencies] forced clippy
+# --all-targets to compile the full gix tree and OOM 8G no-swap runners
+# even when scripts/check.sh --quick skipped running `cargo audit`.
 
 [features]
 default = ["server", "persistence", "ternary-embeddings"]
