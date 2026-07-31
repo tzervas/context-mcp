@@ -171,7 +171,10 @@ impl ContextStore {
             };
             match serde_json::from_slice::<Context>(&v) {
                 Ok(ctx) => {
-                    domains.entry(ctx.domain.clone()).or_default().push(ctx.id.clone());
+                    domains
+                        .entry(ctx.domain.clone())
+                        .or_default()
+                        .push(ctx.id.clone());
                     for t in &ctx.metadata.tags {
                         tags.entry(t.clone()).or_default().push(ctx.id.clone());
                     }
