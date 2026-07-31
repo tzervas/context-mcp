@@ -68,9 +68,7 @@ impl WgpuBackend {
     pub async fn new() -> Result<Self, String> {
         let instance = Instance::new(InstanceDescriptor {
             backends: Backends::all(),
-            dx12_shader_compiler: Default::default(),
-            gles_minor_version: Default::default(),
-            flags: Default::default(),
+            ..InstanceDescriptor::new_without_display_handle()
         });
 
         let adapter = instance
@@ -78,15 +76,19 @@ impl WgpuBackend {
                 power_preference: PowerPreference::HighPerformance,
                 compatible_surface: None,
                 force_fallback_adapter: false,
+                apply_limit_buckets: false,
             })
             .await
-            .ok_or_else(|| {
-                eprintln!("GPU initialization failed: No suitable GPU adapter found. Falling back to CPU.");
-                "No GPU adapter found".to_string()
+            .map_err(|e| {
+                eprintln!(
+                    "GPU initialization failed: No suitable GPU adapter found ({}). Falling back to CPU.",
+                    e
+                );
+                format!("No GPU adapter found: {e}")
             })?;
 
         let (device, queue) = adapter
-            .request_device(&DeviceDescriptor::default(), None)
+            .request_device(&DeviceDescriptor::default())
             .await
             .map_err(|e| {
                 eprintln!(

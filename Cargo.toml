@@ -8,7 +8,8 @@ license = "MIT"
 description = "MCP server for context storage, text-based retrieval, and temporal tracking with optional persistence"
 repository = "https://github.com/tzervas/context-mcp"
 documentation = "https://docs.rs/context-mcp/latest/context_mcp/"
-keywords = ["mcp", "context", "memory", "temporal", "rag"]  # rag is aspirational (Wave 0+); current is text+metadata only until gates pass
+# "rag" is aspirational (Wave 0+); runtime is text+metadata session memory until eval gates pass (see docs/ROADMAP.md C0).
+keywords = ["mcp", "context", "memory", "temporal", "rag"]
 categories = ["development-tools", "memory-management"]
 
 [package.metadata.docs.rs]
@@ -18,7 +19,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 [dependencies]
 # MCP and async runtime
 tokio = { version = "=1.49.0", features = ["full"] }
-async-trait = "=0.1.89"
+async-trait = "=0.1.91"
 futures = "=0.3.31"
 
 # Serialization
@@ -32,7 +33,7 @@ tower-http = { version = "=0.6.8", features = ["cors", "trace"], optional = true
 
 # Storage backends
 # In-memory with LRU
-lru = "=0.18.0"
+lru = "=0.16.3"
 # Disk persistence
 sled = { version = "=0.34.7", optional = true }
 # Optional: vector similarity (can use embeddenator core)
@@ -52,8 +53,8 @@ tracing = "=0.1.44"
 tracing-subscriber = { version = "=0.3.22", features = ["env-filter", "json"] }
 
 # Error handling
-thiserror = "=2.0.17"
-anyhow = "=1.0.103"
+thiserror = "=2.0.18"
+anyhow = "=1.0.100"
 
 # CPU optimization
 rayon = "=1.11.0"
@@ -62,14 +63,20 @@ rayon = "=1.11.0"
 clap = { version = "=4.5.54", features = ["derive"] }
 
 # Random
-rand = "=0.9.4"
+rand = "=0.9.3"
 
 # Embeddings and quantization
 # Dense embeddings for baseline comparison
 ndarray = "=0.17.2"
 
+# Optional OpenAI-compatible HTTP embedder (Wave 1 C1.3; feature http-embedder)
+reqwest = { version = "=0.12.28", optional = true, default-features = false, features = [
+    "json",
+    "rustls-tls",
+] }
+
 # GPU acceleration (optional)
-wgpu = { version = "=0.20.1", optional = true }
+wgpu = { version = "=30.0.0", optional = true }
 bytemuck = { version = "=1.24.0", optional = true }
 
 # Sparse vector support
@@ -80,21 +87,20 @@ tokio-test = "=0.4.5"
 tempfile = "=3.24.0"
 criterion = { version = "=0.8.1", features = ["async_tokio"] }
 
-# Development tools
-# cargo-audit is installed standalone in CI (see .github/workflows/ci.yml,
-# release.yml, setup-dev.sh: `cargo install cargo-audit --locked`) rather
-# than as a project dependency. Listing it here pulled its own heavy
-# transitive tree (rustsec/gix/reqwest/tame-index) into Cargo.lock, which
-# was the source of several unrelated RustSec advisories that never
-# actually ship in this crate's binary or tests.
-# cargo-deny = "0.19"
+# cargo-audit / cargo-deny are CLI tools (cargo install …), NOT package
+# dependencies. Listing them under [dev-dependencies] forced clippy
+# --all-targets to compile the full gix tree and OOM 8G no-swap runners
+# even when scripts/check.sh --quick skipped running `cargo audit`.
 
 [features]
 default = ["server", "persistence", "ternary-embeddings"]
 server = ["dep:axum", "dep:tower", "dep:tower-http"]
 persistence = ["dep:sled"]
 simd = []
+# Legacy feature flag (always available; Embedder trait is core, not gated)
 embeddings = []
+# OpenAI-compatible HTTP embedder backend (optional network dep)
+http-embedder = ["dep:reqwest"]
 # Ternary embeddings with various quantization options
 ternary-embeddings = []
 # Codebook-free sparsity approach (direct ternary quantization with top-k)
@@ -103,7 +109,7 @@ ternary-sparse = ["ternary-embeddings"]
 ternary-rvq = ["ternary-embeddings"]
 # Optional GPU acceleration with wgpu
 gpu-acceleration = ["dep:wgpu", "dep:bytemuck", "ternary-embeddings"]
-# Combined: all embedding methods
+# Combined: all embedding methods (does not enable HTTP)
 all-embeddings = ["ternary-sparse", "ternary-rvq", "gpu-acceleration"]
 
 [[bin]]

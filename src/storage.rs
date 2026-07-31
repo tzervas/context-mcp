@@ -114,14 +114,102 @@ impl ContextStore {
         #[cfg(not(feature = "persistence"))]
         let _disk_store = ();
 
-        Ok(Self {
+        let store = Self {
             memory_cache,
             #[cfg(feature = "persistence")]
             disk_store,
             domain_index: Arc::new(RwLock::new(HashMap::new())),
             tag_index: Arc::new(RwLock::new(HashMap::new())),
             config,
-        })
+        };
+
+        // Rehydrate the in-memory indices from disk.
+        //
+        // WHY THIS EXISTS: opening sled restores the BYTES but not the ability to
+        // find them. domain_index and tag_index start empty, and every discovery
+        // path — retrieve, query, domain and tag lookup — reads those indices. So
+        // before this, a restart left previously stored context on disk and
+        // invisible to every caller: persisted, and unreachable.
+        //
+        // That made the failure especially misleading. Turning persistence on
+        // without this would write data, report success, and still return nothing
+        // after a restart — the durability equivalent of a check that cannot fail.
+        #[cfg(feature = "persistence")]
+        store.rehydrate_indices()?;
+
+        Ok(store)
+    }
+
+    /// Rebuild domain_index and tag_index from the on-disk store.
+    ///
+    /// Deliberately does NOT repopulate the LRU cache: the cache is bounded and
+    /// warming it from an arbitrarily large disk store would evict by insertion
+    /// order rather than by use. Indices are small (id lists) and are what
+    /// discovery actually needs.
+    ///
+    /// A corrupt or unreadable record is skipped rather than fatal — one bad row
+    /// must not make an entire store unopenable — but each one is counted and
+    /// reported, because silently dropping records is how a store quietly loses
+    /// data while looking healthy.
+    #[cfg(feature = "persistence")]
+    fn rehydrate_indices(&self) -> Result<()> {
+        let Some(db) = self.disk_store.as_ref() else {
+            return Ok(());
+        };
+
+        let mut domains: HashMap<ContextDomain, Vec<ContextId>> = HashMap::new();
+        let mut tags: HashMap<String, Vec<ContextId>> = HashMap::new();
+        let (mut ok, mut skipped) = (0usize, 0usize);
+
+        for row in db.iter() {
+            let (_k, v) = match row {
+                Ok(kv) => kv,
+                Err(_) => {
+                    skipped += 1;
+                    continue;
+                }
+            };
+            match serde_json::from_slice::<Context>(&v) {
+                Ok(ctx) => {
+                    domains
+                        .entry(ctx.domain.clone())
+                        .or_default()
+                        .push(ctx.id.clone());
+                    for t in &ctx.metadata.tags {
+                        tags.entry(t.clone()).or_default().push(ctx.id.clone());
+                    }
+                    ok += 1;
+                }
+                Err(_) => skipped += 1,
+            }
+        }
+
+        // try_write, NOT blocking_write. new() is sync but is routinely called FROM
+        // an async context (the server constructs the store inside the tokio
+        // runtime), and blocking_write panics there with "Cannot block the current
+        // thread from within a runtime". try_write cannot fail here for the reason
+        // blocking_write looked safe: no other handle to this store exists yet, so
+        // there is nothing to contend with. If that ever stops being true, the
+        // expect below is a loud failure rather than a silent half-rehydrated index.
+        *self
+            .domain_index
+            .try_write()
+            .expect("no concurrent access during construction") = domains;
+        *self
+            .tag_index
+            .try_write()
+            .expect("no concurrent access during construction") = tags;
+
+        if skipped > 0 {
+            tracing::warn!(
+                rehydrated = ok,
+                skipped,
+                "rehydrated indices from disk; some records were unreadable and were skipped"
+            );
+        } else {
+            tracing::info!(rehydrated = ok, "rehydrated indices from disk");
+        }
+        Ok(())
     }
 
     /// Store a context entry

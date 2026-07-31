@@ -175,6 +175,18 @@ pub struct Context {
     /// Optional embedding vector for similarity search
     #[serde(skip_serializing_if = "Option::is_none")]
     pub embedding: Option<Vec<f32>>,
+
+    /// Model id that produced `embedding` (Wave 1 C1.4; e.g. remote model or hashing-v1)
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub embedding_model: Option<String>,
+
+    /// Dimensionality of `embedding` when present
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub embedding_dims: Option<usize>,
+
+    /// SHA-256 hex of content when embedding was computed (staleness / cache key)
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub content_hash: Option<String>,
 }
 
 impl Context {
@@ -191,6 +203,9 @@ impl Context {
             expires_at: None,
             metadata: ContextMetadata::default(),
             embedding: None,
+            embedding_model: None,
+            embedding_dims: None,
+            content_hash: None,
         }
     }
 
@@ -230,9 +245,26 @@ impl Context {
         self
     }
 
-    /// Set embedding vector
+    /// Set embedding vector only (prefer `with_embedding_info` to record model/hash)
     pub fn with_embedding(mut self, embedding: Vec<f32>) -> Self {
+        let dims = embedding.len();
         self.embedding = Some(embedding);
+        self.embedding_dims = Some(dims);
+        self
+    }
+
+    /// Set embedding vector plus model id, dims, and content hash (Wave 1 C1.4)
+    pub fn with_embedding_info(
+        mut self,
+        embedding: Vec<f32>,
+        model: impl Into<String>,
+        content_hash: impl Into<String>,
+    ) -> Self {
+        let dims = embedding.len();
+        self.embedding = Some(embedding);
+        self.embedding_model = Some(model.into());
+        self.embedding_dims = Some(dims);
+        self.content_hash = Some(content_hash.into());
         self
     }
 

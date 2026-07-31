@@ -1,7 +1,10 @@
 # Local checks (CI parity)
 
-GitHub Actions workflows in this repo are **manual only** (`workflow_dispatch`).
-Day-to-day quality gates run **locally** so remote CI is not the only source of truth.
+Day-to-day quality gates should be run **locally** so remote CI is not the only source of truth.
+
+Remote GitHub Actions in this repo run on **push and pull_request** for the fleet workflows (`ci.yml`, `fleet-ci.yml`, `fleet-security.yml`), plus `workflow_dispatch` on several workflows. They are **not** manual-only. Treat CI conclusions as informative; this repo has historically had **zero required status checks** on `main` — a green or missing check is not automatic proof of merge safety. Prefer `./scripts/check.sh` before declaring work done.
+
+Measured snapshot of gates: [CURRENT-STATE.md](CURRENT-STATE.md).
 
 ## Run everything the remote job would run
 
@@ -16,6 +19,8 @@ Optional:
 ./scripts/check.sh --fix  # apply formatters instead of --check
 ```
 
+Resource note for shared builders: set `CARGO_BUILD_JOBS=3` (or similar) so unbounded cargo parallelism does not OOM multi-tenant hosts.
+
 ## Tero index
 
 ```bash
@@ -29,4 +34,4 @@ Artifacts land in `docs/tero-index/` (`index.json`, `INDEX.md`, `MANIFEST.toml`,
 
 ## Remote (optional)
 
-In GitHub: **Actions → CI → Run workflow**.
+In GitHub: **Actions** → select workflow → **Run workflow**, or rely on push/PR triggers for fleet-ci / fleet-security / CI.

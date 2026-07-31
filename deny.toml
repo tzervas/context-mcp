@@ -15,6 +15,8 @@ ignore = [
     # "RUSTSEC-2025-0021", # gix-features SHA-1 - removed (advisory not encountered)
     # "RUSTSEC-2025-0001", # gix-worktree-state - removed (stale for current deps)
     "RUSTSEC-2024-0384", # instant unmaintained
+    "RUSTSEC-2025-0140", # gix-date via cargo-audit dev-dependency (transitive, not runtime)
+    "RUSTSEC-2026-0190", # anyhow unsound downcast_mut - pinned direct dep; audit warns only
 ]
 
 [licenses]
