@@ -99,16 +99,18 @@ The server is configured in your VS Code MCP settings:
 
 ### Advanced Options
 
-You can modify the configuration to enable additional features:
+Persistence is **enabled by default** (sled under `./data/context_store` unless
+`--storage-path` is set). Use `--no-persist` for a pure in-memory session. Domain/tag
+indices rehydrate from disk on startup so stored contexts remain findable after restart.
 
 ```json
 {
   "args": [
     "--stdio",
-    "--persist",                          // Enable disk persistence
-    "--storage-path", "/path/to/data",    // Persistent storage location
-    "--cache-size", "10000",              // Increase cache size
+    "--storage-path", "/path/to/data",    // Preferred durable location
+    "--cache-size", "10000",              // Increase LRU cache size
     "--threads", "8"                      // Set thread pool size
+    // "--no-persist"                     // Opt out of disk persistence
   ]
 }
 ```

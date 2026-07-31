@@ -10,7 +10,7 @@ tag_format = "v$version"
 version_scheme = "semver"
 major_version_zero = true
 
-# Keep these files lockstep on every release bump (see CONTRIBUTING.md § Version files).
+# Keep these files lockstep on every release bump (see CONTRIBUTING.md § Versioning).
 # Cargo.lock is deliberately NOT listed: cz does a line-oriented replacement and the lock
 # file records this package's version on the line AFTER its `name =` key, so a pattern here
 # would rewrite the wrong entry. Run `cargo build` (or `cargo update -p context-mcp`) after

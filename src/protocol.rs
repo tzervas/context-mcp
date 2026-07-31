@@ -148,12 +148,14 @@ pub struct ServerCapabilities {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ToolsCapability {
     #[serde(default)]
     pub list_changed: bool,
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ResourcesCapability {
     #[serde(default)]
     pub subscribe: bool,
@@ -162,6 +164,7 @@ pub struct ResourcesCapability {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct PromptsCapability {
     #[serde(default)]
     pub list_changed: bool,
@@ -176,6 +179,7 @@ pub struct ServerInfo {
 
 /// MCP initialize result
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct InitializeResult {
     pub protocol_version: String,
     pub capabilities: ServerCapabilities,
@@ -184,6 +188,7 @@ pub struct InitializeResult {
 
 /// MCP tool definition
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Tool {
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -298,6 +303,7 @@ pub struct CallToolRequest {
 
 /// MCP tool call result
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct CallToolResult {
     pub content: Vec<Content>,
     #[serde(default)]
@@ -457,5 +463,39 @@ mod tests {
         let result = CallToolResult::text("Success");
         assert!(!result.is_error);
         assert_eq!(result.content.len(), 1);
+    }
+}
+
+#[cfg(test)]
+mod wire_format_tests {
+    use super::*;
+
+    /// MCP is camelCase on the wire. `initialize` was emitting `protocol_version` /
+    /// `server_info` / `list_changed`, which spec-conforming clients cannot parse — the
+    /// server started and answered, but every client dropped the connection. Pin the wire
+    /// names so a struct edit cannot silently regress the handshake.
+    #[test]
+    fn initialize_result_is_camel_case_on_the_wire() {
+        let v = serde_json::to_value(InitializeResult {
+            protocol_version: "2024-11-05".to_string(),
+            capabilities: ServerCapabilities {
+                tools: Some(ToolsCapability { list_changed: true }),
+                ..Default::default()
+            },
+            server_info: ServerInfo {
+                name: "context-mcp".to_string(),
+                version: "0".to_string(),
+            },
+        })
+        .unwrap();
+
+        assert!(v.get("protocolVersion").is_some(), "got: {v}");
+        assert!(v.get("serverInfo").is_some(), "got: {v}");
+        assert!(
+            v["capabilities"]["tools"].get("listChanged").is_some(),
+            "got: {v}"
+        );
+        assert!(v.get("protocol_version").is_none(), "got: {v}");
+        assert!(v.get("server_info").is_none(), "got: {v}");
     }
 }

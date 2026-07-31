@@ -33,7 +33,7 @@ This project is prepared for integration:
 **PR flow (protect main/dev):**
 - Create/checkout feature or chore branch
 - Make changes (agent will often use working branch)
-- PR the branch → `dev` (then dev → main when ready)
+- Prefer PR → `dev` when `dev` is current with `main`; if `dev` is stale/diverged, PR → `main` (default branch; recent PRs #30–#35 landed on main).
 
 ## Local checks
 
@@ -75,3 +75,10 @@ See: plan.md:44 w2-rollout, dev-docs/schemas/structured_response*.example + comm
 Append-only; tero cites to plan/wsfull; hygiene + update-tero; land --no-ff dev/main + propagate. Verify tero hits new sections.
 
 (Note: a duplicate short semver note was appended here by the parallel bg semver loop while on dev; the baseline section lives on the dedicated chore/semver-baseline-v0.2.0 branch.)
+
+## Health TLC (2026-07-16)
+
+- WHAT: Gate-only hygiene on `origin/main` tip — crates.io keywords honesty (`rag` demoted/commented aspirational), `CHANGELOG` 0.2.0 baseline entry, `.gitignore` secrets block + safe `.gitallowed` (no broad `sk-*` allow), `scripts/check.sh` runs `git secrets --scan` when installed. Product epics #19 (real embeddings), #20 (GPU shaders), #21 (security-mcp) left open.
+- WHY: Health TLC only; cargo gate already green (29 unit + 4 integration). Docs/semver/secrets honesty gaps were clear vs C0.
+- WHY NOT: No mycelium/py2rust; no 1.0 bump; no hardware-hardcoded rayon threads; no product epic implementation.
+- Gate: `./scripts/check.sh --quick` OK (fmt/clippy/doc/build/test + git-secrets). Python `test_mcp_server.py` is a stdio smoke harness (not pytest; pytest not required for Rust gate).

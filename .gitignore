@@ -1,19 +1,30 @@
 
 # Local data / persistence backends
-# Local secrets / environment
-# OS / editor cruft
-# Test results
 *.db
-*.key
-*.pem
 *.sled
-*.swp
-.DS_Store
-.env
-.env.*
-.idea/
-.venv-check/
-.vscode/
 /data/
 target/
+
+# Local secrets / environment (templates explicitly allowed)
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+!.env.*.example
+*.key
+*.pem
+secrets/
+
+# OS / editor cruft
+*.swp
+.DS_Store
+.idea/
+.vscode/
+.venv-check/
+
+# Agent / local tooling noise
+.cabal-memory/
+
+# Test results
 test_results*.txt

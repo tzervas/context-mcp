@@ -1,0 +1,13 @@
+# git-secrets allowed patterns (false-positive exceptions)
+# Only variable *names* and obvious placeholders — never real secret values.
+# Real keys (e.g. sk-live..., xai-...) must still fail the scan.
+XAI_API_KEY
+ANTHROPIC_API_KEY
+OPENAI_API_KEY
+xai[_-]?api[_-]?key
+# placeholder-only sk forms used in docs/examples
+sk-example
+sk-test
+sk-\.\.\.
+# AWS account id placeholder often used in docs
+123456789012

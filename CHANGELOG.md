@@ -5,6 +5,90 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- **stdio transport was unusable — two independent defects, either fatal on its own.**
+  1. Logs went to **stdout**: `tracing_subscriber::fmt()` defaults its writer to stdout, but under
+     `--stdio` stdout *is* the JSON-RPC transport, so the first thing a client read was
+     `INFO context_mcp: Starting MCP Context Server in stdio mode` where a frame belonged. The
+     subscriber now writes to stderr — unconditionally, since stderr is also correct for the HTTP
+     transport.
+  2. The wire format was **snake_case** (`protocol_version`, `server_info`, `list_changed`) where
+     MCP requires camelCase, so even with clean stdout the handshake was unparseable. Added
+     `#[serde(rename_all = "camelCase")]` to `ToolsCapability`, `ResourcesCapability`,
+     `PromptsCapability`, `InitializeResult`, `Tool` and `CallToolResult`. The `snake_case`
+     `rename_all` in `src/context.rs` is an unrelated internal domain format and is unchanged.
+
+- **The embedder was structurally unreachable from the MCP server.**
+  `RagProcessor::with_embedder` had exactly three callers, all of them unit tests;
+  `ServerState::new` always used `RagProcessor::new`, which hardcodes `embedder: None`.
+  `ServerConfig` had no embedder field and the CLI had no embedder flags, so no
+  configuration — flag, env, or otherwise — could put an embedder behind the MCP tools. The
+  `Embedder` trait, `HttpEmbedder`, and the whole fail-closed semantic gate were dead code
+  in every shipped build. `ServerConfig` now carries an `EmbedderConfig`, and
+  `ServerState::new` constructs the backend and passes it to `RagProcessor::with_embedder`.
+- **`--enable-semantic` started successfully and then failed on every retrieval.**
+  The flag was accepted at launch with no embedder configured; the refusal only surfaced
+  once a client actually called `retrieve_contexts`. Semantic capability is now checked in
+  `ServerState::new`, so a misconfiguration is a failed launch (exit 1, typed
+  `SemanticUnavailable` on stderr) rather than a server that answers `tools/list` and then
+  refuses real work.
+
+### Added
+- Regression test pinning the MCP wire names (camelCase present, snake_case absent).
+- **Embedder selection from the CLI** (`docs/ROADMAP.md` "Config (CLI / env)"):
+  `--embedder none|local|http`, `--embed-model`, `--embed-dims`, `--embed-base-url`.
+  The HTTP bearer token comes from `$CONTEXT_MCP_EMBED_API_KEY` only — never a flag, since
+  argv is readable via `ps`. `EmbedderConfig`'s `Debug` impl redacts it, because
+  `ServerConfig` is `Debug` and gets logged.
+- `EmbedderKind`, `EmbedderConfig`, `build_embedder` and `ensure_semantic_capable` in
+  `src/embeddings.rs`; `ServerState::rag()` accessor so the wiring is observable.
+- Startup logs the active embedder (backend, model, dims, `semantic=`) and WARNs explicitly
+  when the selected backend is not semantic.
+- Unavailable backends fail loudly and specifically: `--embedder http` in a build without
+  the `http-embedder` cargo feature errors naming that feature and the rebuild command,
+  instead of silently substituting the non-semantic hashing backend. `--embedder local`
+  combined with `--enable-semantic` is likewise a startup abort, not a downgrade.
+- `tests/embedder_cli.rs` (drives the real binary) and `tests/semantic_startup_gate.rs`.
+  Six of the seven CLI tests fail against the previous binary; the seventh is a control
+  asserting plain `--stdio` still starts unchanged.
+
+### Not changed
+- No vector persistence, no ANN index, no `--vector-path`, and retrieval scoring still does
+  not consume embeddings — Wave 2 (C2.1–C2.2). Selecting an embedder makes the backend
+  reachable and recorded; it is not yet legitimate RAG.
+- No local semantic backend. ROADMAP C1.2 (GGUF/ONNX/candle, issue #19) remains open, so
+  `--embedder local` is the non-semantic hashing stub and says so at startup.
+
+## [0.3.0] - 2026-07-21
+
+### Added
+- Wave 1 `Embedder` trait (`embed_batch`, `model_id`, `dims`, `is_semantic`) in `src/embeddings.rs`
+- `NullEmbedder` fail-closed stub; `HashingEmbedder` deterministic local (non-semantic, tests)
+- Optional `HttpEmbedder` (`--features http-embedder`) OpenAI-compatible HTTP backend
+- `Context` fields: `embedding_model`, `embedding_dims`, `content_hash`; `apply_embedding` helper
+- Errors: `EmbedderUnavailable`, `SemanticUnavailable`
+- `RagProcessor::with_embedder` — semantic retrieve uses real embedder only
+
+### Changed
+- Semantic mode fail closed: `enable_semantic=true` without `is_semantic` embedder returns typed error (no hash pseudo fallback)
+- Production path no longer calls `text_to_pseudo_embedding` (quarantined under tests)
+
+### Notes
+- Still **not** legitimate RAG (Wave 2 vector store + Wave 3 eval remaining). MCP tools stable for cabal facade.
+
+## [0.2.0] - 2026-07-10
+
+### Changed
+- Semver baseline for supportive tooling/helper crate (`Cargo.toml` version `0.2.0`)
+- C0 honesty: `RagConfig.enable_semantic` defaults to `false`; pseudo-embeddings warn when forced on
+- crates.io keywords ordered with session-memory terms first; `rag` remains aspirational until Wave gates
+
+### Notes
+- Not legitimate RAG yet (see `docs/ROADMAP.md`, issues #19–#21 for product epics)
+- wgpu optional feature tracked separately (GPU compute still CPU-fallback; issue #20)
+
 ## [0.1.6] - 2026-01-10
 
 ### Added

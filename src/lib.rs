@@ -11,8 +11,10 @@
 //! - **Screening Status**: Fields for tracking security screening state (no active integration)
 //! - **MCP Protocol**: JSON-RPC server with HTTP (POST + SSE) and stdio transports
 //!
-//! **Honesty note (C0)**: No real embeddings/vector RAG yet. "retrieve_contexts" similarity uses
-//! word-hash pseudo only (gated; off-by-default for semantic). See docs/ROADMAP.md Wave 0.
+//! **Honesty note (C0/C1)**: No legitimate vector RAG yet (no ANN store / eval). Wave 1 adds a
+//! pluggable [`embeddings::Embedder`] (batch → dense vectors) with fail-closed semantic mode:
+//! `enable_semantic` defaults false; when true, a real (`is_semantic`) embedder is required —
+//! hash/mock/null never silently score. See docs/ROADMAP.md.
 //!
 //! ## Architecture
 //!
@@ -41,6 +43,11 @@ pub mod ternary;
 pub mod tools;
 
 pub use context::{Context, ContextId, ContextMetadata};
+#[cfg(feature = "http-embedder")]
+pub use embeddings::HttpEmbedder;
+pub use embeddings::{
+    apply_embedding, content_hash, Embedder, EmbeddingInfo, HashingEmbedder, NullEmbedder, Vector,
+};
 pub use error::{ContextError, Result};
 #[cfg(feature = "server")]
 pub use server::{McpServer, ServerConfig};
