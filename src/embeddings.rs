@@ -318,6 +318,210 @@ impl Embedder for HttpEmbedder {
     }
 }
 
+// ---------------------------------------------------------------------------
+// Embedder selection (ROADMAP "Config (CLI / env)": --embedder / --embed-model)
+// ---------------------------------------------------------------------------
+
+/// Which embedder backend to construct (`--embedder none|local|http`).
+///
+/// Before this existed, [`crate::rag::RagProcessor::with_embedder`] had no
+/// non-test caller: the server always took the `None` path, so no CLI or config
+/// input could put a real embedder behind the MCP tools.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum EmbedderKind {
+    /// No embedder. Retrieval is metadata/temporal/keyword only. Semantic mode refuses.
+    #[default]
+    None,
+    /// In-process local backend. **Currently non-semantic** ([`HashingEmbedder`]):
+    /// ROADMAP C1.2 (local GGUF/ONNX/candle) is still open, so this cannot satisfy
+    /// semantic mode and startup refuses if combined with `enable_semantic`.
+    Local,
+    /// OpenAI-compatible HTTP backend (`HttpEmbedder`, `is_semantic() == true`).
+    /// Requires the `http-embedder` cargo feature, which is **not** in `default`.
+    ///
+    /// Plain code span rather than an intra-doc link: the type is `cfg`-gated, so a link
+    /// would warn in the default build.
+    Http,
+}
+
+impl EmbedderKind {
+    /// Accepted CLI/config spellings.
+    pub const VARIANTS: [&'static str; 3] = ["none", "local", "http"];
+
+    /// Canonical lowercase name.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::None => "none",
+            Self::Local => "local",
+            Self::Http => "http",
+        }
+    }
+}
+
+impl std::fmt::Display for EmbedderKind {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(self.as_str())
+    }
+}
+
+impl std::str::FromStr for EmbedderKind {
+    type Err = ContextError;
+
+    fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
+        match s.trim().to_ascii_lowercase().as_str() {
+            "none" | "off" | "" => Ok(Self::None),
+            "local" => Ok(Self::Local),
+            "http" => Ok(Self::Http),
+            other => Err(ContextError::Config(format!(
+                "unknown embedder '{other}' (expected one of: {})",
+                Self::VARIANTS.join(", ")
+            ))),
+        }
+    }
+}
+
+/// Default dimensionality for the local (hashing) backend when `--embed-dims` is absent.
+pub const DEFAULT_LOCAL_DIMS: usize = 384;
+
+/// Declarative embedder selection, resolved into an [`Embedder`] by [`build_embedder`].
+///
+/// Plain data (no `Arc<dyn Embedder>`) so it can live in
+/// [`crate::server::ServerConfig`] while keeping that type `Debug + Clone`.
+#[derive(Clone, Default)]
+pub struct EmbedderConfig {
+    /// Backend to construct.
+    pub kind: EmbedderKind,
+    /// Model id / path (`--embed-model`). Required for `http`.
+    pub model: Option<String>,
+    /// Output dimensionality (`--embed-dims`). Required for `http`; local defaults
+    /// to [`DEFAULT_LOCAL_DIMS`].
+    pub dims: Option<usize>,
+    /// API root for `http`, e.g. `https://api.openai.com/v1` (`--embed-base-url`).
+    pub base_url: Option<String>,
+    /// Bearer token for `http`. Sourced from the environment, never a CLI flag,
+    /// so it does not land in `ps`/argv.
+    pub api_key: Option<String>,
+}
+
+/// Redacts `api_key`: [`crate::server::ServerConfig`] is `Debug` and gets logged.
+impl std::fmt::Debug for EmbedderConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("EmbedderConfig")
+            .field("kind", &self.kind)
+            .field("model", &self.model)
+            .field("dims", &self.dims)
+            .field("base_url", &self.base_url)
+            .field(
+                "api_key",
+                &self
+                    .api_key
+                    .as_ref()
+                    .map(|_| "<redacted>")
+                    .unwrap_or("None"),
+            )
+            .finish()
+    }
+}
+
+impl EmbedderConfig {
+    /// Config that constructs no embedder.
+    pub fn none() -> Self {
+        Self::default()
+    }
+
+    /// Environment variable holding the HTTP embedder bearer token.
+    pub const API_KEY_ENV: &'static str = "CONTEXT_MCP_EMBED_API_KEY";
+}
+
+/// Construct the selected embedder, or fail loudly.
+///
+/// Never substitutes a different backend for the one that was asked for: an
+/// unavailable backend is an error naming exactly what is missing (cargo feature
+/// or config value). A silent downgrade to a non-semantic embedder is the same
+/// class of bug as an embedder that cannot be reached at all.
+pub fn build_embedder(config: &EmbedderConfig) -> Result<Option<Arc<dyn Embedder>>> {
+    match config.kind {
+        EmbedderKind::None => Ok(None),
+
+        EmbedderKind::Local => {
+            let dims = config.dims.unwrap_or(DEFAULT_LOCAL_DIMS);
+            if dims == 0 {
+                return Err(ContextError::Config(
+                    "--embed-dims must be greater than 0 for --embedder local".into(),
+                ));
+            }
+            let mut embedder = HashingEmbedder::new(dims);
+            if let Some(model) = &config.model {
+                embedder = embedder.with_model_id(model.clone());
+            }
+            Ok(Some(Arc::new(embedder)))
+        }
+
+        EmbedderKind::Http => build_http_embedder(config),
+    }
+}
+
+#[cfg(feature = "http-embedder")]
+fn build_http_embedder(config: &EmbedderConfig) -> Result<Option<Arc<dyn Embedder>>> {
+    let base_url = config.base_url.as_deref().ok_or_else(|| {
+        ContextError::Config("--embedder http requires --embed-base-url (API root)".into())
+    })?;
+    let model = config.model.as_deref().ok_or_else(|| {
+        ContextError::Config("--embedder http requires --embed-model (remote model id)".into())
+    })?;
+    let dims = config.dims.ok_or_else(|| {
+        ContextError::Config(
+            "--embedder http requires --embed-dims (vectors of the wrong length are rejected, \
+             not truncated)"
+                .into(),
+        )
+    })?;
+    if dims == 0 {
+        return Err(ContextError::Config(
+            "--embed-dims must be greater than 0 for --embedder http".into(),
+        ));
+    }
+    let embedder = HttpEmbedder::new(base_url, model, dims, config.api_key.clone())?;
+    Ok(Some(Arc::new(embedder)))
+}
+
+#[cfg(not(feature = "http-embedder"))]
+fn build_http_embedder(_config: &EmbedderConfig) -> Result<Option<Arc<dyn Embedder>>> {
+    Err(ContextError::Config(
+        "--embedder http requires the `http-embedder` cargo feature, which is NOT in the \
+         default feature set (default = server, persistence, ternary-embeddings). This binary \
+         was built without it, so no HTTP embedder exists to construct. Rebuild with: \
+         cargo build --release --features http-embedder"
+            .into(),
+    ))
+}
+
+/// Startup gate: refuse to serve if semantic mode was requested but cannot be honoured.
+///
+/// Enforced when the server is constructed, not on the first `retrieve` call, so a
+/// misconfiguration is a failed launch instead of a server that answers `tools/list`
+/// and then errors on every retrieval.
+pub fn ensure_semantic_capable(embedder: Option<&Arc<dyn Embedder>>) -> Result<()> {
+    match embedder {
+        Some(e) if e.is_semantic() => Ok(()),
+        Some(e) => Err(ContextError::SemanticUnavailable(format!(
+            "semantic mode requested but embedder '{}' reports is_semantic=false. \
+             The local backend is a deterministic hashing stub (ROADMAP C1.2: a real local \
+             GGUF/ONNX/candle backend is still open); it will not be silently used as a \
+             stand-in for real embeddings. Use --embedder http with the `http-embedder` \
+             cargo feature, or drop --enable-semantic.",
+            e.model_id()
+        ))),
+        None => Err(ContextError::SemanticUnavailable(
+            "semantic mode requested but no embedder is configured. \
+             Select one with --embedder <none|local|http>; only `http` (cargo feature \
+             `http-embedder`) currently produces semantic vectors."
+                .into(),
+        )),
+    }
+}
+
 /// Apply an embedder to a context: sets embedding vector + model/dims/content_hash.
 ///
 /// Works with any [`Embedder`] (including non-semantic hashing for tests).
@@ -533,6 +737,153 @@ impl QuantizedEmbeddingGenerator for TernaryEmbeddingGeneratorWrapper {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// `Result<Option<Arc<dyn Embedder>>>` has no `Debug` for the Ok side, so
+    /// `unwrap_err()` is unavailable here.
+    fn expect_build_err(result: Result<Option<Arc<dyn Embedder>>>) -> ContextError {
+        match result {
+            Ok(_) => panic!("expected build_embedder to fail"),
+            Err(e) => e,
+        }
+    }
+
+    #[test]
+    fn test_embedder_kind_parsing() {
+        use std::str::FromStr;
+        assert_eq!(EmbedderKind::from_str("none").unwrap(), EmbedderKind::None);
+        assert_eq!(
+            EmbedderKind::from_str("LOCAL").unwrap(),
+            EmbedderKind::Local
+        );
+        assert_eq!(
+            EmbedderKind::from_str(" http ").unwrap(),
+            EmbedderKind::Http
+        );
+
+        let err = EmbedderKind::from_str("fastembed").unwrap_err();
+        assert!(matches!(err, ContextError::Config(_)));
+        // The error must enumerate the real options, not just reject.
+        assert!(err.to_string().contains("none, local, http"), "{err}");
+    }
+
+    #[test]
+    fn test_build_embedder_none_is_none() {
+        assert!(build_embedder(&EmbedderConfig::none()).unwrap().is_none());
+    }
+
+    #[test]
+    fn test_build_embedder_local_is_non_semantic() {
+        let cfg = EmbedderConfig {
+            kind: EmbedderKind::Local,
+            dims: Some(24),
+            ..Default::default()
+        };
+        let embedder = build_embedder(&cfg).unwrap().expect("local embedder");
+        assert_eq!(embedder.dims(), 24);
+        // Honesty gate: the local stub must never claim semantic capability.
+        assert!(!embedder.is_semantic());
+    }
+
+    #[test]
+    fn test_build_embedder_local_default_dims() {
+        let cfg = EmbedderConfig {
+            kind: EmbedderKind::Local,
+            ..Default::default()
+        };
+        let embedder = build_embedder(&cfg).unwrap().expect("local embedder");
+        assert_eq!(embedder.dims(), DEFAULT_LOCAL_DIMS);
+    }
+
+    /// The whole point of failing loudly: `http` must not degrade to `local`.
+    #[cfg(not(feature = "http-embedder"))]
+    #[test]
+    fn test_build_embedder_http_without_feature_errors_naming_feature() {
+        let cfg = EmbedderConfig {
+            kind: EmbedderKind::Http,
+            model: Some("text-embedding-3-small".into()),
+            dims: Some(1536),
+            base_url: Some("https://example.invalid/v1".into()),
+            api_key: None,
+        };
+        let err = expect_build_err(build_embedder(&cfg));
+        assert!(err.to_string().contains("http-embedder"), "{err}");
+        assert!(err.to_string().contains("cargo build"), "{err}");
+    }
+
+    #[cfg(feature = "http-embedder")]
+    #[test]
+    fn test_build_embedder_http_requires_its_parameters() {
+        // Missing base_url
+        let err = expect_build_err(build_embedder(&EmbedderConfig {
+            kind: EmbedderKind::Http,
+            model: Some("m".into()),
+            dims: Some(8),
+            ..Default::default()
+        }));
+        assert!(err.to_string().contains("--embed-base-url"), "{err}");
+
+        // Missing model
+        let err = expect_build_err(build_embedder(&EmbedderConfig {
+            kind: EmbedderKind::Http,
+            dims: Some(8),
+            base_url: Some("https://example.invalid/v1".into()),
+            ..Default::default()
+        }));
+        assert!(err.to_string().contains("--embed-model"), "{err}");
+
+        // Missing dims
+        let err = expect_build_err(build_embedder(&EmbedderConfig {
+            kind: EmbedderKind::Http,
+            model: Some("m".into()),
+            base_url: Some("https://example.invalid/v1".into()),
+            ..Default::default()
+        }));
+        assert!(err.to_string().contains("--embed-dims"), "{err}");
+    }
+
+    #[cfg(feature = "http-embedder")]
+    #[test]
+    fn test_build_embedder_http_is_semantic() {
+        let cfg = EmbedderConfig {
+            kind: EmbedderKind::Http,
+            model: Some("text-embedding-3-small".into()),
+            dims: Some(1536),
+            base_url: Some("https://example.invalid/v1".into()),
+            api_key: Some("secret".into()),
+        };
+        let embedder = build_embedder(&cfg).unwrap().expect("http embedder");
+        assert!(embedder.is_semantic());
+        assert_eq!(embedder.dims(), 1536);
+        assert!(ensure_semantic_capable(Some(&embedder)).is_ok());
+    }
+
+    #[test]
+    fn test_ensure_semantic_capable_rejects_none_and_non_semantic() {
+        let err = ensure_semantic_capable(None).unwrap_err();
+        assert!(matches!(err, ContextError::SemanticUnavailable(_)));
+
+        let hashing: Arc<dyn Embedder> = Arc::new(HashingEmbedder::new(8));
+        let err = ensure_semantic_capable(Some(&hashing)).unwrap_err();
+        assert!(matches!(err, ContextError::SemanticUnavailable(_)));
+
+        let null: Arc<dyn Embedder> = Arc::new(NullEmbedder);
+        assert!(ensure_semantic_capable(Some(&null)).is_err());
+    }
+
+    /// An API key in the config must not print when ServerConfig is logged/Debug-formatted.
+    #[test]
+    fn test_embedder_config_debug_redacts_api_key() {
+        let cfg = EmbedderConfig {
+            kind: EmbedderKind::Http,
+            model: Some("m".into()),
+            dims: Some(8),
+            base_url: Some("https://example.invalid/v1".into()),
+            api_key: Some("sk-super-secret".into()),
+        };
+        let rendered = format!("{cfg:?}");
+        assert!(!rendered.contains("sk-super-secret"), "{rendered}");
+        assert!(rendered.contains("<redacted>"), "{rendered}");
+    }
 
     #[tokio::test]
     async fn test_null_embedder_fail_closed() {

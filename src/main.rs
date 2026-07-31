@@ -27,6 +27,7 @@ use clap::Parser;
 use std::path::PathBuf;
 
 use context_mcp::{
+    embeddings::{EmbedderConfig, EmbedderKind},
     rag::RagConfig,
     server::{McpServer, ServerConfig, StdioTransport},
     storage::StorageConfig,
@@ -77,10 +78,36 @@ struct Args {
     no_decay: bool,
 
     /// Enable semantic similarity in retrieve (C0/C1: off-by-default; fail closed without a real
-    /// Embedder — default server has none, so this flag errors until an embedder is wired).
+    /// Embedder). Requires --embedder to select a backend whose is_semantic() is true;
+    /// startup ABORTS otherwise rather than degrading to hash pseudo-vectors.
     /// Per docs/ROADMAP.md honesty gate. Not legitimate RAG (no vector store/eval yet).
     #[arg(long)]
     enable_semantic: bool,
+
+    /// Embedder backend: none | local | http (docs/ROADMAP.md "Config (CLI / env)").
+    ///
+    /// `none` (default): no embedder; retrieval is metadata/temporal/keyword only.
+    /// `local`: deterministic hashing stub — NOT semantic (ROADMAP C1.2 open), so it
+    /// cannot be combined with --enable-semantic.
+    /// `http`: OpenAI-compatible remote embeddings; requires the `http-embedder`
+    /// cargo feature, which is not in the default build.
+    #[arg(long, default_value = "none", value_name = "none|local|http")]
+    embedder: String,
+
+    /// Model id/path for the selected embedder (required for --embedder http)
+    #[arg(long, value_name = "MODEL")]
+    embed_model: Option<String>,
+
+    /// Embedding dimensionality. Required for --embedder http; local defaults to 384.
+    #[arg(long, value_name = "N")]
+    embed_dims: Option<usize>,
+
+    /// API root for --embedder http, e.g. https://api.openai.com/v1
+    ///
+    /// The bearer token is read from $CONTEXT_MCP_EMBED_API_KEY — deliberately not a
+    /// flag, so it does not appear in `ps`/argv.
+    #[arg(long, value_name = "URL")]
+    embed_base_url: Option<String>,
 }
 
 #[tokio::main]
@@ -118,11 +145,25 @@ async fn main() -> anyhow::Result<()> {
         ..Default::default()
     };
 
+    // Parsed here (not by clap's value_enum) so the crate's own FromStr is the single
+    // definition of the accepted values, shared by CLI and any library caller.
+    let embedder_kind: EmbedderKind = args.embedder.parse()?;
+
+    let embedder_config = EmbedderConfig {
+        kind: embedder_kind,
+        model: args.embed_model,
+        dims: args.embed_dims,
+        base_url: args.embed_base_url,
+        // Secret from the environment only; a CLI flag would leak it into argv.
+        api_key: std::env::var(EmbedderConfig::API_KEY_ENV).ok(),
+    };
+
     let server_config = ServerConfig {
         host: args.host,
         port: args.port,
         storage: storage_config,
         rag: rag_config,
+        embedder: embedder_config,
     };
 
     if args.stdio {
