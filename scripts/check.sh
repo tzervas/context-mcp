@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+# CI hosts (esp. cgroup 8G no-swap): skip cargo bench — it is not a unit gate and
+# doubles peak RSS after clippy+test. Full local: ./scripts/check.sh without CI env.
+if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
+  export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS:-1}"
+  export CARGO_PROFILE_DEV_DEBUG="${CARGO_PROFILE_DEV_DEBUG:-0}"
+  export CARGO_PROFILE_TEST_DEBUG="${CARGO_PROFILE_TEST_DEBUG:-0}"
+fi
 cd "$(dirname "$0")/.."
 MODE="${1:-}"
 export CARGO_TERM_COLOR="${CARGO_TERM_COLOR:-always}"
