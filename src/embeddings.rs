@@ -7,7 +7,8 @@
 //!
 //! - [`NullEmbedder`]: fail-closed stub (default semantic backend)
 //! - [`HashingEmbedder`]: deterministic local vectors for tests only (`is_semantic() == false`)
-//! - [`HttpEmbedder`] (feature `http-embedder`): OpenAI-compatible HTTP embeddings (`is_semantic() == true`)
+//! - `HttpEmbedder` (feature `http-embedder`): OpenAI-compatible HTTP embeddings (`is_semantic() == true`)
+//!   (intra-doc link omitted so `cargo doc` without that feature stays clean under `-D warnings`)
 //!
 //! C0 honesty: `enable_semantic` stays false by default. Semantic mode hard-errors
 //! unless a real (`is_semantic()`) embedder is configured — never silently falls
