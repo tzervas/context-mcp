@@ -19,7 +19,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 [dependencies]
 # MCP and async runtime
 tokio = { version = "=1.49.0", features = ["full"] }
-async-trait = "=0.1.89"
+async-trait = "=0.1.91"
 futures = "=0.3.31"
 
 # Serialization
