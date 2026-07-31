@@ -84,7 +84,9 @@ Edit your `mcp.json` file to include:
 }
 ```
 
-### With Persistent Storage
+### With Persistent Storage (default)
+
+Disk persistence is **on by default**. Prefer an explicit path for long-lived agents:
 
 ```json
 {
@@ -94,13 +96,15 @@ Edit your `mcp.json` file to include:
       "command": "/home/<username>/.local/bin/context-mcp",
       "args": [
         "--stdio",
-        "--persist",
         "--storage-path", "/home/<username>/.context-mcp/data"
       ]
     }
   }
 }
 ```
+
+Default path when `--storage-path` is omitted: `./data/context_store` (relative to process CWD).
+On open, domain/tag indices are **rehydrated from sled** so query/retrieve find prior records.
 
 ### High Capacity Configuration
 
@@ -114,7 +118,7 @@ Edit your `mcp.json` file to include:
         "--stdio",
         "--cache-size", "10000",
         "--threads", "0",
-        "--persist"
+        "--storage-path", "/home/<username>/.context-mcp/data"
       ]
     }
   }
@@ -128,9 +132,9 @@ Edit your `mcp.json` file to include:
 | `--stdio` | Use stdio transport (required for VS Code) | - |
 | `--host <HOST>` | Server host (HTTP mode only) | 127.0.0.1 |
 | `--port <PORT>` | Server port (HTTP mode only) | 3000 |
-| `--storage-path <PATH>` | Path for persistent storage | - |
+| `--storage-path <PATH>` | Path for persistent storage | `./data/context_store` when persistence on |
 | `--cache-size <SIZE>` | Memory cache size | 1000 |
-| `--persist` | Enable disk persistence | false |
+| `--no-persist` | Disable disk persistence | persistence **enabled** |
 | `--threads <N>` | Number of RAG threads (0 = auto) | 0 |
 | `--no-decay` | Disable temporal decay scoring | false |
 

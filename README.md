@@ -32,7 +32,11 @@ cargo install context-mcp
 
 ```bash
 # Stdio transport (for MCP clients like VS Code)
+# Disk persistence is ON by default (./data/context_store); pass --no-persist for memory-only.
 context-mcp --stdio
+
+# Explicit storage path (recommended for long-lived agents)
+context-mcp --stdio --storage-path ~/.context-mcp/data
 
 # HTTP server
 context-mcp --host 127.0.0.1 --port 3000
@@ -52,7 +56,8 @@ claude mcp list   # expect: context-mcp: … - ✔ Connected
 
 ## Features
 
-- **Multi-tier Storage**: In-memory LRU cache with optional sled-based disk persistence
+- **Multi-tier Storage**: In-memory LRU cache + sled disk persistence (**on by default**; `--no-persist` for memory-only)
+- **Durable by default**: On open, domain/tag indices **rehydrate from disk** so persisted contexts stay findable after restart
 - **Temporal Tracking**: Timestamps, age tracking, and time-based filtering for context relevance
 - **CPU-Optimized Retrieval**: Parallel processing with rayon for text-based context queries
 - **MCP Protocol Support**: JSON-RPC server implementation with HTTP (POST + SSE) and stdio transports (WebSocket not yet fully wired for MCP)
@@ -132,7 +137,8 @@ context-mcp --stdio
 
 - **JSON-RPC MCP Server**: Runs over HTTP/WebSocket or stdio transport
 - **Context Storage**: Store/retrieve contexts with IDs, domains, timestamps, tags, and custom metadata
-- **Tiered Storage**: In-memory LRU cache (always) + optional sled disk persistence
+- **Tiered Storage**: In-memory LRU cache (always) + sled disk persistence (default on; path `./data/context_store` or `--storage-path`)
+- **Index rehydrate**: Domain/tag indices rebuilt from sled on `ContextStore::new` so query/retrieve work after process restart
 - **Text-Based Queries**: Query by text content, domain, tags, time ranges with simple text matching
 - **Temporal Filtering**: Filter contexts by creation time, last access, age, and expiration
 - **Parallel Processing**: CPU-optimized retrieval using rayon for performance

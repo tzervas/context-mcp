@@ -26,7 +26,7 @@ env:
   # than degrading. This repo set no cargo memory bounds at all: cargo defaulted to one
   # rustc per core, and debug info made each of those as expensive as possible. Bound
   # both the concurrency and the per-process peak.
-  CARGO_BUILD_JOBS: "2"
+  CARGO_BUILD_JOBS: "1"
   CARGO_PROFILE_DEV_DEBUG: "0"
   CARGO_PROFILE_TEST_DEBUG: "0"
 

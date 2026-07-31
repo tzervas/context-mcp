@@ -58,9 +58,15 @@ struct Args {
     #[arg(long, default_value = "1000")]
     cache_size: usize,
 
-    /// Enable disk persistence
+    /// Disable disk persistence (default: enabled).
+    ///
+    /// Was `--persist` (opt-in, default false), which silently overrode
+    /// StorageConfig::default()'s `enable_persistence: true`. The shipped launch
+    /// command passes only `--stdio`, so durable memory was off in practice while
+    /// the config claimed it was on. Inverting the flag makes the default the
+    /// documented one and leaves opting OUT explicit.
     #[arg(long)]
-    persist: bool,
+    no_persist: bool,
 
     /// Number of RAG threads (0 = auto)
     #[arg(long, default_value = "0")]
@@ -100,7 +106,7 @@ async fn main() -> anyhow::Result<()> {
     let storage_config = StorageConfig {
         memory_cache_size: args.cache_size,
         persist_path: args.storage_path,
-        enable_persistence: args.persist,
+        enable_persistence: !args.no_persist,
         auto_cleanup: true,
         cleanup_interval_secs: 300,
     };
