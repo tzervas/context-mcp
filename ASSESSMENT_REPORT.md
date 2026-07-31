@@ -235,11 +235,14 @@ The server is **production-ready** for:
 # High-throughput scenario
 context-mcp --stdio --cache-size 10000 --threads 0
 
-# Persistent storage
-context-mcp --stdio --persist --storage-path /data/context-store
+# Persistent storage (default on; path recommended for production)
+context-mcp --stdio --storage-path /data/context-store
 
 # HTTP mode for multiple clients
-context-mcp --host 0.0.0.0 --port 3000 --persist
+context-mcp --host 0.0.0.0 --port 3000 --storage-path /data/context-store
+
+# Memory-only session
+context-mcp --stdio --no-persist
 ```
 
 ### Future Enhancements
