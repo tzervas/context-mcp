@@ -16,9 +16,9 @@ permissions:
 jobs:
   reopen:
     name: Reopen issues closed off-main
-    # Meta workflow: GitHub-hosted is correct (no product build). Avoids self-hosted
-    # queue when runners are busy/down; only needs gh + GITHUB_TOKEN.
-    runs-on: ubuntu-latest
+    # Meta (gh API only). Fleet policy: self-hosted-only on homelab CPU — never WSL.
+    # WSL is GPU-only; do not use bare [self-hosted, linux, x64, podman] (matches WSL CPU).
+    runs-on: [self-hosted, linux, x64, podman, compute-cpu, host-homelab, scribe-cpu-build]
     if: >
       github.event_name == 'pull_request' &&
       github.event.pull_request.merged == true &&

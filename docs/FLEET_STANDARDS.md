@@ -6,10 +6,13 @@ Applied from the workstation pack under `plans/fleet-standards/pack/`.
 
 | Workflow | When | Runner |
 |----------|------|--------|
-| `fleet-ci.yml` | push/PR to main|dev | self-hosted linux x64 podman |
+| `fleet-ci.yml` | push/PR to main|dev | `[self-hosted, linux, x64, podman, compute-cpu, host-homelab, scribe-cpu-build]` |
 | `fleet-security.yml` | push/PR + weekly | same |
+| `ci.yml` / product CPU | push/PR to main|dev | same (homelab CPU; **not** WSL) |
 | `close-issues-on-main.yml` | PR closed→main | same |
 | `reopen-issues-closed-off-main.yml` | PR merged off-main with Closes | same |
+
+WSL is GPU-only. Bare `[self-hosted, linux, x64, podman]` can match a WSL CPU listener — do not use that short set for product or meta jobs.
 
 ## Issue close policy
 
