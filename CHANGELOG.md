@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.4.0] - 2026-07-26
+
+**v0.3.0's binary could not be used as an MCP server at all**: clients refused the handshake
+outright (see Fixed, below). Anything that had adapted to the broken snake_case spelling to work
+around it will need to update — that makes this a behaviour change under 0x, hence the minor
+version step rather than a patch release.
 
 ### Fixed
 - **stdio transport was unusable — two independent defects, either fatal on its own.**
@@ -19,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
      `#[serde(rename_all = "camelCase")]` to `ToolsCapability`, `ResourcesCapability`,
      `PromptsCapability`, `InitializeResult`, `Tool` and `CallToolResult`. The `snake_case`
      `rename_all` in `src/context.rs` is an unrelated internal domain format and is unchanged.
+     MCP clients **refused to connect** to v0.3.0 over this: `protocolVersion`, `serverInfo`, and
+     `listChanged` are the names the spec requires, and no client speaks the snake_case dialect.
 
 - **The embedder was structurally unreachable from the MCP server.**
   `RagProcessor::with_embedder` had exactly three callers, all of them unit tests;
@@ -60,6 +67,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   reachable and recorded; it is not yet legitimate RAG.
 - No local semantic backend. ROADMAP C1.2 (GGUF/ONNX/candle, issue #19) remains open, so
   `--embedder local` is the non-semantic hashing stub and says so at startup.
+
+### Changed
+- `Cargo.lock` refreshed to latest compatible dependency versions (#49).
 
 ## [0.3.0] - 2026-07-21
 

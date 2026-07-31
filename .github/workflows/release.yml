@@ -30,12 +30,22 @@ jobs:
       - name: Build release
         run: cargo build --release --all-features
 
+      - name: Checksum the release binary
+        run: |
+          set -euo pipefail
+          cd target/release
+          sha256sum context-mcp > context-mcp.sha256
+          cat context-mcp.sha256
+
       - name: Create GitHub Release
         if: ${{ inputs.tag != '' }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.tag }}
           generate_release_notes: true
+          files: |
+            target/release/context-mcp
+            target/release/context-mcp.sha256
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

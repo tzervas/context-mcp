@@ -1,8 +1,12 @@
 [package]
 name = "context-mcp"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
-rust-version = "1.75"
+# Verified floor (build + `cargo test`), not aspirational: rayon 1.11 requires >=1.80,
+# sprs 0.11.4 requires >=1.85, criterion 0.8.1 (dev) requires >=1.86. Confirmed by building
+# and testing on rustc 1.86.0 directly (both green) and confirming 1.85.0 fails on criterion.
+# Previously declared 1.75, which had already drifted false; see CHANGELOG [0.4.0].
+rust-version = "1.86"
 authors = ["Tyler Zervas <tzervas>"]
 license = "MIT"
 description = "MCP server for context storage, text-based retrieval, and temporal tracking with optional persistence"
@@ -91,6 +95,8 @@ criterion = { version = "=0.8.1", features = ["async_tokio"] }
 # dependencies. Listing them under [dev-dependencies] forced clippy
 # --all-targets to compile the full gix tree and OOM 8G no-swap runners
 # even when scripts/check.sh --quick skipped running `cargo audit`.
+# Also: cargo-audit's tree (rustsec/gix/kstring) can raise effective MSRV
+# above this crate's verified floor (see `rust-version`). Do not re-add.
 
 [features]
 default = ["server", "persistence", "ternary-embeddings"]
