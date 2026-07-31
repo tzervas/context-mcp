@@ -1,15 +1,16 @@
-# context-mcp — Product Roadmap
+# context-mcp — Product roadmap
 
-**Status:** Living (2026-07-08)  
-**North star:** Fast, local-first **session memory** MCP that also delivers **efficient legitimate RAG** — real embeddings, real vector retrieval, measured quality — without lying about pseudo-similarity.
+**Status:** Living (updated 2026-07-25 for PM suite; product waves originally framed 2026-07-08)  
+**Version policy:** Stay on **0.x.x** under commitizen until a **human** authorizes 1.x.x (fleet contract). Do not treat any wave as an automatic 1.0 cut.  
+**North star:** Fast, local-first **session memory** MCP that can also deliver **efficient legitimate RAG** — real embeddings, real vector retrieval, measured quality — without lying about pseudo-similarity.
 
-Companion: [ASSESSMENT.md](ASSESSMENT.md).
+Companions: [CURRENT-STATE.md](CURRENT-STATE.md) (measured today), [DEVELOPMENT-PATH.md](DEVELOPMENT-PATH.md) (history), [ASSESSMENT.md](ASSESSMENT.md) (gap narrative).
 
 ---
 
 ## Definition of done — efficient legitimate RAG
 
-All required before any “RAG” marketing or cabal PROD-6 consumption:
+All required before any “RAG” marketing or cabal PROD-6-style consumption:
 
 1. **Real embeddings** — pluggable embedder (local GGUF/ONNX/API); model id + dims recorded per item  
 2. **Fail closed** — semantic mode never silently uses hash pseudo-vectors  
@@ -23,51 +24,63 @@ All required before any “RAG” marketing or cabal PROD-6 consumption:
 
 ## Waves
 
-### Wave 0 — Honesty & session product (ship now)
+### Wave 0 — Honesty & session product
 
-| ID | Work |
-|----|------|
-| C0.1 | Docs: remove “production RAG” claims; crates.io keywords review | (done in C0 PR #29: README, src/*, Cargo, ASSESSMENT) |
-| C0.2 | Semantic mode off by default OR hard-error if no real embedder | (done: RagConfig.enable_semantic=false default; gated in score_context + tool desc; CLI --enable-semantic) |
-| C0.3 | Token auth for HTTP | (scoped; stub or defer per orch if shared) |
-| C0.4 | Align version tags with 0.2.0 story | (0.2.0 in Cargo; tags later) |
-| C0.5 | Fix WebSocket/SSE overclaims | (done: README + server.rs comments updated to HTTP/POST+SSE) |
-
-C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade integration (common memory: tero + context-mcp + memory-gate). Tero reindexed post-changes. See compact wsfull-wave-2026-07-09.
-
-**Post-merge W2/C0 + wsfull state (2026-07-09):** PR #29 merged to dev (cdb7f14). C0 items done + tero (504 items). W2 facade refs in docs point to wsfull-wave-2026-07-09-compact.md + dev-docs/schemas/common_memory_facade (cabal). Post-merge tero update + verification review posted. Continue per PR plan / Wave 1.
+| ID | Work | Status | What would unblock remaining |
+|----|------|--------|------------------------------|
+| C0.1 | Docs: remove “production RAG” claims; crates.io keywords review | **done** (PR #29) | — |
+| C0.2 | Semantic mode off by default OR hard-error if no real embedder | **done** (default false + fail-closed; PR #29 / #46) | — |
+| C0.3 | Token auth for HTTP | **open / deferred** | Design decision (shared fleet auth vs local token); implementation + tests; not blocked on embedder |
+| C0.4 | Align version tags with baseline story | **partial** | Tags `v0.2.0` / `v0.3.0` exist; keep changelog honest on each release |
+| C0.5 | Fix WebSocket/SSE overclaims | **done** in docs/comments | Full WS MCP still incomplete — see CURRENT-STATE |
 
 ### Wave 1 — Real embedder interface
 
-| ID | Work |
-|----|------|
-| C1.1 | Trait `Embedder: embed(&[str]) -> Vec<Vector>` | **done** — `src/embeddings.rs` (`embed_batch`, `model_id`, `dims`, `is_semantic`) |
-| C1.2 | At least one local backend (e.g. fastembed / candle / external CLI) | **partial** — `HashingEmbedder` local deterministic (non-semantic, tests); `NullEmbedder` fail-closed stub. Local GGUF/ONNX/candle model still open (issue #19). |
-| C1.3 | Optional OpenAI-compatible HTTP embedder | **done (feature)** — `HttpEmbedder` behind `http-embedder` (reqwest); `is_semantic=true` |
-| C1.6 | Select/construct the embedder from CLI or config | **done** — `--embedder none\|local\|http` + `--embed-model` / `--embed-dims` / `--embed-base-url`; `EmbedderConfig` on `ServerConfig`, built in `ServerState::new`. Until this landed, `RagProcessor::with_embedder` had **no non-test caller**: the server always took `RagProcessor::new` (embedder `None`), so no embedder was reachable from the MCP surface at all. Unavailable backends now abort at startup naming the missing cargo feature — never a silent downgrade. |
-| C1.4 | Store `embedding_model`, `dims`, `content_hash` on each item | **done** — fields on `Context` + `apply_embedding` / `with_embedding_info` |
-| C1.5 | Delete or quarantine `text_to_pseudo_embedding` from production paths | **done** — removed from retrieve; quarantined under `cfg(test)` as `text_to_pseudo_embedding_quarantined`; semantic mode fail-closed without real embedder |
+### Wave 1 — Real embedder interface
 
-**Wave 1 note (honesty):** Trait + fail-closed + HTTP path land here. **Not legitimate RAG** — no vector ANN store, no hybrid rank eval, no MTEB claims. Default `enable_semantic=false`. Cabal may consume via facade later; MCP tool surface unchanged.
+| ID | Work | Status | What would unblock |
+|----|------|--------|--------------------|
+| C1.1 | Trait `Embedder: embed_batch / model_id / dims / is_semantic` | **done** — `src/embeddings.rs` (PR #46, v0.3.0) | — |
+| C1.2 | At least one **local semantic** backend (fastembed / candle / GGUF / ONNX) | **partial** — `HashingEmbedder` local deterministic (non-semantic, tests); `NullEmbedder` fail-closed stub. Local GGUF/ONNX/candle model still open (issue #19). | Choose backend + license; wire feature; integration test with offline fixture model; closes epic #19 / framing #45 |
+| C1.3 | Optional OpenAI-compatible HTTP embedder | **done (feature)** — `HttpEmbedder` / `http-embedder` | Live network test optional; not required for trait completeness |
+| C1.6 | Select/construct the embedder from CLI or config | **done** — `--embedder none|local|http` + `--embed-model` / `--embed-dims` / `--embed-base-url`; `EmbedderConfig` on `ServerConfig`, built in `ServerState::new` (PR #58). Unavailable backends abort at startup naming the missing cargo feature — never a silent downgrade. | — |
+| C1.4 | Store `embedding_model`, `dims`, `content_hash` on each item | **done** — fields on `Context` + `apply_embedding` / `with_embedding_info` | — |
+| C1.5 | Delete or quarantine `text_to_pseudo_embedding` from production paths | **done** — quarantined under tests; fail-closed | — |
+
+
+**Wave 1 honesty:** Trait + fail-closed + optional HTTP path landed. **Not legitimate RAG** — no vector ANN store, no hybrid rank eval, no MTEB claims. Default `enable_semantic=false`. MCP tool surface unchanged for session use.
 
 ### Wave 2 — Vector store & retrieve
 
-| ID | Work |
-|----|------|
-| C2.1 | Persist vectors (sled extension, sqlite-vss, or dedicated index crate) |
-| C2.2 | `retrieve_semantic` using real cosine/ANN |
-| C2.3 | Hybrid rank: α·semantic + β·temporal + γ·tags (documented) |
-| C2.4 | Reindex CLI: `context-mcp reindex --path ...` |
+| ID | Work | Status | What would unblock |
+|----|------|--------|--------------------|
+| C2.1 | Persist vectors (sled extension, sqlite-vss, or dedicated index) | **open** | C1.2 or reliable `HttpEmbedder` in prod config; schema design for embedding bytes + model id |
+| C2.2 | `retrieve_semantic` using real cosine/ANN | **open** | C2.1 + embedder at query time; new tool or gated path; tests with fixture vectors |
+| C2.3 | Hybrid rank: α·semantic + β·temporal + γ·tags (documented) | **open** | C2.2; documented weight defaults + unit tests |
+| C2.4 | Reindex CLI: `context-mcp reindex --path ...` | **open** | C2.1; CLI surface design |
+
+Also tracked in code: `src/storage.rs` TODO — vector similarity when embeddings available.
 
 ### Wave 3 — Efficiency & eval
 
-| ID | Work |
-|----|------|
-| C3.1 | Batch embed + cache by content hash |
-| C3.2 | Quantization path (ternary/RVQ) **only** as compression of real vectors |
-| C3.3 | Eval harness + CI job (small, CPU) |
-| C3.4 | Latency budgets in docs (p50/p95 local) |
-| C3.5 | 1.0.0 when eval gate green |
+| ID | Work | Status | What would unblock |
+|----|------|--------|--------------------|
+| C3.1 | Batch embed + cache by content hash | **open** | Wave 2 retrieve path worth optimizing |
+| C3.2 | Quantization (ternary/RVQ) **only** as compression of real vectors | **partial plumbing** | Real vectors first; current ternary features must not claim RAG quality |
+| C3.3 | Eval harness + CI job (small, CPU) | **open** | Fixed golden set; decide keyword baseline metric; CI minutes on self-hosted runners |
+| C3.4 | Latency budgets in docs (p50/p95 local) | **open** | Re-run benchmarks on current code (old ASSESSMENT_REPORT is 0.1.5-era) |
+| C3.5 | Production maturity cut | **proposed, not committed** | Human authorization for any **1.x.x**; until then ship polished **0.x** when eval gates green |
+
+---
+
+## Open issues (product signals)
+
+| Issue | Title | Wave |
+|-------|--------|------|
+| #19 | Replace mock embedding generator with a real embedding backend | C1.2 |
+| #45 | [1.0 stack] Wave 1: real Embedder backend (C1.1–C1.2) | C1.2 (C1.1 done in 0.3.0) |
+| #20 | GPU compute shaders for similarity (CPU-fallback placeholder) | post–C2 / efficiency |
+| #21 | Wire real security-mcp integration for content screening | orthogonal; screening fields exist |
 
 ---
 
@@ -80,7 +93,7 @@ C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade in
 | `store_context` | Store content + metadata/TTL |
 | `get_context` / `delete_context` | CRUD by id |
 | `query_contexts` | Filter metadata |
-| `retrieve_contexts` | **Today:** scored mix including pseudo-sim — **rename or gate** in Wave 1 |
+| `retrieve_contexts` | Scored metadata/temporal/keyword; semantic gated |
 | `update_screening` | Safety flag on item |
 | stats / cleanup tools | Operational |
 
@@ -88,10 +101,10 @@ C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade in
 
 | Tool | Purpose | Notes |
 |------|---------|--------|
-| `embed_status` | Active model, dims, cache stats | |
+| `embed_status` | Active model, dims, cache stats | proposed |
 | `retrieve_semantic` | Query string → top-k with real vectors | Requires Wave 1–2 |
 | `retrieve_hybrid` | Semantic + metadata + temporal | |
-| `reindex` | Admin/refresh scope | Token-scoped |
+| `reindex` | Admin/refresh scope | Token-scoped if HTTP auth lands |
 
 ### Response envelope (target)
 
@@ -117,45 +130,48 @@ C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade in
 
 Refusals: empty semantic index / missing embedder → **typed error**, not fake scores.
 
-### Library API (Rust)
+### Library API (Rust) — target shape
 
 ```rust
-// Target shape
 pub trait Embedder: Send + Sync {
     fn model_id(&self) -> &str;
     fn dims(&self) -> usize;
-    fn embed_batch(&self, texts: &[&str]) -> Result<Vec<Vec<f32>>>;
+    fn is_semantic(&self) -> bool;
+    async fn embed_batch(&self, texts: &[&str]) -> Result<Vec<Vec<f32>>>;
 }
 
-impl ContextStore {
-    pub async fn store_with_embed(&self, ctx: Context) -> Result<Id>;
-    pub async fn retrieve_semantic(&self, q: &str, k: usize) -> Result<Vec<ScoredContext>>;
-}
+// Wave 2 target (not all present today):
+// impl ContextStore {
+//     pub async fn store_with_embed(&self, ctx: Context) -> Result<Id>;
+//     pub async fn retrieve_semantic(&self, q: &str, k: usize) -> Result<Vec<ScoredContext>>;
+// }
 ```
 
-### Config (CLI / env)
+### Config (CLI / env) — direction
+
+### Config (CLI / env) — direction
 
 | Flag / env | Meaning | Status |
 |------------|---------|--------|
 | `--embedder none\|local\|http` | Required for semantic | **done** — default `none`; `local` = non-semantic hashing stub (C1.2 still open), `http` needs the `http-embedder` cargo feature |
 | `--embed-model` | Model id/path | **done** — required for `http` |
-| `--embed-dims` | Vector dimensionality | **done** — required for `http`; `local` defaults to 384. Not in the original table; the `HttpEmbedder` constructor requires it and mismatched lengths are rejected rather than truncated |
-| `--embed-base-url` | API root for `http` | **done** — not in the original table; `http` is unusable without it |
+| `--embed-dims` | Vector dimensionality | **done** — required for `http`; `local` defaults to 384 |
+| `--embed-base-url` | API root for `http` | **done** — `http` is unusable without it |
 | `$CONTEXT_MCP_EMBED_API_KEY` | Bearer token for `http` | **done** — env only, deliberately not a flag (argv is world-readable via `ps`) |
-| `--vector-path` | Index location | **open** — Wave 2 (C2.1). No flag is exposed; there is no vector index to point it at, and a no-op flag would be a false affordance |
-| `--semantic-default off` | Until eval passes, prefer off | **done** — `RagConfig::enable_semantic` defaults false; opt in with `--enable-semantic`, which aborts startup unless the selected backend is `is_semantic()` |
+| `--enable-semantic` | Opt into semantic retrieve | **done** — defaults false; aborts startup unless selected backend is `is_semantic()` |
+| `--vector-path` | Index location | **open** — Wave 2 (C2.1). No flag is exposed; there is no vector index to point it at |
+
 
 ---
 
-## PR plan
+## Known defects to track (from measurement, not fixed here)
 
-1. Docs assessment + roadmap (this)  
-2. Honesty: gate pseudo path + README  
-3. `Embedder` trait + one local backend  
-4. Vector persist + `retrieve_semantic`  
-5. Eval harness + hybrid rank  
-6. Quantization as optimization layer  
-7. 1.0.0 release  
+See [CURRENT-STATE.md](CURRENT-STATE.md). Highlights:
+
+- Historical perf numbers in root assessment report not re-run on 0.3.0  
+- fleet-ci not clean on all main tip runs; local `cargo` gate is  
+- HTTP auth missing  
+- GPU path falls back to CPU  
 
 ---
 
@@ -164,6 +180,19 @@ impl ContextStore {
 | System | Use |
 |--------|-----|
 | tero-mcp | Project corpus, citations, decisions |
-| context-mcp | Agent session memory → **plus** legitimate RAG over stored contexts |
+| context-mcp | Agent session memory → **plus** legitimate RAG over stored contexts (future) |
 
 Do not merge responsibilities; agents may call both.
+
+---
+
+## PR sequencing (suggested, not dated)
+
+1. ~~Docs assessment + roadmap~~  
+2. ~~Honesty: gate pseudo path + README~~  
+3. ~~`Embedder` trait + fail-closed~~ (0.3.0)  
+4. Local semantic backend (C1.2 / #19)  
+5. Vector persist + `retrieve_semantic` (Wave 2)  
+6. Eval harness + hybrid rank (Wave 3)  
+7. Quantization as optimization only on real vectors  
+8. Human-gated maturity release (0.x polish or authorized 1.x — **human only**)  

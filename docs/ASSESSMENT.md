@@ -1,7 +1,9 @@
 # context-mcp — Assessment & Gap Analysis
 
-**Date:** 2026-07-08  
-**Crate:** `context-mcp` 0.2.0 (Rust)  
+**Original date:** 2026-07-08  
+**Crate when written:** `context-mcp` 0.2.0 (Rust)  
+**Note (2026-07-25):** Crate is now **0.3.0** (Wave 1 Embedder + fail-closed semantic). For **measured** build/test/CI truth, use **[CURRENT-STATE.md](CURRENT-STATE.md)**. This file remains a gap narrative toward legitimate RAG; version stamps and maturity scores below may lag.
+
 **Role today:** Agent **session / runtime memory** MCP + library  
 **Role required:** Efficient **legitimate RAG** (product need) — not yet met  
 **Complements:** `tero-mcp` (corpus L1 citations) ≠ this (session + future RAG)
