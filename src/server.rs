@@ -15,6 +15,7 @@ use serde_json::{json, Value};
 use std::convert::Infallible;
 use std::sync::Arc;
 
+use crate::embeddings::{build_embedder, ensure_semantic_capable, EmbedderConfig};
 use crate::error::ContextResult;
 use crate::protocol::{
     CallToolRequest, InitializeResult, JsonRpcError, JsonRpcRequest, JsonRpcResponse, RequestId,
@@ -35,6 +36,12 @@ pub struct ServerConfig {
     pub storage: StorageConfig,
     /// RAG configuration
     pub rag: RagConfig,
+    /// Embedder selection (ROADMAP `--embedder` / `--embed-model`).
+    ///
+    /// Without this the server could only ever call [`RagProcessor::new`], which
+    /// hardcodes `embedder: None` — [`RagProcessor::with_embedder`] had no reachable
+    /// caller outside unit tests.
+    pub embedder: EmbedderConfig,
 }
 
 impl Default for ServerConfig {
@@ -44,6 +51,7 @@ impl Default for ServerConfig {
             port: 3000,
             storage: StorageConfig::default(),
             rag: RagConfig::default(),
+            embedder: EmbedderConfig::none(),
         }
     }
 }
@@ -57,13 +65,54 @@ pub struct ServerState {
 }
 
 impl ServerState {
-    /// Create new server state
+    /// Create new server state.
+    ///
+    /// Constructs the configured embedder and hands it to the [`RagProcessor`]. Fails
+    /// here — at startup — rather than on the first retrieval if semantic mode was asked
+    /// for and cannot be honoured.
     pub fn new(config: &ServerConfig) -> ContextResult<Self> {
         let store = Arc::new(ContextStore::new(config.storage.clone())?);
-        let rag = Arc::new(RagProcessor::new(store.clone(), config.rag.clone()));
+
+        let embedder = build_embedder(&config.embedder)?;
+        if config.rag.enable_semantic {
+            ensure_semantic_capable(embedder.as_ref())?;
+        }
+
+        let rag = Arc::new(match embedder {
+            Some(embedder) => {
+                tracing::info!(
+                    backend = %config.embedder.kind,
+                    model = %embedder.model_id(),
+                    dims = embedder.dims(),
+                    semantic = embedder.is_semantic(),
+                    "embedder active"
+                );
+                if !embedder.is_semantic() {
+                    tracing::warn!(
+                        model = %embedder.model_id(),
+                        "embedder is NOT semantic: vectors are deterministic hashes, not meaning. \
+                         Semantic retrieval stays refused."
+                    );
+                }
+                RagProcessor::with_embedder(store.clone(), config.rag.clone(), embedder)
+            }
+            None => {
+                tracing::info!(
+                    "no embedder configured (--embedder none); retrieval is metadata/temporal only"
+                );
+                RagProcessor::new(store.clone(), config.rag.clone())
+            }
+        });
+
         let tools = Arc::new(ToolRegistry::new(store.clone(), rag.clone()));
 
         Ok(Self { store, rag, tools })
+    }
+
+    /// Retrieval processor backing the MCP tools (exposed so the embedder wiring is
+    /// observable from tests).
+    pub fn rag(&self) -> &Arc<RagProcessor> {
+        &self.rag
     }
 }
 
@@ -281,11 +330,157 @@ impl StdioTransport {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::embeddings::EmbedderKind;
+
+    /// In-memory storage so tests never contend on the default `./data/context_store` sled lock.
+    fn test_storage() -> StorageConfig {
+        StorageConfig::memory_only(64)
+    }
 
     #[tokio::test]
     async fn test_health_endpoint() {
         let _response = health().await;
         // Basic test that it responds
+    }
+
+    /// The gap this change closes: a configured embedder must reach the RagProcessor.
+    ///
+    /// Before, `ServerState::new` always called `RagProcessor::new` (embedder = None) and
+    /// there was no config input that could change that, so this assertion was unreachable.
+    #[test]
+    fn test_configured_embedder_reaches_rag_processor() {
+        let config = ServerConfig {
+            storage: test_storage(),
+            embedder: EmbedderConfig {
+                kind: EmbedderKind::Local,
+                dims: Some(16),
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+
+        let state = ServerState::new(&config).expect("server state");
+        let embedder = state
+            .rag()
+            .embedder()
+            .expect("configured embedder must be wired into the RagProcessor");
+        assert_eq!(embedder.model_id(), "hashing-v1");
+        assert_eq!(embedder.dims(), 16);
+    }
+
+    /// `--embedder none` (the default) still yields no embedder — no accidental backend.
+    #[test]
+    fn test_embedder_none_leaves_rag_without_embedder() {
+        let config = ServerConfig {
+            storage: test_storage(),
+            ..Default::default()
+        };
+        let state = ServerState::new(&config).expect("server state");
+        assert!(state.rag().embedder().is_none());
+    }
+
+    /// Semantic mode without an embedder must abort at STARTUP.
+    ///
+    /// Regression: previously `ServerState::new` succeeded here and the server ran happily,
+    /// failing only once a client actually issued a retrieval. This test compiles against
+    /// the pre-change API and fails on it (old code returns `Ok`).
+    #[test]
+    fn test_enable_semantic_without_embedder_fails_at_startup() {
+        let config = ServerConfig {
+            storage: test_storage(),
+            rag: RagConfig {
+                enable_semantic: true,
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+
+        let err = ServerState::new(&config)
+            .err()
+            .expect("semantic mode with no embedder must refuse to start");
+        assert!(
+            matches!(err, crate::error::ContextError::SemanticUnavailable(_)),
+            "expected SemanticUnavailable, got: {err}"
+        );
+        assert!(
+            err.to_string().contains("--embedder"),
+            "error must name the flag that fixes it: {err}"
+        );
+    }
+
+    /// A non-semantic backend must never be silently accepted as the semantic one.
+    #[test]
+    fn test_enable_semantic_with_non_semantic_embedder_fails_at_startup() {
+        let config = ServerConfig {
+            storage: test_storage(),
+            rag: RagConfig {
+                enable_semantic: true,
+                ..Default::default()
+            },
+            embedder: EmbedderConfig {
+                kind: EmbedderKind::Local,
+                dims: Some(16),
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+
+        let err = ServerState::new(&config)
+            .err()
+            .expect("hashing embedder must not satisfy semantic mode");
+        assert!(
+            matches!(err, crate::error::ContextError::SemanticUnavailable(_)),
+            "expected SemanticUnavailable, got: {err}"
+        );
+    }
+
+    /// In a build without the `http-embedder` feature, asking for it names the feature.
+    #[cfg(not(feature = "http-embedder"))]
+    #[test]
+    fn test_http_embedder_without_feature_fails_naming_the_feature() {
+        let config = ServerConfig {
+            storage: test_storage(),
+            embedder: EmbedderConfig {
+                kind: EmbedderKind::Http,
+                ..Default::default()
+            },
+            ..Default::default()
+        };
+
+        let err = ServerState::new(&config)
+            .err()
+            .expect("http embedder is unbuildable without its cargo feature");
+        assert!(
+            err.to_string().contains("http-embedder"),
+            "error must name the missing cargo feature: {err}"
+        );
+    }
+
+    /// With the feature on, the http backend actually constructs and is semantic —
+    /// so `--enable-semantic` starts instead of aborting. No network is touched here.
+    #[cfg(feature = "http-embedder")]
+    #[test]
+    fn test_http_embedder_with_feature_satisfies_semantic_mode() {
+        let config = ServerConfig {
+            storage: test_storage(),
+            rag: RagConfig {
+                enable_semantic: true,
+                ..Default::default()
+            },
+            embedder: EmbedderConfig {
+                kind: EmbedderKind::Http,
+                model: Some("text-embedding-3-small".into()),
+                dims: Some(1536),
+                base_url: Some("https://example.invalid/v1".into()),
+                api_key: Some("test-key".into()),
+            },
+            ..Default::default()
+        };
+
+        let state = ServerState::new(&config).expect("http embedder should satisfy semantic mode");
+        let embedder = state.rag().embedder().expect("embedder wired");
+        assert!(embedder.is_semantic());
+        assert_eq!(embedder.model_id(), "text-embedding-3-small");
     }
 
     #[test]

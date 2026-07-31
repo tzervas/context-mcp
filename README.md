@@ -133,6 +133,45 @@ Run as stdio transport:
 context-mcp --stdio
 ```
 
+### Selecting an embedder
+
+`--embedder` chooses the backend; nothing is constructed by default.
+
+| Flag | Meaning |
+|------|---------|
+| `--embedder none\|local\|http` | Backend to construct (default `none`) |
+| `--embed-model <MODEL>` | Model id/path; required for `http` |
+| `--embed-dims <N>` | Vector dimensionality; required for `http`, local defaults to 384 |
+| `--embed-base-url <URL>` | API root for `http`, e.g. `https://api.openai.com/v1` |
+| `$CONTEXT_MCP_EMBED_API_KEY` | Bearer token for `http`. Env only — a flag would leak it into `ps`/argv |
+
+```bash
+# Non-semantic local hashing backend (deterministic; wiring/dev only)
+context-mcp --stdio --embedder local --embed-dims 384
+
+# Real semantic embeddings — requires a build with the `http-embedder` feature
+cargo build --release --features http-embedder
+CONTEXT_MCP_EMBED_API_KEY=... context-mcp --stdio \
+  --embedder http --embed-base-url https://api.openai.com/v1 \
+  --embed-model text-embedding-3-small --embed-dims 1536 \
+  --enable-semantic
+```
+
+**`--enable-semantic` aborts at startup** unless the selected backend reports
+`is_semantic() == true`. It never falls back to the hashing stub. In the default build
+(`server`, `persistence`, `ternary-embeddings`) `--embedder http` is unbuildable, and the
+error names the missing cargo feature:
+
+```
+Error: Configuration error: --embedder http requires the `http-embedder` cargo feature,
+which is NOT in the default feature set ... Rebuild with:
+cargo build --release --features http-embedder
+```
+
+Vectors are still **not persisted or indexed**, and retrieval scoring does not yet use them —
+that is Wave 2 (`docs/ROADMAP.md` C2.1–C2.2). Selecting an embedder makes the backend
+reachable; it does not by itself make this legitimate RAG.
+
 ## What It Does (Verified by Code/Tests)
 
 - **JSON-RPC MCP Server**: Runs over HTTP/WebSocket or stdio transport

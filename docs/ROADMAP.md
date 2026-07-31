@@ -44,6 +44,7 @@ C0 gate complete (feature/ctx-c0-honesty, PR #29). Part of wsfull + W2 facade in
 | C1.1 | Trait `Embedder: embed(&[str]) -> Vec<Vector>` | **done** — `src/embeddings.rs` (`embed_batch`, `model_id`, `dims`, `is_semantic`) |
 | C1.2 | At least one local backend (e.g. fastembed / candle / external CLI) | **partial** — `HashingEmbedder` local deterministic (non-semantic, tests); `NullEmbedder` fail-closed stub. Local GGUF/ONNX/candle model still open (issue #19). |
 | C1.3 | Optional OpenAI-compatible HTTP embedder | **done (feature)** — `HttpEmbedder` behind `http-embedder` (reqwest); `is_semantic=true` |
+| C1.6 | Select/construct the embedder from CLI or config | **done** — `--embedder none\|local\|http` + `--embed-model` / `--embed-dims` / `--embed-base-url`; `EmbedderConfig` on `ServerConfig`, built in `ServerState::new`. Until this landed, `RagProcessor::with_embedder` had **no non-test caller**: the server always took `RagProcessor::new` (embedder `None`), so no embedder was reachable from the MCP surface at all. Unavailable backends now abort at startup naming the missing cargo feature — never a silent downgrade. |
 | C1.4 | Store `embedding_model`, `dims`, `content_hash` on each item | **done** — fields on `Context` + `apply_embedding` / `with_embedding_info` |
 | C1.5 | Delete or quarantine `text_to_pseudo_embedding` from production paths | **done** — removed from retrieve; quarantined under `cfg(test)` as `text_to_pseudo_embedding_quarantined`; semantic mode fail-closed without real embedder |
 
@@ -134,12 +135,15 @@ impl ContextStore {
 
 ### Config (CLI / env)
 
-| Flag / env | Meaning |
-|------------|---------|
-| `--embedder none\|local\|http` | Required for semantic |
-| `--embed-model` | Model id/path |
-| `--vector-path` | Index location |
-| `--semantic-default off` | Until eval passes, prefer off |
+| Flag / env | Meaning | Status |
+|------------|---------|--------|
+| `--embedder none\|local\|http` | Required for semantic | **done** — default `none`; `local` = non-semantic hashing stub (C1.2 still open), `http` needs the `http-embedder` cargo feature |
+| `--embed-model` | Model id/path | **done** — required for `http` |
+| `--embed-dims` | Vector dimensionality | **done** — required for `http`; `local` defaults to 384. Not in the original table; the `HttpEmbedder` constructor requires it and mismatched lengths are rejected rather than truncated |
+| `--embed-base-url` | API root for `http` | **done** — not in the original table; `http` is unusable without it |
+| `$CONTEXT_MCP_EMBED_API_KEY` | Bearer token for `http` | **done** — env only, deliberately not a flag (argv is world-readable via `ps`) |
+| `--vector-path` | Index location | **open** — Wave 2 (C2.1). No flag is exposed; there is no vector index to point it at, and a no-op flag would be a false affordance |
+| `--semantic-default off` | Until eval passes, prefer off | **done** — `RagConfig::enable_semantic` defaults false; opt in with `--enable-semantic`, which aborts startup unless the selected backend is `is_semantic()` |
 
 ---
 
