@@ -66,4 +66,4 @@ jobs:
 
       - name: Local-parity checks
         working-directory: .
-        run: bash scripts/check.sh
+        run: bash scripts/check.sh --quick

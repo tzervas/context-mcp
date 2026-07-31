@@ -7,6 +7,9 @@ if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
   export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS:-1}"
   export CARGO_PROFILE_DEV_DEBUG="${CARGO_PROFILE_DEV_DEBUG:-0}"
   export CARGO_PROFILE_TEST_DEBUG="${CARGO_PROFILE_TEST_DEBUG:-0}"
+  # Full audit/deny/bench pulls huge gix trees and OOMs 8G no-swap runners.
+  # Local full gate remains: ./scripts/check.sh (no GITHUB_ACTIONS).
+  export CONTEXT_MCP_CI_QUICK="${CONTEXT_MCP_CI_QUICK:-1}"
 fi
 cd "$(dirname "$0")/.."
 MODE="${1:-}"
@@ -44,7 +47,7 @@ else
   echo "WARN: git-secrets not installed; skip secrets scan"
 fi
 
-if [[ "$MODE" != "--quick" ]]; then
+if [[ "$MODE" != "--quick" && "${CONTEXT_MCP_CI_QUICK:-}" != "1" ]]; then
   if cargo audit -V >/dev/null 2>&1; then
     cargo audit "${AUDIT_IGNORES[@]}"
   else
