@@ -25,7 +25,7 @@ jobs:
       rust: ${{ steps.d.outputs.rust }}
       python: ${{ steps.d.outputs.python }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: d
         run: |
           set -euo pipefail
@@ -50,7 +50,7 @@ jobs:
       CARGO_PROFILE_DEV_DEBUG: "0"
       CARGO_PROFILE_TEST_DEBUG: "0"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
       - name: Ensure cargo on PATH
         run: |
@@ -75,7 +75,7 @@ jobs:
     if: needs.detect.outputs.python == 'true'
     runs-on: [self-hosted, linux, x64, podman, compute-cpu, host-homelab, scribe-cpu-build]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
